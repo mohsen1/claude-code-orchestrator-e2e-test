@@ -166,3 +166,40 @@ EM-2 submitted modified task list proposing worker-4 implement all modules inclu
   - worker-3: Available for reassignment (currently unassigned)
 
 **Governance Note**: Repeated pattern of teams not respecting blocking dependencies and project structure suggests need for stricter merge gates or EM training on orchestrator protocols.
+
+### Decision 4: EM-1 Post-Merge Escalation - Code Cleanup & Worker Integration (2026-01-14 07:35)
+**Status**: ESCALATION - CONTINUED DEVELOPMENT, INTERNAL CONSOLIDATION
+
+**EM-1 Escalation Analysis**:
+- **Deliverable**: Code refactoring in operations.ts (reordered functions for clarity)
+- **Change Scope**: Minor refactoring (performOperation moved to end of file)
+- **Impact**: Functionally identical, no behavior change
+- **EM-1 Internal Activity**:
+  - Merged worker-3 into em-team-1 branch (commit 4a63aad)
+  - Resolved merge conflicts with remote main (commit 629e3d8)
+  - Continuing post-merge cleanup and integration
+
+**Validation Results**:
+- ✓ Tests: 200/200 passing (no regression)
+- ✓ Build: TypeScript clean
+- ✓ CLI: Functional (5+3=8, 10-2=8, 6/2=3)
+- ✓ Code Quality: Refactoring improves readability
+
+**EM-1 Escalation Assessment**:
+- **Status**: ACTIVE (not complete, continuing refinement)
+- **Quality**: High (all tests passing, clean build)
+- **Communication**: Good (escalating incremental improvements)
+- **Risk Level**: LOW (refactoring only, no behavior changes)
+
+**Director Decision** (Acceptance):
+- ACCEPT EM-1 escalation merge (commit 570876a)
+- Code refactoring improves maintainability
+- EM-1 demonstrates quality-focused approach (cleanup after merge)
+- **Keep EM-1 active**: Team continuing post-merge validation and refinement
+- **Worker Status**:
+  - worker-1: Assigned to EM-1 (active)
+  - worker-2: Assigned to EM-1 (active)
+  - worker-3: Integrated into EM-1 via merge (consolidated under EM-1)
+- **Action**: Allow EM-1 to continue refinement work; expect final completion soon
+
+**Timeline Observation**: EM-1 is performing internal consolidation (merging workers into main branch) and cleanup. This is healthy post-delivery behavior. Expect final escalation with complete validation within next cycle.
