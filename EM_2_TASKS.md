@@ -1,6 +1,6 @@
 # EM-2 Team Tasks
 
-**Team**: worker-4
+**Team**: worker-3, worker-4
 **Branch**: em-team-2
 **Last Updated**: 2026-01-14
 
@@ -15,14 +15,21 @@ Implement a TypeScript calculator CLI with core operations, expression parsing, 
 
 ## Task Breakdown
 
-### Phase 1: Core Implementation (worker-4)
+### Phase 1: Core Implementation (Parallel)
+
+**Worker-3** - Math Operations (Foundation)
 - [ ] Implement operations.ts (add, subtract, multiply, divide)
+- [ ] Handle division by zero
+- [ ] Support decimal numbers
+
+**Worker-4** - Parser, Calculator, CLI & Tests (Integration)
 - [ ] Implement parser.ts (expression parsing)
 - [ ] Implement calculator.ts (main logic)
 - [ ] Implement index.ts (CLI entry point)
 - [ ] Implement calculator.test.ts (unit tests)
 
 ### Phase 2: Validation (EM-2)
+- [ ] Merge worker-3 branch locally
 - [ ] Merge worker-4 branch locally
 - [ ] Run build: `npm run build`
 - [ ] Run tests: `npm run test`
@@ -43,4 +50,5 @@ Implement a TypeScript calculator CLI with core operations, expression parsing, 
 - Output to stdout
 
 ## Worker Task References
-See WORKER_4_TASK_LIST.md for detailed assignments
+- See WORKER_3_TASK_LIST.md for worker-3 assignments
+- See WORKER_4_TASK_LIST.md for worker-4 assignments
