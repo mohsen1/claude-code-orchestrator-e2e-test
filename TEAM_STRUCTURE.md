@@ -130,3 +130,39 @@ EM-2 submitted modified task list proposing worker-4 implement all modules inclu
 | Unassigned | — | 3 (w-1, w-2, w-3) | Available |
 
 **EM-2 New Mandate**: Switch from "parser + CLI" (now complete) to quality assurance, edge case validation, and CLI hardening.
+
+### Decision 3: EM-2 Escalation - Stale Branch, No Progress (2026-01-14 07:34)
+**Status**: ESCALATION - BRANCH STALE, REQUIRING REBASING & RESTART
+
+**EM-2 Escalation Analysis**:
+- **Branch Status**: Stale (created before EM-1 merge at commit 089941d)
+- **Last EM-2 Commit**: "Update team roster and task allocation" (07:25, before EM-1 merge)
+- **Deliverables**: WORKER_3_TASK_LIST.md, WORKER_4_TASK_LIST.md (documentation only)
+- **Code Changes**: None (no validation/QA work attempted)
+- **Impact**: No progress on reassigned validation mandate
+
+**Root Cause**:
+- EM-2 branch not rebased after EM-1 merge (commit ff9899b)
+- Task lists still propose implementation work already completed by EM-1
+- Team unaware of feature completion and reassignment to QA role
+- No attempt to begin edge case testing, CLI hardening, or integration validation
+
+**Critical Issues Identified**:
+1. EM-2 not tracking main branch updates or EM-1 merge
+2. Governance communication gap (reassignment not acknowledged)
+3. Team idle for validation work (worker-4 available, worker-3 unassigned)
+4. Previous escalation (Decision 2) was not acted upon
+
+**Director Decision** (Remedial):
+- ACCEPT EM-2 merge (documentation only, no code conflicts)
+- **MANDATE REBASE**: EM-2 must immediately:
+  1. Rebase em-team-2 on current main (e2e-1768397071518)
+  2. Review EM_2_VALIDATION_TASKS.md (reassignment directive)
+  3. Begin QA/validation work (edge cases, CLI hardening, integration tests)
+  4. Escalate with validation results (not task list changes)
+- **TIMELINE**: Expected validation deliverables within next cycle
+- **WORKER ALLOCATION**:
+  - worker-4: Lead validation testing (1 FTE)
+  - worker-3: Available for reassignment (currently unassigned)
+
+**Governance Note**: Repeated pattern of teams not respecting blocking dependencies and project structure suggests need for stricter merge gates or EM training on orchestrator protocols.
