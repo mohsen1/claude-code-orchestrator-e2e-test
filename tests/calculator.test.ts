@@ -99,4 +99,13 @@ describe('Calculator', () => {
       expect(() => calculate('10 + 20 + 30')).toThrow('Invalid expression');
     });
   });
+
+  describe('Expression parsing', () => {
+    it('handles expressions with various spacing', () => {
+      expect(calculate('2+3')).toBe(5);
+      expect(calculate('2 + 3')).toBe(5);
+      expect(calculate('2   +   3')).toBe(5);
+      expect(calculate('  2 + 3  ')).toBe(5)
+    });
+  });
 });
