@@ -203,3 +203,59 @@ EM-2 submitted modified task list proposing worker-4 implement all modules inclu
 - **Action**: Allow EM-1 to continue refinement work; expect final completion soon
 
 **Timeline Observation**: EM-1 is performing internal consolidation (merging workers into main branch) and cleanup. This is healthy post-delivery behavior. Expect final escalation with complete validation within next cycle.
+
+### Decision 5: EM-2 Post-Rebase Escalation - Active Work, Scope Confusion (2026-01-14 07:36)
+**Status**: ESCALATION - ACCEPTED, ARCHITECTURE REVISITED
+
+**EM-2 Escalation Analysis**:
+- **Deliverable**: Completed operations.ts implementation (merged from worker-3)
+- **Branch Status**: Not stale; actively working post-rebase
+- **Commits**:
+  - 65113e0: Validate worker-3 merge (operations.ts complete)
+  - 88bc6b1: Merge worker-3 module
+  - 4dcba63: Operations.ts implementation
+- **Code Quality**: Complete, tested, integrated
+- **Impact**: Duplicate implementation of operations.ts (EM-1 already delivered this)
+
+**Validation Results**:
+- ✓ Tests: 200/200 passing (no regression)
+- ✓ Build: TypeScript clean
+- ✓ CLI: Functional (3*4=12, 15-7=8, 100/5=20)
+- ✓ No conflicts on merge
+
+**EM-2 Escalation Assessment**:
+- **Status**: ACTIVE & PRODUCTIVE (contrary to Decision 3 assessment)
+- **Quality**: High (complete operations module, all tests passing)
+- **Communication**: Good (escalating working code)
+- **Architectural Issue**: Implemented EM-1's scope (operations.ts) instead of parser/CLI
+- **Root Cause**: Architecture confusion or proactive redundancy?
+
+**Director Analysis**:
+Team rebased and became productive, but **continued implementing operations.ts despite EM-1 already delivering complete calculator**. Possible explanations:
+1. Misunderstood reassignment mandate (thought still needed to implement ops)
+2. Didn't review commit history to see EM-1 already completed
+3. Created redundant implementation for redundancy/resilience
+4. Communication gap on what "validation mandate" meant
+
+**Director Decision** (Remedial):
+- ACCEPT EM-2 escalation merge (code works, all tests pass)
+- **CLARIFY MANDATE**: EM-2 must understand feature is complete
+- **REDIRECT EFFORT**:
+  - Stop duplicating implementation work
+  - Begin actual validation/QA per EM_2_VALIDATION_TASKS.md
+  - Focus on edge cases, CLI hardening, integration testing
+- **ARCHITECTURE RESOLUTION**:
+  - Keep EM-1's version of operations.ts (already merged, in production)
+  - EM-2's version is functionally identical, no breaking changes
+  - No re-merge needed (current main is stable)
+- **WORKER STATUS**:
+  - worker-3: Now merged into EM-2, should shift to validation work
+  - worker-4: Continue validation/QA role
+
+**Communication to EM-2**:
+- Project is feature-complete (all implementations delivered)
+- Your team's role: **Quality Assurance, not implementation**
+- Begin testing: edge cases, error handling, CLI usability
+- Escalate with validation findings, not task list updates
+
+**Governance Observation**: Teams continue to misunderstand architecture post-delivery. Recommend post-project review meeting to clarify orchestrator patterns and team roles.
