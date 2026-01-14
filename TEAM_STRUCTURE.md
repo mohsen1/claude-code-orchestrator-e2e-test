@@ -37,7 +37,7 @@
   - CLI executable and responsive
 
 ## Workflow
-1. EM-1 completes core logic (independent work)
+1. EM-1 completes core logic (independent work) - BLOCKING for EM-2
 2. EM-2 builds parser and CLI using EM-1's exports
 3. Both teams integrate for final validation
 
@@ -46,3 +46,31 @@
 - Maximum 3 workers per team (currently at 2 each)
 - Idle workers may be reassigned to bottleneck teams
 - Teams with 1 blocker will be escalated to Director
+
+## Critical Blocking Dependencies
+**EM-2 MUST WAIT** for EM-1 to complete and merge:
+- `src/operations.ts` - Core math operations module
+- `src/calculator.ts` - Calculator orchestration class
+
+**Rationale**: Maintains separation of concerns and prevents merge conflicts from parallel rewrites of core logic.
+
+## Director Decision Log
+
+### Decision 1: EM-2 Escalation Rejection (2026-01-14 07:25)
+**Status**: REJECTED
+
+EM-2 submitted modified task list proposing worker-4 implement all modules including operations.ts and calculator.ts.
+
+**Rejection Rationale**:
+- Violates established architecture (EM-1 owns core, EM-2 owns interface)
+- Bypasses blocking dependency model
+- Underutilizes team (worker-3 not included)
+- No implementation code provided, only doc changes
+- Would cause merge conflicts and duplicate effort
+
+**Director Action**:
+- Maintain original team assignments
+- EM-1 to deliver operations.ts + calculator.ts (no changes)
+- EM-2 to deliver parser.ts + index.ts (as directed)
+- Both teams to commit code, not doc modifications
+- Re-escalate if EM-1 cannot complete within reasonable time
