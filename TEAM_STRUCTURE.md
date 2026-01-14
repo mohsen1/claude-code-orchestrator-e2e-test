@@ -108,3 +108,25 @@ EM-2 submitted modified task list proposing worker-4 implement all modules inclu
 - EM-2 team: 2 workers → **1 worker** (worker-4 on validation; worker-3 available for reassignment)
 - EM-1 team: 2 workers → **0 workers** (work complete; available for next initiative)
 - Available capacity: 3 workers for new tasks or cross-project work
+
+---
+
+## MERGE EXECUTED & VALIDATED ✓
+
+**Merge Commit**: ff9899b - EM-1 branch integrated
+**Validation Results**:
+- ✓ Tests: 131 passing (100% success)
+- ✓ Build: TypeScript clean, no errors
+- ✓ CLI: Functional ("2 + 3" → 5, "10 * 5" → 50, etc.)
+- ✓ No merge conflicts
+
+**Project Status**: FEATURE COMPLETE (end-to-end calculator working)
+
+**Team Resizing Now Active**:
+| Team | Role | Workers | Status |
+|------|------|---------|--------|
+| EM-1 | Core Engine | 0 | ✓ Work Complete |
+| EM-2 | Validation | 1 (w-4) | ➜ Acceptance Testing |
+| Unassigned | — | 3 (w-1, w-2, w-3) | Available |
+
+**EM-2 New Mandate**: Switch from "parser + CLI" (now complete) to quality assurance, edge case validation, and CLI hardening.
