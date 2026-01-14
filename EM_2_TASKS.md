@@ -1,54 +1,106 @@
-# EM-2 Team Tasks
+# EM-2 Task Manifest: Parser & CLI Interface
 
-**Team**: worker-3, worker-4
+**Engineering Manager**: em-team-2
 **Branch**: em-team-2
-**Last Updated**: 2026-01-14
+**Assigned Workers**: worker-3, worker-4
+**Status**: Worker-3 operations.ts COMPLETE ✅ | Waiting on EM-1 calculator.ts
 
-## Mission
-Implement a TypeScript calculator CLI with core operations, expression parsing, and error handling.
+## Directive
+Build the user-facing interface for the calculator. Parse mathematical expressions and provide a clean CLI experience. Your team depends on EM-1's core engine.
 
-## Overall Progress
-- Status: In Progress
-- Core implementation: Not started
-- Testing: Not started
-- Validation: Pending
+## High-Priority Tasks (Waiting on EM-1)
 
-## Task Breakdown
+### Task 1: Expression Parser Module
+**File**: `src/parser.ts`
+**Owner**: worker-3 (lead)
+**Status**: ⏳ Blocked - Awaiting EM-1's `src/calculator.ts`
+**Description**:
+- Export function: `parseExpression(input: string): { operation: string; a: number; b: number }`
+- Supports formats: "2 + 3", "10-5", "6 * 7", "20 / 4"
+- Handle spaces gracefully: " 2 + 3 " should work
+- **Invalid input**: throw `Error("Invalid expression")`
+- Return object with: `{ operation: string, a: number, b: number }`
 
-### Phase 1: Core Implementation (Parallel)
+**Acceptance Criteria**:
+- [ ] Parses all 4 operations (+, -, *, /)
+- [ ] Handles decimal numbers
+- [ ] Handles negative numbers
+- [ ] Rejects invalid input with clear error
+- [ ] Tests pass 100%
 
-**Worker-3** - Math Operations (Foundation)
-- [ ] Implement operations.ts (add, subtract, multiply, divide)
-- [ ] Handle division by zero
-- [ ] Support decimal numbers
+### Task 2: CLI Entry Point
+**File**: `src/index.ts`
+**Owner**: worker-4 (lead)
+**Status**: ⏳ Blocked - Depends on Task 1 and EM-1's `src/calculator.ts`
+**Description**:
+- Executable that accepts CLI arguments: `calculator "2 + 3"`
+- Parse expression using `parser.ts`
+- Calculate result using `Calculator` from `calculator.ts`
+- Print result to stdout: `Result: 5`
+- Print errors to stderr with descriptive message
+- Support `--help` flag showing usage
+- Exit with code 0 on success, 1 on error
 
-**Worker-4** - Parser, Calculator, CLI & Tests (Integration)
-- [ ] Implement parser.ts (expression parsing)
-- [ ] Implement calculator.ts (main logic)
-- [ ] Implement index.ts (CLI entry point)
-- [ ] Implement calculator.test.ts (unit tests)
+**Acceptance Criteria**:
+- [ ] CLI works: `npx ts-node src/index.ts "2 + 3"`
+- [ ] Correct output format
+- [ ] Error handling with exit codes
+- [ ] Help message works
 
-### Phase 2: Validation (EM-2)
-- [ ] Merge worker-3 branch locally
-- [ ] Merge worker-4 branch locally
-- [ ] Run build: `npm run build`
-- [ ] Run tests: `npm run test`
-- [ ] Test CLI manually
-- [ ] Escalate to Director if stable
+### Task 3: Parser Unit Tests
+**File**: `tests/parser.test.ts`
+**Owner**: worker-3
+**Test Framework**: vitest
+**Status**: ⏳ Blocked - Awaiting Task 1 completion
+**Description**:
+- Test all 4 operations
+- Test with decimals
+- Test with negative numbers
+- Test with spaces
+- Test invalid expressions (various failure modes)
+- Aim for 100% coverage
+
+**Acceptance Criteria**:
+- [ ] All tests passing
+- [ ] Coverage ≥ 95%
+
+### Task 4: Integration Tests
+**File**: `tests/integration.test.ts` (optional, if time permits)
+**Owner**: worker-4
+**Test Framework**: vitest
+**Status**: ⏳ Blocked - Depends on all prior tasks
+**Description**:
+- Test full pipeline: input → parse → calculate → output
+- Test CLI with real arguments
+- Test error scenarios end-to-end
+
+**Acceptance Criteria**:
+- [ ] All tests passing
+- [ ] Critical paths validated
+
+## Completed Work ✅
+
+**Worker-3 Completed** (Merged 2026-01-14):
+- [x] `src/operations.ts` - Math operations (add, subtract, multiply, divide)
+- [x] Division by zero error handling
+- [x] Decimal number support
+
+## Deliverables Status
+- [ ] `src/parser.ts` - Waiting on EM-1
+- [ ] `src/index.ts` - Waiting on EM-1
+- [ ] `tests/parser.test.ts` - Waiting on EM-1
+- [ ] `tests/integration.test.ts` (if time permits)
+- [ ] All tests pass: `npm test`
+- [ ] CLI works: `npm start -- "2 + 3"`
+- [ ] TypeScript compiles: `npm run build`
 
 ## Success Criteria
-- All basic operations work correctly (add, subtract, multiply, divide)
-- Tests pass
-- Code compiles without errors
-- Division by zero handled
-- Invalid input handled gracefully
+- Zero test failures
+- CLI executable and responsive
+- Graceful error messages
+- TypeScript strict mode compliance
+- Code ready for merge and production
 
-## Notes
-- Using TypeScript with strict mode
-- Using vitest for testing
-- Supporting decimal numbers
-- Output to stdout
-
-## Worker Task References
-- See WORKER_3_TASK_LIST.md for worker-3 assignments
-- See WORKER_4_TASK_LIST.md for worker-4 assignments
+## Critical Blocker
+**EM-1 DEPENDENCY**: Must deliver `src/calculator.ts` for EM-2 to proceed.
+Contact Director if EM-1 escalates timeline concerns.
