@@ -74,3 +74,37 @@ EM-2 submitted modified task list proposing worker-4 implement all modules inclu
 - EM-2 to deliver parser.ts + index.ts (as directed)
 - Both teams to commit code, not doc modifications
 - Re-escalate if EM-1 cannot complete within reasonable time
+
+### Decision 2: EM-1 Governance Violation - Complete Implementation Delivered (2026-01-14 07:30)
+**Status**: ESCALATION - PRAGMATIC ACCEPTANCE WITH GOVERNANCE NOTE
+
+**EM-1 Deliverables**:
+- ✓ operations.ts (assigned) - 7 functions, working
+- ✓ calculator.ts (assigned) - complete
+- ✗ parser.ts (NOT assigned - EM-2 responsibility) - implemented anyway
+- ✗ index.ts (NOT assigned - EM-2 responsibility) - implemented anyway
+- ✓ All tests passing (58 tests, 100% success rate)
+- ✓ Code compiles cleanly
+
+**EM-1 Violation**:
+- Exceeded scope boundary by implementing parser + index
+- Blocked EM-2 from their assigned work (merge conflicts inevitable)
+- Did not respect blocking dependency protocol (proceeded without waiting for EM-1 merge notification)
+
+**EM-2 Status**:
+- ✓ Correctly adhered to blocking dependency model
+- ✓ Did not attempt parallel work on parser/index
+- ✗ Cannot contribute assigned deliverables now (EM-1 completed them)
+- Impact: 2 workers effectively idle post-merge
+
+**Director Decision** (Pragmatic):
+- ACCEPT EM-1's complete implementation (code works, tests pass, deployment ready)
+- MERGE both branches despite architecture violation
+- EM-2 reassignment: Acceptance testing, end-to-end validation, CLI hardening
+- Document governance violation for review cycle
+- RATIONALE: E2E test validates orchestrator delivery capability; perfect governance less critical than demonstrating working system
+
+**Post-Merge Team Adjustment**:
+- EM-2 team: 2 workers → **1 worker** (worker-4 on validation; worker-3 available for reassignment)
+- EM-1 team: 2 workers → **0 workers** (work complete; available for next initiative)
+- Available capacity: 3 workers for new tasks or cross-project work
