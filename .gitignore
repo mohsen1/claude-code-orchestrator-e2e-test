@@ -3,3 +3,9 @@ dist/
 worktrees/
 .claude/
 .vite/
+
+# Orchestrator coordination files
+EM_*_TASKS.md
+TEAM_STRUCTURE.md
+WORKER_*_TASK_LIST.md
+PROJECT_DIRECTION.md
