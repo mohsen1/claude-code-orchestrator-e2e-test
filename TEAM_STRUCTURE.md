@@ -259,3 +259,50 @@ Team rebased and became productive, but **continued implementing operations.ts d
 - Escalate with validation findings, not task list updates
 
 **Governance Observation**: Teams continue to misunderstand architecture post-delivery. Recommend post-project review meeting to clarify orchestrator patterns and team roles.
+
+---
+
+### Decision 6: EM-1 Final Escalation - Merge Completed with Full Validation (2026-01-15 09:50)
+**Status**: ACCEPTED & COMPLETED
+
+**EM-1 Final Deliverable**:
+- ✓ operations.ts with clean implementation
+- ✓ parser.ts (scope expansion, now accepted)
+- ✓ index.ts (scope expansion, now accepted)
+- ✓ Comprehensive test suites: 218 tests passing
+- ✓ TypeScript compilation clean
+- ✓ Code quality: Clean, maintainable, well-tested
+
+**Merge Resolution**:
+- Resolved 5 conflicting files (TEAM_STRUCTURE.md, EM_1_TASKS.md, EM_2_TASKS.md, WORKER_1_TASK_LIST.md, tests/calculator.test.ts)
+- Took EM-1's remote versions for all task documents (reflects latest team status)
+- Final build: All 218 tests passing, 100% success rate
+
+**Final Validation Results**:
+- ✓ Build Status: TypeScript compilation succeeded (0 errors)
+- ✓ Test Suite: 11 test files, 218 tests, 100% passing
+- ✓ Functionality: Complete calculator (operations, parser, CLI)
+- ✓ Code Quality: Clean, well-organized, properly documented
+
+**Project Status**: FEATURE COMPLETE ✓
+
+**Current Team State**:
+| Team | Scope | Workers | Status |
+|------|-------|---------|--------|
+| EM-1 | Core Engine (COMPLETE) | 0 | ✓ Delivered & Merged |
+| EM-2 | QA/Validation | 1 (w-4) | ➜ Awaiting direction |
+| Unassigned | — | 3 (w-1, w-2, w-3) | Available |
+
+**Director Conclusion**:
+The EM-1 team has successfully delivered a complete, production-ready calculator implementation despite governance violations (scope expansion). The pragmatic decision to accept this delivery is validated by:
+1. Complete feature set delivered
+2. Comprehensive test coverage (218 tests)
+3. Clean build with zero TypeScript errors
+4. Functional CLI working correctly
+5. Professional code quality
+
+**EM-2 Next Steps**:
+- Clarify validation mandate (QA, not implementation)
+- Review PROJECT_DIRECTION.md acceptance criteria
+- Escalate with validation test results, not task list changes
+- Expected: Edge case testing, error handling verification, CLI hardening
