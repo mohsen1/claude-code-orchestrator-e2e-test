@@ -1,5 +1,5 @@
-import { parseExpression } from './parser';
-import { add, subtract, multiply, divide } from './operations';
+import { parseExpression } from './parser.js';
+import { add, subtract, multiply, divide } from './operations.js';
 
 export function calculate(expression: string): number {
   const parsed = parseExpression(expression);
@@ -14,6 +14,6 @@ export function calculate(expression: string): number {
     case 'divide':
       return divide(parsed.left, parsed.right);
     default:
-      throw new Error(`Unsupported operator: ${parsed.operator}`);
+      throw new Error(`Unknown operator: ${parsed.operator}`);
   }
 }

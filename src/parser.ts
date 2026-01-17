@@ -1,124 +1,94 @@
-export interface ParsedExpression {
+export type Operator = 'add' | 'subtract' | 'multiply' | 'divide';
+
+export interface Expression {
   left: number;
-  operator: 'add' | 'subtract' | 'multiply' | 'divide';
+  operator: Operator;
   right: number;
 }
 
-export function parseExpression(expression: string): ParsedExpression {
-  // Remove leading and trailing whitespace
-  const trimmed = expression.trim();
+export function parseExpression(input: string): Expression {
+  // Trim leading and trailing whitespace
+  const trimmed = input.trim();
 
   if (!trimmed) {
-    throw new Error('Empty expression');
+    throw new Error('Invalid expression: empty string');
   }
 
-  // Map of operator symbols to operator names
-  const operatorMap: { [key: string]: 'add' | 'subtract' | 'multiply' | 'divide' } = {
-    '+': 'add',
-    '-': 'subtract',
-    '*': 'multiply',
-    '/': 'divide',
-  };
+  // Find the operator and split the expression
+  // We need to handle negative numbers, so we look for operators not at the start
+  const operators = [
+    { symbol: '+', name: 'add' as Operator },
+    { symbol: '-', name: 'subtract' as Operator },
+    { symbol: '*', name: 'multiply' as Operator },
+    { symbol: '/', name: 'divide' as Operator },
+  ];
 
-  // Try to find operator (searching from left to right, skipping the first character)
-  // We need to be careful with '-' as it can be both a minus operator and a negative sign
-  let operatorIndex = -1;
-  let operatorSymbol = '';
+  let matchedOperator: Operator | null = null;
+  let leftStr: string | null = null;
+  let rightStr: string | null = null;
 
-  // Search for operators, starting from position 1 (skip first char for negative numbers)
-  // Priority: +, -, *, / (we'll find the first one we encounter from left to right, skipping negatives)
-  for (let i = 1; i < trimmed.length; i++) {
-    const char = trimmed[i];
+  // Try to find an operator (looking from left to right, but skip leading - for negative numbers)
+  for (const op of operators) {
+    // Find all occurrences of the operator
+    let index = trimmed.indexOf(op.symbol);
 
-    if (char === '+' || char === '*' || char === '/') {
-      operatorIndex = i;
-      operatorSymbol = char;
-      break;
-    } else if (char === '-') {
-      // Check if this '-' is a subtraction operator or a negative sign
-      // It's a subtraction operator if:
-      // 1. The previous character is a digit, dot, or space (after a number)
-      // 2. It's not immediately after another operator
-      const prevChar = trimmed[i - 1];
-      if (prevChar && (
-        (prevChar >= '0' && prevChar <= '9') ||
-        prevChar === '.' ||
-        prevChar === ' '
-      )) {
-        // Check if previous non-space char is a number or dot
-        let j = i - 1;
-        while (j >= 0 && trimmed[j] === ' ') {
-          j--;
-        }
-        if (j >= 0 && ((trimmed[j] >= '0' && trimmed[j] <= '9') || trimmed[j] === '.')) {
-          operatorIndex = i;
-          operatorSymbol = '-';
+    // For subtraction, we need to be careful about negative numbers
+    // Skip if it's at position 0 (leading negative)
+    if (op.symbol === '-' && index === 0) {
+      // Look for the next occurrence
+      index = trimmed.indexOf(op.symbol, 1);
+    }
+
+    // If we found an operator at a valid position
+    while (index > 0) {
+      leftStr = trimmed.substring(0, index).trim();
+      rightStr = trimmed.substring(index + 1).trim();
+
+      // Check if this is a valid split (both sides should parse as numbers)
+      const leftNum = parseFloat(leftStr);
+      const rightNum = parseFloat(rightStr);
+
+      if (!isNaN(leftNum) && !isNaN(rightNum)) {
+        // Validate that the strings only contain valid number characters
+        const validPattern = /^-?\d+(\.\d+)?$/;
+        if (validPattern.test(leftStr) && validPattern.test(rightStr)) {
+          matchedOperator = op.name;
           break;
         }
       }
+
+      // If subtraction, look for next occurrence
+      if (op.symbol === '-') {
+        const nextIndex = trimmed.indexOf(op.symbol, index + 1);
+        if (nextIndex > index) {
+          index = nextIndex;
+        } else {
+          break;
+        }
+      } else {
+        break;
+      }
+    }
+
+    if (matchedOperator) {
+      break;
     }
   }
 
-  if (operatorIndex === -1 || !operatorSymbol) {
-    throw new Error('No valid operator found');
+  if (!matchedOperator || leftStr === null || rightStr === null) {
+    throw new Error('Invalid expression: no valid operator found');
   }
 
-  const operator = operatorMap[operatorSymbol];
-  if (!operator) {
-    throw new Error(`Unsupported operator: ${operatorSymbol}`);
-  }
-
-  // Split the expression at the operator
-  const leftStr = trimmed.substring(0, operatorIndex).trim();
-  const rightStr = trimmed.substring(operatorIndex + 1).trim();
-
-  if (!leftStr || !rightStr) {
-    throw new Error('Missing operand');
-  }
-
-  // Parse the numbers
   const left = parseFloat(leftStr);
   const right = parseFloat(rightStr);
 
-  // Check if the parsing was successful
   if (isNaN(left) || isNaN(right)) {
-    throw new Error('Invalid operand: not a number');
-  }
-
-  // Validate that the strings only contain valid number characters (including optional negative sign)
-  const validNumberRegex = /^-?\d+(\.\d+)?$/;
-  if (!validNumberRegex.test(leftStr) || !validNumberRegex.test(rightStr)) {
-    throw new Error('Invalid characters in expression');
-  }
-
-  // Check for multiple operators by counting operators in the original string
-  // We need to exclude the operator we found and any negative signs at the start of numbers
-  let operatorCount = 0;
-  for (let i = 0; i < trimmed.length; i++) {
-    const char = trimmed[i];
-    if (char === '+' || char === '*' || char === '/') {
-      operatorCount++;
-    } else if (char === '-') {
-      // Count as operator only if it's not at the start and not after an operator/whitespace-operator sequence
-      if (i > 0) {
-        let j = i - 1;
-        while (j >= 0 && trimmed[j] === ' ') {
-          j--;
-        }
-        if (j >= 0 && ((trimmed[j] >= '0' && trimmed[j] <= '9') || trimmed[j] === '.')) {
-          operatorCount++;
-        }
-      }
-    }
-  }
-
-  if (operatorCount > 1) {
-    throw new Error('Multiple operators not supported');
+    throw new Error('Invalid expression: operands must be numbers');
   }
 
   return {
     left,
-    operator,
+    operator: matchedOperator,
     right,
   };
 }
