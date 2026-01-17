@@ -1,5 +1,5 @@
 import { calculate } from './calculator.js';
-import * as readline from 'readline';
+import readline from 'readline';
 
 const rl = readline.createInterface({
   input: process.stdin,
