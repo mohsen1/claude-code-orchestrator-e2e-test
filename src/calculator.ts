@@ -1,4 +1,4 @@
-import { add, subtract, multiply, divide } from './operations';
+import { add, subtract, multiply, divide } from './operations.js';
 
 export function calculate(expression: string): number {
   const trimmed = expression.trim();
