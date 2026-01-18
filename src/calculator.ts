@@ -1,5 +1,5 @@
-import { parseExpression } from './parser.ts';
-import { add, subtract, multiply, divide } from './operations.ts';
+import { parseExpression } from './parser';
+import { add, subtract, multiply, divide } from './operations';
 
 export function calculate(expression: string): number {
   const parsed = parseExpression(expression);
