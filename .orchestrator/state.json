@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "worker_review",
+  "phase": "em_review",
   "workBranch": "cco/73-build-a-markdown-note-taking-api",
   "baseBranch": "main",
   "ems": [
@@ -18,7 +18,7 @@
       "task": "Implement core data layer, TypeScript types, and search functionality - build in-memory storage with CRUD operations, define all type interfaces, and implement full-text search with relevance sorting",
       "focusArea": "Data Layer & Core Logic",
       "branch": "cco/issue-73-em-1",
-      "status": "workers_running",
+      "status": "pr_created",
       "workers": [
         {
           "id": 1,
@@ -27,7 +27,7 @@
             "src/types.ts"
           ],
           "branch": "cco/issue-73-em-1-w-1",
-          "status": "pr_created",
+          "status": "merged",
           "reviewsAddressed": 0,
           "startedAt": "2026-01-19T22:55:41.426Z",
           "prNumber": 74,
@@ -41,8 +41,12 @@
             "src/storage.ts"
           ],
           "branch": "cco/issue-73-em-1-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "pr_created",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-19T22:56:35.185Z",
+          "prNumber": 75,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/75",
+          "completedAt": "2026-01-19T22:57:15.651Z"
         },
         {
           "id": 3,
@@ -51,12 +55,18 @@
             "src/search.ts"
           ],
           "branch": "cco/issue-73-em-1-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "pr_created",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-19T22:57:16.344Z",
+          "prNumber": 76,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/76",
+          "completedAt": "2026-01-19T22:58:21.814Z"
         }
       ],
       "reviewsAddressed": 0,
-      "startedAt": "2026-01-19T22:55:30.721Z"
+      "startedAt": "2026-01-19T22:55:30.721Z",
+      "prNumber": 77,
+      "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/77"
     },
     {
       "id": 2,
@@ -86,5 +96,5 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-19T22:55:21.782Z",
-  "updatedAt": "2026-01-19T22:56:34.532Z"
+  "updatedAt": "2026-01-19T22:58:26.562Z"
 }
