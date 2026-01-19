@@ -31,10 +31,8 @@ jobs:
       - name: Build TypeScript
         run: npm run build
 
-      - name: Setup Claude Code
-        uses: anthropics/setup-claude-code@v1
-        with:
-          api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+      - name: Install Claude Code CLI
+        run: npm install -g @anthropic-ai/claude-code
 
       - name: Run Director
         env:
