@@ -1,0 +1,29 @@
+{
+  "name": "calculator-project",
+  "version": "1.0.0",
+  "description": "A TypeScript calculator application for testing tmux-based Claude runner",
+  "main": "dist/calculator.js",
+  "types": "dist/calculator.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "build:prod": "tsc --project tsconfig.build.json",
+    "clean": "rm -rf dist",
+    "prebuild": "npm run clean",
+    "test": "bash validate.sh",
+    "validate": "bash validate.sh",
+    "build-and-test": "bash build.sh && bash validate.sh"
+  },
+  "keywords": [
+    "calculator",
+    "typescript",
+    "math"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.3.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
