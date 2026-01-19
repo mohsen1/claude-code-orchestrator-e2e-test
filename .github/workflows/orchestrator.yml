@@ -14,15 +14,15 @@ jobs:
     if: github.event.label.name == 'orchestrator'
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Checkout orchestrator-action
         uses: actions/checkout@v4
         with:
           repository: mohsen1/claude-orchestrator-action
           ref: main
           path: orchestrator-action
-
-      - name: Checkout code
-        uses: actions/checkout@v4
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
