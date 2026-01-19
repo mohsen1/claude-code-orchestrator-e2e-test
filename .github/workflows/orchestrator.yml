@@ -27,6 +27,12 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Build orchestrator-action
+        run: |
+          cd orchestrator-action
+          npm ci
+          npm run build
+
       - name: Install Claude Code CLI
         run: npm install -g @anthropic-ai/claude-code
 
