@@ -87,8 +87,9 @@
             "src/middleware/validation.ts"
           ],
           "branch": "cco/issue-46-em-3-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-19T22:28:14.199Z"
         },
         {
           "id": 2,
@@ -123,5 +124,5 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-19T22:21:43.265Z",
-  "updatedAt": "2026-01-19T22:28:13.185Z"
+  "updatedAt": "2026-01-19T22:28:14.199Z"
 }
