@@ -28,8 +28,9 @@
             "src/db.ts"
           ],
           "branch": "cco/issue-46-em-1-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-19T22:22:00.757Z"
         },
         {
           "id": 2,
@@ -85,5 +86,5 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-19T22:21:43.265Z",
-  "updatedAt": "2026-01-19T22:22:00.083Z"
+  "updatedAt": "2026-01-19T22:22:00.757Z"
 }
