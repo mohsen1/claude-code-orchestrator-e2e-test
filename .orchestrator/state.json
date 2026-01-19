@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "issue": {
+    "number": 73,
+    "title": "Build a Markdown Note-Taking API",
+    "body": "## Overview\nBuild a REST API for managing markdown notes with tagging and search.\n\n## Requirements\n\n### Core Features\n1. **Note CRUD**\n   - Create note with title, content (markdown), and tags array\n   - Read single note (returns rendered HTML and raw markdown)\n   - Update note title, content, or tags\n   - Delete note (hard delete)\n   - List all notes with optional tag filter\n\n2. **Tagging System**\n   - Notes can have multiple tags (strings)\n   - Filter notes by tag\n   - Get list of all unique tags with note counts\n\n3. **Search**\n   - Full-text search in title and content\n   - Case-insensitive matching\n   - Returns matching notes sorted by relevance (title matches first)\n\n4. **Markdown Rendering**\n   - Convert markdown to HTML on read\n   - Support headers, bold, italic, lists, code blocks, links\n\n### Technical Requirements\n- TypeScript with strict mode\n- Express.js server\n- In-memory storage (Map)\n- marked library for markdown parsing\n- Proper HTTP status codes\n\n### API Endpoints\n```\nPOST /api/notes\n  Body: { title: string, content: string, tags?: string[] }\n  Response: { id: string, title, content, tags, createdAt, updatedAt }\n\nGET /api/notes\n  Query: ?tag=work&search=meeting\n  Response: { notes: [...] }\n\nGET /api/notes/:id\n  Response: { id, title, content, html, tags, createdAt, updatedAt }\n\nPUT /api/notes/:id\n  Body: { title?, content?, tags? }\n  Response: { id, title, content, tags, updatedAt }\n\nDELETE /api/notes/:id\n  Response: 204 No Content\n\nGET /api/tags\n  Response: { tags: [{ name: string, count: number }] }\n```\n\n### File Structure\n```\nsrc/\n  index.ts        # Server setup\n  routes.ts       # Express routes  \n  storage.ts      # In-memory note storage\n  markdown.ts     # Markdown rendering\n  search.ts       # Search functionality\n  types.ts        # TypeScript types\n```"
+  },
+  "repo": {
+    "owner": "mohsen1",
+    "name": "claude-code-orchestrator-e2e-test"
+  },
+  "phase": "initialized",
+  "workBranch": "cco/73-build-a-markdown-note-taking-api",
+  "baseBranch": "main",
+  "ems": [],
+  "config": {
+    "maxEms": 3,
+    "maxWorkersPerEm": 3,
+    "reviewWaitMinutes": 5,
+    "prLabel": "cco"
+  },
+  "createdAt": "2026-01-19T22:55:21.782Z",
+  "updatedAt": "2026-01-19T22:55:21.973Z"
+}
