@@ -163,10 +163,12 @@ export class GitHubClient {
   async updateIssueComment(issueNumber: number, body: string): Promise<void> {
     try {
       // Look for existing orchestrator comment
+      // Use per_page: 100 to handle issues with lots of comments
       const { data: comments } = await this.octokit.rest.issues.listComments({
         owner: this.getRepo().owner,
         repo: this.getRepo().repo,
-        issue_number: issueNumber
+        issue_number: issueNumber,
+        per_page: 100
       });
 
       const orchestratorComment = comments.find(comment =>

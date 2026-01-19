@@ -86,11 +86,8 @@ function getConfigPath(): string {
 // Ensure directory exists
 async function ensureDir(filePath: string): Promise<void> {
   const dir = path.dirname(filePath);
-  try {
-    await fs.access(dir);
-  } catch {
-    await fs.mkdir(dir, { recursive: true });
-  }
+  // fs.mkdir with recursive: true is safe to call even if directory exists
+  await fs.mkdir(dir, { recursive: true });
 }
 
 // Director state operations

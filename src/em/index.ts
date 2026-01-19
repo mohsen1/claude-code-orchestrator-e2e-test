@@ -9,6 +9,7 @@ import { readEmState, writeEmState, EMState } from '../shared/state.js';
 import { ClaudeCodeRunner, generateSessionId } from '../shared/claude.js';
 import { GitOperations } from '../shared/git.js';
 import { ConfigManager } from '../shared/config.js';
+import { extractJson } from '../shared/json.js';
 import type { ClaudeConfig } from '../shared/config.js';
 
 // EM context passed from workflow
@@ -179,6 +180,12 @@ export class EngineeringManager {
   private async analyzeTask(): Promise<WorkerTask[]> {
     console.log('Analyzing EM task with Claude...');
 
+    // Update heartbeat before long-running task to prevent false stall detection
+    if (this.state) {
+      this.state.updated_at = new Date().toISOString();
+      await writeEmState(this.context.emId, this.state);
+    }
+
     const prompt = this.buildAnalysisPrompt();
 
     try {
@@ -264,16 +271,23 @@ Provide your analysis and the JSON output below:`;
    * Parse Worker tasks from Claude's response
    */
   private parseWorkerTasks(output: string): WorkerTask[] {
-    const jsonMatch = output.match(/```json\s*([\s\S]*?)\s*```/);
-    if (!jsonMatch) {
-      throw new Error('Failed to extract JSON from Claude response');
-    }
-
     try {
-      const tasks = JSON.parse(jsonMatch[1]) as WorkerTask[];
+      // Use robust JSON extraction with fallbacks
+      const tasks = extractJson(output) as WorkerTask[];
 
+      // Validate
       if (!Array.isArray(tasks) || tasks.length === 0) {
         throw new Error('Invalid Worker tasks: must be a non-empty array');
+      }
+
+      // Validate each task has required fields
+      for (const task of tasks) {
+        if (!task.worker_id || typeof task.worker_id !== 'number') {
+          throw new Error('Invalid Worker task: missing or invalid worker_id');
+        }
+        if (!task.task || typeof task.task !== 'string') {
+          throw new Error('Invalid Worker task: missing or invalid task description');
+        }
       }
 
       // Update state
