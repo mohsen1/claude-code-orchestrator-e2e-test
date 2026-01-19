@@ -60,32 +60,6 @@ jobs:
             });
             core.setOutput('title', issue.title);
             core.setOutput('body', issue.body || '');
-            console.log('Issue title:', issue.title);
-            console.log('Issue body:', issue.body);
-
-      - name: Network Connectivity Check
-        run: |
-          echo "=== Testing network connectivity to API endpoints ==="
-          
-          echo -e "\n--- Testing api.anthropic.com ---"
-          curl -I -s --max-time 10 https://api.anthropic.com/v1/messages | head -1 || echo "Could not reach api.anthropic.com"
-          
-          echo -e "\n--- Testing z.ai endpoints ---"
-          curl -I -s --max-time 10 https://api.z.ai/api/anthropic | head -1 || echo "Could not reach z.ai anthropic endpoint"
-          
-          echo -e "\n--- Runner IP information ---"
-          curl -s https://api.ipify.org && echo ""
-
-      - name: Debug CLAUDE_CONFIGS
-        env:
-          CLAUDE_CONFIGS: ${{ secrets.CLAUDE_CONFIGS }}
-        run: |
-          if [ -z "$CLAUDE_CONFIGS" ]; then
-            echo "ERROR: CLAUDE_CONFIGS secret is empty or not set!"
-            exit 1
-          fi
-          echo "CLAUDE_CONFIGS length: ${#CLAUDE_CONFIGS}"
-          echo "First 50 chars: ${CLAUDE_CONFIGS:0:50}..."
 
       - name: Run Director
         working-directory: target-repo
