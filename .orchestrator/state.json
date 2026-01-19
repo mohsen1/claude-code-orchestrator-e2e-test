@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "issue": {
+    "number": 46,
+    "title": "Task Management API with SQLite",
+    "body": "## Overview\nBuild a complete Task Management REST API with persistent storage.\n\n## Requirements\n\n### Core Features\n1. **Task CRUD Operations**\n   - Create task with title, description, due date, priority (low/medium/high)\n   - Read single task and list all tasks\n   - Update task fields\n   - Delete task (soft delete with archived flag)\n\n2. **SQLite Database**\n   - Use better-sqlite3 for synchronous SQLite\n   - Create tasks table with proper schema\n   - Include created_at, updated_at timestamps\n\n3. **Express Server**\n   - RESTful routes: GET/POST/PUT/DELETE /api/tasks\n   - Input validation middleware\n   - Error handling middleware\n   - JSON response formatting\n\n### Technical Requirements\n- TypeScript with strict mode\n- Zod for request validation\n- Proper HTTP status codes (200, 201, 400, 404, 500)\n- Environment variable for database path\n- Export functions for testing\n\n### File Structure\n```\nsrc/\n  index.ts          # Main entry, server setup\n  db.ts             # Database initialization\n  routes/\n    tasks.ts        # Task routes\n  models/\n    task.ts         # Task type definitions\n  middleware/\n    validation.ts   # Request validation\n    error.ts        # Error handling\n```\n\n## Acceptance Criteria\n- Server starts on PORT env var or 3000\n- All CRUD operations work correctly\n- Invalid requests return 400 with error message\n- Missing tasks return 404\n- Database persists between restarts"
+  },
+  "repo": {
+    "owner": "mohsen1",
+    "name": "claude-code-orchestrator-e2e-test"
+  },
+  "phase": "initialized",
+  "workBranch": "cco/46-task-management-api-with-sqlite",
+  "baseBranch": "main",
+  "ems": [],
+  "config": {
+    "maxEms": 3,
+    "maxWorkersPerEm": 3,
+    "reviewWaitMinutes": 5,
+    "prLabel": "cco"
+  },
+  "createdAt": "2026-01-19T22:21:43.265Z",
+  "updatedAt": "2026-01-19T22:21:43.435Z"
+}
