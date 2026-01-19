@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "worker_review",
+  "phase": "failed",
   "workBranch": "cco/59-build-a-url-shortener-service",
   "baseBranch": "main",
   "ems": [
@@ -27,7 +27,7 @@
             "src/types.ts"
           ],
           "branch": "cco/issue-59-em-1-w-1",
-          "status": "pr_created",
+          "status": "merged",
           "reviewsAddressed": 0,
           "startedAt": "2026-01-19T22:39:02.449Z",
           "prNumber": 60,
@@ -94,5 +94,6 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-19T22:38:34.272Z",
-  "updatedAt": "2026-01-19T22:41:44.886Z"
+  "updatedAt": "2026-01-19T22:41:47.338Z",
+  "error": "Failed to merge PR #61: Base branch was modified. Review and try the merge again. - https://docs.github.com/rest/pulls/pulls#merge-a-pull-request"
 }
