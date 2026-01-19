@@ -115,9 +115,12 @@
             "src/routes/tasks.ts"
           ],
           "branch": "cco/issue-46-em-2-w-3",
-          "status": "in_progress",
+          "status": "pr_created",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-19T22:31:40.259Z"
+          "startedAt": "2026-01-19T22:31:40.259Z",
+          "prNumber": 58,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/58",
+          "completedAt": "2026-01-19T22:33:41.034Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -141,5 +144,5 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-19T22:21:43.265Z",
-  "updatedAt": "2026-01-19T22:31:40.259Z"
+  "updatedAt": "2026-01-19T22:33:41.034Z"
 }
