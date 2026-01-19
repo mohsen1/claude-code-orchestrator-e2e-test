@@ -31,6 +31,11 @@ jobs:
       - name: Build TypeScript
         run: npm run build
 
+      - name: Setup Claude Code
+        uses: anthropics/setup-claude-code@v1
+        with:
+          api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+
       - name: Run Director
         env:
           GITHUB_TOKEN: ${{ secrets.CCO_PAT }}
@@ -39,6 +44,7 @@ jobs:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           ISSUE_TITLE: ${{ github.event.issue.title }}
           ISSUE_BODY: ${{ github.event.issue.body }}
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           CLAUDE_CONFIGS: ${{ secrets.CLAUDE_CONFIGS }}
           MAX_EMS: '3'
           MAX_WORKERS_PER_EM: '3'
