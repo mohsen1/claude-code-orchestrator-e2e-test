@@ -1,0 +1,23 @@
+{
+  "name": "calculator-module",
+  "version": "1.0.0",
+  "description": "A simple calculator module with comprehensive testing",
+  "main": "dist/calculator.js",
+  "types": "dist/calculator.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch"
+  },
+  "keywords": ["calculator", "typescript", "testing"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/jest": "^29.5.0",
+    "@types/node": "^20.0.0",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.0.0"
+  }
+}
