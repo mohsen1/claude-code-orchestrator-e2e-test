@@ -7,6 +7,21 @@ import { execa } from 'execa';
  */
 export const GitOperations = {
     /**
+     * Configure git identity (required for commits)
+     * @param name - Git user name
+     * @param email - Git user email
+     * @returns void
+     */
+    async configureIdentity(name = 'Claude Orchestrator', email = 'actions@github.com') {
+        try {
+            await execa('git', ['config', 'user.name', name]);
+            await execa('git', ['config', 'user.email', email]);
+        }
+        catch (error) {
+            throw new Error(`Failed to configure git identity: ${error.message}`);
+        }
+    },
+    /**
      * Create and checkout a new branch
      * @param branchName - Name of the branch to create
      * @param fromBranch - Branch or ref to create from (default: main)
@@ -48,6 +63,8 @@ export const GitOperations = {
      */
     async commitAndPush(message, files) {
         try {
+            // Ensure git identity is configured before committing
+            await this.configureIdentity();
             // Stage files
             if (files && files.length > 0) {
                 await execa('git', ['add', ...files]);

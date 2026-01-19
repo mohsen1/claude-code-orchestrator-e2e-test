@@ -15,6 +15,13 @@ export interface RebaseResult {
  */
 export declare const GitOperations: {
     /**
+     * Configure git identity (required for commits)
+     * @param name - Git user name
+     * @param email - Git user email
+     * @returns void
+     */
+    configureIdentity(name?: string, email?: string): Promise<void>;
+    /**
      * Create and checkout a new branch
      * @param branchName - Name of the branch to create
      * @param fromBranch - Branch or ref to create from (default: main)

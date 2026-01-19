@@ -3,6 +3,7 @@
  * Handles execution of Claude Code with proper session management
  */
 import { execa } from 'execa';
+import { randomUUID } from 'node:crypto';
 /**
  * Custom error for rate limit detection
  */
@@ -208,11 +209,9 @@ export class ClaudeCodeRunner {
  * @param componentId - Component ID (EM ID, Worker ID, etc.)
  * @returns Unique session ID
  */
-export function generateSessionId(component, issueNumber, ...componentIds) {
-    const timestamp = Date.now().toString(36);
-    const random = Math.random().toString(36).substring(2, 8);
-    const parts = [component, issueNumber, ...componentIds, timestamp, random];
-    return parts.join('-');
+export function generateSessionId(_component, _issueNumber, ..._componentIds) {
+    // Generate a valid UUID for Claude Code CLI
+    return randomUUID();
 }
 /**
  * Parse a session ID to extract component information

@@ -8,6 +8,7 @@ import { readDirectorState, writeDirectorState, initConfig, writeConfig } from '
 import { ClaudeCodeRunner, generateSessionId } from '../shared/claude.js';
 import { GitOperations } from '../shared/git.js';
 import { ConfigManager } from '../shared/config.js';
+import { extractJson } from '../shared/json.js';
 /**
  * Director class - main orchestrator
  */
@@ -119,6 +120,11 @@ export class Director {
      */
     async analyzeIssue() {
         console.log('Analyzing issue with Claude...');
+        // Update heartbeat before long-running task to prevent false stall detection
+        if (this.state) {
+            this.state.updated_at = new Date().toISOString();
+            await writeDirectorState(this.state);
+        }
         const prompt = this.buildAnalysisPrompt();
         try {
             const sessionId = this.state.session_id;
@@ -202,16 +208,21 @@ Provide your analysis and the JSON output below:`;
      * Parse EM tasks from Claude's response
      */
     parseEMTasks(output) {
-        // Extract JSON from the output
-        const jsonMatch = output.match(/```json\s*([\s\S]*?)\s*```/);
-        if (!jsonMatch) {
-            throw new Error('Failed to extract JSON from Claude response');
-        }
         try {
-            const tasks = JSON.parse(jsonMatch[1]);
+            // Use robust JSON extraction with fallbacks
+            const tasks = extractJson(output);
             // Validate
             if (!Array.isArray(tasks) || tasks.length === 0) {
                 throw new Error('Invalid EM tasks: must be a non-empty array');
+            }
+            // Validate each task has required fields
+            for (const task of tasks) {
+                if (!task.em_id || typeof task.em_id !== 'number') {
+                    throw new Error('Invalid EM task: missing or invalid em_id');
+                }
+                if (!task.task || typeof task.task !== 'string') {
+                    throw new Error('Invalid EM task: missing or invalid task description');
+                }
             }
             // Update state
             if (this.state) {

@@ -95,7 +95,7 @@ export declare class ClaudeCodeRunner {
  * @param componentId - Component ID (EM ID, Worker ID, etc.)
  * @returns Unique session ID
  */
-export declare function generateSessionId(component: 'director' | 'em' | 'worker', issueNumber: number, ...componentIds: number[]): string;
+export declare function generateSessionId(_component: 'director' | 'em' | 'worker', _issueNumber: number, ..._componentIds: number[]): string;
 /**
  * Parse a session ID to extract component information
  * @param sessionId - Session ID to parse

@@ -134,6 +134,9 @@ export class Worker {
             throw new Error('State not initialized');
         }
         console.log('Executing task with Claude Code...');
+        // Update heartbeat before long-running task to prevent false stall detection
+        this.state.updated_at = new Date().toISOString();
+        await writeWorkerState(this.context.emId, this.context.workerId, this.state);
         const maxRetries = this.context.options?.maxRetries || 2;
         let attempt = 0;
         while (attempt <= maxRetries) {
