@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "final_merge",
+  "phase": "complete",
   "workBranch": "cco/73-build-a-markdown-note-taking-api",
   "baseBranch": "main",
   "ems": [
@@ -148,5 +148,9 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-19T22:55:21.782Z",
-  "updatedAt": "2026-01-19T23:18:29.676Z"
+  "updatedAt": "2026-01-19T23:18:34.658Z",
+  "finalPr": {
+    "number": 86,
+    "url": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/86"
+  }
 }
