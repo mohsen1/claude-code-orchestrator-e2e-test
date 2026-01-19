@@ -1,0 +1,5 @@
+node/
+dist/
+*.log
+.env
+notes.json
