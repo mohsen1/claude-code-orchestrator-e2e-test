@@ -5,6 +5,12 @@ name: Claude Code Orchestrator
 on:
   issues:
     types: [labeled]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: 'Issue number to orchestrate'
+        required: true
+        type: number
 
 permissions:
   contents: write
