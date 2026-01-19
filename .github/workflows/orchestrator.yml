@@ -20,6 +20,7 @@ jobs:
           repository: mohsen1/claude-orchestrator-action
           ref: main
           path: orchestrator-action
+          token: ${{ secrets.CCO_PAT }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -41,9 +42,7 @@ jobs:
           MAX_EMS: '2'
           MAX_WORKERS_PER_EM: '2'
           DISPATCH_STAGGER_MS: '2000'
-        run: |
-          cd orchestrator-action
-          node dist/director/run.js
+        run: cd orchestrator-action && node dist/director/run.js
 
       - name: Handle failure
         if: failure()
@@ -53,25 +52,16 @@ jobs:
           script: |
             const issueNumber = ${{ github.event.issue.number }};
             const workflowRunUrl = `${process.env.GITHUB_SERVER_URL}/${context.repo.owner}/${context.repo.repo}/actions/runs/${process.env.GITHUB_RUN_ID}`;
-
             const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner,
               repo: context.repo.repo,
               issue_number: issueNumber,
               per_page: 100
             });
-
             const orchestratorComment = comments.find(comment =>
               comment.body?.includes('## 🤖 Orchestration Status')
             );
-
-            const errorBody = `## 🤖 Orchestration Status
-
-**Status:** ❌ Failed
-[View Workflow Logs](${workflowRunUrl}) for more details.
----
-*Last updated: ${new Date().toISOString()}*`;
-
+            const errorBody = `## 🤖 Orchestration Status\n\n**Status:** ❌ Failed\n[View Workflow Logs](${workflowRunUrl}) for more details.\n---\n*Last updated: ${new Date().toISOString()}*`;
             if (orchestratorComment) {
               await github.rest.issues.updateComment({
                 owner: context.repo.owner,
