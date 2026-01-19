@@ -48,7 +48,6 @@ jobs:
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           ISSUE_TITLE: ${{ github.event.issue.title }}
           ISSUE_BODY: ${{ github.event.issue.body }}
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           CLAUDE_CONFIGS: ${{ secrets.CLAUDE_CONFIGS }}
           MAX_EMS: '3'
           MAX_WORKERS_PER_EM: '3'
