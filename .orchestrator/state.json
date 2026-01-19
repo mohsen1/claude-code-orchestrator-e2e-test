@@ -96,8 +96,9 @@
             "src/types.ts"
           ],
           "branch": "cco/issue-59-em-3-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-19T22:49:53.093Z"
         },
         {
           "id": 2,
@@ -131,5 +132,5 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-19T22:38:34.272Z",
-  "updatedAt": "2026-01-19T22:49:52.189Z"
+  "updatedAt": "2026-01-19T22:49:53.093Z"
 }
