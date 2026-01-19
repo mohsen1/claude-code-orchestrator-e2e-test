@@ -37,7 +37,7 @@ export declare class ClaudeCodeRunner {
      * @param sessionId - Session ID for context preservation
      * @returns Execution result
      */
-    runTask(task: string, sessionId: string): Promise<ClaudeResult>;
+    runTask(task: string, _sessionId: string): Promise<ClaudeResult>;
     /**
      * Resume an existing Claude Code session
      * @param sessionId - Session ID to resume

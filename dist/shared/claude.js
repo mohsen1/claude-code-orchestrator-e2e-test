@@ -31,10 +31,12 @@ export class ClaudeCodeRunner {
      * @param sessionId - Session ID for context preservation
      * @returns Execution result
      */
-    async runTask(task, sessionId) {
+    async runTask(task, _sessionId) {
         const env = this.buildEnv();
         try {
-            const result = await execa('claude', ['-p', '--session-id', sessionId, task], {
+            // Note: Not passing session-id for now to avoid UUID validation issues
+            // The CLI will manage sessions automatically
+            const result = await execa('claude', ['-p', '--no-session-persistence', task], {
                 env,
                 timeout: 300000, // 5 minutes
                 reject: false
