@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "worker_execution",
+  "phase": "worker_review",
   "workBranch": "cco/59-build-a-url-shortener-service",
   "baseBranch": "main",
   "ems": [
@@ -27,9 +27,12 @@
             "src/types.ts"
           ],
           "branch": "cco/issue-59-em-1-w-1",
-          "status": "in_progress",
+          "status": "pr_created",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-19T22:39:02.449Z"
+          "startedAt": "2026-01-19T22:39:02.449Z",
+          "prNumber": 60,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/60",
+          "completedAt": "2026-01-19T22:39:18.946Z"
         },
         {
           "id": 2,
@@ -83,5 +86,5 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-19T22:38:34.272Z",
-  "updatedAt": "2026-01-19T22:39:02.449Z"
+  "updatedAt": "2026-01-19T22:39:18.946Z"
 }
