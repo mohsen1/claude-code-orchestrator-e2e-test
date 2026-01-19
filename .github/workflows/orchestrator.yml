@@ -13,21 +13,54 @@ permissions:
   actions: write
 
 jobs:
-  # This job triggers the Director workflow from the orchestrator action
   orchestrate:
     if: github.event.label.name == 'orchestrator'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout orchestrator action
+      - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          repository: mohsenazimi/claude-orchestrator-action
-          path: orchestrator-action
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build TypeScript
+        run: npm run build
 
       - name: Run Director
-        uses: ./orchestrator-action/.github/workflows/cco-director.yml
+        env:
+          GITHUB_TOKEN: ${{ secrets.CCO_PAT }}
+          REPO_OWNER: ${{ github.repository_owner }}
+          REPO_NAME: ${{ github.event.repository.name }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+          ISSUE_BODY: ${{ github.event.issue.body }}
+          CLAUDE_CONFIGS: ${{ secrets.CLAUDE_CONFIGS }}
+          MAX_EMS: '3'
+          MAX_WORKERS_PER_EM: '3'
+          DISPATCH_STAGGER_MS: '2000'
+        run: node dist/director/run.js
+
+      - name: Handle failure
+        if: failure()
+        uses: actions/github-script@v7
         with:
-          claude_configs: ${{ secrets.CLAUDE_CONFIGS }}
-          dispatch_token: ${{ secrets.CCO_PAT }}
-          max_ems: 3
-          max_workers_per_em: 3
+          github-token: ${{ secrets.CCO_PAT }}
+          script: |
+            const issueNumber = ${{ github.event.issue.number }};
+            await github.rest.issues.createComment({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              body: '❌ **Orchestration Failed:** Check workflow logs for details.'
+            });
+            await github.rest.issues.addLabels({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              labels: ['orchestrator-failed']
+            });
