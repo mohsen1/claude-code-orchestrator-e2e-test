@@ -40,8 +40,9 @@
             "src/markdown.ts"
           ],
           "branch": "cco/issue-73-em-2-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-19T23:13:26.410Z"
         },
         {
           "id": 2,
@@ -85,5 +86,5 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-19T22:55:21.782Z",
-  "updatedAt": "2026-01-19T23:13:25.472Z"
+  "updatedAt": "2026-01-19T23:13:26.410Z"
 }
