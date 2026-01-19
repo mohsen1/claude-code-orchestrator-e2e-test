@@ -41,9 +41,12 @@
             "src/storage.ts"
           ],
           "branch": "cco/issue-73-em-1-w-2",
-          "status": "in_progress",
+          "status": "pr_created",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-19T22:56:35.185Z"
+          "startedAt": "2026-01-19T22:56:35.185Z",
+          "prNumber": 75,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/75",
+          "completedAt": "2026-01-19T22:57:15.651Z"
         },
         {
           "id": 3,
@@ -87,5 +90,5 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-19T22:55:21.782Z",
-  "updatedAt": "2026-01-19T22:56:35.185Z"
+  "updatedAt": "2026-01-19T22:57:15.651Z"
 }
