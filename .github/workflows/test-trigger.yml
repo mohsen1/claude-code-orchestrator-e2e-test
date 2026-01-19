@@ -1,0 +1,15 @@
+name: Test Trigger
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  issues: write
+
+jobs:
+  test:
+    if: github.event.label.name == 'orchestrator'
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Workflow triggered by issue ${{ github.event.issue.number }}"
