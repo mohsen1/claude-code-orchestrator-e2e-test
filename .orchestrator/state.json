@@ -85,8 +85,9 @@
             "src/index.ts"
           ],
           "branch": "cco/issue-73-em-3-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-19T22:59:08.841Z"
         },
         {
           "id": 2,
@@ -123,5 +124,5 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-19T22:55:21.782Z",
-  "updatedAt": "2026-01-19T22:59:07.956Z"
+  "updatedAt": "2026-01-19T22:59:08.841Z"
 }
