@@ -3,6 +3,12 @@ name: Claude Code Orchestrator
 on:
   issues:
     types: [labeled]
+  workflow_dispatch:
+    inputs:
+      issue_number:
+        description: 'Issue number to test'
+        required: true
+        type: number
 
 permissions:
   contents: write
@@ -11,7 +17,7 @@ permissions:
 
 jobs:
   orchestrate:
-    if: github.event.label.name == 'orchestrator'
+    if: github.event.label.name == 'orchestrator' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout orchestrator-action
@@ -22,33 +28,51 @@ jobs:
           path: orchestrator-action
           token: ${{ secrets.CCO_PAT }}
 
+      - name: Checkout target repo
+        uses: actions/checkout@v4
+        with:
+          path: target-repo
+          token: ${{ secrets.CCO_PAT }}
+          fetch-depth: 0
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Build orchestrator-action
-        run: |
-          cd orchestrator-action
-          npm ci
-          npm run build
-
       - name: Install Claude Code CLI
         run: npm install -g @anthropic-ai/claude-code
 
+      - name: Network Connectivity Check
+        run: |
+          echo "=== Testing network connectivity to API endpoints ==="
+          
+          echo -e "\n--- Testing api.anthropic.com ---"
+          curl -I -s --max-time 10 https://api.anthropic.com/v1/messages | head -1 || echo "Could not reach api.anthropic.com"
+          
+          echo -e "\n--- Testing z.ai endpoints ---"
+          curl -I -s --max-time 10 https://api.z.ai/api/paas/v4 | head -1 || echo "Could not reach z.ai paas endpoint"
+          curl -I -s --max-time 10 https://api.z.ai/api/coding/paas/v4 | head -1 || echo "Could not reach z.ai coding endpoint"
+          curl -I -s --max-time 10 https://api.z.ai/api/anthropic | head -1 || echo "Could not reach z.ai anthropic endpoint"
+          
+          echo -e "\n--- Runner IP information ---"
+          curl -s https://api.ipify.org && echo ""
+
       - name: Run Director
+        working-directory: target-repo
         env:
           GITHUB_TOKEN: ${{ secrets.CCO_PAT }}
           REPO_OWNER: ${{ github.repository_owner }}
           REPO_NAME: ${{ github.event.repository.name }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
-          ISSUE_TITLE: ${{ github.event.issue.title }}
-          ISSUE_BODY: ${{ github.event.issue.body }}
+          ISSUE_NUMBER: ${{ github.event.issue.number || inputs.issue_number }}
+          ISSUE_TITLE: ${{ github.event.issue.title || '' }}
+          ISSUE_BODY: ${{ github.event.issue.body || '' }}
           CLAUDE_CONFIGS: ${{ secrets.CLAUDE_CONFIGS }}
           MAX_EMS: '2'
           MAX_WORKERS_PER_EM: '2'
           DISPATCH_STAGGER_MS: '2000'
-        run: cd orchestrator-action && node dist/director/run.js
+          API_TIMEOUT_MS: '120000'
+        run: node ../orchestrator-action/dist/director/run.js
 
       - name: Handle failure
         if: failure()
@@ -56,7 +80,7 @@ jobs:
         with:
           github-token: ${{ secrets.CCO_PAT }}
           script: |
-            const issueNumber = ${{ github.event.issue.number }};
+            const issueNumber = ${{ github.event.issue.number || inputs.issue_number }};
             const workflowRunUrl = `${process.env.GITHUB_SERVER_URL}/${context.repo.owner}/${context.repo.repo}/actions/runs/${process.env.GITHUB_RUN_ID}`;
             const { data: comments } = await github.rest.issues.listComments({
               owner: context.repo.owner,
