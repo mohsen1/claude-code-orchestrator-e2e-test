@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "worker_execution",
+  "phase": "worker_review",
   "workBranch": "cco/73-build-a-markdown-note-taking-api",
   "baseBranch": "main",
   "ems": [
@@ -27,9 +27,12 @@
             "src/types.ts"
           ],
           "branch": "cco/issue-73-em-1-w-1",
-          "status": "in_progress",
+          "status": "pr_created",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-19T22:55:41.426Z"
+          "startedAt": "2026-01-19T22:55:41.426Z",
+          "prNumber": 74,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/74",
+          "completedAt": "2026-01-19T22:56:34.532Z"
         },
         {
           "id": 2,
@@ -83,5 +86,5 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-19T22:55:21.782Z",
-  "updatedAt": "2026-01-19T22:55:41.426Z"
+  "updatedAt": "2026-01-19T22:56:34.532Z"
 }
