@@ -63,6 +63,17 @@ jobs:
         with:
           api_key: ${{ secrets.ANTHROPIC_API_KEY }}
 
+      # RESTORE: Try to restore Claude session cache before running worker
+      - name: Restore Claude Session Cache
+        uses: actions/cache/restore@v4
+        id: cache-restore
+        with:
+          path: ~/.claude/sessions
+          key: cco-session-${{ inputs.session_id || 'initial' }}
+          restore-keys: |
+            cco-session-
+          enableCrossOsArchive: true
+
       - name: Run Worker
         env:
           GITHUB_TOKEN: ${{ secrets.CCO_PAT }}
@@ -79,12 +90,14 @@ jobs:
           MAX_RETRIES: ${{ vars.MAX_RETRIES || '2' }}
         run: node dist/worker/run.js
 
-      - name: Save Claude Session
+      # SAVE: Always save the session cache, even if worker fails/retries
+      # This uses the actual session_id (if provided) or falls back to a worker-specific key
+      - name: Save Claude Session Cache
         if: always()
         uses: actions/cache/save@v4
         with:
-          path: ~/.claude/sessions/*
-          key: cco-session-${{ inputs.session_id || inputs.worker_id }}-${{ github.run_id }}
+          path: ~/.claude/sessions
+          key: cco-session-${{ inputs.session_id || format('em{0}-w{1}', inputs.em_id, inputs.worker_id) }}-${{ github.run_id }}
           enableCrossOsArchive: true
 
       - name: Handle failure
@@ -96,6 +109,48 @@ jobs:
             const issueNumber = ${{ inputs.issue_number }};
             const emId = ${{ inputs.em_id }};
             const workerId = ${{ inputs.worker_id }};
+            const workflowRunUrl = `${process.env.GITHUB_SERVER_URL}/${context.repo.owner}/${context.repo.repo}/actions/runs/${process.env.GITHUB_RUN_ID}`;
+
+            // Find existing orchestrator comment
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: issueNumber,
+              per_page: 100
+            });
+
+            const orchestratorComment = comments.find(comment =>
+              comment.body?.includes('## 🤖 Orchestration Status')
+            );
+
+            const errorBody = `## 🤖 Orchestration Status
+
+**Status:** ❌ Failed (Worker EM-${emId}-W${workerId})
+**Error:** Worker ${workerId} (EM-${emId}) workflow failed.
+
+[View Workflow Logs](${workflowRunUrl}) for more details.
+
+---
+*Last updated: ${new Date().toISOString()}*`;
+
+            if (orchestratorComment) {
+              // Update existing comment
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: orchestratorComment.id,
+                body: errorBody
+              });
+            } else {
+              // Create new comment
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issueNumber,
+                body: errorBody
+              });
+            }
+
             await github.rest.issues.addLabels({
               owner: context.repo.owner,
               repo: context.repo.repo,
