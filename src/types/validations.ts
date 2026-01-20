@@ -202,11 +202,20 @@ export const createExpenseSchema = z
       .optional(),
   })
   .superRefine((data, ctx) => {
-    const totalSplitAmount = data.splits?.reduce((sum, split) => sum + split.amount, 0) || 0;
+    if (!data.splits) {
+      return;
+    }
+
+    const totalSplitAmount = data.splits.reduce(
+      (sum, split) => sum + split.amount,
+      0
+    );
+
     if (totalSplitAmount !== data.amount) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
-        message: 'Sum of split amounts must equal total expense amount'
+        path: ["splits"],
+        message: "Sum of split amounts must equal total expense amount",
       });
     }
   });

@@ -19,19 +19,48 @@ export * from "./forms";
  */
 
 /**
- * API Response wrapper
+ * API Success Response
+ *
+ * Represents a successful API response with data.
  */
-export interface ApiResponse<T = unknown> {
-  success: boolean;
-  data?: T;
-  error?: string;
+export interface ApiSuccess<T = unknown> {
+  success: true;
+  data: T;
   message?: string;
 }
 
 /**
+ * API Error Response
+ *
+ * Represents an error response from the API.
+ * Note: The 'success' property should always be false for error cases.
+ * This is enforced at runtime through the API layer but uses boolean type
+ * to allow for proper discriminated union with ApiSuccess.
+ */
+export interface ApiError {
+  /**
+   * Success status - must be false in error contexts.
+   * While typed as boolean for discriminated union compatibility,
+   * this should always be false when representing an error response.
+   */
+  success: boolean;
+  error: string;
+  code?: string;
+  details?: Record<string, unknown>;
+}
+
+/**
+ * API Response wrapper (discriminated union)
+ *
+ * Combines success and error responses into a single type.
+ * Use the success field to discriminate between ApiSuccess and ApiError.
+ */
+export type ApiResponse<T = unknown> = ApiSuccess<T> | ApiError;
+
+/**
  * Paginated API Response
  */
-export interface PaginatedResponse<T> extends ApiResponse<T[]> {
+export interface PaginatedResponse<T> extends ApiSuccess<T[]> {
   pagination: {
     page: number;
     limit: number;
@@ -40,24 +69,6 @@ export interface PaginatedResponse<T> extends ApiResponse<T[]> {
     hasNext: boolean;
     hasPrev: boolean;
   };
-}
-
-/**
- * API Error Response
- *
- * Represents an error response from the API with a success flag.
- * In error contexts, the success value will always be false.
- */
-export interface ApiError {
-  /**
-   * Success flag - always false in error contexts.
-   * This property is typed as boolean for consistency with ApiResponse,
-   * but will always have the value false when used as an ApiError.
-   */
-  success: boolean;
-  error: string;
-  code?: string;
-  details?: Record<string, unknown>;
 }
 
 /**
