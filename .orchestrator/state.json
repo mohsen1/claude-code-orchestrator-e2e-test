@@ -9,10 +9,21 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "analyzing",
+  "phase": "project_setup",
   "workBranch": "cco/369-build-splitsync-expense-sharing-app",
   "baseBranch": "main",
-  "ems": [],
+  "ems": [
+    {
+      "id": 0,
+      "task": "Project Setup: Create .gitignore, package.json with all dependencies (next, drizzle-orm, better-sqlite3, socket.io, next-auth@v5, zod, react-hook-form, vitest, @types/*), tsconfig.json strict mode, next.config.js with standalone output, .env.example, and base folder structure. NO application logic.",
+      "focusArea": "Project Setup",
+      "branch": "cco/issue-369-setup",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-20T19:30:15.253Z"
+    }
+  ],
   "config": {
     "maxEms": 10,
     "maxWorkersPerEm": 3,
@@ -20,5 +31,101 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T19:25:50.942Z",
-  "updatedAt": "2026-01-20T19:25:52.553Z"
+  "updatedAt": "2026-01-20T19:30:15.254Z",
+  "analysisSummary": "Production-ready expense sharing app with TypeScript, Next.js 14, Drizzle ORM + SQLite, Socket.io, NextAuth.js, Zod validation, shadcn/ui, Vitest testing, GitHub Actions CI/CD, and Docker deployment with persistent volumes.",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": [
+    {
+      "id": 1,
+      "task": "Database Layer: Define Drizzle ORM schema (Users, Groups, GroupMembers, Expenses, ExpenseSplits, Settlements, Invites), create db/index.ts with better-sqlite3 connection, write all migration SQL files, implement db/queries.ts with transaction helpers for financial operations. Integer-only money handling.",
+      "focusArea": "Database Schema & Queries",
+      "branch": "cco/issue-369-em-1",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 2,
+      "task": "Authentication System: Configure NextAuth.js v5 with Google OAuth and Credentials provider, implement bcrypt password hashing, create session management with JWT strategy, build /login and /register pages with shadcn/ui forms, add middleware.ts for route protection, implement RBAC validation helpers.",
+      "focusArea": "Authentication & Authorization",
+      "branch": "cco/issue-369-em-2",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 3,
+      "task": "Group Management API: Create POST /api/groups (create group), GET /api/groups (list user groups), GET /api/groups/[id] (fetch group details), PUT /api/groups/[id] (update group), DELETE /api/groups/[id] (delete group with cascade), POST /api/groups/[id]/invite (generate invite link), GET /invite/[code] (join group). All with Zod validation and member verification.",
+      "focusArea": "Group CRUD APIs",
+      "branch": "cco/issue-369-em-3",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 4,
+      "task": "Expense API & Business Logic: Implement POST /api/expenses (create with equal split algorithm handling penny remainder), GET /api/expenses (list with pagination), PUT /api/expenses/[id], DELETE /api/expenses/[id], POST /api/expenses/[id]/split (custom uneven split). All in DB transactions, emit socket events. Integer math only (cents).",
+      "focusArea": "Expense Operations",
+      "branch": "cco/issue-369-em-4",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 5,
+      "task": "Settlement System: Build net balance calculation algorithm (debt graph simplification), POST /api/settlements (record payment), GET /api/settlements/suggested (get optimized who-owes-whom), GET /api/groups/[id]/balances (net balances per member). Validate settlements cannot be negative, link to expense splits.",
+      "focusArea": "Settlement Logic",
+      "branch": "cco/issue-369-em-5",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 6,
+      "task": "Real-Time Socket.io Server: Create server.ts custom Next.js server (mount Socket.io), implement join_group event with auth validation, emit expense_added, expense_updated, settlement_created events to group rooms, add reconnection logic, compile server.ts to server.js for Docker, health check endpoint.",
+      "focusArea": "WebSocket Infrastructure",
+      "branch": "cco/issue-369-em-6",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 7,
+      "task": "Frontend Group UI: Create /groups page (list user groups), /groups/[id]/dashboard (expense list, add expense modal, member list), /groups/new (create group form), /groups/[id]/settings (edit group, invite link generation, member management). Use shadcn/ui components, React Hook Form + Zod, SWR/Tanstack Query for data fetching.",
+      "focusArea": "Group User Interface",
+      "branch": "cco/issue-369-em-7",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 8,
+      "task": "Frontend Settlement UI: Build balance overview component showing net balances (positive/negative color coding), settle up modal with suggested payment flows, settlement history list, expense split editor for custom splits, expense detail view. All using integer display with currency formatting.",
+      "focusArea": "Settlement Interface",
+      "branch": "cco/issue-369-em-8",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 9,
+      "task": "Testing Suite: Write Vitest unit tests for split algorithm (penny remainder edge cases), debt graph simplification, currency validation, expense CRUD transactions. Write API route integration tests using supertest. Test coverage >80%. Mock database and socket.io.",
+      "focusArea": "Test Infrastructure",
+      "branch": "cco/issue-369-em-9",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 10,
+      "task": "CI/CD & Docker: Create .github/workflows/ci.yml with lint (eslint), typecheck (tsc --noEmit), test (vitest), and build steps. Create Dockerfile (multi-stage: builder + runner, standalone Next.js output). Create docker-compose.yml with SQLite volume mount. Write README.md with deployment instructions, environment variables, migration commands.",
+      "focusArea": "DevOps & Deployment",
+      "branch": "cco/issue-369-em-10",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ]
 }
