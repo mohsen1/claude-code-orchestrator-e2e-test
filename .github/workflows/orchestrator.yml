@@ -2,7 +2,7 @@ name: Claude Orchestrator
 
 on:
   issues:
-    types: [labeled]
+    types: [labeled, closed]
   pull_request:
     types: [closed]
   pull_request_review:
@@ -21,7 +21,7 @@ permissions:
 
 jobs:
   start:
-    if: github.event_name == 'issues' && github.event.label.name == 'cco'
+    if: github.event_name == 'issues' && github.event.action == 'labeled' && github.event.label.name == 'cco'
     uses: mohsen1/claude-orchestrator-action/.github/workflows/orchestrate.yml@main
     with:
       event_type: 'issue_labeled'
@@ -29,6 +29,19 @@ jobs:
       trigger_label: 'cco'
       pr_label: 'cco'
       review_wait_minutes: '4'
+      debug: 'true'
+    secrets:
+      CLAUDE_CONFIGS: ${{ secrets.CLAUDE_CONFIGS }}
+      CCO_PAT: ${{ secrets.CCO_PAT }}
+
+  on-issue-closed:
+    if: github.event_name == 'issues' && github.event.action == 'closed'
+    uses: mohsen1/claude-orchestrator-action/.github/workflows/orchestrate.yml@main
+    with:
+      event_type: 'issue_closed'
+      issue_number: ${{ github.event.issue.number }}
+      pr_label: 'cco'
+      debug: 'true'
     secrets:
       CLAUDE_CONFIGS: ${{ secrets.CLAUDE_CONFIGS }}
       CCO_PAT: ${{ secrets.CCO_PAT }}
@@ -44,6 +57,7 @@ jobs:
       pr_number: ${{ github.event.pull_request.number }}
       branch: ${{ github.event.pull_request.head.ref }}
       pr_label: 'cco'
+      debug: 'true'
     secrets:
       CLAUDE_CONFIGS: ${{ secrets.CLAUDE_CONFIGS }}
       CCO_PAT: ${{ secrets.CCO_PAT }}
@@ -61,6 +75,7 @@ jobs:
       review_state: ${{ github.event.review.state }}
       review_body: ${{ github.event.review.body }}
       pr_label: 'cco'
+      debug: 'true'
     secrets:
       CLAUDE_CONFIGS: ${{ secrets.CLAUDE_CONFIGS }}
       CCO_PAT: ${{ secrets.CCO_PAT }}
@@ -72,6 +87,7 @@ jobs:
       event_type: 'workflow_dispatch'
       issue_number: ${{ inputs.issue_number }}
       pr_label: 'cco'
+      debug: 'true'
     secrets:
       CLAUDE_CONFIGS: ${{ secrets.CLAUDE_CONFIGS }}
       CCO_PAT: ${{ secrets.CCO_PAT }}
