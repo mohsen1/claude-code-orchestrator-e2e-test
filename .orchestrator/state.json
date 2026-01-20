@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "issue": {
+    "number": 234,
+    "title": "Splitwise Clone",
+    "body": "## Overview\nSimple expense-sharing app.\n\n## Features\n- Google OAuth login\n- Create groups\n- Add expenses (split equally)\n- View balances\n\n## Tech Stack\n- Next.js 14 App Router\n- Tailwind + shadcn/ui\n- SQLite (better-sqlite3)\n- NextAuth.js\n\n## Pages\n- Landing, Login, Dashboard, Group detail"
+  },
+  "repo": {
+    "owner": "mohsen1",
+    "name": "claude-code-orchestrator-e2e-test"
+  },
+  "phase": "initialized",
+  "workBranch": "cco/234-splitwise-clone",
+  "baseBranch": "main",
+  "ems": [],
+  "config": {
+    "maxEms": 3,
+    "maxWorkersPerEm": 3,
+    "reviewWaitMinutes": 5,
+    "prLabel": "cco"
+  },
+  "createdAt": "2026-01-20T08:49:44.723Z",
+  "updatedAt": "2026-01-20T08:49:45.092Z"
+}
