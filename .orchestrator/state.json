@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "issue": {
+    "number": 207,
+    "title": "Expense Tracker App",
+    "body": "## Overview\nBuild an expense-sharing app for friends to track shared expenses.\n\n## Features\n- Google OAuth login\n- Create expense groups\n- Add/split expenses equally\n- Real-time balance updates\n\n## Tech Stack\n- Next.js 14 App Router\n- Tailwind + shadcn/ui\n- SQLite (better-sqlite3)\n- NextAuth.js\n- Socket.io\n\n## Pages\n- Landing, Login, Dashboard, Group detail"
+  },
+  "repo": {
+    "owner": "mohsen1",
+    "name": "claude-code-orchestrator-e2e-test"
+  },
+  "phase": "initialized",
+  "workBranch": "cco/207-expense-tracker-app",
+  "baseBranch": "main",
+  "ems": [],
+  "config": {
+    "maxEms": 3,
+    "maxWorkersPerEm": 3,
+    "reviewWaitMinutes": 5,
+    "prLabel": "cco"
+  },
+  "createdAt": "2026-01-20T07:09:16.871Z",
+  "updatedAt": "2026-01-20T07:09:17.010Z"
+}
