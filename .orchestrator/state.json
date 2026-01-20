@@ -63,8 +63,9 @@
             "src/storage.ts"
           ],
           "branch": "cco/issue-87-em-1-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T00:16:18.374Z"
         },
         {
           "id": 3,
@@ -96,7 +97,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T00:12:27.355Z",
-  "updatedAt": "2026-01-20T00:14:02.842Z",
+  "updatedAt": "2026-01-20T00:16:18.374Z",
   "analysisSummary": "Implement a TypeScript CLI note-taking app with commander.js supporting add, list, delete, and search operations with JSON file storage",
   "projectSetup": {
     "completed": false
