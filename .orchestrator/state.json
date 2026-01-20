@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "worker_review",
+  "phase": "em_review",
   "workBranch": "cco/289-splitwise-clone-v2",
   "baseBranch": "main",
   "ems": [
@@ -225,7 +225,7 @@
       "task": "Implement Socket.io server for real-time updates. Create events for new expenses, group changes, member joins/leaves, and settlements. Build presence system for active users. Handle connection/disconnection and room management per group",
       "focusArea": "Real-time Socket.io",
       "branch": "cco/issue-289-em-5",
-      "status": "workers_running",
+      "status": "pr_created",
       "workers": [
         {
           "id": 1,
@@ -252,7 +252,7 @@
             "server/handlers/presence-handlers.ts"
           ],
           "branch": "cco/issue-289-em-5-w-2",
-          "status": "pr_created",
+          "status": "merged",
           "reviewsAddressed": 0,
           "startedAt": "2026-01-20T15:35:34.763Z",
           "prNumber": 310,
@@ -269,7 +269,7 @@
             "components/socket-provider.tsx"
           ],
           "branch": "cco/issue-289-em-5-w-3",
-          "status": "pr_created",
+          "status": "merged",
           "reviewsAddressed": 0,
           "startedAt": "2026-01-20T15:38:16.031Z",
           "prNumber": 312,
@@ -277,7 +277,9 @@
           "completedAt": "2026-01-20T15:41:03.591Z"
         }
       ],
-      "reviewsAddressed": 0
+      "reviewsAddressed": 0,
+      "prNumber": 313,
+      "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/313"
     },
     {
       "id": 6,
@@ -332,7 +334,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T15:41:03.591Z",
+  "updatedAt": "2026-01-20T15:46:06.731Z",
   "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
   "projectSetup": {
     "completed": false
