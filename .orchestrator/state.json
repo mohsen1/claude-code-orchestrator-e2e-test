@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "em_review",
+  "phase": "worker_execution",
   "workBranch": "cco/289-splitwise-clone-v2",
   "baseBranch": "main",
   "ems": [
@@ -224,8 +224,43 @@
       "task": "Build expense management features: add expenses with description, amount, payer, and split configuration. Implement equal split logic among group members. Create expense editing and deletion. Build expense history and filtering capabilities",
       "focusArea": "Expense Management",
       "branch": "cco/issue-289-em-4",
-      "status": "pending",
-      "workers": [],
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create core expense data models and types. Define expense interfaces, split configuration types, and expense filter types in src/features/expense/types.ts. Create expense validation utilities in src/features/expense/validation.ts.",
+          "files": [
+            "src/features/expense/types.ts",
+            "src/features/expense/validation.ts"
+          ],
+          "branch": "cco/issue-289-em-4-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Implement expense CRUD operations. Create expense database layer in src/features/expense/db/expense-db.ts with methods for create, update, delete, and list expenses. Implement equal split calculation logic in src/features/expense/services/split-calculator.ts.",
+          "files": [
+            "src/features/expense/db/expense-db.ts",
+            "src/features/expense/services/split-calculator.ts"
+          ],
+          "branch": "cco/issue-289-em-4-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Build expense history and filtering UI. Create expense history page component in src/app/groups/[groupId]/expenses/page.tsx. Implement expense filtering logic in src/features/expense/services/expense-filter.ts. Create expense list component with history view in src/features/expense/components/expense-history.tsx.",
+          "files": [
+            "src/app/groups/[groupId]/expenses/page.tsx",
+            "src/features/expense/services/expense-filter.ts",
+            "src/features/expense/components/expense-history.tsx"
+          ],
+          "branch": "cco/issue-289-em-4-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
       "reviewsAddressed": 0
     },
     {
@@ -290,7 +325,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T15:22:38.227Z",
+  "updatedAt": "2026-01-20T15:22:48.773Z",
   "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
   "projectSetup": {
     "completed": false
