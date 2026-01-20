@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "em_assignment",
+  "phase": "worker_execution",
   "workBranch": "cco/289-splitwise-clone-v2",
   "baseBranch": "main",
   "ems": [
@@ -39,8 +39,47 @@
       "task": "Configure NextAuth.js for authentication with both Google OAuth provider and email/password credentials. Implement session management, API routes for login/signup/logout, and protected route middleware. Create user registration and profile management",
       "focusArea": "Authentication System",
       "branch": "cco/issue-289-em-2",
-      "status": "pending",
-      "workers": [],
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Set up NextAuth.js core configuration with Google OAuth and Credentials provider. Create authentication API routes in src/app/api/auth/[...nextauth]/route.ts. Create auth configuration file in src/lib/auth.ts with provider setup and session strategy. Install and configure NextAuth.js dependencies.",
+          "files": [
+            "src/app/api/auth/[...nextauth]/route.ts",
+            "src/lib/auth.ts"
+          ],
+          "branch": "cco/issue-289-em-2-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Create database schema and models for user authentication in src/db/schema.ts using better-sqlite3. Implement user CRUD operations in src/db/users.ts. Create password hashing utilities in src/lib/password.ts using bcrypt. Build registration API route in src/app/api/auth/register/route.ts for email/password signup.",
+          "files": [
+            "src/db/schema.ts",
+            "src/db/users.ts",
+            "src/lib/password.ts",
+            "src/app/api/auth/register/route.ts"
+          ],
+          "branch": "cco/issue-289-em-2-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create middleware for protected routes in src/middleware.ts. Build authentication context provider in src/contexts/AuthContext.tsx. Create custom hooks for authentication state in src/hooks/useAuth.ts. Implement session utilities in src/lib/session.ts. Build profile management API routes in src/app/api/user/profile/route.ts (GET for fetching, PUT for updating).",
+          "files": [
+            "src/middleware.ts",
+            "src/contexts/AuthContext.tsx",
+            "src/hooks/useAuth.ts",
+            "src/lib/session.ts",
+            "src/app/api/user/profile/route.ts"
+          ],
+          "branch": "cco/issue-289-em-2-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
       "reviewsAddressed": 0
     },
     {
@@ -123,7 +162,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T14:57:54.587Z",
+  "updatedAt": "2026-01-20T14:58:08.237Z",
   "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
   "projectSetup": {
     "completed": false
