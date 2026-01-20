@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "issue": {
+    "number": 138,
+    "title": "Build a Splitwise Clone - Expense Sharing App",
+    "body": "## Splitwise Clone - Expense Sharing Web App\n\nBuild a full-stack expense sharing application similar to Splitwise with Next.js, authentication, and SQLite database.\n\n## Core Features\n\n### 1. Authentication\n- Sign up with email/password\n- Login/logout\n- Session management with JWT stored in httpOnly cookies\n- Protected routes\n\n### 2. Groups\n- Create expense groups (e.g., \"Roommates\", \"Trip to Paris\")\n- Add/remove members to groups\n- View group balances\n\n### 3. Expenses\n- Add expenses to a group\n- Split equally or custom amounts\n- Track who paid and who owes\n- Add description and date\n\n### 4. Balances & Settlements\n- Calculate who owes whom\n- Simplified debt (minimize transactions)\n- Mark debts as settled\n\n## Tech Stack\n\n### Frontend (Next.js 14 App Router)\n- `/` - Landing page\n- `/login`, `/signup` - Auth pages\n- `/dashboard` - User dashboard with groups\n- `/groups/[id]` - Group detail with expenses\n- `/groups/new` - Create group\n- Tailwind CSS for styling\n\n### Backend (Next.js API Routes)\n- `POST /api/auth/signup` - Register\n- `POST /api/auth/login` - Login (returns JWT cookie)\n- `POST /api/auth/logout` - Logout\n- `GET /api/auth/me` - Current user\n- `GET/POST /api/groups` - List/create groups\n- `GET/PUT/DELETE /api/groups/[id]` - Group CRUD\n- `POST /api/groups/[id]/members` - Add member\n- `GET/POST /api/groups/[id]/expenses` - Expenses\n- `GET /api/groups/[id]/balances` - Calculate balances\n- `POST /api/groups/[id]/settle` - Settle debt\n\n### Database (SQLite with better-sqlite3)\n```sql\n-- Users\nCREATE TABLE users (\n  id INTEGER PRIMARY KEY,\n  email TEXT UNIQUE NOT NULL,\n  password_hash TEXT NOT NULL,\n  name TEXT NOT NULL,\n  created_at DATETIME DEFAULT CURRENT_TIMESTAMP\n);\n\n-- Groups\nCREATE TABLE groups (\n  id INTEGER PRIMARY KEY,\n  name TEXT NOT NULL,\n  created_by INTEGER REFERENCES users(id),\n  created_at DATETIME DEFAULT CURRENT_TIMESTAMP\n);\n\n-- Group Members\nCREATE TABLE group_members (\n  group_id INTEGER REFERENCES groups(id),\n  user_id INTEGER REFERENCES users(id),\n  PRIMARY KEY (group_id, user_id)\n);\n\n-- Expenses\nCREATE TABLE expenses (\n  id INTEGER PRIMARY KEY,\n  group_id INTEGER REFERENCES groups(id),\n  paid_by INTEGER REFERENCES users(id),\n  amount REAL NOT NULL,\n  description TEXT,\n  created_at DATETIME DEFAULT CURRENT_TIMESTAMP\n);\n\n-- Expense Splits\nCREATE TABLE expense_splits (\n  expense_id INTEGER REFERENCES expenses(id),\n  user_id INTEGER REFERENCES users(id),\n  amount REAL NOT NULL,\n  PRIMARY KEY (expense_id, user_id)\n);\n\n-- Settlements\nCREATE TABLE settlements (\n  id INTEGER PRIMARY KEY,\n  group_id INTEGER REFERENCES groups(id),\n  from_user INTEGER REFERENCES users(id),\n  to_user INTEGER REFERENCES users(id),\n  amount REAL NOT NULL,\n  created_at DATETIME DEFAULT CURRENT_TIMESTAMP\n);\n```\n\n## File Structure\n```\napp/\n  layout.tsx\n  page.tsx (landing)\n  login/page.tsx\n  signup/page.tsx\n  dashboard/page.tsx\n  groups/\n    [id]/page.tsx\n    new/page.tsx\n  api/\n    auth/\n      signup/route.ts\n      login/route.ts\n      logout/route.ts\n      me/route.ts\n    groups/\n      route.ts\n      [id]/\n        route.ts\n        members/route.ts\n        expenses/route.ts\n        balances/route.ts\n        settle/route.ts\nlib/\n  db.ts (database init & queries)\n  auth.ts (JWT helpers, password hashing)\n  balances.ts (debt calculation logic)\ncomponents/\n  Navbar.tsx\n  GroupCard.tsx\n  ExpenseForm.tsx\n  BalanceChart.tsx\nmiddleware.ts (auth middleware)\n```\n\n## Setup Files\n- package.json (next, react, better-sqlite3, bcryptjs, jose)\n- tsconfig.json\n- tailwind.config.ts\n- next.config.js\n- .gitignore"
+  },
+  "repo": {
+    "owner": "mohsen1",
+    "name": "claude-code-orchestrator-e2e-test"
+  },
+  "phase": "initialized",
+  "workBranch": "cco/138-build-a-splitwise-clone-expense-sharing-app",
+  "baseBranch": "main",
+  "ems": [],
+  "config": {
+    "maxEms": 3,
+    "maxWorkersPerEm": 3,
+    "reviewWaitMinutes": 5,
+    "prLabel": "cco"
+  },
+  "createdAt": "2026-01-20T04:17:22.333Z",
+  "updatedAt": "2026-01-20T04:17:22.475Z"
+}
