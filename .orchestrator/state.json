@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "worker_execution",
+  "phase": "worker_review",
   "workBranch": "cco/337-splitwise-like-web-app",
   "baseBranch": "main",
   "ems": [
@@ -31,9 +31,12 @@
             ".env.example"
           ],
           "branch": "cco/issue-337-setup-w-1",
-          "status": "in_progress",
+          "status": "pr_created",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T17:11:59.306Z"
+          "startedAt": "2026-01-20T17:11:59.306Z",
+          "prNumber": 338,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/338",
+          "completedAt": "2026-01-20T17:12:31.867Z"
         },
         {
           "id": 2,
@@ -71,7 +74,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T17:11:14.658Z",
-  "updatedAt": "2026-01-20T17:11:59.306Z",
+  "updatedAt": "2026-01-20T17:12:33.327Z",
   "analysisSummary": "Build a Splitwise-like expense sharing web app with Next.js 14, featuring Google OAuth/email auth, expense groups with member invites, expense splitting, real-time balance calculations, debt settlement, and Socket.io live updates, using SQLite + better-sqlite3, NextAuth.js, Tailwind CSS + shadcn/ui with a clean mobile-first design.",
   "projectSetup": {
     "completed": false
