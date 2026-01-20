@@ -9,10 +9,21 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "analyzing",
+  "phase": "project_setup",
   "workBranch": "cco/337-splitwise-like-web-app",
   "baseBranch": "main",
-  "ems": [],
+  "ems": [
+    {
+      "id": 0,
+      "task": "Initialize Next.js 14 project with App Router, configure package.json with all dependencies (NextAuth, better-sqlite3, Socket.io, shadcn/ui), set up TypeScript config, Tailwind CSS, create .gitignore, and define shared TypeScript types for users, groups, expenses, balances, and auth",
+      "focusArea": "Project Setup",
+      "branch": "cco/issue-337-setup",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-20T17:11:46.405Z"
+    }
+  ],
   "config": {
     "maxEms": 10,
     "maxWorkersPerEm": 3,
@@ -20,5 +31,101 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T17:11:14.658Z",
-  "updatedAt": "2026-01-20T17:11:17.044Z"
+  "updatedAt": "2026-01-20T17:11:46.405Z",
+  "analysisSummary": "Build a Splitwise-like expense sharing web app with Next.js 14, featuring Google OAuth/email auth, expense groups with member invites, expense splitting, real-time balance calculations, debt settlement, and Socket.io live updates, using SQLite + better-sqlite3, NextAuth.js, Tailwind CSS + shadcn/ui with a clean mobile-first design.",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": [
+    {
+      "id": 1,
+      "task": "Configure NextAuth.js with Google OAuth provider and email/password credentials, create auth API routes in src/app/api/auth/[...nextauth]/route.ts, build login and signup pages with forms, implement session management, and create auth middleware for protected routes",
+      "focusArea": "Authentication System",
+      "branch": "cco/issue-337-em-1",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 2,
+      "task": "Design and implement SQLite database schema with better-sqlite3, create database initialization and connection utilities, build models for Users, Groups, GroupMembers, Expenses, and ExpenseSplits tables with proper indexes and foreign key constraints",
+      "focusArea": "Database Layer",
+      "branch": "cco/issue-337-em-2",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 3,
+      "task": "Create API routes for group management (CRUD operations), member invitation system with invite codes/email links, and group member management endpoints, handle validation and error responses",
+      "focusArea": "Groups API",
+      "branch": "cco/issue-337-em-3",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 4,
+      "task": "Build expense API endpoints for creating, updating, and deleting expenses, implement equal-split logic among group members, create expense listing with filtering and pagination, and handle expense categorization",
+      "focusArea": "Expenses API",
+      "branch": "cco/issue-337-em-4",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 5,
+      "task": "Implement balance calculation engine to track who owes whom, compute net balances for each user in groups, generate settlement suggestions to minimize transactions, and create balance history tracking",
+      "focusArea": "Balance Calculations",
+      "branch": "cco/issue-337-em-5",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 6,
+      "task": "Create settlement API endpoints to record payments between users, update balances after settlements, generate settlement history, and implement partial settlement support with automatic balance recalculation",
+      "focusArea": "Settlement System",
+      "branch": "cco/issue-337-em-6",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 7,
+      "task": "Set up Socket.io server with Next.js custom server, implement real-time event broadcasting for new expenses, balance updates, member changes, and settlements, create client-side Socket.io hook for React components",
+      "focusArea": "Real-time Updates",
+      "branch": "cco/issue-337-em-7",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 8,
+      "task": "Build landing page with hero section and features, create responsive dashboard page showing user's groups and overall balances, implement group list component with balance summaries, and add navigation header with user menu",
+      "focusArea": "Public Pages & Dashboard",
+      "branch": "cco/issue-337-em-8",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 9,
+      "task": "Create group detail page showing expense list, member list, and individual balances, build expense creation modal with amount, description, payer selection, and receipt upload, implement expense list with filtering and pagination",
+      "focusArea": "Group Detail UI",
+      "branch": "cco/issue-337-em-9",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 10,
+      "task": "Implement create group dialog with name, description, and currency selection, build member invitation modal with invite link generation and email sending, create settlement flow interface showing suggested payments and confirmation, and design all components with shadcn/ui using mobile-first responsive approach",
+      "focusArea": "Modals & Interactive UI",
+      "branch": "cco/issue-337-em-10",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ]
 }
