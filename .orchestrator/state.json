@@ -29,10 +29,61 @@
       "task": "Configure NextAuth.js with Google OAuth provider and email/password credentials, create auth API routes in src/app/api/auth/[...nextauth]/route.ts, build login and signup pages with forms, implement session management, and create auth middleware for protected routes",
       "focusArea": "Authentication System",
       "branch": "cco/issue-337-em-1",
-      "status": "skipped",
-      "workers": [],
+      "status": "pr_created",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create NextAuth configuration with Google OAuth and credentials provider, TypeScript types, and utilities. Create src/lib/auth.ts with NextAuth config, src/lib/auth-options.ts with provider configurations, and src/types/auth.ts with authentication-related TypeScript interfaces.",
+          "files": [
+            "src/types/auth.ts",
+            "src/lib/auth-options.ts",
+            "src/lib/auth.ts"
+          ],
+          "branch": "cco/issue-337-em-1-w-1",
+          "status": "merged",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T17:17:09.791Z",
+          "prNumber": 341,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/341",
+          "completedAt": "2026-01-20T17:17:52.007Z"
+        },
+        {
+          "id": 2,
+          "task": "Build authentication API routes and middleware. Create src/app/api/auth/[...nextauth]/route.ts for NextAuth API handler, src/middleware.ts for route protection, and environment variable configuration in .env.example for OAuth credentials.",
+          "files": [
+            "src/app/api/auth/[...nextauth]/route.ts",
+            "src/middleware.ts",
+            ".env.example"
+          ],
+          "branch": "cco/issue-337-em-1-w-2",
+          "status": "failed",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T17:17:55.285Z",
+          "prNumber": 342,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/342",
+          "completedAt": "2026-01-20T17:18:31.423Z",
+          "error": "Not mergeable - conflicts"
+        },
+        {
+          "id": 3,
+          "task": "Create login and signup UI pages with forms and session management. Build src/app/login/page.tsx with login form, src/app/signup/page.tsx with signup form, and src/components/auth/login-form.tsx with reusable form component using shadcn/ui.",
+          "files": [
+            "src/app/login/page.tsx",
+            "src/app/signup/page.tsx",
+            "src/components/auth/login-form.tsx"
+          ],
+          "branch": "cco/issue-337-em-1-w-3",
+          "status": "merged",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T17:18:34.279Z",
+          "prNumber": 344,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/344",
+          "completedAt": "2026-01-20T17:22:45.041Z"
+        }
+      ],
       "reviewsAddressed": 0,
-      "error": "No workers merged - all skipped/failed"
+      "prNumber": 347,
+      "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/347"
     },
     {
       "id": 2,
@@ -43,24 +94,23 @@
       "workers": [
         {
           "id": 1,
-          "task": "Create database connection utility and initialization module with better-sqlite3 setup, schema migration runner, and connection management",
+          "task": "Create database connection module and schema initialization utilities with better-sqlite3",
           "files": [
             "src/lib/db/connection.ts",
-            "src/lib/db/migrate.ts",
-            "src/lib/db/schema.sql"
+            "src/lib/db/schema.ts",
+            "src/lib/db/index.ts"
           ],
           "branch": "cco/issue-337-em-2-w-1",
-          "status": "in_progress",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T17:26:55.957Z"
+          "status": "pending",
+          "reviewsAddressed": 0
         },
         {
           "id": 2,
-          "task": "Create User and Group models with complete CRUD operations, proper indexes, and foreign key constraints",
+          "task": "Create models for Users and Groups tables with migrations and queries",
           "files": [
-            "src/lib/models/User.ts",
-            "src/lib/models/Group.ts",
-            "src/lib/models/GroupMember.ts"
+            "src/lib/db/models/users.ts",
+            "src/lib/db/models/groups.ts",
+            "src/lib/db/migrations/001_create_users_groups.sql"
           ],
           "branch": "cco/issue-337-em-2-w-2",
           "status": "pending",
@@ -68,11 +118,12 @@
         },
         {
           "id": 3,
-          "task": "Create Expense and ExpenseSplit models with balance calculations, proper indexes, and foreign key constraints",
+          "task": "Create models for GroupMembers, Expenses, and ExpenseSplits tables with migrations and queries",
           "files": [
-            "src/lib/models/Expense.ts",
-            "src/lib/models/ExpenseSplit.ts",
-            "src/lib/models/types.ts"
+            "src/lib/db/models/group-members.ts",
+            "src/lib/db/models/expenses.ts",
+            "src/lib/db/models/expense-splits.ts",
+            "src/lib/db/migrations/002_create_members_expenses.sql"
           ],
           "branch": "cco/issue-337-em-2-w-3",
           "status": "pending",
@@ -161,7 +212,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T17:11:14.658Z",
-  "updatedAt": "2026-01-20T17:26:55.957Z",
+  "updatedAt": "2026-01-20T17:26:57.542Z",
   "analysisSummary": "Build a Splitwise-like expense sharing web app with Next.js 14, featuring Google OAuth/email auth, expense groups with member invites, expense splitting, real-time balance calculations, debt settlement, and Socket.io live updates, using SQLite + better-sqlite3, NextAuth.js, Tailwind CSS + shadcn/ui with a clean mobile-first design.",
   "projectSetup": {
     "completed": false
@@ -169,16 +220,16 @@
   "pendingEMs": [],
   "errorHistory": [
     {
-      "timestamp": "2026-01-20T17:19:26.175Z",
+      "timestamp": "2026-01-20T17:16:56.410Z",
       "phase": "project_setup",
       "message": "EM-0 skipped: No workers merged - all skipped/failed",
       "context": "WorkersStatus: "
     },
     {
-      "timestamp": "2026-01-20T17:26:44.012Z",
-      "phase": "em_assignment",
-      "message": "EM-1 skipped: No workers merged - all skipped/failed",
-      "context": "WorkersStatus: "
+      "timestamp": "2026-01-20T17:22:55.111Z",
+      "phase": "worker_review",
+      "message": "Worker-2 merge failed: Not mergeable - conflicts",
+      "context": "EM-1"
     }
   ]
 }
