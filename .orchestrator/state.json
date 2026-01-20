@@ -9,10 +9,21 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "analyzing",
+  "phase": "project_setup",
   "workBranch": "cco/289-splitwise-clone-v2",
   "baseBranch": "main",
-  "ems": [],
+  "ems": [
+    {
+      "id": 0,
+      "task": "Initialize Next.js 14 project with App Router, configure TypeScript, create .gitignore for Next.js, set up package.json with all dependencies (next-auth, better-sqlite3, socket.io, shadcn/ui, tailwindcss), configure tsconfig.json with strict mode, and set up Tailwind CSS configuration",
+      "focusArea": "Project Setup",
+      "branch": "cco/issue-289-setup",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-20T14:36:02.573Z"
+    }
+  ],
   "config": {
     "maxEms": 10,
     "maxWorkersPerEm": 3,
@@ -20,5 +31,101 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T14:35:41.145Z"
+  "updatedAt": "2026-01-20T14:36:02.573Z",
+  "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": [
+    {
+      "id": 1,
+      "task": "Design and implement SQLite database schema with better-sqlite3, including tables for users, groups, group_members, expenses, expense_splits, and settlements. Create database initialization and connection utilities. Implement all database access layer functions for CRUD operations",
+      "focusArea": "Database Layer",
+      "branch": "cco/issue-289-em-1",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 2,
+      "task": "Configure NextAuth.js for authentication with both Google OAuth provider and email/password credentials. Implement session management, API routes for login/signup/logout, and protected route middleware. Create user registration and profile management",
+      "focusArea": "Authentication System",
+      "branch": "cco/issue-289-em-2",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 3,
+      "task": "Implement group management functionality including creating groups, inviting members via email/invite codes, joining groups, and managing member roles. Build the balance calculation engine that tracks who owes whom. Create settlement logic for marking debts as paid",
+      "focusArea": "Group & Balance Logic",
+      "branch": "cco/issue-289-em-3",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 4,
+      "task": "Build expense management features: add expenses with description, amount, payer, and split configuration. Implement equal split logic among group members. Create expense editing and deletion. Build expense history and filtering capabilities",
+      "focusArea": "Expense Management",
+      "branch": "cco/issue-289-em-4",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 5,
+      "task": "Implement Socket.io server for real-time updates. Create events for new expenses, group changes, member joins/leaves, and settlements. Build presence system for active users. Handle connection/disconnection and room management per group",
+      "focusArea": "Real-time Socket.io",
+      "branch": "cco/issue-289-em-5",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 6,
+      "task": "Build landing page with hero section and feature highlights. Create login and signup pages with forms for both OAuth and email/password. Implement form validation and error handling. Add responsive navigation and footer components",
+      "focusArea": "Authentication UI",
+      "branch": "cco/issue-289-em-6",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 7,
+      "task": "Implement dashboard page showing user's groups with net balance per group, total owed/owing summary, and quick actions to create groups or settle up. Build responsive grid layout for group cards with balance indicators and member avatars",
+      "focusArea": "Dashboard UI",
+      "branch": "cco/issue-289-em-7",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 8,
+      "task": "Create group detail page with expense list, member list showing individual balances, add expense form, and settle up functionality. Build expense modal dialog with split configuration. Implement member management (invite/remove). Add activity feed for recent changes",
+      "focusArea": "Group Detail UI",
+      "branch": "cco/issue-289-em-8",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 9,
+      "task": "Create reusable shadcn/ui components customized for the app: buttons, cards, dialogs, forms, tables, avatars, badges, and toast notifications. Implement consistent design tokens, color scheme, and typography. Add loading states and skeleton screens",
+      "focusArea": "Component Library",
+      "branch": "cco/issue-289-em-9",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 10,
+      "task": "Implement Socket.io client integration for real-time UI updates. Connect to dashboard, group detail pages for live expense/balance changes. Build optimistic UI updates for better perceived performance. Handle connection errors and reconnection logic",
+      "focusArea": "Real-time Client Integration",
+      "branch": "cco/issue-289-em-10",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ]
 }
