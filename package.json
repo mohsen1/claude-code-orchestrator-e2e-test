@@ -1,0 +1,23 @@
+{
+  "name": "todo-cli",
+  "version": "1.0.0",
+  "description": "A simple command-line todo list manager",
+  "main": "dist/index.js",
+  "bin": {
+    "todo": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "keywords": ["todo", "cli", "typescript"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^12.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}
