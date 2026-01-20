@@ -18,123 +18,74 @@
       "task": "Initialize Next.js 14 project with App Router, configure package.json with all dependencies (NextAuth, better-sqlite3, Socket.io, shadcn/ui), set up TypeScript config, Tailwind CSS, create .gitignore, and define shared TypeScript types for users, groups, expenses, balances, and auth",
       "focusArea": "Project Setup",
       "branch": "cco/issue-337-setup",
-      "status": "pr_created",
-      "workers": [
-        {
-          "id": 1,
-          "task": "Initialize Next.js 14 project with App Router: Create package.json with all dependencies (next@14, react, react-dom, next-auth, better-sqlite3, socket.io, socket.io-client, tailwindcss, @types/better-sqlite3, @types/node, typescript, eslint, eslint-config-next), create next.config.js, tsconfig.json with strict mode and path aliases, create .gitignore for Next.js, and create .env.example for environment variables",
-          "files": [
-            "package.json",
-            "next.config.js",
-            "tsconfig.json",
-            ".gitignore",
-            ".env.example"
-          ],
-          "branch": "cco/issue-337-setup-w-1",
-          "status": "merged",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T17:11:59.306Z",
-          "prNumber": 338,
-          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/338",
-          "completedAt": "2026-01-20T17:12:31.867Z"
-        },
-        {
-          "id": 2,
-          "task": "Configure Tailwind CSS: Create tailwind.config.js with content paths for App Router, postcss.config.js, and app/globals.css with Tailwind directives and shadcn/ui CSS variables for theming",
-          "files": [
-            "tailwind.config.js",
-            "postcss.config.js",
-            "app/globals.css"
-          ],
-          "branch": "cco/issue-337-setup-w-2",
-          "status": "merged",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T17:12:35.350Z",
-          "prNumber": 339,
-          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/339",
-          "completedAt": "2026-01-20T17:13:27.830Z"
-        },
-        {
-          "id": 3,
-          "task": "Create shared TypeScript types and utilities: Create lib/types.ts defining User, Group, Expense, ExpenseSplit, Balance, Settlement interfaces and auth session types, create lib/db.ts as database connection singleton using better-sqlite3, and create lib/utils.ts with cn() utility for shadcn/ui class merging",
-          "files": [
-            "lib/types.ts",
-            "lib/db.ts",
-            "lib/utils.ts"
-          ],
-          "branch": "cco/issue-337-setup-w-3",
-          "status": "merged",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T17:13:30.108Z",
-          "prNumber": 340,
-          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/340",
-          "completedAt": "2026-01-20T17:15:00.976Z"
-        }
-      ],
+      "status": "skipped",
+      "workers": [],
       "reviewsAddressed": 0,
       "startedAt": "2026-01-20T17:11:46.405Z",
-      "prNumber": 343,
-      "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/343"
+      "error": "No workers merged - all skipped/failed"
     },
     {
       "id": 1,
       "task": "Configure NextAuth.js with Google OAuth provider and email/password credentials, create auth API routes in src/app/api/auth/[...nextauth]/route.ts, build login and signup pages with forms, implement session management, and create auth middleware for protected routes",
       "focusArea": "Authentication System",
       "branch": "cco/issue-337-em-1",
-      "status": "workers_running",
-      "workers": [
-        {
-          "id": 1,
-          "task": "Create authentication types, interfaces, and shared utilities. Define TypeScript types for User, Session, Account models, and create validation schemas for email/password authentication forms.",
-          "files": [
-            "src/types/auth.ts",
-            "src/lib/auth/validation.ts",
-            "src/lib/auth/password.ts"
-          ],
-          "branch": "cco/issue-337-em-1-w-1",
-          "status": "pr_created",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T17:23:30.985Z",
-          "prNumber": 341,
-          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/341",
-          "completedAt": "2026-01-20T17:25:16.978Z"
-        },
-        {
-          "id": 2,
-          "task": "Configure NextAuth.js with Google OAuth and Credentials provider. Create the main NextAuth configuration at src/app/api/auth/[...nextauth]/route.ts with database adapter setup and session management.",
-          "files": [
-            "src/app/api/auth/[...nextauth]/route.ts",
-            "src/lib/auth/config.ts"
-          ],
-          "branch": "cco/issue-337-em-1-w-2",
-          "status": "in_progress",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T17:25:19.822Z"
-        },
-        {
-          "id": 3,
-          "task": "Build login and signup pages with authentication forms using shadcn/ui components. Create form handling, error states, and integrate with NextAuth signIn/signUp actions.",
-          "files": [
-            "src/app/login/page.tsx",
-            "src/app/signup/page.tsx",
-            "src/components/auth/login-form.tsx",
-            "src/components/auth/signup-form.tsx",
-            "src/lib/auth/actions.ts"
-          ],
-          "branch": "cco/issue-337-em-1-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
-        }
-      ],
-      "reviewsAddressed": 0
+      "status": "skipped",
+      "workers": [],
+      "reviewsAddressed": 0,
+      "error": "No workers merged - all skipped/failed"
     },
     {
       "id": 2,
       "task": "Design and implement SQLite database schema with better-sqlite3, create database initialization and connection utilities, build models for Users, Groups, GroupMembers, Expenses, and ExpenseSplits tables with proper indexes and foreign key constraints",
       "focusArea": "Database Layer",
       "branch": "cco/issue-337-em-2",
-      "status": "pending",
-      "workers": [],
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create database initialization and connection utilities with better-sqlite3, including singleton database connection manager, schema migration runner, and database health check utilities",
+          "files": [
+            "src/lib/db/connection.ts",
+            "src/lib/db/migrations.ts",
+            "src/lib/db/index.ts"
+          ],
+          "branch": "cco/issue-337-em-2-w-1",
+          "status": "pr_created",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T17:23:27.029Z",
+          "prNumber": 345,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/345",
+          "completedAt": "2026-01-20T17:24:42.650Z"
+        },
+        {
+          "id": 2,
+          "task": "Create User and Group models with CRUD operations, including User schema (id, email, password_hash, name, avatar_url, created_at), Group schema (id, name, description, created_by, created_at), and proper foreign key constraints",
+          "files": [
+            "src/lib/models/User.ts",
+            "src/lib/models/Group.ts",
+            "src/lib/models/types.ts"
+          ],
+          "branch": "cco/issue-337-em-2-w-2",
+          "status": "pr_created",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T17:24:46.082Z",
+          "prNumber": 346,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/346",
+          "completedAt": "2026-01-20T17:26:05.201Z"
+        },
+        {
+          "id": 3,
+          "task": "Create GroupMember, Expense, and ExpenseSplit models with CRUD operations, including GroupMember schema (id, group_id, user_id, role, joined_at), Expense schema (id, group_id, description, amount, paid_by, created_at), ExpenseSplit schema (id, expense_id, user_id, amount), with indexes and foreign key constraints",
+          "files": [
+            "src/lib/models/GroupMember.ts",
+            "src/lib/models/Expense.ts",
+            "src/lib/models/ExpenseSplit.ts"
+          ],
+          "branch": "cco/issue-337-em-2-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
       "reviewsAddressed": 0
     },
     {
@@ -217,7 +168,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T17:11:14.658Z",
-  "updatedAt": "2026-01-20T17:25:19.822Z",
+  "updatedAt": "2026-01-20T17:26:05.477Z",
   "analysisSummary": "Build a Splitwise-like expense sharing web app with Next.js 14, featuring Google OAuth/email auth, expense groups with member invites, expense splitting, real-time balance calculations, debt settlement, and Socket.io live updates, using SQLite + better-sqlite3, NextAuth.js, Tailwind CSS + shadcn/ui with a clean mobile-first design.",
   "projectSetup": {
     "completed": false
@@ -225,9 +176,16 @@
   "pendingEMs": [],
   "errorHistory": [
     {
-      "timestamp": "2026-01-20T17:23:14.210Z",
-      "phase": "em_review",
-      "message": "Setup EM-0 merge failed: Base branch modified - needs update"
+      "timestamp": "2026-01-20T17:16:56.410Z",
+      "phase": "project_setup",
+      "message": "EM-0 skipped: No workers merged - all skipped/failed",
+      "context": "WorkersStatus: "
+    },
+    {
+      "timestamp": "2026-01-20T17:23:13.304Z",
+      "phase": "em_assignment",
+      "message": "EM-1 skipped: No workers merged - all skipped/failed",
+      "context": "WorkersStatus: "
     }
   ]
 }
