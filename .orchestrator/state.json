@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "worker_execution",
+  "phase": "worker_review",
   "workBranch": "cco/337-splitwise-like-web-app",
   "baseBranch": "main",
   "ems": [
@@ -39,59 +39,62 @@
       "task": "Design and implement SQLite database schema with better-sqlite3, create database initialization and connection utilities, build models for Users, Groups, GroupMembers, Expenses, and ExpenseSplits tables with proper indexes and foreign key constraints",
       "focusArea": "Database Layer",
       "branch": "cco/issue-337-em-2",
-      "status": "workers_running",
-      "workers": [
-        {
-          "id": 1,
-          "task": "Create database connection utility and initialization module with better-sqlite3 setup, schema migration runner, and connection management",
-          "files": [
-            "src/lib/db/connection.ts",
-            "src/lib/db/migrate.ts",
-            "src/lib/db/schema.sql"
-          ],
-          "branch": "cco/issue-337-em-2-w-1",
-          "status": "failed",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T17:26:55.957Z",
-          "error": "Failed to commit and push: Command failed with exit code 1: git push -u origin cco/issue-337-em-2-w-1\n\nTo https://github.com/mohsen1/claude-code-orchestrator-e2e-test\n ! [rejected]        cco/issue-337-em-2-w-1 -> cco/issue-337-em-2-w-1 (non-fast-forward)\nerror: failed to push some refs to 'https://github.com/mohsen1/claude-code-orchestrator-e2e-test'\nhint: Updates were rejected because a pushed branch tip is behind its remote\nhint: counterpart. If you want to integrate the remote changes, use 'git pull'\nhint: before pushing again.\nhint: See the 'Note about fast-forwards' in 'git push --help' for details."
-        },
-        {
-          "id": 2,
-          "task": "Create User and Group models with complete CRUD operations, proper indexes, and foreign key constraints",
-          "files": [
-            "src/lib/models/User.ts",
-            "src/lib/models/Group.ts",
-            "src/lib/models/GroupMember.ts"
-          ],
-          "branch": "cco/issue-337-em-2-w-2",
-          "status": "failed",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T17:28:27.130Z",
-          "error": "Failed to commit and push: Command failed with exit code 1: git push -u origin cco/issue-337-em-2-w-2\n\nTo https://github.com/mohsen1/claude-code-orchestrator-e2e-test\n ! [rejected]        cco/issue-337-em-2-w-2 -> cco/issue-337-em-2-w-2 (non-fast-forward)\nerror: failed to push some refs to 'https://github.com/mohsen1/claude-code-orchestrator-e2e-test'\nhint: Updates were rejected because a pushed branch tip is behind its remote\nhint: counterpart. If you want to integrate the remote changes, use 'git pull'\nhint: before pushing again.\nhint: See the 'Note about fast-forwards' in 'git push --help' for details."
-        },
-        {
-          "id": 3,
-          "task": "Create Expense and ExpenseSplit models with balance calculations, proper indexes, and foreign key constraints",
-          "files": [
-            "src/lib/models/Expense.ts",
-            "src/lib/models/ExpenseSplit.ts",
-            "src/lib/models/types.ts"
-          ],
-          "branch": "cco/issue-337-em-2-w-3",
-          "status": "in_progress",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T17:31:04.448Z"
-        }
-      ],
-      "reviewsAddressed": 0
+      "status": "skipped",
+      "workers": [],
+      "reviewsAddressed": 0,
+      "error": "No workers merged - all skipped/failed"
     },
     {
       "id": 3,
       "task": "Create API routes for group management (CRUD operations), member invitation system with invite codes/email links, and group member management endpoints, handle validation and error responses",
       "focusArea": "Groups API",
       "branch": "cco/issue-337-em-3",
-      "status": "pending",
-      "workers": [],
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create API route handlers for group CRUD operations (GET, POST, PUT, DELETE) with validation schemas and error handling",
+          "files": [
+            "src/app/api/groups/route.ts",
+            "src/app/api/groups/[id]/route.ts",
+            "src/lib/validation/group-validation.ts",
+            "src/lib/api/errors.ts"
+          ],
+          "branch": "cco/issue-337-em-3-w-1",
+          "status": "pr_created",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T17:29:28.904Z",
+          "prNumber": 349,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/349",
+          "completedAt": "2026-01-20T17:31:05.611Z"
+        },
+        {
+          "id": 2,
+          "task": "Create member invitation system API routes (generate invite codes, validate codes, accept invitations, send email invites)",
+          "files": [
+            "src/app/api/groups/[id]/invites/route.ts",
+            "src/app/api/groups/[id]/invites/accept/route.ts",
+            "src/lib/services/invite-service.ts",
+            "src/lib/email/invite-email.ts"
+          ],
+          "branch": "cco/issue-337-em-3-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create group member management API routes (list members, remove members, update member roles, leave group)",
+          "files": [
+            "src/app/api/groups/[id]/members/route.ts",
+            "src/app/api/groups/[id]/members/[memberId]/route.ts",
+            "src/lib/services/member-service.ts",
+            "src/middleware/group-permissions.ts"
+          ],
+          "branch": "cco/issue-337-em-3-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
       "reviewsAddressed": 0
     },
     {
@@ -165,7 +168,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T17:11:14.658Z",
-  "updatedAt": "2026-01-20T17:31:04.448Z",
+  "updatedAt": "2026-01-20T17:31:07.589Z",
   "analysisSummary": "Build a Splitwise-like expense sharing web app with Next.js 14, featuring Google OAuth/email auth, expense groups with member invites, expense splitting, real-time balance calculations, debt settlement, and Socket.io live updates, using SQLite + better-sqlite3, NextAuth.js, Tailwind CSS + shadcn/ui with a clean mobile-first design.",
   "projectSetup": {
     "completed": false
@@ -173,28 +176,22 @@
   "pendingEMs": [],
   "errorHistory": [
     {
-      "timestamp": "2026-01-20T17:19:26.175Z",
+      "timestamp": "2026-01-20T17:16:56.410Z",
       "phase": "project_setup",
       "message": "EM-0 skipped: No workers merged - all skipped/failed",
       "context": "WorkersStatus: "
     },
     {
-      "timestamp": "2026-01-20T17:26:44.012Z",
+      "timestamp": "2026-01-20T17:23:13.304Z",
       "phase": "em_assignment",
       "message": "EM-1 skipped: No workers merged - all skipped/failed",
       "context": "WorkersStatus: "
     },
     {
-      "timestamp": "2026-01-20T17:28:26.086Z",
-      "phase": "worker_execution",
-      "message": "Worker-1 unexpected error: Failed to commit and push: Command failed with exit code 1: git push -u origin cco/issue-337-em-2-w-1\n\nTo https://github.com/mohsen1/claude-code-orchestrator-e2e-test\n ! [rejected]        cco/issue-337-em-2-w-1 -> cco/issue-337-em-2-w-1 (non-fast-forward)\nerror: failed to push some refs to 'https://github.com/mohsen1/claude-code-orchestrator-e2e-test'\nhint: Updates were rejected because a pushed branch tip is behind its remote\nhint: counterpart. If you want to integrate the remote changes, use 'git pull'\nhint: before pushing again.\nhint: See the 'Note about fast-forwards' in 'git push --help' for details.",
-      "context": "EM-2"
-    },
-    {
-      "timestamp": "2026-01-20T17:31:03.349Z",
-      "phase": "worker_execution",
-      "message": "Worker-2 unexpected error: Failed to commit and push: Command failed with exit code 1: git push -u origin cco/issue-337-em-2-w-2\n\nTo https://github.com/mohsen1/claude-code-orchestrator-e2e-test\n ! [rejected]        cco/issue-337-em-2-w-2 -> cco/issue-337-em-2-w-2 (non-fast-forward)\nerror: failed to push some refs to 'https://github.com/mohsen1/claude-code-orchestrator-e2e-test'\nhint: Updates were rejected because a pushed branch tip is behind its remote\nhint: counterpart. If you want to integrate the remote changes, use 'git pull'\nhint: before pushing again.\nhint: See the 'Note about fast-forwards' in 'git push --help' for details.",
-      "context": "EM-2"
+      "timestamp": "2026-01-20T17:29:11.653Z",
+      "phase": "em_assignment",
+      "message": "EM-2 skipped: No workers merged - all skipped/failed",
+      "context": "WorkersStatus: "
     }
   ]
 }
