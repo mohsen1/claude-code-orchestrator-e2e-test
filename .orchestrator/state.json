@@ -9,10 +9,21 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "analyzing",
+  "phase": "project_setup",
   "workBranch": "cco/121-build-a-greeting-cli",
   "baseBranch": "main",
-  "ems": [],
+  "ems": [
+    {
+      "id": 0,
+      "task": "Initialize the project with .gitignore, package.json with commander.js dependency, tsconfig.json, and src directory structure",
+      "focusArea": "Project Setup",
+      "branch": "cco/issue-121-setup",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-20T04:05:04.791Z"
+    }
+  ],
   "config": {
     "maxEms": 3,
     "maxWorkersPerEm": 3,
@@ -20,5 +31,29 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T04:04:48.070Z",
-  "updatedAt": "2026-01-20T04:04:48.732Z"
+  "updatedAt": "2026-01-20T04:05:04.791Z",
+  "analysisSummary": "Implement a simple greeting CLI with TypeScript and commander.js. The project will be initialized with standard Node.js/TypeScript configuration, then implement the core CLI structure with hello and goodbye commands.",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": [
+    {
+      "id": 1,
+      "task": "Implement core greeting logic functions (hello, goodbye) in src/greet.ts",
+      "focusArea": "Core Logic",
+      "branch": "cco/issue-121-em-1",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 2,
+      "task": "Build CLI entry point with commander.js in src/index.ts, configure hello and goodbye subcommands, wire up to greeting functions",
+      "focusArea": "CLI Interface",
+      "branch": "cco/issue-121-em-2",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ]
 }
