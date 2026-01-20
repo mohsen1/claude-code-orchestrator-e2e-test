@@ -154,7 +154,7 @@
       "task": "Implement group management functionality including creating groups, inviting members via email/invite codes, joining groups, and managing member roles. Build the balance calculation engine that tracks who owes whom. Create settlement logic for marking debts as paid",
       "focusArea": "Group & Balance Logic",
       "branch": "cco/issue-289-em-3",
-      "status": "workers_running",
+      "status": "pr_created",
       "workers": [
         {
           "id": 1,
@@ -213,7 +213,8 @@
           "completedAt": "2026-01-20T15:12:22.497Z"
         }
       ],
-      "reviewsAddressed": 0
+      "reviewsAddressed": 0,
+      "error": "No workers merged - all had conflicts"
     },
     {
       "id": 4,
@@ -286,7 +287,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T15:12:22.497Z",
+  "updatedAt": "2026-01-20T15:17:24.150Z",
   "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
   "projectSetup": {
     "completed": false
