@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "em_review",
+  "phase": "worker_execution",
   "workBranch": "cco/289-splitwise-clone-v2",
   "baseBranch": "main",
   "ems": [
@@ -150,8 +150,48 @@
       "task": "Implement group management functionality including creating groups, inviting members via email/invite codes, joining groups, and managing member roles. Build the balance calculation engine that tracks who owes whom. Create settlement logic for marking debts as paid",
       "focusArea": "Group & Balance Logic",
       "branch": "cco/issue-289-em-3",
-      "status": "pending",
-      "workers": [],
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create group management system including group CRUD operations, member management, and invite code generation. Create src/lib/groups/ directory with group-service.ts (business logic), group-storage.ts (SQLite database operations), group-types.ts (TypeScript interfaces), and invite-utils.ts (invite code generation/validation). These files handle creating groups, adding/removing members, role management (admin/member), and email/invite code functionality.",
+          "files": [
+            "src/lib/groups/group-types.ts",
+            "src/lib/groups/group-storage.ts",
+            "src/lib/groups/group-service.ts",
+            "src/lib/groups/invite-utils.ts"
+          ],
+          "branch": "cco/issue-289-em-3-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Build balance calculation engine that tracks debts between group members. Create src/lib/balances/ directory with balance-calculator.ts (core calculation logic), balance-types.ts (balance interfaces), balance-storage.ts (persistence), and transaction-tracker.ts (expense-to-debt conversion). This handles split calculations, debt aggregation, and determining who owes whom for each group.",
+          "files": [
+            "src/lib/balances/balance-types.ts",
+            "src/lib/balances/balance-calculator.ts",
+            "src/lib/balances/balance-storage.ts",
+            "src/lib/balances/transaction-tracker.ts"
+          ],
+          "branch": "cco/issue-289-em-3-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Implement settlement logic for marking debts as paid and tracking payment history. Create src/lib/settlements/ directory with settlement-service.ts (payment processing), settlement-storage.ts (database operations), settlement-types.ts (TypeScript interfaces), and payment-validator.ts (validation logic). This handles recording settlements, updating balances after payments, and maintaining payment history.",
+          "files": [
+            "src/lib/settlements/settlement-types.ts",
+            "src/lib/settlements/settlement-storage.ts",
+            "src/lib/settlements/settlement-service.ts",
+            "src/lib/settlements/payment-validator.ts"
+          ],
+          "branch": "cco/issue-289-em-3-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
       "reviewsAddressed": 0
     },
     {
@@ -225,7 +265,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T15:19:04.981Z",
+  "updatedAt": "2026-01-20T15:19:22.101Z",
   "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
   "projectSetup": {
     "completed": false
