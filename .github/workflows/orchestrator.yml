@@ -9,10 +9,61 @@ on:
     types: [submitted]
   workflow_dispatch:
     inputs:
-      issue_number:
-        description: 'Issue number to check/resume'
+      event_type:
+        description: 'Event type that triggered this workflow'
         required: true
         type: string
+      issue_number:
+        description: 'Issue number to check/resume'
+        required: false
+        type: string
+      pr_number:
+        description: 'PR number (for PR events)'
+        required: false
+        type: string
+      branch:
+        description: 'Branch name (for push/PR events)'
+        required: false
+        type: string
+      review_state:
+        description: 'Review state (approved, changes_requested, commented)'
+        required: false
+        type: string
+      review_body:
+        description: 'Review body text'
+        required: false
+        type: string
+      em_id:
+        description: 'EM ID (for start_em, execute_worker, create_em_pr events)'
+        required: false
+        type: string
+      worker_id:
+        description: 'Worker ID (for execute_worker event)'
+        required: false
+        type: string
+      retry_count:
+        description: 'Retry attempt number (for retry_failed event)'
+        required: false
+        type: string
+      idempotency_token:
+        description: 'Idempotency token to prevent duplicate processing'
+        required: false
+        type: string
+      trigger_label:
+        description: 'Label that triggers orchestration on issues'
+        required: false
+        type: string
+        default: 'cco'
+      pr_label:
+        description: 'Label to add to all PRs created by orchestrator'
+        required: false
+        type: string
+        default: 'cco'
+      debug:
+        description: 'Enable debug logging to a separate issue'
+        required: false
+        type: string
+        default: 'true'
 
 permissions:
   contents: write
@@ -84,10 +135,18 @@ jobs:
     if: github.event_name == 'workflow_dispatch'
     uses: mohsen1/claude-orchestrator-action/.github/workflows/orchestrate.yml@main
     with:
-      event_type: 'workflow_dispatch'
+      event_type: ${{ inputs.event_type || 'workflow_dispatch' }}
       issue_number: ${{ inputs.issue_number }}
-      pr_label: 'cco'
-      debug: 'true'
+      pr_number: ${{ inputs.pr_number }}
+      branch: ${{ inputs.branch }}
+      review_state: ${{ inputs.review_state }}
+      review_body: ${{ inputs.review_body }}
+      em_id: ${{ inputs.em_id }}
+      worker_id: ${{ inputs.worker_id }}
+      retry_count: ${{ inputs.retry_count }}
+      idempotency_token: ${{ inputs.idempotency_token }}
+      pr_label: ${{ inputs.pr_label || 'cco' }}
+      debug: ${{ inputs.debug || 'true' }}
     secrets:
       CLAUDE_CONFIGS: ${{ secrets.CLAUDE_CONFIGS }}
       CCO_PAT: ${{ secrets.CCO_PAT }}
