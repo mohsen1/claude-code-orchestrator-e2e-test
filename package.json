@@ -1,0 +1,23 @@
+{
+  "name": "typescript-calculator-cli",
+  "version": "1.0.0",
+  "description": "A simple TypeScript CLI calculator application",
+  "main": "dist/cli.js",
+  "scripts": {
+    "build": "tsc",
+    "calc": "ts-node src/cli.ts",
+    "start": "node dist/cli.js"
+  },
+  "keywords": [
+    "calculator",
+    "cli",
+    "typescript"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "typescript": "^5.3.0",
+    "ts-node": "^10.9.1"
+  }
+}
