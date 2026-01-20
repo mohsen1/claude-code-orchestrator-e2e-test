@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "em_review",
+  "phase": "project_setup",
   "workBranch": "cco/337-splitwise-like-web-app",
   "baseBranch": "main",
   "ems": [
@@ -18,63 +18,11 @@
       "task": "Initialize Next.js 14 project with App Router, configure package.json with all dependencies (NextAuth, better-sqlite3, Socket.io, shadcn/ui), set up TypeScript config, Tailwind CSS, create .gitignore, and define shared TypeScript types for users, groups, expenses, balances, and auth",
       "focusArea": "Project Setup",
       "branch": "cco/issue-337-setup",
-      "status": "pr_created",
-      "workers": [
-        {
-          "id": 1,
-          "task": "Initialize Next.js 14 project with App Router: Create package.json with all dependencies (next@14, react, react-dom, next-auth, better-sqlite3, socket.io, socket.io-client, tailwindcss, @types/better-sqlite3, @types/node, typescript, eslint, eslint-config-next), create next.config.js, tsconfig.json with strict mode and path aliases, create .gitignore for Next.js, and create .env.example for environment variables",
-          "files": [
-            "package.json",
-            "next.config.js",
-            "tsconfig.json",
-            ".gitignore",
-            ".env.example"
-          ],
-          "branch": "cco/issue-337-setup-w-1",
-          "status": "merged",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T17:11:59.306Z",
-          "prNumber": 338,
-          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/338",
-          "completedAt": "2026-01-20T17:12:31.867Z"
-        },
-        {
-          "id": 2,
-          "task": "Configure Tailwind CSS: Create tailwind.config.js with content paths for App Router, postcss.config.js, and app/globals.css with Tailwind directives and shadcn/ui CSS variables for theming",
-          "files": [
-            "tailwind.config.js",
-            "postcss.config.js",
-            "app/globals.css"
-          ],
-          "branch": "cco/issue-337-setup-w-2",
-          "status": "merged",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T17:12:35.350Z",
-          "prNumber": 339,
-          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/339",
-          "completedAt": "2026-01-20T17:13:27.830Z"
-        },
-        {
-          "id": 3,
-          "task": "Create shared TypeScript types and utilities: Create lib/types.ts defining User, Group, Expense, ExpenseSplit, Balance, Settlement interfaces and auth session types, create lib/db.ts as database connection singleton using better-sqlite3, and create lib/utils.ts with cn() utility for shadcn/ui class merging",
-          "files": [
-            "lib/types.ts",
-            "lib/db.ts",
-            "lib/utils.ts"
-          ],
-          "branch": "cco/issue-337-setup-w-3",
-          "status": "merged",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T17:13:30.108Z",
-          "prNumber": 340,
-          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/340",
-          "completedAt": "2026-01-20T17:15:00.976Z"
-        }
-      ],
+      "status": "skipped",
+      "workers": [],
       "reviewsAddressed": 0,
       "startedAt": "2026-01-20T17:11:46.405Z",
-      "prNumber": 343,
-      "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/343"
+      "error": "No workers merged - all skipped/failed"
     }
   ],
   "config": {
@@ -84,7 +32,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T17:11:14.658Z",
-  "updatedAt": "2026-01-20T17:19:25.324Z",
+  "updatedAt": "2026-01-20T17:19:26.175Z",
   "analysisSummary": "Build a Splitwise-like expense sharing web app with Next.js 14, featuring Google OAuth/email auth, expense groups with member invites, expense splitting, real-time balance calculations, debt settlement, and Socket.io live updates, using SQLite + better-sqlite3, NextAuth.js, Tailwind CSS + shadcn/ui with a clean mobile-first design.",
   "projectSetup": {
     "completed": false
@@ -179,6 +127,14 @@
       "status": "pending",
       "workers": [],
       "reviewsAddressed": 0
+    }
+  ],
+  "errorHistory": [
+    {
+      "timestamp": "2026-01-20T17:19:26.175Z",
+      "phase": "project_setup",
+      "message": "EM-0 skipped: No workers merged - all skipped/failed",
+      "context": "WorkersStatus: "
     }
   ]
 }
