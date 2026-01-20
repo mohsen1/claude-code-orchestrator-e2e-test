@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "issue": {
+    "number": 320,
+    "title": "Simple Notes CLI",
+    "body": "## Build a simple CLI notes app\n\nA command-line notes application in TypeScript.\n\n**Features:**\n- Add notes with title and content\n- List all notes\n- Delete notes by ID\n- Search notes\n\n**Tech:**\n- TypeScript\n- Node.js CLI with commander.js\n- JSON file storage\n\nKeep it simple - just the CLI, no UI."
+  },
+  "repo": {
+    "owner": "mohsen1",
+    "name": "claude-code-orchestrator-e2e-test"
+  },
+  "phase": "initialized",
+  "workBranch": "cco/320-simple-notes-cli",
+  "baseBranch": "main",
+  "ems": [],
+  "config": {
+    "maxEms": 10,
+    "maxWorkersPerEm": 3,
+    "reviewWaitMinutes": 5,
+    "prLabel": "cco"
+  },
+  "createdAt": "2026-01-20T16:01:05.257Z",
+  "updatedAt": "2026-01-20T16:01:05.409Z"
+}
