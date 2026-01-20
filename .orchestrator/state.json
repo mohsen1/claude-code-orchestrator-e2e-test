@@ -9,10 +9,21 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "analyzing",
+  "phase": "project_setup",
   "workBranch": "cco/329-simple-calculator-cli",
   "baseBranch": "main",
-  "ems": [],
+  "ems": [
+    {
+      "id": 0,
+      "task": "Set up project foundation with .gitignore, package.json with calc script, tsconfig.json, and basic TypeScript configuration",
+      "focusArea": "Project Setup",
+      "branch": "cco/issue-329-setup",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-20T16:34:40.242Z"
+    }
+  ],
   "config": {
     "maxEms": 10,
     "maxWorkersPerEm": 3,
@@ -20,5 +31,29 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T16:34:14.562Z",
-  "updatedAt": "2026-01-20T16:34:15.662Z"
+  "updatedAt": "2026-01-20T16:34:40.243Z",
+  "analysisSummary": "Implement a simple TypeScript CLI calculator with support for add, subtract, multiply, and divide operations. The project will use TypeScript with proper module structure, calculator class for core operations, and CLI entry point for command-line interaction.",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": [
+    {
+      "id": 1,
+      "task": "Implement Calculator class with add, subtract, multiply, and divide methods following clean code principles",
+      "focusArea": "Core Logic",
+      "branch": "cco/issue-329-em-1",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 2,
+      "task": "Implement CLI entry point that parses process.argv, routes to calculator operations, and outputs results",
+      "focusArea": "CLI Interface",
+      "branch": "cco/issue-329-em-2",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ]
 }
