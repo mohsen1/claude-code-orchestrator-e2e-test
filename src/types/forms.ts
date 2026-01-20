@@ -66,8 +66,8 @@ export type UpdateGroupFormData = z.infer<typeof updateGroupSchema>;
  * Form inputs accept decimal strings (e.g., "10.50" for $10.50) which are converted
  * to cents (1050) before submission to the API.
  *
- * The splits field uses ExpenseSplitFormData to ensure type consistency between
- * the main amount field and split amounts in the form context.
+ * The splits field (if present) also uses ExpenseSplitFormData so that
+ * split amounts are represented as decimal strings in the form.
  */
 export type CreateExpenseFormData = Omit<
   z.infer<typeof createExpenseSchema>,

@@ -1,6 +1,9 @@
 import { z } from "zod";
 import { SUPPORTED_CURRENCIES } from "./index";
 
+// Extract currency codes as an array for validation
+const SUPPORTED_CURRENCY_CODES = Object.keys(SUPPORTED_CURRENCIES) as (typeof SUPPORTED_CURRENCIES)[keyof typeof SUPPORTED_CURRENCIES][];
+
 /**
  * Common Validation Schemas
  */
@@ -61,8 +64,8 @@ export const currencySchema = z
   .refine((val) => /^[A-Z]{3}$/.test(val), {
     message: "Invalid currency code format",
   })
-  .refine((val) => Object.keys(SUPPORTED_CURRENCIES).includes(val as keyof typeof SUPPORTED_CURRENCIES), {
-    message: "Unsupported currency code",
+  .refine((val) => SUPPORTED_CURRENCY_CODES.includes(val as (typeof SUPPORTED_CURRENCY_CODES)[number]), {
+    message: `Unsupported currency code. Must be one of: ${SUPPORTED_CURRENCY_CODES.join(", ")}`,
   });
 
 /**
@@ -199,20 +202,11 @@ export const createExpenseSchema = z
       .optional(),
   })
   .superRefine((data, ctx) => {
-    if (!data.splits) {
-      return;
-    }
-
-    const totalSplitAmount = data.splits.reduce(
-      (sum, split) => sum + split.amount,
-      0
-    );
-
+    const totalSplitAmount = data.splits?.reduce((sum, split) => sum + split.amount, 0) || 0;
     if (totalSplitAmount !== data.amount) {
       ctx.addIssue({
         code: z.ZodIssueCode.custom,
-        path: ["splits"],
-        message: "Sum of split amounts must equal total expense amount",
+        message: 'Sum of split amounts must equal total expense amount'
       });
     }
   });
@@ -246,7 +240,7 @@ export const createSettlementSchema = z
     amount: amountInCentsSchema,
   })
   .refine((data) => data.fromUserId !== data.toUserId, {
-    message: "Cannot create settlement with yourself",
+    message: "fromUserId and toUserId must be different",
     path: ["toUserId"],
   });
 
