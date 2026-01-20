@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "worker_review",
+  "phase": "em_review",
   "workBranch": "cco/337-splitwise-like-web-app",
   "baseBranch": "main",
   "ems": [
@@ -39,63 +39,68 @@
       "task": "Design and implement SQLite database schema with better-sqlite3, create database initialization and connection utilities, build models for Users, Groups, GroupMembers, Expenses, and ExpenseSplits tables with proper indexes and foreign key constraints",
       "focusArea": "Database Layer",
       "branch": "cco/issue-337-em-2",
-      "status": "skipped",
-      "workers": [],
+      "status": "pr_created",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create database initialization and connection utilities with better-sqlite3, including singleton database connection manager, schema migration runner, and database health check utilities",
+          "files": [
+            "src/lib/db/connection.ts",
+            "src/lib/db/migrations.ts",
+            "src/lib/db/index.ts"
+          ],
+          "branch": "cco/issue-337-em-2-w-1",
+          "status": "merged",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T17:23:27.029Z",
+          "prNumber": 345,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/345",
+          "completedAt": "2026-01-20T17:24:42.650Z"
+        },
+        {
+          "id": 2,
+          "task": "Create User and Group models with CRUD operations, including User schema (id, email, password_hash, name, avatar_url, created_at), Group schema (id, name, description, created_by, created_at), and proper foreign key constraints",
+          "files": [
+            "src/lib/models/User.ts",
+            "src/lib/models/Group.ts",
+            "src/lib/models/types.ts"
+          ],
+          "branch": "cco/issue-337-em-2-w-2",
+          "status": "merged",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T17:24:46.082Z",
+          "prNumber": 346,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/346",
+          "completedAt": "2026-01-20T17:26:05.201Z"
+        },
+        {
+          "id": 3,
+          "task": "Create GroupMember, Expense, and ExpenseSplit models with CRUD operations, including GroupMember schema (id, group_id, user_id, role, joined_at), Expense schema (id, group_id, description, amount, paid_by, created_at), ExpenseSplit schema (id, expense_id, user_id, amount), with indexes and foreign key constraints",
+          "files": [
+            "src/lib/models/GroupMember.ts",
+            "src/lib/models/Expense.ts",
+            "src/lib/models/ExpenseSplit.ts"
+          ],
+          "branch": "cco/issue-337-em-2-w-3",
+          "status": "merged",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T17:26:07.035Z",
+          "prNumber": 348,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/348",
+          "completedAt": "2026-01-20T17:27:51.847Z"
+        }
+      ],
       "reviewsAddressed": 0,
-      "error": "No workers merged - all skipped/failed"
+      "prNumber": 350,
+      "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/350"
     },
     {
       "id": 3,
       "task": "Create API routes for group management (CRUD operations), member invitation system with invite codes/email links, and group member management endpoints, handle validation and error responses",
       "focusArea": "Groups API",
       "branch": "cco/issue-337-em-3",
-      "status": "workers_running",
-      "workers": [
-        {
-          "id": 1,
-          "task": "Create API route handlers for group CRUD operations (GET, POST, PUT, DELETE) with validation schemas and error handling",
-          "files": [
-            "src/app/api/groups/route.ts",
-            "src/app/api/groups/[id]/route.ts",
-            "src/lib/validation/group-validation.ts",
-            "src/lib/api/errors.ts"
-          ],
-          "branch": "cco/issue-337-em-3-w-1",
-          "status": "pr_created",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T17:29:28.904Z",
-          "prNumber": 349,
-          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/349",
-          "completedAt": "2026-01-20T17:31:05.611Z"
-        },
-        {
-          "id": 2,
-          "task": "Create member invitation system API routes (generate invite codes, validate codes, accept invitations, send email invites)",
-          "files": [
-            "src/app/api/groups/[id]/invites/route.ts",
-            "src/app/api/groups/[id]/invites/accept/route.ts",
-            "src/lib/services/invite-service.ts",
-            "src/lib/email/invite-email.ts"
-          ],
-          "branch": "cco/issue-337-em-3-w-2",
-          "status": "in_progress",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T17:31:10.415Z"
-        },
-        {
-          "id": 3,
-          "task": "Create group member management API routes (list members, remove members, update member roles, leave group)",
-          "files": [
-            "src/app/api/groups/[id]/members/route.ts",
-            "src/app/api/groups/[id]/members/[memberId]/route.ts",
-            "src/lib/services/member-service.ts",
-            "src/middleware/group-permissions.ts"
-          ],
-          "branch": "cco/issue-337-em-3-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
-        }
-      ],
+      "status": "pending",
+      "workers": [],
       "reviewsAddressed": 0
     },
     {
@@ -169,7 +174,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T17:11:14.658Z",
-  "updatedAt": "2026-01-20T17:31:10.415Z",
+  "updatedAt": "2026-01-20T17:31:59.926Z",
   "analysisSummary": "Build a Splitwise-like expense sharing web app with Next.js 14, featuring Google OAuth/email auth, expense groups with member invites, expense splitting, real-time balance calculations, debt settlement, and Socket.io live updates, using SQLite + better-sqlite3, NextAuth.js, Tailwind CSS + shadcn/ui with a clean mobile-first design.",
   "projectSetup": {
     "completed": false
@@ -186,12 +191,6 @@
       "timestamp": "2026-01-20T17:23:13.304Z",
       "phase": "em_assignment",
       "message": "EM-1 skipped: No workers merged - all skipped/failed",
-      "context": "WorkersStatus: "
-    },
-    {
-      "timestamp": "2026-01-20T17:29:11.653Z",
-      "phase": "em_assignment",
-      "message": "EM-2 skipped: No workers merged - all skipped/failed",
       "context": "WorkersStatus: "
     }
   ]
