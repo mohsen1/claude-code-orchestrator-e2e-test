@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "worker_review",
+  "phase": "project_setup",
   "workBranch": "cco/289-splitwise-clone-v2",
   "baseBranch": "main",
   "ems": [
@@ -18,66 +18,11 @@
       "task": "Initialize Next.js 14 project with App Router, configure TypeScript, create .gitignore for Next.js, set up package.json with all dependencies (next-auth, better-sqlite3, socket.io, shadcn/ui, tailwindcss), configure tsconfig.json with strict mode, and set up Tailwind CSS configuration",
       "focusArea": "Project Setup",
       "branch": "cco/issue-289-setup",
-      "status": "workers_running",
-      "workers": [
-        {
-          "id": 1,
-          "task": "Initialize Next.js 14 project structure, configure package.json with dependencies (next, next-auth, better-sqlite3, socket.io, react, react-dom, typescript, @types/node, @types/react, @types/react-dom, tailwindcss, postcss, autoprefixer, lucide-react, clsx, tailwind-merge), create TypeScript configuration files, and set up .gitignore for Next.js",
-          "files": [
-            "package.json",
-            "tsconfig.json",
-            "next.config.js",
-            ".gitignore",
-            "postcss.config.mjs"
-          ],
-          "branch": "cco/issue-289-setup-w-1",
-          "status": "merged",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T14:38:04.630Z",
-          "prNumber": 290,
-          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/290",
-          "completedAt": "2026-01-20T14:39:51.793Z"
-        },
-        {
-          "id": 2,
-          "task": "Configure Tailwind CSS with custom theme, create global CSS file with Tailwind directives, set up lib utilities for cn() function, and create base app directory structure with layout and page files",
-          "files": [
-            "tailwind.config.ts",
-            "src/app/globals.css",
-            "src/lib/utils.ts",
-            "src/app/layout.tsx",
-            "src/app/page.tsx"
-          ],
-          "branch": "cco/issue-289-setup-w-2",
-          "status": "pr_created",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T14:39:53.413Z",
-          "prNumber": 291,
-          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/291",
-          "completedAt": "2026-01-20T14:40:59.283Z"
-        },
-        {
-          "id": 3,
-          "task": "Set up Next.js App Router directory structure with route folders, create environment variables template (.env.example), and initialize component utilities directory with shadcn/ui helper files",
-          "files": [
-            ".env.example",
-            "src/components/ui/.gitkeep",
-            "src/app/(auth)/login/page.tsx",
-            "src/app/(auth)/signup/page.tsx",
-            "src/app/dashboard/page.tsx",
-            "src/app/api/auth/[...nextauth]/route.ts"
-          ],
-          "branch": "cco/issue-289-setup-w-3",
-          "status": "pr_created",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T14:41:00.679Z",
-          "prNumber": 292,
-          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/292",
-          "completedAt": "2026-01-20T14:42:56.709Z"
-        }
-      ],
+      "status": "pr_created",
+      "workers": [],
       "reviewsAddressed": 0,
-      "startedAt": "2026-01-20T14:36:02.573Z"
+      "startedAt": "2026-01-20T14:36:02.573Z",
+      "error": "No workers merged - all had conflicts"
     }
   ],
   "config": {
@@ -87,7 +32,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T14:45:16.096Z",
+  "updatedAt": "2026-01-20T14:45:16.994Z",
   "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
   "projectSetup": {
     "completed": false
