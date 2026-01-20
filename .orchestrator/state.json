@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "issue": {
+    "number": 156,
+    "title": "Splitwise Clone - Expense Sharing App",
+    "body": "## Overview\nBuild a web app where friends can track shared expenses and settle debts. Think Splitwise but simpler.\n\n## Core Features\n\n### Authentication\n- Email/password signup and login\n- Protected routes - must be logged in to use the app\n\n### Groups\n- Create groups for different occasions (roommates, trips, dinners)\n- Invite friends to groups by email\n- See all your groups on a dashboard\n\n### Expenses  \n- Add expenses to a group (who paid, how much, what for)\n- Split expenses equally among group members\n- View expense history in a group\n\n### Balances\n- See who owes whom in each group\n- Simplified debts (minimize number of transactions needed)\n- Mark debts as settled\n\n## Tech Stack\n- **Frontend**: Next.js 14 with App Router, Tailwind CSS\n- **Backend**: Next.js API routes\n- **Database**: SQLite with better-sqlite3\n- **Auth**: JWT tokens with jose, passwords hashed with bcryptjs\n\n## Pages\n- Landing page\n- Login / Signup\n- Dashboard (list of groups)\n- Group detail (expenses, balances, members)\n- Add expense form\n- Create group form\n\n## Quality\n- Clean, modern UI\n- Mobile responsive\n- TypeScript throughout\n- Proper error handling"
+  },
+  "repo": {
+    "owner": "mohsen1",
+    "name": "claude-code-orchestrator-e2e-test"
+  },
+  "phase": "initialized",
+  "workBranch": "cco/156-splitwise-clone-expense-sharing-app",
+  "baseBranch": "main",
+  "ems": [],
+  "config": {
+    "maxEms": 3,
+    "maxWorkersPerEm": 3,
+    "reviewWaitMinutes": 5,
+    "prLabel": "cco"
+  },
+  "createdAt": "2026-01-20T04:41:53.724Z",
+  "updatedAt": "2026-01-20T04:41:53.881Z"
+}
