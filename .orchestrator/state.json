@@ -9,10 +9,21 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "analyzing",
+  "phase": "project_setup",
   "workBranch": "cco/242-splitwise-app",
   "baseBranch": "main",
-  "ems": [],
+  "ems": [
+    {
+      "id": 0,
+      "task": "Create project foundation with Next.js 14 setup, including package.json with all dependencies (NextAuth, Google OAuth provider, better-sqlite3, shadcn/ui, Tailwind), tsconfig.json with strict mode, .gitignore for Next.js, and initialize basic project structure (app/ directory, components/, lib/, prisma/ for SQLite schema).",
+      "focusArea": "Project Setup",
+      "branch": "cco/issue-242-setup",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-20T09:06:07.195Z"
+    }
+  ],
   "config": {
     "maxEms": 3,
     "maxWorkersPerEm": 3,
@@ -20,5 +31,38 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T09:05:30.472Z",
-  "updatedAt": "2026-01-20T09:05:31.259Z"
+  "updatedAt": "2026-01-20T09:06:07.195Z",
+  "analysisSummary": "Build a complete expense-sharing application with Google OAuth authentication, group management, expense tracking, and balance calculations. Tech stack: Next.js 14, Tailwind CSS, shadcn/ui components, SQLite database, and NextAuth.js.",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": [
+    {
+      "id": 1,
+      "task": "Implement authentication system and database layer. Create NextAuth.js configuration with Google OAuth provider, design and implement SQLite database schema for users, groups, expenses, and balances using Prisma ORM. Build all database models, migrations, and seed data. Owns: lib/auth.ts, lib/prisma.ts, prisma/schema.prisma, app/api/auth/[...nextauth]/route.ts.",
+      "focusArea": "Auth & Database",
+      "branch": "cco/issue-242-em-1",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 2,
+      "task": "Build core application logic and API routes. Implement group creation/management, expense creation with equal splitting logic, balance calculation algorithms, and all CRUD operations. Create RESTful API endpoints for groups and expenses. Owns: app/api/groups/, app/api/expenses/, lib/calculations.ts, lib/actions.ts for server actions.",
+      "focusArea": "Core Business Logic",
+      "branch": "cco/issue-242-em-2",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 3,
+      "task": "Create all UI components and pages. Build landing page, login/logout flow, dashboard with group overview, group detail pages with expense lists and balance views. Integrate shadcn/ui components (Button, Card, Input, Dialog, etc.) with Tailwind styling. Owns: app/page.tsx, app/login/page.tsx, app/dashboard/page.tsx, app/group/[id]/page.tsx, components/ui/, components/expense-form.tsx, components/balance-card.tsx.",
+      "focusArea": "Frontend UI",
+      "branch": "cco/issue-242-em-3",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ]
 }
