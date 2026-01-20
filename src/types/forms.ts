@@ -111,7 +111,10 @@ export interface ExpenseSplitFormData {
  * Create Settlement Form Fields
  * Used for recording a payment between users
  */
-export type CreateSettlementFormData = Omit<z.infer<typeof createSettlementSchema>, "amount"> & {
+export type CreateSettlementFormData = Omit<
+  z.infer<typeof createSettlementSchema>,
+  "amount"
+> & {
   amount: string; // Decimal string for display (e.g., "10.50")
 };
 

@@ -33,16 +33,9 @@ export interface ApiSuccess<T = unknown> {
  * API Error Response
  *
  * Represents an error response from the API.
- * Note: The 'success' property should always be false for error cases.
- * This is enforced at runtime through the API layer but uses boolean type
- * to allow for proper discriminated union with ApiSuccess.
  */
 export interface ApiError {
-  /**
-   * Success status - must be false in error contexts.
-   * While typed as boolean for discriminated union compatibility,
-   * this should always be false when representing an error response.
-   */
+  /** @description Always false for error responses. Typed as boolean for discriminated union compatibility with ApiSuccess. */
   success: boolean;
   error: string;
   code?: string;
@@ -56,6 +49,28 @@ export interface ApiError {
  * Use the success field to discriminate between ApiSuccess and ApiError.
  */
 export type ApiResponse<T = unknown> = ApiSuccess<T> | ApiError;
+
+/**
+ * Type guard function to check if an ApiResponse is a success response.
+ * This enforces the constraint at runtime that success: true implies ApiSuccess.
+ *
+ * @param response - The API response to check
+ * @returns True if the response is a success response
+ */
+export function isSuccess<T>(response: ApiResponse<T>): response is ApiSuccess<T> {
+  return response.success === true;
+}
+
+/**
+ * Type guard function to check if an ApiResponse is an error response.
+ * This enforces the constraint at runtime that success: false implies ApiError.
+ *
+ * @param response - The API response to check
+ * @returns True if the response is an error response
+ */
+export function isError<T>(response: ApiResponse<T>): response is ApiError {
+  return response.success === false;
+}
 
 /**
  * Paginated API Response
