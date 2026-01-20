@@ -9,10 +9,20 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "analyzing",
+  "phase": "project_setup",
   "workBranch": "cco/381-build-splitsync-expense-sharing-app",
   "baseBranch": "main",
-  "ems": [],
+  "ems": [
+    {
+      "id": 0,
+      "task": "Initialize project foundation: create .gitignore, configure package.json with all dependencies (Next.js 14, Drizzle, NextAuth v5, Socket.io, Zod, shadcn/ui, Vitest), set up tsconfig.json in strict mode, create Dockerfile and docker-compose.yml, establish shared types directory (src/types/) with common interfaces for User, Group, Expense, Settlement, and database schemas",
+      "focusArea": "Project Setup",
+      "branch": "cco/issue-381-setup",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ],
   "config": {
     "maxEms": 10,
     "maxWorkersPerEm": 3,
@@ -20,5 +30,101 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T22:10:03.580Z",
-  "updatedAt": "2026-01-20T22:10:06.132Z"
+  "updatedAt": "2026-01-20T22:11:04.134Z",
+  "analysisSummary": "Build SplitSync - a production-ready expense sharing app with Next.js 14, TypeScript, SQLite + Drizzle ORM, NextAuth.js, Socket.io real-time updates, shadcn/ui, Docker deployment, and CI/CD pipeline. The app features group expense management, secure splitting algorithms with integer math, settlement optimization, and comprehensive testing.",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": [
+    {
+      "id": 1,
+      "task": "Implement Drizzle ORM setup with better-sqlite3: create database connection, define all table schemas (users, groups, group_members, expenses, expense_splits, settlements, invites) with foreign keys and constraints, write migration scripts, implement seed data utilities, create database health check endpoint",
+      "focusArea": "Database Layer",
+      "branch": "cco/issue-381-em-1",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 2,
+      "task": "Implement NextAuth.js v5 authentication: configure JWT session strategy, set up Google OAuth provider, create credentials provider with bcrypt password hashing, build custom signin/register pages, implement middleware for route protection, create API utilities for session management",
+      "focusArea": "Authentication System",
+      "branch": "cco/issue-381-em-2",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 3,
+      "task": "Build custom Socket.io server with Next.js: create server.ts entry point, implement room-based group connections, add authentication validation for socket joins, create event handlers for expense_added, expense_updated, member_joined, settlement_created, build client-side socket hook with reconnection logic",
+      "focusArea": "Real-Time Socket.io Layer",
+      "branch": "cco/issue-381-em-3",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 4,
+      "task": "Implement Group Management API routes: create group (POST /api/groups), list groups (GET /api/groups), get group details (GET /api/groups/[id]), update group (PUT /api/groups/[id]), delete group (DELETE /api/groups/[id]), invite link generation with expiration logic, member join via invite code, member removal with RBAC validation",
+      "focusArea": "Group Management API",
+      "branch": "cco/issue-381-em-4",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 5,
+      "task": "Build Expense Management API with robust integer math: create expense (POST /api/expenses) with equal split algorithm that distributes remainder pennies, list expenses (GET /api/groups/[id]/expenses), update/delete expenses, implement transactional expense creation (Expense + ExpenseSplits records), add Zod validation for all inputs, ensure sum of splits equals total amount",
+      "focusArea": "Expense API & Logic",
+      "branch": "cco/issue-381-em-5",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 6,
+      "task": "Implement Settlement System: create net balance calculation algorithm, build debt graph simplification logic, create settlement API endpoints (POST /api/settlements), generate optimal payment suggestions (who owes whom), validate settlement amounts, track settlement records in database with transaction safety",
+      "focusArea": "Settlement Algorithm",
+      "branch": "cco/issue-381-em-6",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 7,
+      "task": "Build core UI components using shadcn/ui: install and configure shadcn/ui components (Button, Input, Card, Dialog, Table, etc.), create layout components (Header, Sidebar, MainLayout), build reusable expense form, settlement modal, group card components, ensure keyboard navigation and accessibility (ARIA labels, focus management)",
+      "focusArea": "UI Component Library",
+      "branch": "cco/issue-381-em-7",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 8,
+      "task": "Implement main application pages: dashboard (groups list with recent activity), group detail view (expense list, balances, settlements), create expense page with split configuration, settle up modal with payment suggestions, profile settings page, add responsive design with mobile-first approach",
+      "focusArea": "Page Implementation",
+      "branch": "cco/issue-381-em-8",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 9,
+      "task": "Create comprehensive test suite with Vitest: write unit tests for currency utilities (integer math, penny distribution), test settlement algorithm with various debt scenarios, test expense splitting edge cases, test group invitation expiration logic, create API route integration tests, achieve >80% code coverage",
+      "focusArea": "Testing & Quality",
+      "branch": "cco/issue-381-em-9",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 10,
+      "task": "Implement form validation with React Hook Form + Zod: create expense form schema with amount, description, payer, split type validation, build group creation form, implement custom form components with error display, add client-side validation with server-side verification, create form submission handlers with optimistic UI updates",
+      "focusArea": "Form Validation",
+      "branch": "cco/issue-381-em-10",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ]
 }
