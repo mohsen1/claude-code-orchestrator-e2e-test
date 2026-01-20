@@ -28,6 +28,7 @@ jobs:
       issue_number: ${{ github.event.issue.number }}
       trigger_label: 'cco'
       pr_label: 'cco'
+      review_wait_minutes: '4'
     secrets:
       CLAUDE_CONFIGS: ${{ secrets.CLAUDE_CONFIGS }}
       CCO_PAT: ${{ secrets.CCO_PAT }}
@@ -50,7 +51,7 @@ jobs:
   on-review:
     if: |
       github.event_name == 'pull_request_review' && 
-      github.event.review.state == 'changes_requested' &&
+      (github.event.review.state == 'changes_requested' || github.event.review.state == 'commented') &&
       startsWith(github.event.pull_request.head.ref, 'cco/')
     uses: mohsen1/claude-orchestrator-action/.github/workflows/orchestrate.yml@main
     with:
