@@ -132,12 +132,12 @@ export const settlements = sqliteTable(
       .default(sql`(unixepoch())`),
   },
   (table) => ({
+    // Check constraint: fromUserId != toUserId to prevent self-settlement
+    fromToNotSameCheck: sql`CHECK (from_user_id != to_user_id)`,
     // Prevent duplicate settlements between the same users at the exact same time
     fromToSettledAtUniqueIndex: uniqueIndex(
       "settlements_from_to_settled_at_unique",
     ).on(table.fromUserId, table.toUserId, table.settledAt),
-    // Check constraint is added via SQL in migration
-    // fromUserId != toUserId to prevent self-settlement
   })
 );
 

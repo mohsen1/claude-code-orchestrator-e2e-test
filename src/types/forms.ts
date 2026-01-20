@@ -62,11 +62,12 @@ export type UpdateGroupFormData = z.infer<typeof updateGroupSchema>;
  * Create Expense Form Fields
  * Used for adding a new expense
  *
- * Note: The form accepts amount in decimal format (e.g., "10.50" for $10.50)
- * but will be converted to cents (1050) before submission to the API.
+ * Note: All form fields use string types for consistency with form input handling.
+ * Form inputs accept decimal strings (e.g., "10.50" for $10.50) which are converted
+ * to cents (1050) before submission to the API.
  *
- * The splits field (if present) also uses ExpenseSplitFormData so that
- * split amounts are represented as decimal strings in the form.
+ * The splits field uses ExpenseSplitFormData to ensure type consistency between
+ * the main amount field and split amounts in the form context.
  */
 export type CreateExpenseFormData = Omit<
   z.infer<typeof createExpenseSchema>,
@@ -89,11 +90,15 @@ export type UpdateExpenseFormData = {
 /**
  * Expense Split Form Fields
  * Used for defining how an expense is split among members
+ *
+ * This type mirrors the expense split structure but converts amount to string type
+ * for consistency with form input handling, ensuring type consistency between the
+ * main amount field and split amounts in the form context.
  */
 export interface ExpenseSplitFormData {
   userId: string;
   userName: string;
-  amount: string; // Decimal string for display
+  amount: string; // Decimal string for display (e.g., "10.50")
   shareType: "equal" | "exact" | "percentage";
   percentage?: number; // Used when shareType is "percentage"
 }
@@ -250,11 +255,10 @@ export interface InviteMemberFormData {
 
 /**
  * Group Settings Form Fields
+ * Used for updating group settings (name, currency)
+ * All fields are optional to allow partial updates
  */
-export interface GroupSettingsFormData {
-  name: string;
-  currency: string;
-}
+export type GroupSettingsFormData = z.infer<typeof updateGroupSchema>;
 
 /**
  * Date Range Filter Form Fields

@@ -61,7 +61,7 @@ export const currencySchema = z
   .refine((val) => /^[A-Z]{3}$/.test(val), {
     message: "Invalid currency code format",
   })
-  .refine((val) => Object.keys(SUPPORTED_CURRENCIES).includes(val), {
+  .refine((val) => val in SUPPORTED_CURRENCIES, {
     message: "Unsupported currency code",
   });
 
