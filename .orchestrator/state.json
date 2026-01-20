@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "worker_review",
+  "phase": "em_review",
   "workBranch": "cco/289-splitwise-clone-v2",
   "baseBranch": "main",
   "ems": [
@@ -18,7 +18,7 @@
       "task": "Initialize Next.js 14 project with App Router, configure TypeScript, create .gitignore for Next.js, set up package.json with all dependencies (next-auth, better-sqlite3, socket.io, shadcn/ui, tailwindcss), configure tsconfig.json with strict mode, and set up Tailwind CSS configuration",
       "focusArea": "Project Setup",
       "branch": "cco/issue-289-setup",
-      "status": "workers_running",
+      "status": "pr_created",
       "workers": [
         {
           "id": 1,
@@ -31,7 +31,7 @@
             "postcss.config.mjs"
           ],
           "branch": "cco/issue-289-setup-w-1",
-          "status": "pr_created",
+          "status": "merged",
           "reviewsAddressed": 0,
           "startedAt": "2026-01-20T14:38:04.630Z",
           "prNumber": 290,
@@ -49,7 +49,7 @@
             "src/app/page.tsx"
           ],
           "branch": "cco/issue-289-setup-w-2",
-          "status": "pr_created",
+          "status": "merged",
           "reviewsAddressed": 0,
           "startedAt": "2026-01-20T14:39:53.413Z",
           "prNumber": 291,
@@ -68,7 +68,7 @@
             "src/app/api/auth/[...nextauth]/route.ts"
           ],
           "branch": "cco/issue-289-setup-w-3",
-          "status": "pr_created",
+          "status": "merged",
           "reviewsAddressed": 0,
           "startedAt": "2026-01-20T14:41:00.679Z",
           "prNumber": 292,
@@ -77,7 +77,9 @@
         }
       ],
       "reviewsAddressed": 0,
-      "startedAt": "2026-01-20T14:36:02.573Z"
+      "startedAt": "2026-01-20T14:36:02.573Z",
+      "prNumber": 294,
+      "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/294"
     }
   ],
   "config": {
@@ -87,7 +89,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T14:42:56.710Z",
+  "updatedAt": "2026-01-20T14:48:00.909Z",
   "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
   "projectSetup": {
     "completed": false
