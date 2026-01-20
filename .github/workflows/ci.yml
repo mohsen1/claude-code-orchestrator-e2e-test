@@ -51,6 +51,6 @@ jobs:
       - name: Next Build
         run: npm run build
         env:
-          NEXT_PUBLIC_API_URL: "http://localhost:3000"
+          NEXT_PUBLIC_APP_URL: "http://localhost:3000"
           # Mock secrets for build process
           AUTH_SECRET: "mock-secret"
