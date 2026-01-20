@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "issue": {
+    "number": 242,
+    "title": "Splitwise App",
+    "body": "## Build expense-sharing app\n\n**Features:**\n- Google OAuth login\n- Create groups, add expenses\n- Split equally, view balances\n\n**Tech:** Next.js 14, Tailwind, shadcn/ui, SQLite, NextAuth.js\n\n**Pages:** Landing, Login, Dashboard, Group detail"
+  },
+  "repo": {
+    "owner": "mohsen1",
+    "name": "claude-code-orchestrator-e2e-test"
+  },
+  "phase": "initialized",
+  "workBranch": "cco/242-splitwise-app",
+  "baseBranch": "main",
+  "ems": [],
+  "config": {
+    "maxEms": 3,
+    "maxWorkersPerEm": 3,
+    "reviewWaitMinutes": 5,
+    "prLabel": "cco"
+  },
+  "createdAt": "2026-01-20T09:05:30.472Z",
+  "updatedAt": "2026-01-20T09:05:30.712Z"
+}
