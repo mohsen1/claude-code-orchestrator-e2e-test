@@ -1,0 +1,12 @@
+import { AuthForm } from "@/components/auth/login-form";
+import { Suspense } from "react";
+
+export default function SignupPage() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 p-4">
+      <Suspense fallback={<div>Loading...</div>}>
+        <AuthForm mode="signup" />
+      </Suspense>
+    </div>
+  );
+}
