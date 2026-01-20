@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "worker_review",
+  "phase": "em_assignment",
   "workBranch": "cco/289-splitwise-clone-v2",
   "baseBranch": "main",
   "ems": [
@@ -29,58 +29,10 @@
       "task": "Design and implement SQLite database schema with better-sqlite3, including tables for users, groups, group_members, expenses, expense_splits, and settlements. Create database initialization and connection utilities. Implement all database access layer functions for CRUD operations",
       "focusArea": "Database Layer",
       "branch": "cco/issue-289-em-1",
-      "status": "workers_running",
-      "workers": [
-        {
-          "id": 1,
-          "task": "Create database schema, connection utilities, and initialization. Define all SQLite table creation queries for users, groups, group_members, expenses, expense_splits, and settlements tables",
-          "files": [
-            "src/lib/db/schema.ts",
-            "src/lib/db/connection.ts",
-            "src/lib/db/init.ts"
-          ],
-          "branch": "cco/issue-289-em-1-w-1",
-          "status": "merged",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T14:45:28.693Z",
-          "prNumber": 293,
-          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/293",
-          "completedAt": "2026-01-20T14:47:12.655Z"
-        },
-        {
-          "id": 2,
-          "task": "Implement all CRUD operations for users, groups, and group_members tables. Create functions for user creation/retrieval, group management, and group membership operations",
-          "files": [
-            "src/lib/db/queries/users.ts",
-            "src/lib/db/queries/groups.ts",
-            "src/lib/db/queries/group-members.ts"
-          ],
-          "branch": "cco/issue-289-em-1-w-2",
-          "status": "pr_created",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T14:47:14.464Z",
-          "prNumber": 295,
-          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/295",
-          "completedAt": "2026-01-20T14:48:55.286Z"
-        },
-        {
-          "id": 3,
-          "task": "Implement all CRUD operations for expenses, expense_splits, and settlements tables. Create functions for expense tracking, split calculations, and settlement management",
-          "files": [
-            "src/lib/db/queries/expenses.ts",
-            "src/lib/db/queries/expense-splits.ts",
-            "src/lib/db/queries/settlements.ts"
-          ],
-          "branch": "cco/issue-289-em-1-w-3",
-          "status": "pr_created",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T14:48:56.846Z",
-          "prNumber": 296,
-          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/296",
-          "completedAt": "2026-01-20T14:52:26.784Z"
-        }
-      ],
-      "reviewsAddressed": 0
+      "status": "pr_created",
+      "workers": [],
+      "reviewsAddressed": 0,
+      "error": "No workers merged - all had conflicts"
     },
     {
       "id": 2,
@@ -171,7 +123,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T14:52:52.408Z",
+  "updatedAt": "2026-01-20T14:52:53.813Z",
   "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
   "projectSetup": {
     "completed": false
