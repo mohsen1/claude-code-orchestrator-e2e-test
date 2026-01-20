@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "issue": {
+    "number": 174,
+    "title": "Splitwise Clone - Modern Expense Sharing App",
+    "body": "## Overview\nBuild a modern, polished expense-sharing web app. Friends can track shared expenses and settle debts easily.\n\n## Features\n\n### Authentication\n- Google OAuth sign-in\n- Email/password sign-up and login\n- Secure session management\n\n### Groups\n- Create expense groups (roommates, trips, events)\n- Invite members by email\n- Dashboard showing all groups with balance summaries\n\n### Expenses\n- Add expenses with description, amount, who paid\n- Split equally or custom amounts per person\n- Expense history with filtering\n\n### Balances & Settlements\n- Real-time balance calculations\n- Simplified debt algorithm (minimize transactions)\n- One-click settle up\n\n### Real-time Updates\n- Live updates when expenses are added\n- No page refresh needed\n\n## Tech Stack & Libraries\n\n### Setup Requirements\nRun these to get latest versions:\n```bash\nnpx create-next-app@latest --typescript --tailwind --eslint --app\nnpx shadcn@latest init\nnpm install better-sqlite3 @types/better-sqlite3\nnpm install next-auth @auth/core\nnpm install lucide-react\nnpm install socket.io socket.io-client\n```\n\n### Stack\n- **Framework**: Next.js 14 App Router\n- **Styling**: Tailwind CSS + shadcn/ui components\n- **Icons**: Lucide React\n- **Database**: SQLite with better-sqlite3\n- **Auth**: NextAuth.js with Google + Credentials providers\n- **Real-time**: Socket.io\n\n## Design Requirements\n\n### Visual Style\n- Clean, minimal design - NOT generic AI-generated look\n- Thoughtful use of whitespace\n- Subtle shadows and borders\n- Consistent color palette (pick something distinctive, not purple gradients)\n- Smooth micro-animations on interactions\n\n### Mobile First\n- Responsive design that works great on phones\n- Touch-friendly tap targets\n- Bottom navigation on mobile\n- Swipe gestures where appropriate\n\n### Components to Use (shadcn/ui)\n- Card, Button, Input, Avatar\n- Dialog for modals\n- Dropdown menu for actions\n- Toast for notifications\n- Tabs for navigation\n\n## Pages\n- `/` - Landing page (marketing)\n- `/login` - Auth page (Google + email/password)\n- `/dashboard` - Groups overview\n- `/groups/[id]` - Group detail with expenses & balances\n- `/groups/new` - Create group\n- `/settings` - User settings"
+  },
+  "repo": {
+    "owner": "mohsen1",
+    "name": "claude-code-orchestrator-e2e-test"
+  },
+  "phase": "initialized",
+  "workBranch": "cco/174-splitwise-clone-modern-expense-sharing-app",
+  "baseBranch": "main",
+  "ems": [],
+  "config": {
+    "maxEms": 3,
+    "maxWorkersPerEm": 3,
+    "reviewWaitMinutes": 5,
+    "prLabel": "cco"
+  },
+  "createdAt": "2026-01-20T05:04:48.495Z",
+  "updatedAt": "2026-01-20T05:04:48.691Z"
+}
