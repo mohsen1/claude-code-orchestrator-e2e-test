@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "em_review",
+  "phase": "worker_execution",
   "workBranch": "cco/289-splitwise-clone-v2",
   "baseBranch": "main",
   "ems": [
@@ -286,8 +286,54 @@
       "task": "Build landing page with hero section and feature highlights. Create login and signup pages with forms for both OAuth and email/password. Implement form validation and error handling. Add responsive navigation and footer components",
       "focusArea": "Authentication UI",
       "branch": "cco/issue-289-em-6",
-      "status": "pending",
-      "workers": [],
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create landing page with hero section, feature highlights, navigation bar, and footer. Build responsive layout components using Next.js 14 App Router and Tailwind CSS.",
+          "files": [
+            "app/page.tsx",
+            "app/layout.tsx",
+            "components/landing/hero.tsx",
+            "components/landing/features.tsx",
+            "components/landing/navigation.tsx",
+            "components/landing/footer.tsx"
+          ],
+          "branch": "cco/issue-289-em-6-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Build authentication pages with login and signup forms. Implement form validation, error handling, and responsive design. Create UI components for email/password and OAuth buttons using shadcn/ui.",
+          "files": [
+            "app/login/page.tsx",
+            "app/signup/page.tsx",
+            "components/auth/login-form.tsx",
+            "components/auth/signup-form.tsx",
+            "components/auth/oauth-buttons.tsx",
+            "components/auth/form-inputs.tsx",
+            "lib/validation/auth.ts"
+          ],
+          "branch": "cco/issue-289-em-6-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create authentication configuration and API routes for NextAuth.js. Set up Google OAuth provider and credentials authentication. Implement session management and error handling.",
+          "files": [
+            "app/api/auth/[...nextauth]/route.ts",
+            "lib/auth.ts",
+            "lib/auth/config.ts",
+            "lib/auth/providers.ts",
+            "app/api/auth/session/route.ts"
+          ],
+          "branch": "cco/issue-289-em-6-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
       "reviewsAddressed": 0
     },
     {
@@ -334,7 +380,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T15:46:06.731Z",
+  "updatedAt": "2026-01-20T15:46:21.685Z",
   "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
   "projectSetup": {
     "completed": false
