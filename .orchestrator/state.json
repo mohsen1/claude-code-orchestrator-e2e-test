@@ -27,7 +27,7 @@
             ".gitignore"
           ],
           "branch": "cco/issue-320-setup-w-1",
-          "status": "pr_created",
+          "status": "merged",
           "reviewsAddressed": 0,
           "startedAt": "2026-01-20T16:01:28.564Z",
           "prNumber": 321,
@@ -74,7 +74,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T16:01:05.257Z",
-  "updatedAt": "2026-01-20T16:02:27.267Z",
+  "updatedAt": "2026-01-20T16:07:11.166Z",
   "analysisSummary": "Build a TypeScript CLI notes app with commander.js, using JSON file storage. Supports adding notes (title + content), listing all notes, deleting by ID, and searching notes.",
   "projectSetup": {
     "completed": false
