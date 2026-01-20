@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "worker_review",
+  "phase": "em_review",
   "workBranch": "cco/320-simple-notes-cli",
   "baseBranch": "main",
   "ems": [
@@ -29,7 +29,7 @@
       "task": "Create src/types.ts defining Note interface (id, title, content, timestamp) and NotesStorage interface with load, save, add, delete, search, and getAll methods",
       "focusArea": "Type Definitions",
       "branch": "cco/issue-320-em-1",
-      "status": "workers_running",
+      "status": "pr_created",
       "workers": [
         {
           "id": 1,
@@ -38,7 +38,7 @@
             "src/types.ts"
           ],
           "branch": "cco/issue-320-em-1-w-1",
-          "status": "pr_created",
+          "status": "merged",
           "reviewsAddressed": 0,
           "startedAt": "2026-01-20T16:08:00.730Z",
           "prNumber": 325,
@@ -46,7 +46,9 @@
           "completedAt": "2026-01-20T16:08:14.986Z"
         }
       ],
-      "reviewsAddressed": 0
+      "reviewsAddressed": 0,
+      "prNumber": 326,
+      "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/326"
     },
     {
       "id": 2,
@@ -119,7 +121,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T16:01:05.257Z",
-  "updatedAt": "2026-01-20T16:08:14.986Z",
+  "updatedAt": "2026-01-20T16:13:19.763Z",
   "analysisSummary": "Build a TypeScript CLI notes app with commander.js, using JSON file storage. Supports adding notes (title + content), listing all notes, deleting by ID, and searching notes.",
   "projectSetup": {
     "completed": false
