@@ -214,7 +214,7 @@
       "task": "Build expense management features: add expenses with description, amount, payer, and split configuration. Implement equal split logic among group members. Create expense editing and deletion. Build expense history and filtering capabilities",
       "focusArea": "Expense Management",
       "branch": "cco/issue-289-em-4",
-      "status": "workers_running",
+      "status": "pr_created",
       "workers": [
         {
           "id": 1,
@@ -259,7 +259,8 @@
           "completedAt": "2026-01-20T15:20:51.659Z"
         }
       ],
-      "reviewsAddressed": 0
+      "reviewsAddressed": 0,
+      "error": "No workers merged - all had conflicts"
     },
     {
       "id": 5,
@@ -323,7 +324,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T15:20:51.659Z",
+  "updatedAt": "2026-01-20T15:25:54.666Z",
   "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
   "projectSetup": {
     "completed": false
