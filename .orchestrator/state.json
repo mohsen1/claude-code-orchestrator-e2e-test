@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "em_review",
+  "phase": "worker_execution",
   "workBranch": "cco/289-splitwise-clone-v2",
   "baseBranch": "main",
   "ems": [
@@ -282,8 +282,49 @@
       "task": "Implement Socket.io server for real-time updates. Create events for new expenses, group changes, member joins/leaves, and settlements. Build presence system for active users. Handle connection/disconnection and room management per group",
       "focusArea": "Real-time Socket.io",
       "branch": "cco/issue-289-em-5",
-      "status": "pending",
-      "workers": [],
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create Socket.io server infrastructure with connection handling, room management, and core event emitters for new expenses, group changes, and member updates. Build presence system for tracking active users per group.",
+          "files": [
+            "src/lib/socket-server.ts",
+            "src/lib/socket-types.ts",
+            "src/lib/presence-manager.ts",
+            "src/app/api/socket/route.ts"
+          ],
+          "branch": "cco/issue-289-em-5-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Create Socket.io client hooks and utilities for React components. Build useSocket hook for connecting and listening to real-time events. Create event handlers for expenses, groups, members, and presence updates.",
+          "files": [
+            "src/hooks/use-socket.ts",
+            "src/lib/socket-client.ts",
+            "src/contexts/SocketContext.tsx",
+            "src/components/socket-provider.tsx"
+          ],
+          "branch": "cco/issue-289-em-5-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Integrate Socket.io emitters into existing API routes and server actions. Emit events when expenses are created/updated, groups are modified, members join/leave, and settlements occur. Add Socket.io initialization to the app layout.",
+          "files": [
+            "src/app/api/expenses/route.ts",
+            "src/app/api/groups/route.ts",
+            "src/app/api/groups/[id]/route.ts",
+            "src/app/api/settlements/route.ts",
+            "src/app/layout.tsx"
+          ],
+          "branch": "cco/issue-289-em-5-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
       "reviewsAddressed": 0
     },
     {
@@ -339,7 +380,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T15:43:09.103Z",
+  "updatedAt": "2026-01-20T15:43:21.423Z",
   "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
   "projectSetup": {
     "completed": false
