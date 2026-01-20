@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "worker_execution",
+  "phase": "project_setup",
   "workBranch": "cco/289-splitwise-clone-v2",
   "baseBranch": "main",
   "ems": [
@@ -23,52 +23,28 @@
       "reviewsAddressed": 0,
       "startedAt": "2026-01-20T14:36:02.573Z",
       "error": "No workers merged - all had conflicts"
-    },
+    }
+  ],
+  "config": {
+    "maxEms": 10,
+    "maxWorkersPerEm": 3,
+    "reviewWaitMinutes": 5,
+    "prLabel": "cco"
+  },
+  "createdAt": "2026-01-20T14:35:40.427Z",
+  "updatedAt": "2026-01-20T14:46:39.004Z",
+  "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": [
     {
       "id": 1,
       "task": "Design and implement SQLite database schema with better-sqlite3, including tables for users, groups, group_members, expenses, expense_splits, and settlements. Create database initialization and connection utilities. Implement all database access layer functions for CRUD operations",
       "focusArea": "Database Layer",
       "branch": "cco/issue-289-em-1",
-      "status": "workers_running",
-      "workers": [
-        {
-          "id": 1,
-          "task": "Create database schema, connection utilities, and initialization. Define all SQLite table creation queries for users, groups, group_members, expenses, expense_splits, and settlements tables",
-          "files": [
-            "src/lib/db/schema.ts",
-            "src/lib/db/connection.ts",
-            "src/lib/db/init.ts"
-          ],
-          "branch": "cco/issue-289-em-1-w-1",
-          "status": "in_progress",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T14:45:28.693Z"
-        },
-        {
-          "id": 2,
-          "task": "Implement all CRUD operations for users, groups, and group_members tables. Create functions for user creation/retrieval, group management, and group membership operations",
-          "files": [
-            "src/lib/db/queries/users.ts",
-            "src/lib/db/queries/groups.ts",
-            "src/lib/db/queries/group-members.ts"
-          ],
-          "branch": "cco/issue-289-em-1-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
-        },
-        {
-          "id": 3,
-          "task": "Implement all CRUD operations for expenses, expense_splits, and settlements tables. Create functions for expense tracking, split calculations, and settlement management",
-          "files": [
-            "src/lib/db/queries/expenses.ts",
-            "src/lib/db/queries/expense-splits.ts",
-            "src/lib/db/queries/settlements.ts"
-          ],
-          "branch": "cco/issue-289-em-1-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
-        }
-      ],
+      "status": "pending",
+      "workers": [],
       "reviewsAddressed": 0
     },
     {
@@ -152,18 +128,5 @@
       "workers": [],
       "reviewsAddressed": 0
     }
-  ],
-  "config": {
-    "maxEms": 10,
-    "maxWorkersPerEm": 3,
-    "reviewWaitMinutes": 5,
-    "prLabel": "cco"
-  },
-  "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T14:46:37.609Z",
-  "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
-  "projectSetup": {
-    "completed": false
-  },
-  "pendingEMs": []
+  ]
 }
