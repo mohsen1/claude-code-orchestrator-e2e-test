@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "em_review",
+  "phase": "worker_execution",
   "workBranch": "cco/337-splitwise-like-web-app",
   "baseBranch": "main",
   "ems": [
@@ -86,8 +86,45 @@
       "task": "Design and implement SQLite database schema with better-sqlite3, create database initialization and connection utilities, build models for Users, Groups, GroupMembers, Expenses, and ExpenseSplits tables with proper indexes and foreign key constraints",
       "focusArea": "Database Layer",
       "branch": "cco/issue-337-em-2",
-      "status": "pending",
-      "workers": [],
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create database connection utility and initialization logic with schema setup",
+          "files": [
+            "src/lib/db/connection.ts",
+            "src/lib/db/init.ts",
+            "src/lib/db/schema.sql"
+          ],
+          "branch": "cco/issue-337-em-2-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Create User and Group models with CRUD operations and validations",
+          "files": [
+            "src/lib/models/User.ts",
+            "src/lib/models/Group.ts",
+            "src/lib/models/GroupMember.ts"
+          ],
+          "branch": "cco/issue-337-em-2-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create Expense and ExpenseSplit models with balance calculation logic",
+          "files": [
+            "src/lib/models/Expense.ts",
+            "src/lib/models/ExpenseSplit.ts",
+            "src/lib/models/types.ts"
+          ],
+          "branch": "cco/issue-337-em-2-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
       "reviewsAddressed": 0
     },
     {
@@ -170,7 +207,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T17:11:14.658Z",
-  "updatedAt": "2026-01-20T17:26:16.092Z",
+  "updatedAt": "2026-01-20T17:26:26.320Z",
   "analysisSummary": "Build a Splitwise-like expense sharing web app with Next.js 14, featuring Google OAuth/email auth, expense groups with member invites, expense splitting, real-time balance calculations, debt settlement, and Socket.io live updates, using SQLite + better-sqlite3, NextAuth.js, Tailwind CSS + shadcn/ui with a clean mobile-first design.",
   "projectSetup": {
     "completed": false
