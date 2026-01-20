@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "worker_review",
+  "phase": "em_review",
   "workBranch": "cco/289-splitwise-clone-v2",
   "baseBranch": "main",
   "ems": [
@@ -150,7 +150,7 @@
       "task": "Implement group management functionality including creating groups, inviting members via email/invite codes, joining groups, and managing member roles. Build the balance calculation engine that tracks who owes whom. Create settlement logic for marking debts as paid",
       "focusArea": "Group & Balance Logic",
       "branch": "cco/issue-289-em-3",
-      "status": "workers_running",
+      "status": "pr_created",
       "workers": [
         {
           "id": 1,
@@ -162,7 +162,7 @@
             "src/lib/groups/invite-utils.ts"
           ],
           "branch": "cco/issue-289-em-3-w-1",
-          "status": "pr_created",
+          "status": "merged",
           "reviewsAddressed": 0,
           "startedAt": "2026-01-20T15:19:24.615Z",
           "prNumber": 302,
@@ -179,7 +179,7 @@
             "src/lib/balances/transaction-tracker.ts"
           ],
           "branch": "cco/issue-289-em-3-w-2",
-          "status": "pr_created",
+          "status": "merged",
           "reviewsAddressed": 0,
           "startedAt": "2026-01-20T15:22:01.569Z",
           "prNumber": 303,
@@ -204,7 +204,9 @@
           "completedAt": "2026-01-20T15:25:50.017Z"
         }
       ],
-      "reviewsAddressed": 0
+      "reviewsAddressed": 0,
+      "prNumber": 308,
+      "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/308"
     },
     {
       "id": 4,
@@ -277,7 +279,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T15:25:50.018Z",
+  "updatedAt": "2026-01-20T15:30:53.081Z",
   "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
   "projectSetup": {
     "completed": false
