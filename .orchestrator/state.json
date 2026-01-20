@@ -33,52 +33,48 @@
       "workers": [
         {
           "id": 1,
-          "task": "Create NextAuth configuration with Google OAuth and credentials provider, TypeScript types, and utilities. Create src/lib/auth.ts with NextAuth config, src/lib/auth-options.ts with provider configurations, and src/types/auth.ts with authentication-related TypeScript interfaces.",
+          "task": "Create NextAuth.js configuration with Google OAuth and credentials provider, implement auth API route at src/app/api/auth/[...nextauth]/route.ts with session management",
           "files": [
-            "src/types/auth.ts",
-            "src/lib/auth-options.ts",
+            "src/app/api/auth/[...nextauth]/route.ts",
             "src/lib/auth.ts"
           ],
           "branch": "cco/issue-337-em-1-w-1",
-          "status": "merged",
+          "status": "failed",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T17:17:09.791Z",
-          "prNumber": 341,
-          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/341",
-          "completedAt": "2026-01-20T17:17:52.007Z"
+          "startedAt": "2026-01-20T17:18:11.685Z",
+          "error": "Failed to commit and push: Command failed with exit code 1: git push -u origin cco/issue-337-em-1-w-1\n\nTo https://github.com/mohsen1/claude-code-orchestrator-e2e-test\n ! [rejected]        cco/issue-337-em-1-w-1 -> cco/issue-337-em-1-w-1 (non-fast-forward)\nerror: failed to push some refs to 'https://github.com/mohsen1/claude-code-orchestrator-e2e-test'\nhint: Updates were rejected because a pushed branch tip is behind its remote\nhint: counterpart. If you want to integrate the remote changes, use 'git pull'\nhint: before pushing again.\nhint: See the 'Note about fast-forwards' in 'git push --help' for details."
         },
         {
           "id": 2,
-          "task": "Build authentication API routes and middleware. Create src/app/api/auth/[...nextauth]/route.ts for NextAuth API handler, src/middleware.ts for route protection, and environment variable configuration in .env.example for OAuth credentials.",
+          "task": "Build login and signup pages with shadcn/ui form components in src/app/login/page.ts and src/app/signup/page.ts, including form validation, error handling, and OAuth buttons",
           "files": [
-            "src/app/api/auth/[...nextauth]/route.ts",
-            "src/middleware.ts",
-            ".env.example"
+            "src/app/login/page.tsx",
+            "src/app/signup/page.tsx"
           ],
           "branch": "cco/issue-337-em-1-w-2",
           "status": "failed",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T17:17:55.285Z",
+          "startedAt": "2026-01-20T17:18:50.890Z",
           "prNumber": 342,
           "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/342",
-          "completedAt": "2026-01-20T17:18:31.423Z",
+          "completedAt": "2026-01-20T17:20:18.247Z",
           "error": "Not mergeable - conflicts"
         },
         {
           "id": 3,
-          "task": "Create login and signup UI pages with forms and session management. Build src/app/login/page.tsx with login form, src/app/signup/page.tsx with signup form, and src/components/auth/login-form.tsx with reusable form component using shadcn/ui.",
+          "task": "Create authentication middleware for protected routes in src/middleware.ts, implement session wrapper components, and add environment variable configuration",
           "files": [
-            "src/app/login/page.tsx",
-            "src/app/signup/page.tsx",
-            "src/components/auth/login-form.tsx"
+            "src/middleware.ts",
+            "src/components/providers/session-provider.tsx",
+            ".env.local.example"
           ],
           "branch": "cco/issue-337-em-1-w-3",
           "status": "merged",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T17:18:34.279Z",
+          "startedAt": "2026-01-20T17:20:21.649Z",
           "prNumber": 344,
           "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/344",
-          "completedAt": "2026-01-20T17:22:45.041Z"
+          "completedAt": "2026-01-20T17:22:06.276Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -94,37 +90,38 @@
       "workers": [
         {
           "id": 1,
-          "task": "Create database connection module and schema initialization utilities with better-sqlite3",
+          "task": "Create database connection utility and initialization logic with schema setup",
           "files": [
             "src/lib/db/connection.ts",
-            "src/lib/db/schema.ts",
-            "src/lib/db/index.ts"
+            "src/lib/db/init.ts",
+            "src/lib/db/schema.sql"
           ],
           "branch": "cco/issue-337-em-2-w-1",
-          "status": "in_progress",
+          "status": "failed",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T17:26:59.059Z"
+          "startedAt": "2026-01-20T17:26:28.028Z",
+          "error": "Failed to commit and push: Command failed with exit code 1: git push -u origin cco/issue-337-em-2-w-1\n\nTo https://github.com/mohsen1/claude-code-orchestrator-e2e-test\n ! [rejected]        cco/issue-337-em-2-w-1 -> cco/issue-337-em-2-w-1 (non-fast-forward)\nerror: failed to push some refs to 'https://github.com/mohsen1/claude-code-orchestrator-e2e-test'\nhint: Updates were rejected because a pushed branch tip is behind its remote\nhint: counterpart. If you want to integrate the remote changes, use 'git pull'\nhint: before pushing again.\nhint: See the 'Note about fast-forwards' in 'git push --help' for details."
         },
         {
           "id": 2,
-          "task": "Create models for Users and Groups tables with migrations and queries",
+          "task": "Create User and Group models with CRUD operations and validations",
           "files": [
-            "src/lib/db/models/users.ts",
-            "src/lib/db/models/groups.ts",
-            "src/lib/db/migrations/001_create_users_groups.sql"
+            "src/lib/models/User.ts",
+            "src/lib/models/Group.ts",
+            "src/lib/models/GroupMember.ts"
           ],
           "branch": "cco/issue-337-em-2-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T17:27:31.394Z"
         },
         {
           "id": 3,
-          "task": "Create models for GroupMembers, Expenses, and ExpenseSplits tables with migrations and queries",
+          "task": "Create Expense and ExpenseSplit models with balance calculation logic",
           "files": [
-            "src/lib/db/models/group-members.ts",
-            "src/lib/db/models/expenses.ts",
-            "src/lib/db/models/expense-splits.ts",
-            "src/lib/db/migrations/002_create_members_expenses.sql"
+            "src/lib/models/Expense.ts",
+            "src/lib/models/ExpenseSplit.ts",
+            "src/lib/models/types.ts"
           ],
           "branch": "cco/issue-337-em-2-w-3",
           "status": "pending",
@@ -213,7 +210,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T17:11:14.658Z",
-  "updatedAt": "2026-01-20T17:26:59.059Z",
+  "updatedAt": "2026-01-20T17:27:31.394Z",
   "analysisSummary": "Build a Splitwise-like expense sharing web app with Next.js 14, featuring Google OAuth/email auth, expense groups with member invites, expense splitting, real-time balance calculations, debt settlement, and Socket.io live updates, using SQLite + better-sqlite3, NextAuth.js, Tailwind CSS + shadcn/ui with a clean mobile-first design.",
   "projectSetup": {
     "completed": false
@@ -221,16 +218,28 @@
   "pendingEMs": [],
   "errorHistory": [
     {
-      "timestamp": "2026-01-20T17:16:56.410Z",
+      "timestamp": "2026-01-20T17:17:57.262Z",
       "phase": "project_setup",
       "message": "EM-0 skipped: No workers merged - all skipped/failed",
       "context": "WorkersStatus: "
     },
     {
-      "timestamp": "2026-01-20T17:22:55.111Z",
+      "timestamp": "2026-01-20T17:18:49.917Z",
+      "phase": "worker_execution",
+      "message": "Worker-1 unexpected error: Failed to commit and push: Command failed with exit code 1: git push -u origin cco/issue-337-em-1-w-1\n\nTo https://github.com/mohsen1/claude-code-orchestrator-e2e-test\n ! [rejected]        cco/issue-337-em-1-w-1 -> cco/issue-337-em-1-w-1 (non-fast-forward)\nerror: failed to push some refs to 'https://github.com/mohsen1/claude-code-orchestrator-e2e-test'\nhint: Updates were rejected because a pushed branch tip is behind its remote\nhint: counterpart. If you want to integrate the remote changes, use 'git pull'\nhint: before pushing again.\nhint: See the 'Note about fast-forwards' in 'git push --help' for details.",
+      "context": "EM-1"
+    },
+    {
+      "timestamp": "2026-01-20T17:24:21.240Z",
       "phase": "worker_review",
       "message": "Worker-2 merge failed: Not mergeable - conflicts",
       "context": "EM-1"
+    },
+    {
+      "timestamp": "2026-01-20T17:27:30.274Z",
+      "phase": "worker_execution",
+      "message": "Worker-1 unexpected error: Failed to commit and push: Command failed with exit code 1: git push -u origin cco/issue-337-em-2-w-1\n\nTo https://github.com/mohsen1/claude-code-orchestrator-e2e-test\n ! [rejected]        cco/issue-337-em-2-w-1 -> cco/issue-337-em-2-w-1 (non-fast-forward)\nerror: failed to push some refs to 'https://github.com/mohsen1/claude-code-orchestrator-e2e-test'\nhint: Updates were rejected because a pushed branch tip is behind its remote\nhint: counterpart. If you want to integrate the remote changes, use 'git pull'\nhint: before pushing again.\nhint: See the 'Note about fast-forwards' in 'git push --help' for details.",
+      "context": "EM-2"
     }
   ]
 }
