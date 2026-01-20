@@ -1,0 +1,277 @@
+{
+  "version": 1,
+  "issue": {
+    "number": 242,
+    "title": "Splitwise App",
+    "body": "## Build expense-sharing app\n\n**Features:**\n- Google OAuth login\n- Create groups, add expenses\n- Split equally, view balances\n\n**Tech:** Next.js 14, Tailwind, shadcn/ui, SQLite, NextAuth.js\n\n**Pages:** Landing, Login, Dashboard, Group detail"
+  },
+  "repo": {
+    "owner": "mohsen1",
+    "name": "claude-code-orchestrator-e2e-test"
+  },
+  "phase": "final_merge",
+  "workBranch": "cco/242-splitwise-app",
+  "baseBranch": "main",
+  "ems": [
+    {
+      "id": 0,
+      "task": "Create project foundation with Next.js 14 setup, including package.json with all dependencies (NextAuth, Google OAuth provider, better-sqlite3, shadcn/ui, Tailwind), tsconfig.json with strict mode, .gitignore for Next.js, and initialize basic project structure (app/ directory, components/, lib/, prisma/ for SQLite schema).",
+      "focusArea": "Project Setup",
+      "branch": "cco/issue-242-setup",
+      "status": "merged",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create Next.js 14 project configuration files: package.json with dependencies (next@14, next-auth, @auth/google-provider, better-sqlite3, @prisma/client, prisma, tailwindcss, postcss, autoprefixer, class-variance-authority, clsx, tailwind-merge, lucide-react), tsconfig.json with strict mode and path aliases, .gitignore for Next.js, and README.md with project setup instructions",
+          "files": [
+            "package.json",
+            "tsconfig.json",
+            ".gitignore",
+            "README.md"
+          ],
+          "branch": "cco/issue-242-setup-w-1",
+          "status": "merged",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T09:06:33.425Z",
+          "prNumber": 243,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/243",
+          "completedAt": "2026-01-20T09:08:28.050Z"
+        },
+        {
+          "id": 2,
+          "task": "Initialize Tailwind CSS configuration and basic UI utilities: tailwind.config.ts with content paths and theme customization, postcss.config.js, app/globals.css with Tailwind directives and CSS variables for shadcn/ui theming, and lib/utils.ts with cn() utility function for class merging",
+          "files": [
+            "tailwind.config.ts",
+            "postcss.config.js",
+            "app/globals.css",
+            "lib/utils.ts"
+          ],
+          "branch": "cco/issue-242-setup-w-2",
+          "status": "merged",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T09:08:29.162Z",
+          "prNumber": 244,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/244",
+          "completedAt": "2026-01-20T09:10:55.387Z"
+        },
+        {
+          "id": 3,
+          "task": "Initialize Prisma schema and base directory structure: prisma/schema.prisma with SQLite provider and base models (User, Group, Expense, ExpenseSplit), create app/ directory structure with layout.tsx root layout, page.tsx landing page, and (auth)/route.ts for NextAuth API route",
+          "files": [
+            "prisma/schema.prisma",
+            "app/layout.tsx",
+            "app/page.tsx",
+            "app/(auth)/route.ts",
+            "components.json"
+          ],
+          "branch": "cco/issue-242-setup-w-3",
+          "status": "pr_created",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T09:10:56.407Z",
+          "prNumber": 245,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/245",
+          "completedAt": "2026-01-20T09:14:52.074Z"
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-20T09:06:07.195Z",
+      "prNumber": 248,
+      "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/248"
+    },
+    {
+      "id": 1,
+      "task": "Implement authentication system and database layer. Create NextAuth.js configuration with Google OAuth provider, design and implement SQLite database schema for users, groups, expenses, and balances using Prisma ORM. Build all database models, migrations, and seed data. Owns: lib/auth.ts, lib/prisma.ts, prisma/schema.prisma, app/api/auth/[...nextauth]/route.ts.",
+      "focusArea": "Auth & Database",
+      "branch": "cco/issue-242-em-1",
+      "status": "pr_created",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Implement NextAuth.js configuration with Google OAuth provider. Create lib/auth.ts with NextAuth configuration including Google provider, callbacks for user session, and authentication logic. Create app/api/auth/[...nextauth]/route.ts API route handler that exports the NextAuth handlers.",
+          "files": [
+            "lib/auth.ts",
+            "app/api/auth/[...nextauth]/route.ts"
+          ],
+          "branch": "cco/issue-242-em-1-w-1",
+          "status": "merged",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T09:20:09.856Z",
+          "prNumber": 246,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/246",
+          "completedAt": "2026-01-20T09:21:01.481Z"
+        },
+        {
+          "id": 2,
+          "task": "Set up Prisma ORM and database client. Create lib/prisma.ts with singleton PrismaClient instance for database connections. Create prisma/schema.prisma with complete database schema including User, Group, Expense, ExpenseSplit, and Balance models with all relationships and fields. Generate Prisma client after schema is complete.",
+          "files": [
+            "lib/prisma.ts",
+            "prisma/schema.prisma"
+          ],
+          "branch": "cco/issue-242-em-1-w-2",
+          "status": "merged",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T09:21:02.620Z",
+          "prNumber": 247,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/247",
+          "completedAt": "2026-01-20T09:27:22.140Z"
+        },
+        {
+          "id": 3,
+          "task": "Create database seed file and migration setup. Create prisma/seed.ts with sample data including test users, groups with members, expenses with splits, and balance calculations. Set up initial Prisma migration to create database tables. Configure package.json scripts for seeding and migration.",
+          "files": [
+            "prisma/seed.ts",
+            "prisma/migrations/20240101000000_init/migration.sql"
+          ],
+          "branch": "cco/issue-242-em-1-w-3",
+          "status": "merged",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T09:27:23.160Z",
+          "prNumber": 249,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/249",
+          "completedAt": "2026-01-20T09:36:04.320Z"
+        }
+      ],
+      "reviewsAddressed": 0,
+      "prNumber": 250,
+      "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/250"
+    },
+    {
+      "id": 2,
+      "task": "Build core application logic and API routes. Implement group creation/management, expense creation with equal splitting logic, balance calculation algorithms, and all CRUD operations. Create RESTful API endpoints for groups and expenses. Owns: app/api/groups/, app/api/expenses/, lib/calculations.ts, lib/actions.ts for server actions.",
+      "focusArea": "Core Business Logic",
+      "branch": "cco/issue-242-em-2",
+      "status": "pr_created",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create database schema and SQLite connection setup. Define tables for groups, users, expenses, and balances using Drizzle ORM",
+          "files": [
+            "app/db/schema.ts",
+            "app/db/index.ts"
+          ],
+          "branch": "cco/issue-242-em-2-w-1",
+          "status": "merged",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T09:41:15.857Z",
+          "prNumber": 251,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/251",
+          "completedAt": "2026-01-20T09:45:05.489Z"
+        },
+        {
+          "id": 2,
+          "task": "Implement balance calculation algorithms. Create equal split logic, debt calculation, and balance reconciliation functions",
+          "files": [
+            "lib/calculations.ts"
+          ],
+          "branch": "cco/issue-242-em-2-w-2",
+          "status": "merged",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T09:45:06.451Z",
+          "prNumber": 252,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/252",
+          "completedAt": "2026-01-20T09:50:25.520Z"
+        },
+        {
+          "id": 3,
+          "task": "Create all API routes for group CRUD operations (create, read, update, delete, add members) and expense CRUD operations (create, read, update, delete)",
+          "files": [
+            "app/api/groups/route.ts",
+            "app/api/groups/[id]/route.ts",
+            "app/api/groups/[id]/members/route.ts",
+            "app/api/expenses/route.ts",
+            "app/api/expenses/[id]/route.ts"
+          ],
+          "branch": "cco/issue-242-em-2-w-3",
+          "status": "merged",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T09:50:26.601Z",
+          "prNumber": 253,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/253",
+          "completedAt": "2026-01-20T09:53:30.258Z"
+        }
+      ],
+      "reviewsAddressed": 0,
+      "prNumber": 254,
+      "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/254"
+    },
+    {
+      "id": 3,
+      "task": "Create all UI components and pages. Build landing page, login/logout flow, dashboard with group overview, group detail pages with expense lists and balance views. Integrate shadcn/ui components (Button, Card, Input, Dialog, etc.) with Tailwind styling. Owns: app/page.tsx, app/login/page.tsx, app/dashboard/page.tsx, app/group/[id]/page.tsx, components/ui/, components/expense-form.tsx, components/balance-card.tsx.",
+      "focusArea": "Frontend UI",
+      "branch": "cco/issue-242-em-3",
+      "status": "merged",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create shadcn/ui components (Button, Card, Input, Dialog, Label). Set up component library infrastructure with Tailwind styling and proper TypeScript types.",
+          "files": [
+            "components/ui/button.tsx",
+            "components/ui/card.tsx",
+            "components/ui/input.tsx",
+            "components/ui/dialog.tsx",
+            "components/ui/label.tsx",
+            "lib/utils.ts"
+          ],
+          "branch": "cco/issue-242-em-3-w-1",
+          "status": "merged",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T09:58:43.513Z",
+          "prNumber": 255,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/255",
+          "completedAt": "2026-01-20T10:00:14.194Z"
+        },
+        {
+          "id": 2,
+          "task": "Build landing page and authentication flow. Create public-facing landing page with NextAuth.js Google OAuth integration and login/logout functionality.",
+          "files": [
+            "app/page.tsx",
+            "app/login/page.tsx",
+            "app/auth/callback/route.ts",
+            "app/layout.tsx"
+          ],
+          "branch": "cco/issue-242-em-3-w-2",
+          "status": "merged",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T10:00:15.135Z",
+          "prNumber": 256,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/256",
+          "completedAt": "2026-01-20T10:07:01.713Z"
+        },
+        {
+          "id": 3,
+          "task": "Build dashboard and group detail pages with expense and balance components. Create main dashboard view, individual group pages with expense lists, balance cards, and expense submission form.",
+          "files": [
+            "app/dashboard/page.tsx",
+            "app/group/[id]/page.tsx",
+            "components/expense-form.tsx",
+            "components/balance-card.tsx",
+            "components/expense-list.tsx"
+          ],
+          "branch": "cco/issue-242-em-3-w-3",
+          "status": "merged",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T10:07:02.830Z",
+          "prNumber": 257,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/257",
+          "completedAt": "2026-01-20T10:10:12.015Z"
+        }
+      ],
+      "reviewsAddressed": 0,
+      "prNumber": 258,
+      "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/258"
+    }
+  ],
+  "config": {
+    "maxEms": 3,
+    "maxWorkersPerEm": 3,
+    "reviewWaitMinutes": 5,
+    "prLabel": "cco"
+  },
+  "createdAt": "2026-01-20T09:05:30.472Z",
+  "updatedAt": "2026-01-20T10:15:16.878Z",
+  "analysisSummary": "Build a complete expense-sharing application with Google OAuth authentication, group management, expense tracking, and balance calculations. Tech stack: Next.js 14, Tailwind CSS, shadcn/ui components, SQLite database, and NextAuth.js.",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": []
+}
