@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "project_setup",
+  "phase": "em_assignment",
   "workBranch": "cco/337-splitwise-like-web-app",
   "baseBranch": "main",
   "ems": [
@@ -23,21 +23,7 @@
       "reviewsAddressed": 0,
       "startedAt": "2026-01-20T17:11:46.405Z",
       "error": "No workers merged - all skipped/failed"
-    }
-  ],
-  "config": {
-    "maxEms": 10,
-    "maxWorkersPerEm": 3,
-    "reviewWaitMinutes": 4,
-    "prLabel": "cco"
-  },
-  "createdAt": "2026-01-20T17:11:14.658Z",
-  "updatedAt": "2026-01-20T17:19:26.175Z",
-  "analysisSummary": "Build a Splitwise-like expense sharing web app with Next.js 14, featuring Google OAuth/email auth, expense groups with member invites, expense splitting, real-time balance calculations, debt settlement, and Socket.io live updates, using SQLite + better-sqlite3, NextAuth.js, Tailwind CSS + shadcn/ui with a clean mobile-first design.",
-  "projectSetup": {
-    "completed": false
-  },
-  "pendingEMs": [
+    },
     {
       "id": 1,
       "task": "Configure NextAuth.js with Google OAuth provider and email/password credentials, create auth API routes in src/app/api/auth/[...nextauth]/route.ts, build login and signup pages with forms, implement session management, and create auth middleware for protected routes",
@@ -129,6 +115,19 @@
       "reviewsAddressed": 0
     }
   ],
+  "config": {
+    "maxEms": 10,
+    "maxWorkersPerEm": 3,
+    "reviewWaitMinutes": 4,
+    "prLabel": "cco"
+  },
+  "createdAt": "2026-01-20T17:11:14.658Z",
+  "updatedAt": "2026-01-20T17:19:28.833Z",
+  "analysisSummary": "Build a Splitwise-like expense sharing web app with Next.js 14, featuring Google OAuth/email auth, expense groups with member invites, expense splitting, real-time balance calculations, debt settlement, and Socket.io live updates, using SQLite + better-sqlite3, NextAuth.js, Tailwind CSS + shadcn/ui with a clean mobile-first design.",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": [],
   "errorHistory": [
     {
       "timestamp": "2026-01-20T17:19:26.175Z",
