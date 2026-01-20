@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "worker_review",
+  "phase": "em_review",
   "workBranch": "cco/289-splitwise-clone-v2",
   "baseBranch": "main",
   "ems": [
@@ -19,10 +19,67 @@
       "focusArea": "Project Setup",
       "branch": "cco/issue-289-setup",
       "status": "pr_created",
-      "workers": [],
+      "workers": [
+        {
+          "id": 1,
+          "task": "Initialize Next.js 14 project structure, configure package.json with dependencies (next, next-auth, better-sqlite3, socket.io, react, react-dom, typescript, @types/node, @types/react, @types/react-dom, tailwindcss, postcss, autoprefixer, lucide-react, clsx, tailwind-merge), create TypeScript configuration files, and set up .gitignore for Next.js",
+          "files": [
+            "package.json",
+            "tsconfig.json",
+            "next.config.js",
+            ".gitignore",
+            "postcss.config.mjs"
+          ],
+          "branch": "cco/issue-289-setup-w-1",
+          "status": "merged",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T14:38:04.630Z",
+          "prNumber": 290,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/290",
+          "completedAt": "2026-01-20T14:39:51.793Z"
+        },
+        {
+          "id": 2,
+          "task": "Configure Tailwind CSS with custom theme, create global CSS file with Tailwind directives, set up lib utilities for cn() function, and create base app directory structure with layout and page files",
+          "files": [
+            "tailwind.config.ts",
+            "src/app/globals.css",
+            "src/lib/utils.ts",
+            "src/app/layout.tsx",
+            "src/app/page.tsx"
+          ],
+          "branch": "cco/issue-289-setup-w-2",
+          "status": "merged",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T14:39:53.413Z",
+          "prNumber": 291,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/291",
+          "completedAt": "2026-01-20T14:40:59.283Z"
+        },
+        {
+          "id": 3,
+          "task": "Set up Next.js App Router directory structure with route folders, create environment variables template (.env.example), and initialize component utilities directory with shadcn/ui helper files",
+          "files": [
+            ".env.example",
+            "src/components/ui/.gitkeep",
+            "src/app/(auth)/login/page.tsx",
+            "src/app/(auth)/signup/page.tsx",
+            "src/app/dashboard/page.tsx",
+            "src/app/api/auth/[...nextauth]/route.ts"
+          ],
+          "branch": "cco/issue-289-setup-w-3",
+          "status": "merged",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T14:41:00.679Z",
+          "prNumber": 292,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/292",
+          "completedAt": "2026-01-20T14:42:56.709Z"
+        }
+      ],
       "reviewsAddressed": 0,
       "startedAt": "2026-01-20T14:36:02.573Z",
-      "error": "No workers merged - all had conflicts"
+      "prNumber": 294,
+      "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/294"
     },
     {
       "id": 1,
@@ -33,50 +90,49 @@
       "workers": [
         {
           "id": 1,
-          "task": "Create database schema initialization and connection utilities. Create src/lib/db/schema.ts with all table creation SQL statements, and src/lib/db/index.ts for database connection singleton and initialization logic.",
+          "task": "Create database schema initialization and connection utilities. Create lib/db/schema.ts with table definitions (users, groups, group_members, expenses, expense_splits, settlements) and lib/db/index.ts for database connection and initialization logic.",
           "files": [
-            "src/lib/db/schema.ts",
-            "src/lib/db/index.ts"
+            "lib/db/schema.ts",
+            "lib/db/index.ts"
           ],
           "branch": "cco/issue-289-em-1-w-1",
           "status": "merged",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T14:48:39.993Z",
+          "startedAt": "2026-01-20T14:48:20.876Z",
           "prNumber": 293,
           "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/293",
-          "completedAt": "2026-01-20T14:49:40.743Z"
+          "completedAt": "2026-01-20T14:49:05.510Z"
         },
         {
           "id": 2,
-          "task": "Implement database access layer for users and groups tables. Create src/lib/db/users.ts with user CRUD operations (insert, findById, findByEmail, findByGoogleId, update), and src/lib/db/groups.ts with group CRUD operations (insert, findById, findByUserId, update, delete).",
+          "task": "Implement all user and group-related CRUD operations. Create lib/db/users.ts (createUser, getUserByEmail, getUserById) and lib/db/groups.ts (createGroup, getGroupById, getGroupsByUserId, updateGroup, deleteGroup).",
           "files": [
-            "src/lib/db/users.ts",
-            "src/lib/db/groups.ts"
+            "lib/db/users.ts",
+            "lib/db/groups.ts"
           ],
           "branch": "cco/issue-289-em-1-w-2",
           "status": "merged",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T14:49:43.070Z",
+          "startedAt": "2026-01-20T14:49:07.064Z",
           "prNumber": 295,
           "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/295",
-          "completedAt": "2026-01-20T14:51:04.195Z"
+          "completedAt": "2026-01-20T14:50:18.053Z"
         },
         {
           "id": 3,
-          "task": "Implement database access layer for group_members, expenses, expense_splits, and settlements tables. Create src/lib/db/group-members.ts for member management, src/lib/db/expenses.ts for expense operations, src/lib/db/expense-splits.ts for split records, and src/lib/db/settlements.ts for settlement tracking.",
+          "task": "Implement all expense, expense split, and settlement CRUD operations. Create lib/db/expenses.ts (createExpense, getExpensesByGroupId, updateExpense, deleteExpense), lib/db/expense-splits.ts (createExpenseSplit, getExpenseSplitsByExpenseId, getExpenseSplitsByGroupId, getBalancesForGroup), and lib/db/settlements.ts (createSettlement, getSettlementsByGroupId, getPendingSettlementsByUserId, markSettlementAsPaid).",
           "files": [
-            "src/lib/db/group-members.ts",
-            "src/lib/db/expenses.ts",
-            "src/lib/db/expense-splits.ts",
-            "src/lib/db/settlements.ts"
+            "lib/db/expenses.ts",
+            "lib/db/expense-splits.ts",
+            "lib/db/settlements.ts"
           ],
           "branch": "cco/issue-289-em-1-w-3",
           "status": "merged",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T14:51:06.562Z",
+          "startedAt": "2026-01-20T14:50:19.632Z",
           "prNumber": 296,
           "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/296",
-          "completedAt": "2026-01-20T14:54:21.440Z"
+          "completedAt": "2026-01-20T14:55:52.061Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -89,61 +145,9 @@
       "focusArea": "Authentication System",
       "branch": "cco/issue-289-em-2",
       "status": "pr_created",
-      "workers": [
-        {
-          "id": 1,
-          "task": "Implement NextAuth.js configuration with Google OAuth and credentials provider, including database adapter for SQLite",
-          "files": [
-            "src/lib/auth.ts",
-            "src/lib/auth.config.ts",
-            "src/app/api/auth/[...nextauth]/route.ts"
-          ],
-          "branch": "cco/issue-289-em-2-w-1",
-          "status": "pr_created",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T14:59:38.252Z",
-          "prNumber": 297,
-          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/297",
-          "completedAt": "2026-01-20T15:05:12.761Z"
-        },
-        {
-          "id": 2,
-          "task": "Create authentication API routes for signup, login, and logout with credential validation",
-          "files": [
-            "src/app/api/auth/signup/route.ts",
-            "src/app/api/auth/logout/route.ts",
-            "src/lib/password.ts",
-            "src/lib/user-service.ts"
-          ],
-          "branch": "cco/issue-289-em-2-w-2",
-          "status": "merged",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T15:05:15.796Z",
-          "prNumber": 298,
-          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/298",
-          "completedAt": "2026-01-20T15:10:06.005Z"
-        },
-        {
-          "id": 3,
-          "task": "Implement protected route middleware and user profile management with registration",
-          "files": [
-            "src/middleware.ts",
-            "src/app/api/user/profile/route.ts",
-            "src/app/api/user/register/route.ts",
-            "src/lib/auth-utils.ts"
-          ],
-          "branch": "cco/issue-289-em-2-w-3",
-          "status": "merged",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T15:10:08.572Z",
-          "prNumber": 299,
-          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/299",
-          "completedAt": "2026-01-20T15:14:01.513Z"
-        }
-      ],
+      "workers": [],
       "reviewsAddressed": 0,
-      "prNumber": 301,
-      "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/301"
+      "error": "No workers merged - all had conflicts"
     },
     {
       "id": 3,
@@ -154,54 +158,61 @@
       "workers": [
         {
           "id": 1,
-          "task": "Create group management system including group CRUD operations, member management, and invite code generation. Create src/lib/groups/ directory with group-service.ts (business logic), group-storage.ts (SQLite database operations), group-types.ts (TypeScript interfaces), and invite-utils.ts (invite code generation/validation). These files handle creating groups, adding/removing members, role management (admin/member), and email/invite code functionality.",
+          "task": "Implement group management system - create groups table with UUID primary key, group CRUD operations in src/lib/groups.ts, group member management with role tracking (admin/member), invite code generation (8-character alphanumeric), email invitation system, and join group functionality",
           "files": [
-            "src/lib/groups/group-types.ts",
-            "src/lib/groups/group-storage.ts",
-            "src/lib/groups/group-service.ts",
-            "src/lib/groups/invite-utils.ts"
+            "src/lib/groups.ts",
+            "src/lib/invites.ts",
+            "src/db/schema-groups.ts",
+            "src/app/api/groups/route.ts",
+            "src/app/api/groups/[id]/route.ts",
+            "src/app/api/groups/[id]/members/route.ts",
+            "src/app/api/groups/[id]/invite/route.ts",
+            "src/app/api/groups/join/route.ts"
           ],
           "branch": "cco/issue-289-em-3-w-1",
           "status": "merged",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T15:19:24.615Z",
+          "startedAt": "2026-01-20T15:04:33.000Z",
           "prNumber": 302,
           "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/302",
-          "completedAt": "2026-01-20T15:21:58.840Z"
+          "completedAt": "2026-01-20T15:08:58.591Z"
         },
         {
           "id": 2,
-          "task": "Build balance calculation engine that tracks debts between group members. Create src/lib/balances/ directory with balance-calculator.ts (core calculation logic), balance-types.ts (balance interfaces), balance-storage.ts (persistence), and transaction-tracker.ts (expense-to-debt conversion). This handles split calculations, debt aggregation, and determining who owes whom for each group.",
+          "task": "Build balance calculation engine - create transaction model tracking all expenses and payments in src/lib/transactions.ts, implement balance calculation algorithm that computes net balances for each user (total owed - total paid), determine debt relationships between members, optimize calculation to avoid duplicate pairs, and create balance caching mechanism",
           "files": [
-            "src/lib/balances/balance-types.ts",
-            "src/lib/balances/balance-calculator.ts",
-            "src/lib/balances/balance-storage.ts",
-            "src/lib/balances/transaction-tracker.ts"
+            "src/lib/balances.ts",
+            "src/lib/transactions.ts",
+            "src/db/schema-transactions.ts",
+            "src/app/api/balances/route.ts",
+            "src/app/api/balances/[groupId]/route.ts"
           ],
           "branch": "cco/issue-289-em-3-w-2",
           "status": "merged",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T15:22:01.569Z",
+          "startedAt": "2026-01-20T15:09:00.079Z",
           "prNumber": 303,
           "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/303",
-          "completedAt": "2026-01-20T15:23:25.330Z"
+          "completedAt": "2026-01-20T15:11:37.965Z"
         },
         {
           "id": 3,
-          "task": "Implement settlement logic for marking debts as paid and tracking payment history. Create src/lib/settlements/ directory with settlement-service.ts (payment processing), settlement-storage.ts (database operations), settlement-types.ts (TypeScript interfaces), and payment-validator.ts (validation logic). This handles recording settlements, updating balances after payments, and maintaining payment history.",
+          "task": "Implement settlement logic - create payment recording system in src/lib/settlements.ts, build settlement API endpoints for marking debts as paid, handle partial and full settlements, validate settlement amounts against outstanding balances, create settlement history tracking, and implement webhook notifications for completed settlements",
           "files": [
-            "src/lib/settlements/settlement-types.ts",
-            "src/lib/settlements/settlement-storage.ts",
-            "src/lib/settlements/settlement-service.ts",
-            "src/lib/settlements/payment-validator.ts"
+            "src/lib/settlements.ts",
+            "src/db/schema-settlements.ts",
+            "src/app/api/settlements/route.ts",
+            "src/app/api/settlements/[id]/route.ts",
+            "src/app/api/settlements/[id]/confirm/route.ts",
+            "src/lib/webhooks.ts"
           ],
           "branch": "cco/issue-289-em-3-w-3",
           "status": "pr_created",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T15:23:27.249Z",
+          "startedAt": "2026-01-20T15:11:39.536Z",
           "prNumber": 304,
           "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/304",
-          "completedAt": "2026-01-20T15:25:50.017Z"
+          "completedAt": "2026-01-20T15:17:35.689Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -213,56 +224,58 @@
       "task": "Build expense management features: add expenses with description, amount, payer, and split configuration. Implement equal split logic among group members. Create expense editing and deletion. Build expense history and filtering capabilities",
       "focusArea": "Expense Management",
       "branch": "cco/issue-289-em-4",
-      "status": "workers_running",
+      "status": "pr_created",
       "workers": [
         {
           "id": 1,
-          "task": "Create core expense types and interfaces. Define data structures for expenses, splits, and expense filtering in src/types/expenses.ts. Create expense filter builder class in src/features/expenses/ExpenseFilter.ts",
+          "task": "Create core expense data models and types. Define expense interfaces, split configuration types, and expense filter types in src/features/expense/types.ts. Create expense validation utilities in src/features/expense/validation.ts.",
           "files": [
-            "src/types/expenses.ts",
-            "src/features/expenses/ExpenseFilter.ts"
+            "src/features/expense/types.ts",
+            "src/features/expense/validation.ts"
           ],
           "branch": "cco/issue-289-em-4-w-1",
-          "status": "pr_created",
+          "status": "merged",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T15:33:58.815Z",
+          "startedAt": "2026-01-20T15:22:50.536Z",
           "prNumber": 305,
           "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/305",
-          "completedAt": "2026-01-20T15:35:26.043Z"
+          "completedAt": "2026-01-20T15:24:41.588Z"
         },
         {
           "id": 2,
-          "task": "Implement expense CRUD operations. Create expense repository class in src/repositories/ExpenseRepository.ts for database operations. Build expense service with equal split logic in src/services/ExpenseService.ts. Create expense validator in src/validators/ExpenseValidator.ts",
+          "task": "Implement expense CRUD operations. Create expense database layer in src/features/expense/db/expense-db.ts with methods for create, update, delete, and list expenses. Implement equal split calculation logic in src/features/expense/services/split-calculator.ts.",
           "files": [
-            "src/repositories/ExpenseRepository.ts",
-            "src/services/ExpenseService.ts",
-            "src/validators/ExpenseValidator.ts"
+            "src/features/expense/db/expense-db.ts",
+            "src/features/expense/services/split-calculator.ts"
           ],
           "branch": "cco/issue-289-em-4-w-2",
           "status": "pr_created",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T15:35:27.538Z",
+          "startedAt": "2026-01-20T15:24:43.358Z",
           "prNumber": 306,
           "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/306",
-          "completedAt": "2026-01-20T15:39:16.637Z"
+          "completedAt": "2026-01-20T15:26:21.768Z"
         },
         {
           "id": 3,
-          "task": "Build expense API endpoints and UI components. Create API routes in app/api/expenses/route.ts and app/api/expenses/[id]/route.ts. Build expense list component with filtering in src/components/expenses/ExpenseList.tsx. Create expense form component in src/components/expenses/ExpenseForm.tsx. Build expense detail component in src/components/expenses/ExpenseDetail.tsx",
+          "task": "Build expense history and filtering UI. Create expense history page component in src/app/groups/[groupId]/expenses/page.tsx. Implement expense filtering logic in src/features/expense/services/expense-filter.ts. Create expense list component with history view in src/features/expense/components/expense-history.tsx.",
           "files": [
-            "app/api/expenses/route.ts",
-            "app/api/expenses/[id]/route.ts",
-            "src/components/expenses/ExpenseList.tsx",
-            "src/components/expenses/ExpenseForm.tsx",
-            "src/components/expenses/ExpenseDetail.tsx"
+            "src/app/groups/[groupId]/expenses/page.tsx",
+            "src/features/expense/services/expense-filter.ts",
+            "src/features/expense/components/expense-history.tsx"
           ],
           "branch": "cco/issue-289-em-4-w-3",
-          "status": "in_progress",
+          "status": "pr_created",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T15:39:18.512Z"
+          "startedAt": "2026-01-20T15:26:23.468Z",
+          "prNumber": 307,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/307",
+          "completedAt": "2026-01-20T15:30:23.132Z"
         }
       ],
-      "reviewsAddressed": 0
+      "reviewsAddressed": 0,
+      "prNumber": 311,
+      "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/311"
     },
     {
       "id": 5,
@@ -326,7 +339,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T15:39:20.912Z",
+  "updatedAt": "2026-01-20T15:39:22.174Z",
   "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
   "projectSetup": {
     "completed": false
