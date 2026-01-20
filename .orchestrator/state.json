@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "worker_review",
+  "phase": "project_setup",
   "workBranch": "cco/320-simple-notes-cli",
   "baseBranch": "main",
   "ems": [
@@ -18,53 +18,11 @@
       "task": "Set up project foundation with .gitignore (node_modules, .env, *.log), package.json with TypeScript, commander.js, and ts-node dev dependencies, tsconfig.json with ES2020 target and commonjs module",
       "focusArea": "Project Setup",
       "branch": "cco/issue-320-setup",
-      "status": "workers_running",
-      "workers": [
-        {
-          "id": 1,
-          "task": "Create .gitignore file with node_modules, .env, and *.log exclusions",
-          "files": [
-            ".gitignore"
-          ],
-          "branch": "cco/issue-320-setup-w-1",
-          "status": "merged",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T16:01:28.564Z",
-          "prNumber": 321,
-          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/321",
-          "completedAt": "2026-01-20T16:01:42.409Z"
-        },
-        {
-          "id": 2,
-          "task": "Create package.json with TypeScript, commander.js, and ts-node dev dependencies",
-          "files": [
-            "package.json"
-          ],
-          "branch": "cco/issue-320-setup-w-2",
-          "status": "pr_created",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T16:01:44.270Z",
-          "prNumber": 322,
-          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/322",
-          "completedAt": "2026-01-20T16:02:04.304Z"
-        },
-        {
-          "id": 3,
-          "task": "Create tsconfig.json with ES2020 target and commonjs module system",
-          "files": [
-            "tsconfig.json"
-          ],
-          "branch": "cco/issue-320-setup-w-3",
-          "status": "pr_created",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T16:02:05.885Z",
-          "prNumber": 323,
-          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/323",
-          "completedAt": "2026-01-20T16:02:27.267Z"
-        }
-      ],
+      "status": "pr_created",
+      "workers": [],
       "reviewsAddressed": 0,
-      "startedAt": "2026-01-20T16:01:19.716Z"
+      "startedAt": "2026-01-20T16:01:19.716Z",
+      "error": "No workers merged - all had conflicts"
     }
   ],
   "config": {
@@ -74,7 +32,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T16:01:05.257Z",
-  "updatedAt": "2026-01-20T16:07:11.166Z",
+  "updatedAt": "2026-01-20T16:07:12.636Z",
   "analysisSummary": "Build a TypeScript CLI notes app with commander.js, using JSON file storage. Supports adding notes (title + content), listing all notes, deleting by ID, and searching notes.",
   "projectSetup": {
     "completed": false
