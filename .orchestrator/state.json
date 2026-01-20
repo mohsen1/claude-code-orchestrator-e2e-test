@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "em_assignment",
+  "phase": "failed",
   "workBranch": "cco/320-simple-notes-cli",
   "baseBranch": "main",
   "ems": [
@@ -29,8 +29,20 @@
       "task": "Create src/types.ts defining Note interface (id, title, content, timestamp) and NotesStorage interface with load, save, add, delete, search, and getAll methods",
       "focusArea": "Type Definitions",
       "branch": "cco/issue-320-em-1",
-      "status": "pending",
-      "workers": [],
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create src/types.ts defining Note interface (id, title, content, timestamp) and NotesStorage interface with load, save, add, delete, search, and getAll methods",
+          "files": [
+            "src/types.ts"
+          ],
+          "branch": "cco/issue-320-em-1-w-1",
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T16:07:23.505Z"
+        }
+      ],
       "reviewsAddressed": 0
     },
     {
@@ -104,10 +116,11 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T16:01:05.257Z",
-  "updatedAt": "2026-01-20T16:07:34.124Z",
+  "updatedAt": "2026-01-20T16:07:41.601Z",
   "analysisSummary": "Build a TypeScript CLI notes app with commander.js, using JSON file storage. Supports adding notes (title + content), listing all notes, deleting by ID, and searching notes.",
   "projectSetup": {
     "completed": false
   },
-  "pendingEMs": []
+  "pendingEMs": [],
+  "error": "Failed to create PR from cco/issue-320-em-1-w-1 to cco/issue-320-em-1: Validation Failed: {\"resource\":\"PullRequest\",\"code\":\"custom\",\"message\":\"No commits between cco/issue-320-em-1 and cco/issue-320-em-1-w-1\"} - https://docs.github.com/rest/pulls/pulls#create-a-pull-request"
 }
