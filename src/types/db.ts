@@ -90,37 +90,56 @@ export const expenses = sqliteTable("expenses", {
  * Stores how expenses are split among group members
  * Ensures that sum of splits equals the expense amount
  */
-export const expenseSplits = sqliteTable("expense_splits", {
-  id: text("id").primaryKey(), // UUID
-  expenseId: text("expense_id")
-    .notNull()
-    .references(() => expenses.id, { onDelete: "cascade" }),
-  userId: text("user_id")
-    .notNull()
-    .references(() => users.id, { onDelete: "cascade" }),
-  amount: integer("amount").notNull(), // Stored in cents
-});
+export const expenseSplits = sqliteTable(
+  "expense_splits",
+  {
+    id: text("id").primaryKey(), // UUID
+    expenseId: text("expense_id")
+      .notNull()
+      .references(() => expenses.id, { onDelete: "cascade" }),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    amount: integer("amount").notNull(), // Stored in cents
+  },
+  (table) => ({
+    expenseUserUniqueIndex: uniqueIndex(
+      "expense_splits_expense_id_user_id_unique",
+    ).on(table.expenseId, table.userId),
+  }),
+);
 
 /**
  * Settlements Table
  * Records payments between users to settle debts
  */
-export const settlements = sqliteTable("settlements", {
-  id: text("id").primaryKey(), // UUID
-  groupId: text("group_id")
-    .notNull()
-    .references(() => groups.id, { onDelete: "cascade" }),
-  fromUserId: text("from_user_id")
-    .notNull()
-    .references(() => users.id, { onDelete: "restrict" }),
-  toUserId: text("to_user_id")
-    .notNull()
-    .references(() => users.id, { onDelete: "restrict" }),
-  amount: integer("amount").notNull(), // Stored in cents (must be positive)
-  settledAt: integer("settled_at", { mode: "timestamp" })
-    .notNull()
-    .default(sql`(unixepoch())`),
-});
+export const settlements = sqliteTable(
+  "settlements",
+  {
+    id: text("id").primaryKey(), // UUID
+    groupId: text("group_id")
+      .notNull()
+      .references(() => groups.id, { onDelete: "cascade" }),
+    fromUserId: text("from_user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "restrict" }),
+    toUserId: text("to_user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "restrict" }),
+    amount: integer("amount").notNull(), // Stored in cents (must be positive)
+    settledAt: integer("settled_at", { mode: "timestamp" })
+      .notNull()
+      .default(sql`(unixepoch())`),
+  },
+  (table) => ({
+    // Prevent duplicate settlements between the same users at the exact same time
+    fromToSettledAtUniqueIndex: uniqueIndex(
+      "settlements_from_to_settled_at_unique",
+    ).on(table.fromUserId, table.toUserId, table.settledAt),
+    // Check constraint is added via SQL in migration
+    // fromUserId != toUserId to prevent self-settlement
+  })
+);
 
 /**
  * Type Exports

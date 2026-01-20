@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { SUPPORTED_CURRENCIES } from "./index";
 
 /**
  * Common Validation Schemas
@@ -32,7 +33,8 @@ export const passwordSchema = z
   .max(128, "Password is too long")
   .regex(/[A-Z]/, "Password must contain at least one uppercase letter")
   .regex(/[a-z]/, "Password must contain at least one lowercase letter")
-  .regex(/[0-9]/, "Password must contain at least one number");
+  .regex(/[0-9]/, "Password must contain at least one number")
+  .regex(/[!@#$%^&*]/, "Password must contain at least one special character");
 
 /**
  * Money Amount Validation
@@ -58,6 +60,9 @@ export const currencySchema = z
   .uppercase()
   .refine((val) => /^[A-Z]{3}$/.test(val), {
     message: "Invalid currency code format",
+  })
+  .refine((val) => Object.keys(SUPPORTED_CURRENCIES).includes(val), {
+    message: "Unsupported currency code",
   });
 
 /**
@@ -160,36 +165,55 @@ export const updateMemberRoleSchema = z.object({
  * Schema for creating an expense
  * Amount should be provided in cents (integer)
  */
-export const createExpenseSchema = z.object({
-  groupId: uuidSchema,
-  payerId: uuidSchema,
-  amount: amountInCentsSchema,
-  description: z
-    .string()
-    .min(1, "Description is required")
-    .max(500, "Description is too long")
-    .trim(),
-  date: dateSchema.optional(),
-  splits: z
-    .array(
-      z.object({
-        userId: uuidSchema,
-        amount: amountInCentsSchema,
-      })
-    )
-    .min(1, "At least one split is required")
-    .refine(
-      (splits) => {
-        // Ensure all userIds are unique
-        const userIds = splits.map((s) => s.userId);
-        return new Set(userIds).size === userIds.length;
-      },
-      {
-        message: "Each user can only appear once in splits",
-      }
-    )
-    .optional(),
-});
+export const createExpenseSchema = z
+  .object({
+    groupId: uuidSchema,
+    payerId: uuidSchema,
+    amount: amountInCentsSchema,
+    description: z
+      .string()
+      .min(1, "Description is required")
+      .max(500, "Description is too long")
+      .trim(),
+    date: dateSchema.optional(),
+    splits: z
+      .array(
+        z.object({
+          userId: uuidSchema,
+          amount: amountInCentsSchema,
+        })
+      )
+      .min(1, "At least one split is required")
+      .refine(
+        (splits) => {
+          // Ensure all userIds are unique
+          const userIds = splits.map((s) => s.userId);
+          return new Set(userIds).size === userIds.length;
+        },
+        {
+          message: "Each user can only appear once in splits",
+        }
+      )
+      .optional(),
+  })
+  .superRefine((data, ctx) => {
+    if (!data.splits) {
+      return;
+    }
+
+    const totalSplitAmount = data.splits.reduce(
+      (sum, split) => sum + split.amount,
+      0
+    );
+
+    if (totalSplitAmount !== data.amount) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        path: ["splits"],
+        message: "Sum of split amounts must equal total expense amount",
+      });
+    }
+  });
 
 /**
  * Schema for updating an expense
@@ -212,22 +236,32 @@ export const updateExpenseSchema = z.object({
 /**
  * Schema for recording a settlement payment
  */
-export const createSettlementSchema = z.object({
-  groupId: uuidSchema,
-  fromUserId: uuidSchema,
-  toUserId: uuidSchema,
-  amount: amountInCentsSchema,
-});
+export const createSettlementSchema = z
+  .object({
+    groupId: uuidSchema,
+    fromUserId: uuidSchema,
+    toUserId: uuidSchema,
+    amount: amountInCentsSchema,
+  })
+  .refine((data) => data.fromUserId !== data.toUserId, {
+    message: "fromUserId and toUserId must be different",
+    path: ["toUserId"],
+  });
 
 /**
  * Schema for bulk creating settlements (simplified debts)
  */
 export const createBulkSettlementsSchema = z.array(
-  z.object({
-    fromUserId: uuidSchema,
-    toUserId: uuidSchema,
-    amount: amountInCentsSchema,
-  })
+  z
+    .object({
+      fromUserId: uuidSchema,
+      toUserId: uuidSchema,
+      amount: amountInCentsSchema,
+    })
+    .refine((data) => data.fromUserId !== data.toUserId, {
+      message: "fromUserId and toUserId must be different",
+      path: ["toUserId"],
+    })
 );
 
 /**

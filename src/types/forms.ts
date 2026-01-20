@@ -63,10 +63,17 @@ export type UpdateGroupFormData = z.infer<typeof updateGroupSchema>;
  * Used for adding a new expense
  *
  * Note: The form accepts amount in decimal format (e.g., "10.50" for $10.50)
- * but will be converted to cents (1050) before submission to the API
+ * but will be converted to cents (1050) before submission to the API.
+ *
+ * The splits field (if present) also uses ExpenseSplitFormData so that
+ * split amounts are represented as decimal strings in the form.
  */
-export type CreateExpenseFormData = Omit<z.infer<typeof createExpenseSchema>, "amount"> & {
+export type CreateExpenseFormData = Omit<
+  z.infer<typeof createExpenseSchema>,
+  "amount" | "splits"
+> & {
   amount: string; // Decimal string for display (e.g., "10.50")
+  splits?: ExpenseSplitFormData[]; // Form-friendly splits with string amounts
 };
 
 /**
@@ -99,8 +106,8 @@ export interface ExpenseSplitFormData {
  * Create Settlement Form Fields
  * Used for recording a payment between users
  */
-export type CreateSettlementFormData = z.infer<typeof createSettlementSchema> & {
-  amount: string; // Decimal string for display
+export type CreateSettlementFormData = Omit<z.infer<typeof createSettlementSchema>, "amount"> & {
+  amount: string; // Decimal string for display (e.g., "10.50")
 };
 
 /**
@@ -247,7 +254,6 @@ export interface InviteMemberFormData {
 export interface GroupSettingsFormData {
   name: string;
   currency: string;
-  defaultCurrency: string;
 }
 
 /**
