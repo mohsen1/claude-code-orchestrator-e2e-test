@@ -29,6 +29,38 @@ db.exec(`
     FOREIGN KEY (group_id) REFERENCES groups(id),
     FOREIGN KEY (user_id) REFERENCES users(id)
   );
+
+  CREATE TABLE IF NOT EXISTS expenses (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER NOT NULL,
+    paid_by INTEGER NOT NULL,
+    amount REAL NOT NULL,
+    description TEXT,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (group_id) REFERENCES groups(id),
+    FOREIGN KEY (paid_by) REFERENCES users(id)
+  );
+
+  CREATE TABLE IF NOT EXISTS expense_splits (
+    expense_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL,
+    amount REAL NOT NULL,
+    PRIMARY KEY (expense_id, user_id),
+    FOREIGN KEY (expense_id) REFERENCES expenses(id),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+  );
+
+  CREATE TABLE IF NOT EXISTS settlements (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER NOT NULL,
+    from_user INTEGER NOT NULL,
+    to_user INTEGER NOT NULL,
+    amount REAL NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (group_id) REFERENCES groups(id),
+    FOREIGN KEY (from_user) REFERENCES users(id),
+    FOREIGN KEY (to_user) REFERENCES users(id)
+  );
 `);
 
 export interface Group {
