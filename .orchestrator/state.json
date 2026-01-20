@@ -42,8 +42,9 @@
             ".env.local"
           ],
           "branch": "cco/issue-271-em-1-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T14:11:14.126Z"
         },
         {
           "id": 2,
@@ -104,7 +105,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T13:41:56.580Z",
-  "updatedAt": "2026-01-20T14:11:11.627Z",
+  "updatedAt": "2026-01-20T14:11:14.126Z",
   "analysisSummary": "Build a Splitwise-like expense sharing web app with Next.js 14, featuring OAuth authentication, expense group management, real-time balance tracking, and debt settlement functionality using Socket.io for live updates.",
   "projectSetup": {
     "completed": false
