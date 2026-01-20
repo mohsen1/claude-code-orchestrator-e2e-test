@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "project_setup",
+  "phase": "em_assignment",
   "workBranch": "cco/329-simple-calculator-cli",
   "baseBranch": "main",
   "ems": [
@@ -23,21 +23,7 @@
       "reviewsAddressed": 0,
       "startedAt": "2026-01-20T16:34:40.242Z",
       "error": "No workers merged - all skipped/failed"
-    }
-  ],
-  "config": {
-    "maxEms": 10,
-    "maxWorkersPerEm": 3,
-    "reviewWaitMinutes": 5,
-    "prLabel": "cco"
-  },
-  "createdAt": "2026-01-20T16:34:14.562Z",
-  "updatedAt": "2026-01-20T16:40:47.226Z",
-  "analysisSummary": "Implement a simple TypeScript CLI calculator with support for add, subtract, multiply, and divide operations. The project will use TypeScript with proper module structure, calculator class for core operations, and CLI entry point for command-line interaction.",
-  "projectSetup": {
-    "completed": false
-  },
-  "pendingEMs": [
+    },
     {
       "id": 1,
       "task": "Implement Calculator class with add, subtract, multiply, and divide methods following clean code principles",
@@ -57,6 +43,19 @@
       "reviewsAddressed": 0
     }
   ],
+  "config": {
+    "maxEms": 10,
+    "maxWorkersPerEm": 3,
+    "reviewWaitMinutes": 5,
+    "prLabel": "cco"
+  },
+  "createdAt": "2026-01-20T16:34:14.562Z",
+  "updatedAt": "2026-01-20T16:40:49.017Z",
+  "analysisSummary": "Implement a simple TypeScript CLI calculator with support for add, subtract, multiply, and divide operations. The project will use TypeScript with proper module structure, calculator class for core operations, and CLI entry point for command-line interaction.",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": [],
   "errorHistory": [
     {
       "timestamp": "2026-01-20T16:40:47.226Z",
