@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "project_setup",
+  "phase": "em_assignment",
   "workBranch": "cco/289-splitwise-clone-v2",
   "baseBranch": "main",
   "ems": [
@@ -23,21 +23,7 @@
       "reviewsAddressed": 0,
       "startedAt": "2026-01-20T14:36:02.573Z",
       "error": "No workers merged - all had conflicts"
-    }
-  ],
-  "config": {
-    "maxEms": 10,
-    "maxWorkersPerEm": 3,
-    "reviewWaitMinutes": 5,
-    "prLabel": "cco"
-  },
-  "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T14:46:39.004Z",
-  "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
-  "projectSetup": {
-    "completed": false
-  },
-  "pendingEMs": [
+    },
     {
       "id": 1,
       "task": "Design and implement SQLite database schema with better-sqlite3, including tables for users, groups, group_members, expenses, expense_splits, and settlements. Create database initialization and connection utilities. Implement all database access layer functions for CRUD operations",
@@ -128,5 +114,18 @@
       "workers": [],
       "reviewsAddressed": 0
     }
-  ]
+  ],
+  "config": {
+    "maxEms": 10,
+    "maxWorkersPerEm": 3,
+    "reviewWaitMinutes": 5,
+    "prLabel": "cco"
+  },
+  "createdAt": "2026-01-20T14:35:40.427Z",
+  "updatedAt": "2026-01-20T14:46:40.055Z",
+  "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": []
 }
