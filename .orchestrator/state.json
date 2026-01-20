@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "worker_review",
+  "phase": "final_merge",
   "workBranch": "cco/87-simple-note-taking-cli-app",
   "baseBranch": "main",
   "ems": [
@@ -18,7 +18,7 @@
       "task": "Create project foundation: .gitignore, package.json with dependencies (commander.js, typescript, @types/node), tsconfig.json, and src/ folder structure",
       "focusArea": "Project Setup",
       "branch": "cco/issue-87-setup",
-      "status": "workers_running",
+      "status": "merged",
       "workers": [
         {
           "id": 1,
@@ -43,9 +43,12 @@
             "src/index.ts"
           ],
           "branch": "cco/issue-87-setup-w-2",
-          "status": "in_progress",
+          "status": "merged",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T00:00:42.998Z"
+          "startedAt": "2026-01-20T00:00:42.998Z",
+          "prNumber": 89,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/89",
+          "completedAt": "2026-01-20T00:01:03.910Z"
         },
         {
           "id": 3,
@@ -56,12 +59,18 @@
             "src/notes.ts"
           ],
           "branch": "cco/issue-87-setup-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "pr_created",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T00:01:04.093Z",
+          "prNumber": 90,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/90",
+          "completedAt": "2026-01-20T00:01:44.101Z"
         }
       ],
       "reviewsAddressed": 0,
-      "startedAt": "2026-01-20T00:00:14.312Z"
+      "startedAt": "2026-01-20T00:00:14.312Z",
+      "prNumber": 91,
+      "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/91"
     }
   ],
   "config": {
@@ -71,7 +80,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T00:00:05.359Z",
-  "updatedAt": "2026-01-20T00:00:42.998Z",
+  "updatedAt": "2026-01-20T00:01:49.122Z",
   "analysisSummary": "Implement a TypeScript CLI note-taking app with add, list, delete, and search commands using commander.js and JSON file storage",
   "projectSetup": {
     "completed": false
