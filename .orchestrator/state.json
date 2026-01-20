@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "worker_execution",
+  "phase": "worker_review",
   "workBranch": "cco/289-splitwise-clone-v2",
   "baseBranch": "main",
   "ems": [
@@ -120,9 +120,12 @@
             "app/api/groups/join/[code]/route.ts"
           ],
           "branch": "cco/issue-289-em-3-w-1",
-          "status": "in_progress",
+          "status": "pr_created",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T15:05:42.134Z"
+          "startedAt": "2026-01-20T15:05:42.134Z",
+          "prNumber": 302,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/302",
+          "completedAt": "2026-01-20T15:07:26.348Z"
         },
         {
           "id": 2,
@@ -228,7 +231,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T15:05:42.134Z",
+  "updatedAt": "2026-01-20T15:07:26.348Z",
   "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
   "projectSetup": {
     "completed": false
