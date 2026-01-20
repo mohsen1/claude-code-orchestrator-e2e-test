@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "issue": {
+    "number": 213,
+    "title": "Splitwise Clone App",
+    "body": "## Overview\nBuild an expense-sharing app where friends can track shared expenses and settle debts.\n\n## Features\n- Google OAuth + email/password login\n- Create groups, invite members\n- Add expenses, split equally\n- Real-time balance calculations\n- Settle up functionality\n\n## Tech Stack\n- Next.js 14 App Router\n- Tailwind CSS + shadcn/ui\n- Lucide React icons\n- SQLite with better-sqlite3\n- NextAuth.js\n- Socket.io\n\n## Design\n- Clean minimal design, mobile-first\n- Use shadcn/ui components\n\n## Pages\n- Landing, Login, Dashboard, Group detail, Create group"
+  },
+  "repo": {
+    "owner": "mohsen1",
+    "name": "claude-code-orchestrator-e2e-test"
+  },
+  "phase": "initialized",
+  "workBranch": "cco/213-splitwise-clone-app",
+  "baseBranch": "main",
+  "ems": [],
+  "config": {
+    "maxEms": 3,
+    "maxWorkersPerEm": 3,
+    "reviewWaitMinutes": 5,
+    "prLabel": "cco"
+  },
+  "createdAt": "2026-01-20T07:33:50.800Z",
+  "updatedAt": "2026-01-20T07:33:50.992Z"
+}
