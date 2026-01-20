@@ -12,6 +12,7 @@
   "dependencies": {
     "@auth/google-provider": "^1.0.0",
     "@prisma/client": "^5.7.1",
+    "@radix-ui/react-slot": "^1.0.2",
     "better-sqlite3": "^9.2.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
