@@ -29,7 +29,7 @@
             "tsconfig.json"
           ],
           "branch": "cco/issue-329-setup-w-1",
-          "status": "pr_created",
+          "status": "merged",
           "reviewsAddressed": 0,
           "startedAt": "2026-01-20T16:34:51.404Z",
           "prNumber": 330,
@@ -76,7 +76,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T16:34:14.562Z",
-  "updatedAt": "2026-01-20T16:36:37.746Z",
+  "updatedAt": "2026-01-20T16:40:45.803Z",
   "analysisSummary": "Implement a simple TypeScript CLI calculator with support for add, subtract, multiply, and divide operations. The project will use TypeScript with proper module structure, calculator class for core operations, and CLI entry point for command-line interaction.",
   "projectSetup": {
     "completed": false
