@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "worker_review",
+  "phase": "worker_execution",
   "workBranch": "cco/289-splitwise-clone-v2",
   "baseBranch": "main",
   "ems": [
@@ -267,8 +267,51 @@
       "task": "Implement Socket.io server for real-time updates. Create events for new expenses, group changes, member joins/leaves, and settlements. Build presence system for active users. Handle connection/disconnection and room management per group",
       "focusArea": "Real-time Socket.io",
       "branch": "cco/issue-289-em-5",
-      "status": "pending",
-      "workers": [],
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create Socket.io server with HTTP server initialization, socket configuration, and basic connection/disconnection handling. Implement room management system for groups (join/leave rooms). Set up socket middleware for authentication validation.",
+          "files": [
+            "src/socket/server.ts",
+            "src/socket/config.ts",
+            "src/socket/middleware.ts",
+            "src/socket/rooms.ts"
+          ],
+          "branch": "cco/issue-289-em-5-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Implement all Socket.io event handlers and emitters. Create events for: new expenses, expense updates, group changes (name, description), member joins, member leaves, settlements, and balance updates. Wire up all event handlers to trigger appropriate database operations and broadcast to rooms.",
+          "files": [
+            "src/socket/events/index.ts",
+            "src/socket/events/expense-events.ts",
+            "src/socket/events/group-events.ts",
+            "src/socket/events/member-events.ts",
+            "src/socket/events/settlement-events.ts",
+            "src/socket/events/balance-events.ts"
+          ],
+          "branch": "cco/issue-289-em-5-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Build presence system for active users tracking. Implement user online/offline status, typing indicators, and active users per group. Create presence data structure with TTL and cleanup. Handle connection/disconnection events to update presence. Broadcast presence changes to relevant rooms.",
+          "files": [
+            "src/socket/presence/index.ts",
+            "src/socket/presence/tracker.ts",
+            "src/socket/presence/events.ts",
+            "src/socket/presence/types.ts",
+            "src/socket/utils.ts"
+          ],
+          "branch": "cco/issue-289-em-5-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
       "reviewsAddressed": 0
     },
     {
@@ -324,7 +367,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T15:25:54.666Z",
+  "updatedAt": "2026-01-20T15:26:09.573Z",
   "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
   "projectSetup": {
     "completed": false
