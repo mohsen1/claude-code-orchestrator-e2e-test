@@ -80,9 +80,12 @@
             "src/lib/protected-route.ts"
           ],
           "branch": "cco/issue-271-em-1-w-3",
-          "status": "in_progress",
+          "status": "pr_created",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T14:18:19.277Z"
+          "startedAt": "2026-01-20T14:18:19.277Z",
+          "prNumber": 278,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/278",
+          "completedAt": "2026-01-20T14:21:01.541Z"
         }
       ],
       "reviewsAddressed": 0
@@ -113,7 +116,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T13:41:56.580Z",
-  "updatedAt": "2026-01-20T14:18:19.277Z",
+  "updatedAt": "2026-01-20T14:21:01.541Z",
   "analysisSummary": "Build a Splitwise-like expense sharing web app with Next.js 14, featuring OAuth authentication, expense group management, real-time balance tracking, and debt settlement functionality using Socket.io for live updates.",
   "projectSetup": {
     "completed": false
