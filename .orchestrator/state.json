@@ -333,7 +333,7 @@
       "task": "Build landing page with hero section and feature highlights. Create login and signup pages with forms for both OAuth and email/password. Implement form validation and error handling. Add responsive navigation and footer components",
       "focusArea": "Authentication UI",
       "branch": "cco/issue-289-em-6",
-      "status": "workers_running",
+      "status": "pr_created",
       "workers": [
         {
           "id": 1,
@@ -384,7 +384,8 @@
           "completedAt": "2026-01-20T15:45:59.587Z"
         }
       ],
-      "reviewsAddressed": 0
+      "reviewsAddressed": 0,
+      "error": "No workers merged - all had conflicts"
     },
     {
       "id": 7,
@@ -430,7 +431,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T15:45:59.587Z",
+  "updatedAt": "2026-01-20T15:51:03.169Z",
   "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
   "projectSetup": {
     "completed": false
