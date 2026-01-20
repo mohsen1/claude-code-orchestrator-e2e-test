@@ -17,6 +17,11 @@ export function formatCurrency(amount: number, currency: string = 'USD'): string
     throw new Error('Amount must be an integer representing cents');
   }
 
+  // Validate currency is supported
+  if (!SUPPORTED_CURRENCIES.includes(currency as SupportedCurrency)) {
+    throw new Error(`Unsupported currency code: ${currency}. Supported currencies are: ${SUPPORTED_CURRENCIES.join(', ')}`);
+  }
+
   // Divide by 100 to get dollars
   const dollars = amount / 100;
 
@@ -48,6 +53,10 @@ export function toCents(amount: number): number {
 export function splitEqually(totalAmount: number, numPeople: number): number[] {
   if (numPeople <= 0) {
     throw new Error('Number of people must be greater than 0');
+  }
+
+  if (!Number.isInteger(numPeople)) {
+    throw new Error('Number of people must be an integer');
   }
 
   if (!Number.isInteger(totalAmount)) {
@@ -134,11 +143,7 @@ export function calculateSettlements(
  * @returns UUID string
  */
 export function generateUUID(): string {
-  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
-    const r = (Math.random() * 16) | 0;
-    const v = c === 'x' ? r : (r & 0x3) | 0x8;
-    return v.toString(16);
-  });
+  return crypto.randomUUID();
 }
 
 /**
@@ -148,7 +153,18 @@ export function generateUUID(): string {
  * @returns Truncated text
  */
 export function truncate(text: string, maxLength: number): string {
+  // Handle non-positive lengths
+  if (maxLength <= 0) return '';
+
+  // If text already fits, return as-is
   if (text.length <= maxLength) return text;
+
+  // For very small maxLength, truncate without ellipsis to respect maxLength
+  if (maxLength <= 3) {
+    return text.slice(0, maxLength);
+  }
+
+  // Reserve 3 characters for ellipsis
   return `${text.slice(0, maxLength - 3)}...`;
 }
 
@@ -158,7 +174,7 @@ export function truncate(text: string, maxLength: number): string {
  * @returns True if valid
  */
 export function isValidEmail(email: string): boolean {
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
   return emailRegex.test(email);
 }
 
@@ -180,28 +196,52 @@ export function formatDate(date: Date, locale: string = 'en-US'): string {
  * Calculate the time ago from a date
  * @param date - Date to compare
  * @returns Relative time string (e.g., "2 hours ago")
+ *
+ * @note This function uses approximate interval values for calculations:
+ * - Month: 30 days (2,592,000 seconds)
+ * - Year: 365 days (31,536,000 seconds)
+ *
+ * These approximations may not match exact calendar periods. For example,
+ * actual months vary from 28-31 days, and years can be 365 or 366 days.
+ * For precise calendar-aware calculations, consider using a date library
+ * like date-fns or dayjs.
  */
 export function timeAgo(date: Date): string {
   const seconds = Math.floor((Date.now() - date.getTime()) / 1000);
 
+  // Approximate intervals (may not match exact calendar periods)
   const intervals = {
-    year: 31536000,
-    month: 2592000,
-    week: 604800,
-    day: 86400,
-    hour: 3600,
-    minute: 60,
+    year: 31536000,   // 365 days
+    month: 2592000,   // 30 days
+    week: 604800,     // 7 days
+    day: 86400,       // 24 hours
+    hour: 3600,       // 60 minutes
+    minute: 60,       // 60 seconds
     second: 1,
   };
 
+  // Past dates
+  if (seconds >= 0) {
+    for (const [unit, secondsInUnit] of Object.entries(intervals)) {
+      const interval = Math.floor(seconds / secondsInUnit);
+      if (interval >= 1) {
+        return `${interval} ${unit}${interval > 1 ? 's' : ''} ago`;
+      }
+    }
+
+    return 'just now';
+  }
+
+  // Future dates
+  const absSeconds = Math.abs(seconds);
   for (const [unit, secondsInUnit] of Object.entries(intervals)) {
-    const interval = Math.floor(seconds / secondsInUnit);
+    const interval = Math.floor(absSeconds / secondsInUnit);
     if (interval >= 1) {
-      return `${interval} ${unit}${interval > 1 ? 's' : ''} ago`;
+      return `in ${interval} ${unit}${interval > 1 ? 's' : ''}`;
     }
   }
 
-  return 'just now';
+  return 'in a moment';
 }
 
 // Constants
@@ -215,7 +255,7 @@ export const SUPPORTED_CURRENCIES = [
   'INR',
 ] as const;
 
-export const CURRENCY_SYMBOLS: Record<string, string> = {
+export const CURRENCY_SYMBOLS: Record<SupportedCurrency, string> = {
   USD: '$',
   EUR: '€',
   GBP: '£',

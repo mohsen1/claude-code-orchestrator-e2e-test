@@ -130,12 +130,6 @@ Run the test suite:
 npm run test
 ```
 
-Run tests with coverage:
-
-```bash
-npm run test:coverage
-```
-
 ## 📝 Project Structure
 
 ```
