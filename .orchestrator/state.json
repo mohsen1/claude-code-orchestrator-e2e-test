@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "issue": {
+    "number": 186,
+    "title": "Splitwise Clone - Expense Sharing App",
+    "body": "## Overview\nBuild a modern expense-sharing web app where friends can track shared expenses and settle debts.\n\n## Features\n\n### Authentication\n- Google OAuth sign-in\n- Email/password registration and login\n\n### Groups\n- Create expense groups (roommates, trips, events)\n- Invite members by email\n- Dashboard with all groups and balance summaries\n\n### Expenses\n- Add expenses with description, amount, payer\n- Split equally among group members\n- View expense history\n\n### Balances\n- Real-time balance calculations\n- Simplified debt algorithm (minimize transactions)\n- Settle up functionality\n\n### Real-time Updates\n- Live updates when expenses change\n- No page refresh needed\n\n## Tech Stack\n\n### Setup (use npm for latest versions)\n```bash\nnpx create-next-app@latest --typescript --tailwind --eslint --app\nnpx shadcn@latest init\nnpm install better-sqlite3 @types/better-sqlite3\nnpm install next-auth\nnpm install lucide-react\nnpm install socket.io socket.io-client\n```\n\n### Stack\n- Next.js 14 App Router\n- Tailwind CSS + shadcn/ui\n- Lucide React icons\n- SQLite with better-sqlite3\n- NextAuth.js (Google + Credentials)\n- Socket.io for real-time\n\n## Design\n- Clean, minimal - not generic AI look\n- Distinctive color palette (avoid purple gradients)\n- Mobile-first responsive design\n- Smooth micro-animations\n- Use shadcn/ui components: Card, Button, Input, Avatar, Dialog, Toast\n\n## Pages\n- `/` - Landing\n- `/login` - Auth (Google + email/password)\n- `/dashboard` - Groups overview\n- `/groups/[id]` - Group detail\n- `/groups/new` - Create group"
+  },
+  "repo": {
+    "owner": "mohsen1",
+    "name": "claude-code-orchestrator-e2e-test"
+  },
+  "phase": "initialized",
+  "workBranch": "cco/186-splitwise-clone-expense-sharing-app",
+  "baseBranch": "main",
+  "ems": [],
+  "config": {
+    "maxEms": 3,
+    "maxWorkersPerEm": 3,
+    "reviewWaitMinutes": 5,
+    "prLabel": "cco"
+  },
+  "createdAt": "2026-01-20T05:35:41.314Z",
+  "updatedAt": "2026-01-20T05:35:41.450Z"
+}
