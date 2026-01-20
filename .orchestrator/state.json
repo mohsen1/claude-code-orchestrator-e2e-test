@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "issue": {
+    "number": 366,
+    "title": "Build SplitSync (Expense Sharing App)",
+    "body": "Build a full-stack expense sharing web application (like Splitwise) with the following features:\n\n## Core Features\n1. **User Authentication** - Email/password and Google OAuth login\n2. **Group Management** - Create groups, invite members, manage group settings\n3. **Expense Tracking** - Add expenses with description, amount, date, category\n4. **Expense Splitting** - Equal splits among group members\n5. **Settlement** - Track who owes whom and settle debts\n\n## Tech Stack\n- **Frontend**: Next.js 14 (App Router), React 18, TypeScript, Tailwind CSS, shadcn/ui\n- **Backend**: Next.js API Routes, NextAuth.js v5\n- **Database**: SQLite with Drizzle ORM\n- **Real-time**: Socket.io for live updates\n- **Validation**: Zod schemas, React Hook Form\n- **Testing**: Vitest\n\n## Requirements\n- Mobile-responsive design\n- Real-time expense updates within groups\n- Clean, modern UI with proper loading states\n- Type-safe throughout the codebase"
+  },
+  "repo": {
+    "owner": "mohsen1",
+    "name": "claude-code-orchestrator-e2e-test"
+  },
+  "phase": "initialized",
+  "workBranch": "cco/366-build-splitsync-expense-sharing-app",
+  "baseBranch": "main",
+  "ems": [],
+  "config": {
+    "maxEms": 10,
+    "maxWorkersPerEm": 3,
+    "reviewWaitMinutes": 4,
+    "prLabel": "cco"
+  },
+  "createdAt": "2026-01-20T19:08:36.578Z",
+  "updatedAt": "2026-01-20T19:08:36.737Z"
+}
