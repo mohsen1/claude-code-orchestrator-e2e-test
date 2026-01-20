@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "em_assignment",
+  "phase": "worker_execution",
   "workBranch": "cco/289-splitwise-clone-v2",
   "baseBranch": "main",
   "ems": [
@@ -39,8 +39,51 @@
       "task": "Configure NextAuth.js for authentication with both Google OAuth provider and email/password credentials. Implement session management, API routes for login/signup/logout, and protected route middleware. Create user registration and profile management",
       "focusArea": "Authentication System",
       "branch": "cco/issue-289-em-2",
-      "status": "pending",
-      "workers": [],
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Set up NextAuth.js configuration with Google OAuth and Credentials provider. Create authentication API routes and core configuration files including environment variable setup, NextAuth options, and JWT configuration.",
+          "files": [
+            ".env.local",
+            "src/app/api/auth/[...nextauth]/route.ts",
+            "src/lib/auth.ts",
+            "src/lib/auth.config.ts"
+          ],
+          "branch": "cco/issue-289-em-2-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Create user database schema and authentication services. Implement user registration, password hashing, user lookup, and profile management functions using better-sqlite3.",
+          "files": [
+            "src/lib/db/schema.ts",
+            "src/lib/db/user.service.ts",
+            "src/lib/db/password.service.ts",
+            "src/lib/db/index.ts"
+          ],
+          "branch": "cco/issue-289-em-2-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Build authentication UI components and pages. Create login/signup forms with tabs for Google OAuth and email/password, protected route middleware, and session management utilities.",
+          "files": [
+            "src/app/login/page.tsx",
+            "src/app/signup/page.tsx",
+            "src/components/auth/login-form.tsx",
+            "src/components/auth/signup-form.tsx",
+            "src/middleware.ts",
+            "src/lib/session.ts",
+            "src/components/auth/auth-provider.tsx"
+          ],
+          "branch": "cco/issue-289-em-2-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
       "reviewsAddressed": 0
     },
     {
@@ -123,7 +166,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T14:54:18.558Z",
+  "updatedAt": "2026-01-20T14:54:30.311Z",
   "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
   "projectSetup": {
     "completed": false
