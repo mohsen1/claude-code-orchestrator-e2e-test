@@ -1,0 +1,8 @@
+node_modules/
+build/
+dist/
+*.log
+.env
+counter.json
+*.tgz
+.DS_Store
