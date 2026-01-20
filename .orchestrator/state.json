@@ -9,10 +9,20 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "analyzing",
+  "phase": "project_setup",
   "workBranch": "cco/377-build-splitsync-expense-sharing-app",
   "baseBranch": "main",
-  "ems": [],
+  "ems": [
+    {
+      "id": 0,
+      "task": "Initialize project foundation: create Next.js 14 app with TypeScript strict mode, configure .gitignore, package.json with all dependencies (NextAuth, Drizzle, Socket.io, Zod, React Hook Form, shadcn/ui, Vitest), tsconfig.json, and shared types directory with common interfaces (User, Group, Expense schemas)",
+      "focusArea": "Project Setup",
+      "branch": "cco/issue-377-setup",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ],
   "config": {
     "maxEms": 10,
     "maxWorkersPerEm": 3,
@@ -20,5 +30,101 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T20:58:54.231Z",
-  "updatedAt": "2026-01-20T20:58:56.517Z"
+  "updatedAt": "2026-01-20T20:59:27.221Z",
+  "analysisSummary": "Build SplitSync, a production-ready expense sharing application with Next.js 14, TypeScript, SQLite (Drizzle ORM), NextAuth.js, and Socket.io real-time updates. Features include group management, robust expense splitting with integer math to avoid floating-point errors, settlement calculations, and comprehensive CI/CD with Docker deployment.",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": [
+    {
+      "id": 1,
+      "task": "Design and implement Drizzle ORM database schema with SQLite: create db directory, configure Drizzle with better-sqlite3, define all tables (Users, Groups, GroupMembers, Expenses, ExpenseSplits, Settlements, Invites) with proper foreign keys, create migration files, and implement database connection utilities",
+      "focusArea": "Database Schema & ORM",
+      "branch": "cco/issue-377-em-1",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 2,
+      "task": "Implement NextAuth.js v5 authentication: configure JWT strategy, setup Google OAuth provider and Credentials provider with bcrypt, create custom signin/register pages in app/auth/, implement middleware.ts for route protection, and create session management utilities",
+      "focusArea": "Authentication & Security",
+      "branch": "cco/issue-377-em-2",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 3,
+      "task": "Build custom Next.js server with Socket.io integration: create server.ts entry point, configure Socket.io with room-based groups (join_group event), implement socket event handlers (expense_added, expense_updated, group_updated), setup authentication middleware for socket connections",
+      "focusArea": "Real-Time Socket Server",
+      "branch": "cco/issue-377-em-3",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 4,
+      "task": "Create group management API routes and business logic: implement POST/GET/DELETE for groups (app/api/groups/), member invitation system with expiring invite links (app/api/invite/), group member management with RBAC (admin/member roles), and transactional database operations",
+      "focusArea": "Group Management APIs",
+      "branch": "cco/issue-377-em-4",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 5,
+      "task": "Implement expense management APIs with robust integer-based money math: create expense CRUD endpoints (app/api/expenses/), implement equal-split algorithm with remainder distribution (e.g., $100/3 = [33.34, 33.33, 33.33]), use database transactions for Expense + ExpenseSplits creation, integrate Socket.io events for real-time updates",
+      "focusArea": "Expense Management APIs",
+      "branch": "cco/issue-377-em-5",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 6,
+      "task": "Build settlement system: implement net balance calculation algorithm to simplify debt graphs, create settlement API endpoints (app/api/settlements/), generate settlement records (who owes whom), validation to prevent negative settlements, and settlement history tracking",
+      "focusArea": "Settlement & Balance Logic",
+      "branch": "cco/issue-377-em-6",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 7,
+      "task": "Create frontend UI for authentication and group management: build signin/register pages with form validation, group list view, create group modal with currency selection, group detail page, invite link generation UI, member management interface using shadcn/ui components and React Hook Form with Zod validation",
+      "focusArea": "Auth & Group UI",
+      "branch": "cco/issue-377-em-7",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 8,
+      "task": "Build expense management UI: create expense list view with filtering, add expense modal with amount/description/payer/split inputs, expense detail/edit/delete functionality, display currency formatting from integer amounts, implement optimistic UI updates with Socket.io fallback",
+      "focusArea": "Expense UI",
+      "branch": "cco/issue-377-em-8",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 9,
+      "task": "Implement settlement UI and dashboard: create balance overview showing net balances per user, settle up modal with suggested payments (who pays whom), settlement history view, visual indicators for positive/negative balances, confirm payment flow",
+      "focusArea": "Settlement & Dashboard UI",
+      "branch": "cco/issue-377-em-9",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 10,
+      "task": "Set up CI/CD pipeline and Docker deployment: create .github/workflows/ci.yml with lint/typecheck/test/build jobs, write Dockerfile with multi-stage build (builder/runner) for Next.js standalone mode, configure docker-compose.yml with SQLite volume persistence, implement /api/health endpoint, create deployment documentation (README.md with setup instructions)",
+      "focusArea": "CI/CD & Deployment",
+      "branch": "cco/issue-377-em-10",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ]
 }
