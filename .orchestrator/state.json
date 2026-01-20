@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "worker_review",
+  "phase": "em_review",
   "workBranch": "cco/289-splitwise-clone-v2",
   "baseBranch": "main",
   "ems": [
@@ -29,7 +29,7 @@
       "task": "Design and implement SQLite database schema with better-sqlite3, including tables for users, groups, group_members, expenses, expense_splits, and settlements. Create database initialization and connection utilities. Implement all database access layer functions for CRUD operations",
       "focusArea": "Database Layer",
       "branch": "cco/issue-289-em-1",
-      "status": "workers_running",
+      "status": "pr_created",
       "workers": [
         {
           "id": 1,
@@ -40,7 +40,7 @@
             "src/lib/db/index.ts"
           ],
           "branch": "cco/issue-289-em-1-w-1",
-          "status": "pr_created",
+          "status": "merged",
           "reviewsAddressed": 0,
           "startedAt": "2026-01-20T14:46:52.829Z",
           "prNumber": 293,
@@ -56,7 +56,7 @@
             "src/lib/db/queries/group-members.ts"
           ],
           "branch": "cco/issue-289-em-1-w-2",
-          "status": "pr_created",
+          "status": "merged",
           "reviewsAddressed": 0,
           "startedAt": "2026-01-20T14:47:58.182Z",
           "prNumber": 295,
@@ -72,7 +72,7 @@
             "src/lib/db/queries/settlements.ts"
           ],
           "branch": "cco/issue-289-em-1-w-3",
-          "status": "pr_created",
+          "status": "merged",
           "reviewsAddressed": 0,
           "startedAt": "2026-01-20T14:50:16.855Z",
           "prNumber": 296,
@@ -80,7 +80,9 @@
           "completedAt": "2026-01-20T14:55:27.692Z"
         }
       ],
-      "reviewsAddressed": 0
+      "reviewsAddressed": 0,
+      "prNumber": 300,
+      "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/300"
     },
     {
       "id": 2,
@@ -171,7 +173,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T14:55:27.692Z",
+  "updatedAt": "2026-01-20T15:00:30.838Z",
   "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
   "projectSetup": {
     "completed": false
