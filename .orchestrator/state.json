@@ -86,7 +86,7 @@
             "src/components/auth/signup-form.tsx"
           ],
           "branch": "cco/issue-289-em-2-w-3",
-          "status": "pr_created",
+          "status": "merged",
           "reviewsAddressed": 0,
           "startedAt": "2026-01-20T14:55:07.214Z",
           "prNumber": 299,
@@ -230,7 +230,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T15:05:20.329Z",
+  "updatedAt": "2026-01-20T15:05:33.386Z",
   "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
   "projectSetup": {
     "completed": false
