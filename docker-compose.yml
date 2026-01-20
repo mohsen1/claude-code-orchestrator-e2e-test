@@ -1,0 +1,87 @@
+version: '3.8'
+
+services:
+  # SplitSync Application Container
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: splitsync-app
+    restart: unless-stopped
+
+    # Port mapping for Next.js custom server
+    ports:
+      - "3000:3000"
+
+    # CRITICAL: Persistent volume for SQLite database
+    # This ensures data survives container restarts/recreation
+    volumes:
+      # Mount SQLite database directory
+      - sqlite_data:/app/db
+      # Optional: Mount logs directory for debugging
+      - app_logs:/app/logs
+
+    environment:
+      # Application Environment
+      - NODE_ENV=production
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+
+      # Database Configuration (SQLite)
+      # Must match the volume mount path above
+      - DATABASE_URL=file:/app/db/splitsync.sqlite
+
+      # NextAuth Configuration
+      # Generate with: openssl rand -base64 32
+      - AUTH_SECRET=${AUTH_SECRET}
+      - AUTH_URL=http://localhost:3000/api/auth
+
+      # Application URL (for OAuth callbacks)
+      - NEXT_PUBLIC_APP_URL=http://localhost:3000
+
+      # OAuth Provider Credentials
+      # Configure these in your .env file
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+
+      # Disable Next.js telemetry in production
+      - NEXT_TELEMETRY_DISABLED=1
+
+    # Health check to ensure the application is running
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+    # Resource limits to prevent container overconsumption
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+
+    # Logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+# Named volumes for data persistence
+volumes:
+  # SQLite database storage - PERSISTS ALL APPLICATION DATA
+  sqlite_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./sqlite_data
+
+  # Application logs volume
+  app_logs:
+    driver: local
