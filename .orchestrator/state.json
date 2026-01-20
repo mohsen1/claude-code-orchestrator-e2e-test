@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "worker_execution",
+  "phase": "em_assignment",
   "workBranch": "cco/289-splitwise-clone-v2",
   "baseBranch": "main",
   "ems": [
@@ -30,106 +30,17 @@
       "focusArea": "Database Layer",
       "branch": "cco/issue-289-em-1",
       "status": "pr_created",
-      "workers": [
-        {
-          "id": 1,
-          "task": "Create database schema, connection utilities, and initialization. Define all SQLite table creation queries for users, groups, group_members, expenses, expense_splits, and settlements tables",
-          "files": [
-            "src/lib/db/schema.ts",
-            "src/lib/db/connection.ts",
-            "src/lib/db/init.ts"
-          ],
-          "branch": "cco/issue-289-em-1-w-1",
-          "status": "merged",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T14:45:28.693Z",
-          "prNumber": 293,
-          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/293",
-          "completedAt": "2026-01-20T14:47:12.655Z"
-        },
-        {
-          "id": 2,
-          "task": "Implement all CRUD operations for users, groups, and group_members tables. Create functions for user creation/retrieval, group management, and group membership operations",
-          "files": [
-            "src/lib/db/queries/users.ts",
-            "src/lib/db/queries/groups.ts",
-            "src/lib/db/queries/group-members.ts"
-          ],
-          "branch": "cco/issue-289-em-1-w-2",
-          "status": "merged",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T14:47:14.464Z",
-          "prNumber": 295,
-          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/295",
-          "completedAt": "2026-01-20T14:48:55.286Z"
-        },
-        {
-          "id": 3,
-          "task": "Implement all CRUD operations for expenses, expense_splits, and settlements tables. Create functions for expense tracking, split calculations, and settlement management",
-          "files": [
-            "src/lib/db/queries/expenses.ts",
-            "src/lib/db/queries/expense-splits.ts",
-            "src/lib/db/queries/settlements.ts"
-          ],
-          "branch": "cco/issue-289-em-1-w-3",
-          "status": "merged",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T14:48:56.846Z",
-          "prNumber": 296,
-          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/296",
-          "completedAt": "2026-01-20T14:52:26.784Z"
-        }
-      ],
+      "workers": [],
       "reviewsAddressed": 0,
-      "prNumber": 300,
-      "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/300"
+      "error": "No workers merged - all had conflicts"
     },
     {
       "id": 2,
       "task": "Configure NextAuth.js for authentication with both Google OAuth provider and email/password credentials. Implement session management, API routes for login/signup/logout, and protected route middleware. Create user registration and profile management",
       "focusArea": "Authentication System",
       "branch": "cco/issue-289-em-2",
-      "status": "workers_running",
-      "workers": [
-        {
-          "id": 1,
-          "task": "Create NextAuth.js configuration with Google OAuth and Credentials provider, including Prisma schema for User and Account models, database adapter setup in src/lib/auth.ts, and environment variable configuration",
-          "files": [
-            "src/lib/auth.ts",
-            "prisma/schema.prisma",
-            ".env.local"
-          ],
-          "branch": "cco/issue-289-em-2-w-1",
-          "status": "in_progress",
-          "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T14:57:44.208Z"
-        },
-        {
-          "id": 2,
-          "task": "Implement authentication API routes (sign-in, sign-up, sign-out) in app/api/auth/[...nextauth]/route.ts and app/api/auth/signup/route.ts with password hashing using bcrypt and session management",
-          "files": [
-            "app/api/auth/[...nextauth]/route.ts",
-            "app/api/auth/signup/route.ts",
-            "src/lib/password-utils.ts"
-          ],
-          "branch": "cco/issue-289-em-2-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
-        },
-        {
-          "id": 3,
-          "task": "Create protected route middleware in middleware.ts, authentication context provider in src/contexts/AuthContext.tsx, and user profile management API routes in app/api/user/route.ts with TypeScript types in src/types/auth.ts",
-          "files": [
-            "middleware.ts",
-            "src/contexts/AuthContext.tsx",
-            "app/api/user/route.ts",
-            "src/types/auth.ts"
-          ],
-          "branch": "cco/issue-289-em-2-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
-        }
-      ],
+      "status": "pending",
+      "workers": [],
       "reviewsAddressed": 0
     },
     {
@@ -212,7 +123,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T14:57:53.168Z",
+  "updatedAt": "2026-01-20T14:57:54.587Z",
   "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
   "projectSetup": {
     "completed": false
