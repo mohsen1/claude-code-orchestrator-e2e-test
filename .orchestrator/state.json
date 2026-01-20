@@ -1,0 +1,134 @@
+{
+  "version": 1,
+  "issue": {
+    "number": 260,
+    "title": "Simple Expense Tracker",
+    "body": "## Build a simple expense tracker\n\nA basic web app to track expenses.\n\n**Core Features:**\n1. Add expense (description, amount)\n2. List all expenses  \n3. Show total\n\n**Tech:**\n- Next.js 14 App Router\n- Tailwind CSS\n- Store data in memory (no database)\n\n**Pages:**\n- / - List expenses and total\n- Add expense form on same page"
+  },
+  "repo": {
+    "owner": "mohsen1",
+    "name": "claude-code-orchestrator-e2e-test"
+  },
+  "phase": "final_merge",
+  "workBranch": "cco/260-simple-expense-tracker",
+  "baseBranch": "main",
+  "ems": [
+    {
+      "id": 0,
+      "task": "Initialize Next.js 14 project with App Router, configure Tailwind CSS, TypeScript, and create all foundational configuration files (package.json, tsconfig.json, .gitignore, tailwind.config.ts, next.config.js)",
+      "focusArea": "Project Setup",
+      "branch": "cco/issue-260-setup",
+      "status": "pr_created",
+      "workers": [],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-20T13:04:57.294Z",
+      "error": "No workers merged - all had conflicts"
+    },
+    {
+      "id": 1,
+      "task": "Implement in-memory expense storage, data models/types, and core expense management logic (add, list, calculate total) in src/lib/storage.ts and src/types/index.ts",
+      "focusArea": "Data Layer & Business Logic",
+      "branch": "cco/issue-260-em-1",
+      "status": "pr_created",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create TypeScript types and interfaces for the expense tracker in src/types/index.ts - define Expense interface and ExpenseInput type",
+          "files": [
+            "src/types/index.ts"
+          ],
+          "branch": "cco/issue-260-em-1-w-1",
+          "status": "merged",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T13:11:32.090Z",
+          "prNumber": 263,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/263",
+          "completedAt": "2026-01-20T13:12:00.911Z"
+        },
+        {
+          "id": 2,
+          "task": "Implement in-memory expense storage and CRUD operations in src/lib/storage.ts - include addExpense, listExpenses, getTotalExpense functions using the types from src/types/index.ts",
+          "files": [
+            "src/lib/storage.ts"
+          ],
+          "branch": "cco/issue-260-em-1-w-2",
+          "status": "merged",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T13:12:01.977Z",
+          "prNumber": 264,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/264",
+          "completedAt": "2026-01-20T13:12:31.693Z"
+        }
+      ],
+      "reviewsAddressed": 0,
+      "prNumber": 266,
+      "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/266"
+    },
+    {
+      "id": 2,
+      "task": "Build the complete UI using Next.js 14 App Router - create app/page.tsx with expense form, expense list, total display, and Tailwind styling",
+      "focusArea": "UI Components & Pages",
+      "branch": "cco/issue-260-em-2",
+      "status": "pr_created",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create TypeScript types for expense data model - define Expense interface and create shared types file",
+          "files": [
+            "src/types/expense.ts"
+          ],
+          "branch": "cco/issue-260-em-2-w-1",
+          "status": "pr_created",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T13:17:43.571Z",
+          "prNumber": 267,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/267",
+          "completedAt": "2026-01-20T13:17:59.230Z"
+        },
+        {
+          "id": 2,
+          "task": "Create in-memory storage utility with expense CRUD operations - implement add, list, and calculate total functions",
+          "files": [
+            "src/lib/expense-storage.ts"
+          ],
+          "branch": "cco/issue-260-em-2-w-2",
+          "status": "pr_created",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T13:18:00.580Z",
+          "prNumber": 268,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/268",
+          "completedAt": "2026-01-20T13:18:30.636Z"
+        },
+        {
+          "id": 3,
+          "task": "Build Next.js 14 page with expense form, expense list display, and total amount - create app/page.tsx with Tailwind CSS styling",
+          "files": [
+            "app/page.tsx"
+          ],
+          "branch": "cco/issue-260-em-2-w-3",
+          "status": "pr_created",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-20T13:18:32.025Z",
+          "prNumber": 269,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/269",
+          "completedAt": "2026-01-20T13:19:09.662Z"
+        }
+      ],
+      "reviewsAddressed": 0,
+      "error": "No workers merged - all had conflicts"
+    }
+  ],
+  "config": {
+    "maxEms": 3,
+    "maxWorkersPerEm": 3,
+    "reviewWaitMinutes": 5,
+    "prLabel": "cco"
+  },
+  "createdAt": "2026-01-20T13:04:07.292Z",
+  "updatedAt": "2026-01-20T13:24:12.714Z",
+  "analysisSummary": "Implement a minimal Next.js 14 expense tracker with in-memory storage, featuring a single-page interface to add, list, and total expenses, styled with Tailwind CSS.",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": []
+}
