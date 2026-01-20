@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "em_assignment",
+  "phase": "worker_execution",
   "workBranch": "cco/337-splitwise-like-web-app",
   "baseBranch": "main",
   "ems": [
@@ -29,8 +29,46 @@
       "task": "Configure NextAuth.js with Google OAuth provider and email/password credentials, create auth API routes in src/app/api/auth/[...nextauth]/route.ts, build login and signup pages with forms, implement session management, and create auth middleware for protected routes",
       "focusArea": "Authentication System",
       "branch": "cco/issue-337-em-1",
-      "status": "pending",
-      "workers": [],
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Install and configure NextAuth.js, create environment variable templates for Google OAuth and database, set up Prisma schema with User, Account, Session, and VerificationToken models, and create auth configuration in src/lib/auth.ts",
+          "files": [
+            ".env.example",
+            "prisma/schema.prisma",
+            "src/lib/auth.ts",
+            "prisma/migrations/20240120000000_init/migration.sql"
+          ],
+          "branch": "cco/issue-337-em-1-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Create NextAuth API route handler, implement session management utilities, and create auth middleware for protecting routes",
+          "files": [
+            "src/app/api/auth/[...nextauth]/route.ts",
+            "src/lib/session.ts",
+            "src/middleware.ts"
+          ],
+          "branch": "cco/issue-337-em-1-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Build login page at src/app/login/page.tsx with Google OAuth and email/password forms, create signup page at src/app/signup/page.tsx with registration form, and add client-side auth utilities in src/lib/auth-client.ts",
+          "files": [
+            "src/app/login/page.tsx",
+            "src/app/signup/page.tsx",
+            "src/lib/auth-client.ts"
+          ],
+          "branch": "cco/issue-337-em-1-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
       "reviewsAddressed": 0
     },
     {
@@ -122,7 +160,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T17:11:14.658Z",
-  "updatedAt": "2026-01-20T17:19:28.833Z",
+  "updatedAt": "2026-01-20T17:19:37.893Z",
   "analysisSummary": "Build a Splitwise-like expense sharing web app with Next.js 14, featuring Google OAuth/email auth, expense groups with member invites, expense splitting, real-time balance calculations, debt settlement, and Socket.io live updates, using SQLite + better-sqlite3, NextAuth.js, Tailwind CSS + shadcn/ui with a clean mobile-first design.",
   "projectSetup": {
     "completed": false
