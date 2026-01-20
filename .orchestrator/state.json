@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "em_assignment",
+  "phase": "worker_execution",
   "workBranch": "cco/337-splitwise-like-web-app",
   "baseBranch": "main",
   "ems": [
@@ -49,8 +49,53 @@
       "task": "Create API routes for group management (CRUD operations), member invitation system with invite codes/email links, and group member management endpoints, handle validation and error responses",
       "focusArea": "Groups API",
       "branch": "cco/issue-337-em-3",
-      "status": "pending",
-      "workers": [],
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create API routes for group CRUD operations (create, read, update, delete groups), implement GET/POST endpoints for groups, add input validation with Zod schemas, handle error responses and authorization, create group service layer with SQLite operations, add unit tests",
+          "files": [
+            "src/app/api/groups/route.ts",
+            "src/app/api/groups/[id]/route.ts",
+            "src/lib/services/group-service.ts",
+            "src/lib/validations/group-validation.ts",
+            "src/lib/services/__tests__/group-service.test.ts"
+          ],
+          "branch": "cco/issue-337-em-3-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Create member invitation system with invite codes and email links, implement invite code generation and validation, build invite redemption flow, create API endpoints for inviting members and accepting invitations, add invite status tracking, handle invite expiration and revocation, write unit tests",
+          "files": [
+            "src/app/api/groups/[id]/invites/route.ts",
+            "src/app/api/invites/[code]/route.ts",
+            "src/lib/services/invite-service.ts",
+            "src/lib/utils/invite-code-generator.ts",
+            "src/lib/validations/invite-validation.ts",
+            "src/lib/services/__tests__/invite-service.test.ts"
+          ],
+          "branch": "cco/issue-337-em-3-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create group member management endpoints, implement member listing and removal, build role-based access control (admin, member), add member permission checks, create endpoints for updating member roles, handle member departure from groups, implement member activity tracking, add comprehensive error handling and tests",
+          "files": [
+            "src/app/api/groups/[id]/members/route.ts",
+            "src/app/api/groups/[id]/members/[memberId]/route.ts",
+            "src/lib/services/member-service.ts",
+            "src/lib/utils/role-permissions.ts",
+            "src/lib/validations/member-validation.ts",
+            "src/lib/services/__tests__/member-service.test.ts"
+          ],
+          "branch": "cco/issue-337-em-3-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
       "reviewsAddressed": 0
     },
     {
@@ -124,7 +169,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T17:11:14.658Z",
-  "updatedAt": "2026-01-20T17:32:35.608Z",
+  "updatedAt": "2026-01-20T17:32:47.984Z",
   "analysisSummary": "Build a Splitwise-like expense sharing web app with Next.js 14, featuring Google OAuth/email auth, expense groups with member invites, expense splitting, real-time balance calculations, debt settlement, and Socket.io live updates, using SQLite + better-sqlite3, NextAuth.js, Tailwind CSS + shadcn/ui with a clean mobile-first design.",
   "projectSetup": {
     "completed": false
