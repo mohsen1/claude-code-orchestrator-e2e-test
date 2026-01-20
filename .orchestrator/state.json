@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "em_assignment",
+  "phase": "worker_execution",
   "workBranch": "cco/289-splitwise-clone-v2",
   "baseBranch": "main",
   "ems": [
@@ -86,8 +86,43 @@
       "task": "Design and implement SQLite database schema with better-sqlite3, including tables for users, groups, group_members, expenses, expense_splits, and settlements. Create database initialization and connection utilities. Implement all database access layer functions for CRUD operations",
       "focusArea": "Database Layer",
       "branch": "cco/issue-289-em-1",
-      "status": "pending",
-      "workers": [],
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create database schema initialization and connection utilities. Create lib/db/schema.ts with table definitions (users, groups, group_members, expenses, expense_splits, settlements) and lib/db/index.ts for database connection and initialization logic.",
+          "files": [
+            "lib/db/schema.ts",
+            "lib/db/index.ts"
+          ],
+          "branch": "cco/issue-289-em-1-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Implement all user and group-related CRUD operations. Create lib/db/users.ts (createUser, getUserByEmail, getUserById) and lib/db/groups.ts (createGroup, getGroupById, getGroupsByUserId, updateGroup, deleteGroup).",
+          "files": [
+            "lib/db/users.ts",
+            "lib/db/groups.ts"
+          ],
+          "branch": "cco/issue-289-em-1-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Implement all expense, expense split, and settlement CRUD operations. Create lib/db/expenses.ts (createExpense, getExpensesByGroupId, updateExpense, deleteExpense), lib/db/expense-splits.ts (createExpenseSplit, getExpenseSplitsByExpenseId, getExpenseSplitsByGroupId, getBalancesForGroup), and lib/db/settlements.ts (createSettlement, getSettlementsByGroupId, getPendingSettlementsByUserId, markSettlementAsPaid).",
+          "files": [
+            "lib/db/expenses.ts",
+            "lib/db/expense-splits.ts",
+            "lib/db/settlements.ts"
+          ],
+          "branch": "cco/issue-289-em-1-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
       "reviewsAddressed": 0
     },
     {
@@ -179,7 +214,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T14:48:02.987Z",
+  "updatedAt": "2026-01-20T14:48:19.316Z",
   "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
   "projectSetup": {
     "completed": false
