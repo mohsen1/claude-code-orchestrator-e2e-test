@@ -9,10 +9,21 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "analyzing",
+  "phase": "project_setup",
   "workBranch": "cco/366-build-splitsync-expense-sharing-app",
   "baseBranch": "main",
-  "ems": [],
+  "ems": [
+    {
+      "id": 0,
+      "task": "Set up project foundation with .gitignore, package.json, tsconfig.json, Tailwind config, Drizzle config, Vitest config, and shared types/interfaces for the entire application",
+      "focusArea": "Project Setup",
+      "branch": "cco/issue-366-setup",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-20T19:09:06.324Z"
+    }
+  ],
   "config": {
     "maxEms": 10,
     "maxWorkersPerEm": 3,
@@ -20,5 +31,101 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T19:08:36.578Z",
-  "updatedAt": "2026-01-20T19:08:39.314Z"
+  "updatedAt": "2026-01-20T19:09:06.324Z",
+  "analysisSummary": "Implement a full-stack expense sharing application with user authentication, group management, expense tracking with equal splits, debt settlement tracking, and real-time updates using Next.js 14, NextAuth.js v5, SQLite/Drizzle ORM, and Socket.io",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": [
+    {
+      "id": 1,
+      "task": "Implement NextAuth.js v5 authentication with email/password credentials provider and Google OAuth, including API routes for authentication and session management",
+      "focusArea": "Authentication System",
+      "branch": "cco/issue-366-em-1",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 2,
+      "task": "Create Drizzle ORM database schema for users, groups, group_members, expenses, expense_splits, and settlements with SQLite migrations",
+      "focusArea": "Database Schema",
+      "branch": "cco/issue-366-em-2",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 3,
+      "task": "Build API routes for group management (create, read, update, delete groups, add/remove members, list groups)",
+      "focusArea": "Group Management API",
+      "branch": "cco/issue-366-em-3",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 4,
+      "task": "Build API routes for expense operations (create, read, update, delete expenses, calculate splits, retrieve balances)",
+      "focusArea": "Expense API",
+      "branch": "cco/issue-366-em-4",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 5,
+      "task": "Build API routes for settlement tracking (settle debts, list settlements, calculate optimal settlements)",
+      "focusArea": "Settlement API",
+      "branch": "cco/issue-366-em-5",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 6,
+      "task": "Implement Socket.io real-time functionality for expense updates, group changes, and member activity with WebSocket server",
+      "focusArea": "Real-time Communication",
+      "branch": "cco/issue-366-em-6",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 7,
+      "task": "Create authentication UI pages (login, signup, password reset) with shadcn/ui components and form validation",
+      "focusArea": "Authentication UI",
+      "branch": "cco/issue-366-em-7",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 8,
+      "task": "Build dashboard UI with group list, navigation, and shell layout with responsive sidebar/mobile menu",
+      "focusArea": "Dashboard UI",
+      "branch": "cco/issue-366-em-8",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 9,
+      "task": "Create group detail pages with member list, group settings, and expense list for a specific group",
+      "focusArea": "Group Detail UI",
+      "branch": "cco/issue-366-em-9",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 10,
+      "task": "Build expense creation and management UI with form validation, expense list, and expense detail views",
+      "focusArea": "Expense UI",
+      "branch": "cco/issue-366-em-10",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ]
 }
