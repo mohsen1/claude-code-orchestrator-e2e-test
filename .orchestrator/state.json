@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "em_review",
+  "phase": "worker_execution",
   "workBranch": "cco/289-splitwise-clone-v2",
   "baseBranch": "main",
   "ems": [
@@ -214,8 +214,39 @@
       "task": "Build expense management features: add expenses with description, amount, payer, and split configuration. Implement equal split logic among group members. Create expense editing and deletion. Build expense history and filtering capabilities",
       "focusArea": "Expense Management",
       "branch": "cco/issue-289-em-4",
-      "status": "pending",
-      "workers": [],
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create expense data models and types. Define expense entities, split configuration types, and filter types in src/features/expenses/types.ts",
+          "files": [
+            "src/features/expenses/types.ts"
+          ],
+          "branch": "cco/issue-289-em-4-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Implement core expense operations: add, edit, delete expenses with equal split logic in src/features/expenses/expense-service.ts",
+          "files": [
+            "src/features/expenses/expense-service.ts"
+          ],
+          "branch": "cco/issue-289-em-4-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Build expense history, filtering capabilities, and query functions in src/features/expenses/expense-history.ts",
+          "files": [
+            "src/features/expenses/expense-history.ts"
+          ],
+          "branch": "cco/issue-289-em-4-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
       "reviewsAddressed": 0
     },
     {
@@ -280,7 +311,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T15:17:50.374Z",
+  "updatedAt": "2026-01-20T15:17:59.769Z",
   "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
   "projectSetup": {
     "completed": false
