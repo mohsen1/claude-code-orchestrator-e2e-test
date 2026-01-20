@@ -43,9 +43,12 @@
             "src/calculator.ts"
           ],
           "branch": "cco/issue-329-setup-w-2",
-          "status": "in_progress",
+          "status": "pr_created",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T16:35:22.909Z"
+          "startedAt": "2026-01-20T16:35:22.909Z",
+          "prNumber": 331,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/331",
+          "completedAt": "2026-01-20T16:36:04.756Z"
         },
         {
           "id": 3,
@@ -69,7 +72,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T16:34:14.562Z",
-  "updatedAt": "2026-01-20T16:35:22.909Z",
+  "updatedAt": "2026-01-20T16:36:04.756Z",
   "analysisSummary": "Implement a simple TypeScript CLI calculator with support for add, subtract, multiply, and divide operations. The project will use TypeScript with proper module structure, calculator class for core operations, and CLI entry point for command-line interaction.",
   "projectSetup": {
     "completed": false
