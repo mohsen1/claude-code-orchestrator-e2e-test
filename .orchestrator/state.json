@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "em_review",
+  "phase": "worker_execution",
   "workBranch": "cco/289-splitwise-clone-v2",
   "baseBranch": "main",
   "ems": [
@@ -150,8 +150,65 @@
       "task": "Implement group management functionality including creating groups, inviting members via email/invite codes, joining groups, and managing member roles. Build the balance calculation engine that tracks who owes whom. Create settlement logic for marking debts as paid",
       "focusArea": "Group & Balance Logic",
       "branch": "cco/issue-289-em-3",
-      "status": "pending",
-      "workers": [],
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create group management system including group creation, member invitation via email/invite codes, and joining groups. Build group member role management (admin/member) and group membership listing functionality.",
+          "files": [
+            "src/lib/groups.ts",
+            "src/lib/invites.ts",
+            "src/app/api/groups/route.ts",
+            "src/app/api/groups/[id]/route.ts",
+            "src/app/api/groups/[id]/members/route.ts",
+            "src/app/api/groups/[id]/invite/route.ts",
+            "src/app/api/groups/join/[code]/route.ts",
+            "src/components/groups/create-group-dialog.tsx",
+            "src/components/groups/invite-members-dialog.tsx",
+            "src/components/groups/group-members-list.tsx",
+            "src/app/dashboard/groups/page.tsx"
+          ],
+          "branch": "cco/issue-289-em-3-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Build the balance calculation engine that tracks group expenses and calculates who owes whom. Create expense splitting logic (equal split among members) and balance computation algorithms.",
+          "files": [
+            "src/lib/balances.ts",
+            "src/lib/expenses.ts",
+            "src/lib/calculations.ts",
+            "src/app/api/groups/[id]/expenses/route.ts",
+            "src/app/api/groups/[id]/expenses/[expenseId]/route.ts",
+            "src/app/api/groups/[id]/balances/route.ts",
+            "src/components/expenses/add-expense-dialog.tsx",
+            "src/components/expenses/expense-list.tsx",
+            "src/components/balances/balance-summary.tsx",
+            "src/app/groups/[id]/expenses/page.tsx"
+          ],
+          "branch": "cco/issue-289-em-3-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create settlement logic for marking debts as paid and tracking payment history. Build settlement recording system and payment status management.",
+          "files": [
+            "src/lib/settlements.ts",
+            "src/app/api/groups/[id]/settlements/route.ts",
+            "src/app/api/groups/[id]/settlements/[settlementId]/route.ts",
+            "src/app/api/groups/[id]/settle/route.ts",
+            "src/components/settlements/settlement-list.tsx",
+            "src/components/settlements/settle-up-dialog.tsx",
+            "src/components/settlements/settle-debt-button.tsx",
+            "src/app/groups/[id]/settlements/page.tsx"
+          ],
+          "branch": "cco/issue-289-em-3-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
       "reviewsAddressed": 0
     },
     {
@@ -225,7 +282,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T15:10:22.228Z",
+  "updatedAt": "2026-01-20T15:10:38.520Z",
   "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
   "projectSetup": {
     "completed": false
