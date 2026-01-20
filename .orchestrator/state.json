@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "project_setup",
+  "phase": "em_assignment",
   "workBranch": "cco/320-simple-notes-cli",
   "baseBranch": "main",
   "ems": [
@@ -23,21 +23,7 @@
       "reviewsAddressed": 0,
       "startedAt": "2026-01-20T16:01:19.716Z",
       "error": "No workers merged - all had conflicts"
-    }
-  ],
-  "config": {
-    "maxEms": 10,
-    "maxWorkersPerEm": 3,
-    "reviewWaitMinutes": 5,
-    "prLabel": "cco"
-  },
-  "createdAt": "2026-01-20T16:01:05.257Z",
-  "updatedAt": "2026-01-20T16:07:33.242Z",
-  "analysisSummary": "Build a TypeScript CLI notes app with commander.js, using JSON file storage. Supports adding notes (title + content), listing all notes, deleting by ID, and searching notes.",
-  "projectSetup": {
-    "completed": false
-  },
-  "pendingEMs": [
+    },
     {
       "id": 1,
       "task": "Create src/types.ts defining Note interface (id, title, content, timestamp) and NotesStorage interface with load, save, add, delete, search, and getAll methods",
@@ -110,5 +96,18 @@
       "workers": [],
       "reviewsAddressed": 0
     }
-  ]
+  ],
+  "config": {
+    "maxEms": 10,
+    "maxWorkersPerEm": 3,
+    "reviewWaitMinutes": 5,
+    "prLabel": "cco"
+  },
+  "createdAt": "2026-01-20T16:01:05.257Z",
+  "updatedAt": "2026-01-20T16:07:34.124Z",
+  "analysisSummary": "Build a TypeScript CLI notes app with commander.js, using JSON file storage. Supports adding notes (title + content), listing all notes, deleting by ID, and searching notes.",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": []
 }
