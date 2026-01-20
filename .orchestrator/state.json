@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "em_review",
+  "phase": "worker_execution",
   "workBranch": "cco/289-splitwise-clone-v2",
   "baseBranch": "main",
   "ems": [
@@ -105,8 +105,55 @@
       "task": "Implement group management functionality including creating groups, inviting members via email/invite codes, joining groups, and managing member roles. Build the balance calculation engine that tracks who owes whom. Create settlement logic for marking debts as paid",
       "focusArea": "Group & Balance Logic",
       "branch": "cco/issue-289-em-3",
-      "status": "pending",
-      "workers": [],
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create group management system with SQLite tables and API routes for creating groups, inviting members via email/invite codes, joining groups, and managing member roles (admin/member). Files: lib/db/groups.ts, lib/db/group-members.ts, app/api/groups/route.ts, app/api/groups/[id]/route.ts, app/api/groups/[id]/members/route.ts, app/api/groups/[id]/invite/route.ts, app/api/groups/join/[code]/route.ts",
+          "files": [
+            "lib/db/groups.ts",
+            "lib/db/group-members.ts",
+            "app/api/groups/route.ts",
+            "app/api/groups/[id]/route.ts",
+            "app/api/groups/[id]/members/route.ts",
+            "app/api/groups/[id]/invite/route.ts",
+            "app/api/groups/join/[code]/route.ts"
+          ],
+          "branch": "cco/issue-289-em-3-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Build balance calculation engine that tracks expenses and calculates who owes whom using simplified debt algorithm. Create settlement logic for marking debts as paid. Files: lib/balances/calculator.ts, lib/balances/settlement.ts, lib/db/balances.ts, lib/db/expenses.ts, lib/db/expense-splits.ts, app/api/groups/[id]/balances/route.ts, app/api/groups/[id]/settle/route.ts",
+          "files": [
+            "lib/balances/calculator.ts",
+            "lib/balances/settlement.ts",
+            "lib/db/balances.ts",
+            "lib/db/expenses.ts",
+            "lib/db/expense-splits.ts",
+            "app/api/groups/[id]/balances/route.ts",
+            "app/api/groups/[id]/settle/route.ts"
+          ],
+          "branch": "cco/issue-289-em-3-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create expense management system with SQLite tables and API routes for adding expenses to groups, splitting equally among members, and retrieving expense history. Files: app/api/groups/[id]/expenses/route.ts, app/api/expenses/[id]/route.ts, components/expenses/expense-list.tsx, components/expenses/expense-form.tsx, components/expenses/expense-card.tsx",
+          "files": [
+            "app/api/groups/[id]/expenses/route.ts",
+            "app/api/expenses/[id]/route.ts",
+            "components/expenses/expense-list.tsx",
+            "components/expenses/expense-form.tsx",
+            "components/expenses/expense-card.tsx"
+          ],
+          "branch": "cco/issue-289-em-3-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
       "reviewsAddressed": 0
     },
     {
@@ -180,7 +227,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T15:05:10.983Z",
+  "updatedAt": "2026-01-20T15:05:40.174Z",
   "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
   "projectSetup": {
     "completed": false
