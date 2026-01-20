@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Button from '@/components/Button'
 
 export default function HomePage() {
   return (
@@ -41,18 +42,24 @@ export default function HomePage() {
               Simplify group spending and settle debts fairly.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <Link
-                href="/auth/signup"
-                className="w-full sm:w-auto bg-primary-600 text-white hover:bg-primary-700 transition-colors px-8 py-3 rounded-lg text-lg font-semibold shadow-md"
+              <Button
+                asChild
+                size="lg"
+                className="shadow-md"
               >
-                Get Started Free
-              </Link>
-              <Link
-                href="/auth/login"
-                className="w-full sm:w-auto bg-white text-primary-600 border-2 border-primary-600 hover:bg-primary-50 transition-colors px-8 py-3 rounded-lg text-lg font-semibold"
+                <Link href="/auth/signup">
+                  Get Started Free
+                </Link>
+              </Button>
+              <Button
+                asChild
+                variant="secondary"
+                size="lg"
               >
-                Sign In
-              </Link>
+                <Link href="/auth/login">
+                  Sign In
+                </Link>
+              </Button>
             </div>
           </div>
 
