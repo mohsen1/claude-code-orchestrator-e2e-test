@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "issue": {
+    "number": 329,
+    "title": "Simple Calculator CLI",
+    "body": "Build a simple TypeScript CLI calculator application.\n\n**Requirements:**\n- Uses TypeScript\n- Command-line interface using process.argv\n- Supports basic operations: add, subtract, multiply, divide\n- Clean code structure with separate modules\n\n**Commands:**\n```\nnpm run calc add 5 3       # Output: 8\nnpm run calc subtract 10 4 # Output: 6\nnpm run calc multiply 6 7  # Output: 42\nnpm run calc divide 20 4   # Output: 5\n```\n\n**Project structure:**\n- src/calculator.ts - Calculator class with methods\n- src/cli.ts - CLI entry point\n- package.json, tsconfig.json\n\nKeep it simple - no external dependencies beyond TypeScript."
+  },
+  "repo": {
+    "owner": "mohsen1",
+    "name": "claude-code-orchestrator-e2e-test"
+  },
+  "phase": "initialized",
+  "workBranch": "cco/329-simple-calculator-cli",
+  "baseBranch": "main",
+  "ems": [],
+  "config": {
+    "maxEms": 10,
+    "maxWorkersPerEm": 3,
+    "reviewWaitMinutes": 5,
+    "prLabel": "cco"
+  },
+  "createdAt": "2026-01-20T16:34:14.562Z",
+  "updatedAt": "2026-01-20T16:34:14.933Z"
+}
