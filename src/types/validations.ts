@@ -61,7 +61,7 @@ export const currencySchema = z
   .refine((val) => /^[A-Z]{3}$/.test(val), {
     message: "Invalid currency code format",
   })
-  .refine((val) => val in SUPPORTED_CURRENCIES, {
+  .refine((val) => Object.keys(SUPPORTED_CURRENCIES).includes(val as keyof typeof SUPPORTED_CURRENCIES), {
     message: "Unsupported currency code",
   });
 
@@ -126,6 +126,7 @@ export const createGroupSchema = z.object({
     .max(100, "Group name is too long")
     .trim(),
   currency: currencySchema.default("USD"),
+  defaultCurrency: currencySchema.optional(),
 });
 
 /**
@@ -139,6 +140,7 @@ export const updateGroupSchema = z.object({
     .trim()
     .optional(),
   currency: currencySchema.optional(),
+  defaultCurrency: currencySchema.optional(),
 });
 
 /**
@@ -244,7 +246,7 @@ export const createSettlementSchema = z
     amount: amountInCentsSchema,
   })
   .refine((data) => data.fromUserId !== data.toUserId, {
-    message: "fromUserId and toUserId must be different",
+    message: "Cannot create settlement with yourself",
     path: ["toUserId"],
   });
 

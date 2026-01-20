@@ -45,11 +45,16 @@ export interface PaginatedResponse<T> extends ApiResponse<T[]> {
 /**
  * API Error Response
  *
- * Note: While the `success` property is typed as `boolean` for flexibility,
- * it will always be `false` in error response contexts. This interface should
- * only be used to represent API error responses where the operation has failed.
+ * Represents an error response from the API. The `success` property is typed as
+ * `boolean` rather than the literal `false` to maintain flexibility in the type
+ * system, but in error contexts this value will always be `false`. This interface
+ * should only be used to represent failed API operations.
  */
 export interface ApiError {
+  /**
+   * Success flag - always false in error contexts.
+   * Typed as boolean for type system compatibility, but runtime value is always false.
+   */
   success: boolean;
   error: string;
   code?: string;
