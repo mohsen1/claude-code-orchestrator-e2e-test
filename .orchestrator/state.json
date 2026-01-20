@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "worker_execution",
+  "phase": "worker_review",
   "workBranch": "cco/320-simple-notes-cli",
   "baseBranch": "main",
   "ems": [
@@ -27,9 +27,12 @@
             ".gitignore"
           ],
           "branch": "cco/issue-320-setup-w-1",
-          "status": "in_progress",
+          "status": "pr_created",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-20T16:01:28.564Z"
+          "startedAt": "2026-01-20T16:01:28.564Z",
+          "prNumber": 321,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/321",
+          "completedAt": "2026-01-20T16:01:42.409Z"
         },
         {
           "id": 2,
@@ -63,7 +66,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T16:01:05.257Z",
-  "updatedAt": "2026-01-20T16:01:28.565Z",
+  "updatedAt": "2026-01-20T16:01:42.409Z",
   "analysisSummary": "Build a TypeScript CLI notes app with commander.js, using JSON file storage. Supports adding notes (title + content), listing all notes, deleting by ID, and searching notes.",
   "projectSetup": {
     "completed": false
