@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "em_review",
+  "phase": "worker_execution",
   "workBranch": "cco/289-splitwise-clone-v2",
   "baseBranch": "main",
   "ems": [
@@ -101,8 +101,49 @@
       "task": "Implement group management functionality including creating groups, inviting members via email/invite codes, joining groups, and managing member roles. Build the balance calculation engine that tracks who owes whom. Create settlement logic for marking debts as paid",
       "focusArea": "Group & Balance Logic",
       "branch": "cco/issue-289-em-3",
-      "status": "pending",
-      "workers": [],
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Implement group management system - create src/lib/groups/ with group creation, member management, invite code generation, and role management functionality",
+          "files": [
+            "src/lib/groups/types.ts",
+            "src/lib/groups/create.ts",
+            "src/lib/groups/invite.ts",
+            "src/lib/groups/members.ts",
+            "src/lib/groups/roles.ts"
+          ],
+          "branch": "cco/issue-289-em-3-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Build balance calculation engine in src/lib/balances/ - track debts, calculate who owes whom, handle expense splitting logic",
+          "files": [
+            "src/lib/balances/types.ts",
+            "src/lib/balances/calculate.ts",
+            "src/lib/balances/debts.ts",
+            "src/lib/balances/expenses.ts"
+          ],
+          "branch": "cco/issue-289-em-3-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create settlement system in src/lib/settlements/ - mark debts as paid, track payment history, handle partial settlements",
+          "files": [
+            "src/lib/settlements/types.ts",
+            "src/lib/settlements/pay.ts",
+            "src/lib/settlements/history.ts",
+            "src/lib/settlements/validate.ts"
+          ],
+          "branch": "cco/issue-289-em-3-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
       "reviewsAddressed": 0
     },
     {
@@ -176,7 +217,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T14:35:40.427Z",
-  "updatedAt": "2026-01-20T15:09:45.502Z",
+  "updatedAt": "2026-01-20T15:09:57.233Z",
   "analysisSummary": "Build a complete expense-sharing application with Next.js 14, featuring Google OAuth/email authentication, group expense management, real-time balance tracking, and Socket.io for live updates. The app will use SQLite for data storage, shadcn/ui for the UI, and implement a clean, mobile-first design.",
   "projectSetup": {
     "completed": false
