@@ -9,10 +9,21 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "analyzing",
+  "phase": "project_setup",
   "workBranch": "cco/123-build-a-book-library-management-system",
   "baseBranch": "main",
-  "ems": [],
+  "ems": [
+    {
+      "id": 0,
+      "task": "Create all project setup files: .gitignore, package.json with dependencies (next, react, better-sqlite3, tailwindcss, playwright, @types/*), tsconfig.json, tailwind.config.ts, next.config.js, playwright.config.ts, and app/layout.tsx",
+      "focusArea": "Project Setup",
+      "branch": "cco/issue-123-setup",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-20T04:06:15.098Z"
+    }
+  ],
   "config": {
     "maxEms": 3,
     "maxWorkersPerEm": 3,
@@ -20,5 +31,38 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-20T04:06:07.367Z",
-  "updatedAt": "2026-01-20T04:06:07.917Z"
+  "updatedAt": "2026-01-20T04:06:15.098Z",
+  "analysisSummary": "Build a full-stack book library management system with Next.js 14 App Router, SQLite database, and Playwright testing. Includes book CRUD operations, search/filter functionality, and a borrowing system.",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": [
+    {
+      "id": 1,
+      "task": "Build the database layer and all API endpoints. Owns lib/db.ts (database schema and connection) and the entire app/api/ directory with all route handlers for books CRUD and borrowing operations",
+      "focusArea": "Data Layer & API Routes",
+      "branch": "cco/issue-123-em-1",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 2,
+      "task": "Build all frontend UI including components (BookCard, BookForm, SearchBar) and page routes (home, book detail, new/edit forms). Owns the components/ directory and app/books/ directory",
+      "focusArea": "Frontend UI & Pages",
+      "branch": "cco/issue-123-em-2",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 3,
+      "task": "Write comprehensive Playwright E2E tests covering adding books, searching, borrowing/returning, and editing. Owns the tests/ directory and test configuration",
+      "focusArea": "Testing",
+      "branch": "cco/issue-123-em-3",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ]
 }
