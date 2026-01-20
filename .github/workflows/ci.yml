@@ -1,0 +1,56 @@
+name: CI & Robustness Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  quality-check:
+    name: Lint, Typecheck & Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      # 1. Static Analysis (Catch syntax/style errors)
+      - name: Lint
+        run: npm run lint
+
+      # 2. Type Safety (Catch TS errors before build)
+      - name: Type Check
+        run: tsc --noEmit
+
+      # 3. Unit Tests (Business logic verification)
+      - name: Run Vitest
+        run: npm run test
+
+  build-check:
+    name: Dry Run Build
+    needs: quality-check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - run: npm ci
+
+      # 4. Build Verification (Ensures Next.js build passes)
+      - name: Next Build
+        run: npm run build
+        env:
+          NEXT_PUBLIC_API_URL: "http://localhost:3000"
+          # Mock secrets for build process
+          AUTH_SECRET: "mock-secret"
