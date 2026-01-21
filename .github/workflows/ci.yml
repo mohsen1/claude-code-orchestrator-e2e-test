@@ -1,0 +1,51 @@
+name: CI & Robustness Checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  quality-check:
+    name: Lint, Typecheck & Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Type Check
+        run: tsc --noEmit
+
+      - name: Run Vitest
+        run: npm run test
+
+  build-check:
+    name: Dry Run Build
+    needs: quality-check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+      - run: npm ci
+
+      - name: Next Build
+        run: npm run build
+        env:
+          NEXT_PUBLIC_API_URL: "http://localhost:3000"
+          AUTH_SECRET: "mock-secret-for-ci-testing"
