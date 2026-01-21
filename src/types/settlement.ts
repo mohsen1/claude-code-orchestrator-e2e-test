@@ -61,7 +61,7 @@ export interface CreateSettlementInput {
   groupId: string;
   fromUserId: string;
   toUserId: string;
-  amount: number; // In cents
+  amount: number; // In cents - must be positive
 }
 
 /**
