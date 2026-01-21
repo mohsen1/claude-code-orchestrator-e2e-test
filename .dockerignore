@@ -1,0 +1,41 @@
+# Dependencies
+node_modules
+npm-debug.log
+yarn-error.log
+
+# Testing
+coverage
+
+# Next.js
+.next
+out
+
+# Production
+build
+
+# Misc
+.DS_Store
+*.pem
+
+# Environment files
+.env
+.env*.local
+.env.production
+
+# Database files (will be mounted as volume)
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+
+# IDE
+.vscode
+.idea
+
+# Git
+.git
+.github
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
