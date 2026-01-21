@@ -9,10 +9,20 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "analyzing",
+  "phase": "project_setup",
   "workBranch": "cco/417-build-splitsync-expense-sharing-app",
   "baseBranch": "main",
-  "ems": [],
+  "ems": [
+    {
+      "id": 0,
+      "task": "Initialize Next.js 14 project with App Router, configure TypeScript strict mode, set up Tailwind CSS and shadcn/ui, create .gitignore, package.json with all dependencies (better-sqlite3, drizzle-orm, next-auth, socket.io, zod, react-hook-form, vitest), configure tsconfig.json, create .github/workflows/ci.yml with lint/typecheck/test/build jobs, and define shared TypeScript types (User, Group, Expense, Settlement)",
+      "focusArea": "Project Setup",
+      "branch": "cco/issue-417-setup",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ],
   "config": {
     "maxEms": 10,
     "maxWorkersPerEm": 3,
@@ -20,5 +30,101 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-21T22:46:02.426Z",
-  "updatedAt": "2026-01-21T22:46:04.222Z"
+  "updatedAt": "2026-01-21T22:46:27.330Z",
+  "analysisSummary": "Build SplitSync, a production-ready expense sharing app with Next.js 14, TypeScript, SQLite/Drizzle ORM, NextAuth.js, and Socket.io real-time updates. Includes group management, expense tracking, debt settlement algorithms, and dual authentication (OAuth + credentials). All financial data uses atomic transactions with integer cents storage.",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": [
+    {
+      "id": 1,
+      "task": "Design and implement Drizzle ORM schema with migrations for Users, Groups, GroupMembers, Expenses, and ExpenseSplits tables. Create seed scripts for development. Set up database connection pooling and connection management utilities",
+      "focusArea": "Data Layer - Database Schema & Migrations",
+      "branch": "cco/issue-417-em-1",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 2,
+      "task": "Implement repository pattern with data access objects (DAOs) for Users, Groups, Expenses, and Settlements. Write all SQL queries, joins, and transaction helpers. Ensure atomic transactions for all financial operations",
+      "focusArea": "Data Layer - Repositories & Transactions",
+      "branch": "cco/issue-417-em-2",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 3,
+      "task": "Configure NextAuth.js v5 with Google OAuth and Credentials (email/password) providers. Create login/register pages, session management, middleware for protected routes, and API routes for auth handlers (/api/auth/[...nextauth])",
+      "focusArea": "Authentication",
+      "branch": "cco/issue-417-em-3",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 4,
+      "task": "Build all API route handlers for groups (create, list, join via invite), expenses (add, list, update), and settlements (calculate and list). Implement Zod validation schemas for all inputs. Return standardized JSON responses",
+      "focusArea": "API Routes - Groups & Expenses",
+      "branch": "cco/issue-417-em-4",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 5,
+      "task": "Implement debt graph simplification algorithm for optimal settlements. Create settlement calculation logic that minimizes number of transactions. Add API endpoints to trigger calculation and retrieve suggested settlements",
+      "focusArea": "Business Logic - Settlement Algorithm",
+      "branch": "cco/issue-417-em-5",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 6,
+      "task": "Set up Socket.io server with Redis adapter for scaling. Implement real-time events for expense created, group joined, settlement calculated. Create client-side Socket.io hooks and connection manager",
+      "focusArea": "Real-time - Socket.io Infrastructure",
+      "branch": "cco/issue-417-em-6",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 7,
+      "task": "Build reusable UI components using shadcn/ui: Button, Input, Card, Modal, ExpenseCard, GroupCard, SettlementCard, Navbar, Sidebar. Implement form components using React Hook Form with Zod integration",
+      "focusArea": "UI Components - Shared Library",
+      "branch": "cco/issue-417-em-7",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 8,
+      "task": "Create page-level components and route handlers: Dashboard (user's groups), Group Details (expenses list, members, settlements), Add Expense modal, Invite Link generator. Implement client-side data fetching with SWR or React Query",
+      "focusArea": "Pages - Dashboard & Group Views",
+      "branch": "cco/issue-417-em-8",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 9,
+      "task": "Write comprehensive Vitest unit tests for repositories, settlement algorithm, and validation schemas. Write integration tests for API routes using Supertest. Set up test database utilities and fixtures. Configure test scripts in package.json",
+      "focusArea": "Testing - Unit & Integration",
+      "branch": "cco/issue-417-em-9",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 10,
+      "task": "Create Dockerfile for production containerization, docker-compose.yml for local development with PostgreSQL and Redis, write deployment documentation, configure environment variable management, and set up production-ready nginx config",
+      "focusArea": "Deployment & DevOps",
+      "branch": "cco/issue-417-em-10",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ]
 }
