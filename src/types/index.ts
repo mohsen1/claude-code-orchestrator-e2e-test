@@ -347,43 +347,130 @@ export const ExpenseCategoryEnum = z.enum([
 
 export const SplitTypeEnum = z.enum(['equal', 'percentage', 'exact']);
 
-export const CreateExpenseSchema = z.object({
-  groupId: z.string().min(1, 'Group ID is required'),
-  description: z.string().min(1, 'Description is required').max(500),
-  amount: z.number().int().positive('Amount must be positive'),
-  paidBy: z.string().min(1, 'Payer is required'),
-  category: ExpenseCategoryEnum,
-  splitType: SplitTypeEnum,
-  date: z.date().optional(),
-  splits: z.array(
-    z.object({
-      userId: z.string().min(1),
-      amount: z.number().int().min(0).optional(),
-      percentage: z.number().min(0).max(100).optional(),
-    })
-  ).min(1, 'At least one split is required'),
-});
+export const CreateExpenseSchema = z
+  .object({
+    groupId: z.string().min(1, 'Group ID is required'),
+    description: z.string().min(1, 'Description is required').max(500),
+    amount: z.number().int().positive('Amount must be positive'),
+    paidBy: z.string().min(1, 'Payer is required'),
+    category: ExpenseCategoryEnum,
+    splitType: SplitTypeEnum,
+    date: z.date().optional(),
+    splits: z
+      .array(
+        z.object({
+          userId: z.string().min(1),
+          amount: z.number().int().min(0).optional(),
+          percentage: z.number().min(0).max(100).optional(),
+        })
+      )
+      .min(1, 'At least one split is required'),
+  })
+  .superRefine((data, ctx) => {
+    if (data.splitType !== 'exact') {
+      return;
+    }
 
-export const UpdateExpenseSchema = z.object({
-  description: z.string().min(1).max(500).optional(),
-  amount: z.number().int().positive().optional(),
-  category: ExpenseCategoryEnum.optional(),
-  splitType: SplitTypeEnum.optional(),
-  date: z.date().optional(),
-  splits: z.array(
-    z.object({
-      userId: z.string().min(1),
-      amount: z.number().int().min(0).optional(),
-      percentage: z.number().min(0).max(100).optional(),
-    })
-  ).optional(),
-});
+    // For exact splits, all split amounts must be provided
+    data.splits.forEach((split, index) => {
+      if (split.amount == null) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: 'Amount is required for exact splits',
+          path: ['splits', index, 'amount'],
+        });
+      }
+    });
+
+    const hasMissingAmounts = data.splits.some(
+      (split) => split.amount == null
+    );
+    if (hasMissingAmounts) {
+      return;
+    }
+
+    const totalSplitAmount = data.splits.reduce(
+      (sum, split) => sum + (split.amount as number),
+      0
+    );
+
+    if (totalSplitAmount !== data.amount) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message:
+          'For exact split type, the sum of split amounts must equal the total amount',
+        path: ['splits'],
+      });
+    }
+  });
+
+export const UpdateExpenseSchema = z
+  .object({
+    description: z.string().min(1).max(500).optional(),
+    amount: z.number().int().positive().optional(),
+    category: ExpenseCategoryEnum.optional(),
+    splitType: SplitTypeEnum.optional(),
+    date: z.date().optional(),
+    splits: z
+      .array(
+        z.object({
+          userId: z.string().min(1),
+          amount: z.number().int().min(0).optional(),
+          percentage: z.number().min(0).max(100).optional(),
+        })
+      )
+      .optional(),
+  })
+  .superRefine((data, ctx) => {
+    if (data.splitType !== 'exact') {
+      return;
+    }
+
+    // Only validate when both amount and splits are provided in the update
+    if (data.amount == null || !data.splits) {
+      return;
+    }
+
+    data.splits.forEach((split, index) => {
+      if (split.amount == null) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          message: 'Amount is required for exact splits',
+          path: ['splits', index, 'amount'],
+        });
+      }
+    });
+
+    const hasMissingAmounts = data.splits.some(
+      (split) => split.amount == null
+    );
+    if (hasMissingAmounts) {
+      return;
+    }
+
+    const totalSplitAmount = data.splits.reduce(
+      (sum, split) => sum + (split.amount as number),
+      0
+    );
+
+    if (totalSplitAmount !== data.amount) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message:
+          'For exact split type, the sum of split amounts must equal the total amount',
+        path: ['splits'],
+      });
+    }
+  });
 
 export const CreateSettlementSchema = z.object({
   groupId: z.string().min(1, 'Group ID is required'),
   from: z.string().min(1, 'From user ID is required'),
   to: z.string().min(1, 'To user ID is required'),
   amount: z.number().int().positive('Amount must be positive'),
+}).refine((data) => data.from !== data.to, {
+  message: 'From and To users must be different',
+  path: ['to'],
 });
 
 // ============================================================================
