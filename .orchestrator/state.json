@@ -9,10 +9,20 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "analyzing",
+  "phase": "project_setup",
   "workBranch": "cco/401-build-splitsync-expense-sharing-app",
   "baseBranch": "main",
-  "ems": [],
+  "ems": [
+    {
+      "id": 0,
+      "task": "Initialize project with Next.js 14, TypeScript, and all foundational configuration files (.gitignore, package.json with all dependencies, tsconfig.json, next.config.js, .env.example, ESLint, Prettier). Create shared types directory (src/types/) with all common interfaces (User, Group, Expense, Settlement, API response types). Setup Vitest testing configuration.",
+      "focusArea": "Project Setup",
+      "branch": "cco/issue-401-setup",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ],
   "config": {
     "maxEms": 10,
     "maxWorkersPerEm": 3,
@@ -20,5 +30,92 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-21T04:02:03.723Z",
-  "updatedAt": "2026-01-21T04:02:05.519Z"
+  "updatedAt": "2026-01-21T04:02:40.718Z",
+  "analysisSummary": "Implement SplitSync - a production-ready expense sharing app with Next.js 14, SQLite/Drizzle ORM, Socket.io real-time updates, NextAuth.js authentication, and Docker deployment. Features include group management, expense splitting with integer-based math, settlement calculations, and comprehensive CI/CD pipeline.",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": [
+    {
+      "id": 1,
+      "task": "Implement NextAuth.js v5 authentication system with JWT strategy. Configure Google OAuth and Credentials (email/password) providers with bcrypt hashing. Create custom signin/register pages in src/app/auth/. Implement session management and middleware for route protection in src/middleware.ts. Create API routes for user registration and password management.",
+      "focusArea": "Authentication System",
+      "branch": "cco/issue-401-em-1",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 2,
+      "task": "Build custom Next.js server with Socket.io integration (server.ts). Implement WebSocket event handlers for real-time expense updates, group joins, and settlements. Create Socket.io client utility in src/lib/socket.ts. Implement room-based communication for groups and connection lifecycle management. Ensure Socket.io works with Next.js standalone build output.",
+      "focusArea": "Real-Time Socket.io Server",
+      "branch": "cco/issue-401-em-2",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 3,
+      "task": "Create all API routes for group management: create group (src/app/api/groups/route.ts), get group details (src/app/api/groups/[id]/route.ts), add/remove members, update group settings, generate and validate invite links. Implement RBAC to verify group membership and admin permissions. All routes must use Zod validation and database transactions.",
+      "focusArea": "Group Management API",
+      "branch": "cco/issue-401-em-3",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 4,
+      "task": "Build expense management API with integer-based math (no floats). Create routes for adding expenses (src/app/api/expenses/route.ts), expense details, and deletion. Implement robust splitting algorithm that handles remainder distribution (e.g., $100/3 = [33.34, 33.33, 33.33]). Use database transactions to ensure ExpenseSplits sum equals Expense.amount. Emit Socket.io events on changes.",
+      "focusArea": "Expense API & Split Logic",
+      "branch": "cco/issue-401-em-4",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 5,
+      "task": "Implement settlement calculation and tracking API. Create graph simplification algorithm to calculate net balances (who owes whom). Build settlement API routes for recording payments and calculating optimal settlements. Create transaction-based settlement records with validation preventing negative settlements. Store amounts as integers.",
+      "focusArea": "Settlement Calculation API",
+      "branch": "cco/issue-401-em-5",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 6,
+      "task": "Build all UI components using shadcn/ui and React Hook Form with Zod validation. Create expense form, group create form, settlement form, invite link generator, expense list items, balance display cards, user avatars, currency formatter. Ensure keyboard accessibility and proper form error handling. Components should import shared types from src/types/.",
+      "focusArea": "UI Components",
+      "branch": "cco/issue-401-em-6",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 7,
+      "task": "Create all page routes and layouts using Next.js App Router. Build group dashboard (src/app/groups/[id]/page.ts), expense details page, settlement page, invite acceptance page, user profile/settings. Implement client-side data fetching with Socket.io integration for real-time updates. Create loading states and error boundaries.",
+      "focusArea": "Pages & Layouts",
+      "branch": "cco/issue-401-em-7",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 8,
+      "task": "Create Docker configuration for production deployment with persistent SQLite storage. Build optimized Dockerfile (multi-stage: builder + runner with node:20-alpine, standalone Next.js build). Create docker-compose.yml for local development with hot reload. Configure volume mounting for database persistence and proper environment variable management.",
+      "focusArea": "Docker & Deployment",
+      "branch": "cco/issue-401-em-8",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 9,
+      "task": "Implement comprehensive CI/CD pipeline with GitHub Actions. Create .github/workflows/ci.yml for linting, type-checking, and testing. Setup separate workflow for Docker image building and pushing. Configure branch protection rules and required status checks. Create release workflow for automated deployments to Railway/Fly.io.",
+      "focusArea": "CI/CD Pipeline",
+      "branch": "cco/issue-401-em-9",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ]
 }
