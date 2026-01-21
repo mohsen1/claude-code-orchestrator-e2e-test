@@ -9,10 +9,20 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "analyzing",
+  "phase": "project_setup",
   "workBranch": "cco/393-build-splitsync-expense-sharing-app",
   "baseBranch": "main",
-  "ems": [],
+  "ems": [
+    {
+      "id": 0,
+      "task": "Initialize project foundation: create .gitignore, package.json with all dependencies (Next.js 14, Drizzle, better-sqlite3, Zod, NextAuth v5, Socket.io, React Hook Form, shadcn/ui, Vitest, Docker), tsconfig.json with strict mode, Next.js config with standalone output, and shared types directory with core TypeScript interfaces",
+      "focusArea": "Project Setup",
+      "branch": "cco/issue-393-setup",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ],
   "config": {
     "maxEms": 10,
     "maxWorkersPerEm": 3,
@@ -20,5 +30,101 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-21T02:41:30.397Z",
-  "updatedAt": "2026-01-21T02:41:32.539Z"
+  "updatedAt": "2026-01-21T02:42:16.113Z",
+  "analysisSummary": "Build SplitSync - a production-ready expense sharing app with Next.js 14, TypeScript, Drizzle ORM, SQLite, NextAuth v5, and Socket.io. Features include group management, expense tracking with precise integer-based math, real-time updates via WebSocket, settlement optimization algorithm, OAuth authentication, Docker deployment, and complete CI/CD pipeline.",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": [
+    {
+      "id": 1,
+      "task": "Implement complete database layer using Drizzle ORM with SQLite: define schema for Users, Groups, GroupMembers, Expenses, ExpenseSplits, Settlements, Invites with proper foreign keys and cascading deletes. Create migration system, database connection utilities, and seed scripts. Ensure integer-based money storage (cents, not floats).",
+      "focusArea": "Database & ORM Layer",
+      "branch": "cco/issue-393-em-1",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 2,
+      "task": "Implement NextAuth v5 authentication system with JWT strategy: Google OAuth provider, credentials provider with bcrypt for email/password, custom signin/register pages, session management, API route handlers at /api/auth/[...nextauth], and middleware.ts for route protection. Create user session utilities.",
+      "focusArea": "Authentication System",
+      "branch": "cco/issue-393-em-2",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 3,
+      "task": "Build custom Node.js server (server.ts) that integrates Next.js with Socket.io: create HTTP server, setup Socket.io with CORS, implement connection handling, room-based architecture for groups, event emission for expense/expense updates, and proper error handling. Compile to JS for production.",
+      "focusArea": "Custom Server & Socket.io",
+      "branch": "cco/issue-393-em-3",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 4,
+      "task": "Create all API routes for group management: POST /api/groups (create), GET /api/groups (list), GET /api/groups/[id] (details), PUT /api/groups/[id] (update), DELETE /api/groups/[id] (delete), POST /api/groups/[id]/members (add member), DELETE /api/groups/[id]/members/[userId] (remove), POST /api/groups/[id]/invite (generate invite), GET /api/invite/[code] (accept invite). Implement RBAC validation.",
+      "focusArea": "Groups API",
+      "branch": "cco/issue-393-em-4",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 5,
+      "task": "Create expense API routes with robust integer math: POST /api/expenses (create with split algorithm), GET /api/expenses?groupId= (list), GET /api/expenses/[id] (details), PUT /api/expenses/[id] (update), DELETE /api/expenses/[id] (delete). Implement equal-split algorithm with penny remainder distribution. Use DB transactions. Emit socket events.",
+      "focusArea": "Expenses API",
+      "branch": "cco/issue-393-em-5",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 6,
+      "task": "Implement settlement API and optimization algorithm: GET /api/groups/[id]/balances (calculate net balances), POST /api/settlements (record payment), GET /api/settlements?groupId= (list). Build debt graph simplification algorithm (A owes B, B owes C → A owes C). Validate no negative settlements.",
+      "focusArea": "Settlements API",
+      "branch": "cco/issue-393-em-6",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 7,
+      "task": "Build React UI components using shadcn/ui: layout shell with navbar, group list cards, create group modal, group detail view, expense form with amount/description/payer/split fields, expense list with items, settlement display showing who owes whom, settle up modal. Use React Hook Form + Zod validation. Implement optimistic UI updates.",
+      "focusArea": "Frontend UI Components",
+      "branch": "cco/issue-393-em-7",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 8,
+      "task": "Create Docker configuration for production deployment: multi-stage Dockerfile (builder + runner), docker-compose.yml for local testing with SQLite volume mount, .dockerignore, environment variable configuration, health check API endpoint /api/health, startup script for DB migrations. Optimize for Next.js standalone output.",
+      "focusArea": "Docker & Deployment",
+      "branch": "cco/issue-393-em-8",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 9,
+      "task": "Setup CI/CD pipeline with GitHub Actions: create .github/workflows/ci.yml with lint (ESLint), typecheck (tsc --noEmit), unit tests (Vitest), build verification (npm run build). Add workflow for PR checks and main branch protection. Configure test setup, test utilities, and example unit tests for core business logic (money math, debt algorithm, validation schemas).",
+      "focusArea": "CI/CD & Testing",
+      "branch": "cco/issue-393-em-9",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 10,
+      "task": "Build invite link system and real-time Socket.io client integration: create invite link generation with expiration (7 days/100 uses), invite acceptance flow, Socket.io client hooks (useSocket, useGroupRoom), event listeners for expense_added/expense_updated events, automatic reconnection handling, and fallback refresh mechanism. Implement notification UI for real-time updates.",
+      "focusArea": "Invites & Real-time Client",
+      "branch": "cco/issue-393-em-10",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ]
 }
