@@ -9,10 +9,20 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "analyzing",
+  "phase": "project_setup",
   "workBranch": "cco/411-build-splitsync-expense-sharing-app",
   "baseBranch": "main",
-  "ems": [],
+  "ems": [
+    {
+      "id": 0,
+      "task": "Initialize Next.js 14 project with TypeScript strict mode, configure .gitignore, package.json with all dependencies (NextAuth, Socket.io, Drizzle, Zod, shadcn/ui, Vitest), tsconfig.json, and create shared types directory. Define core domain types (User, Group, Expense, Settlement) that all other EMs will import.",
+      "focusArea": "Project Setup",
+      "branch": "cco/issue-411-setup",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ],
   "config": {
     "maxEms": 10,
     "maxWorkersPerEm": 3,
@@ -20,5 +30,101 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-21T08:11:53.487Z",
-  "updatedAt": "2026-01-21T08:11:55.215Z"
+  "updatedAt": "2026-01-21T08:13:46.807Z",
+  "analysisSummary": "Build SplitSync - a production-ready expense sharing app with group management, expense tracking, automatic settlement calculations, real-time updates via Socket.io, dual authentication (OAuth + credentials), and full CI/CD pipeline. Using Next.js 14, TypeScript, SQLite/Drizzle, and shadcn/ui.",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": [
+    {
+      "id": 1,
+      "task": "Create GitHub Actions CI workflow (.github/workflows/ci.yml) with lint, typecheck, test, and build jobs. Configure ESLint, TypeScript compiler, Vitest for testing, and production build process. This enables PR auto-merging.",
+      "focusArea": "CI/CD Pipeline",
+      "branch": "cco/issue-411-em-1",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 2,
+      "task": "Design and implement database schema using Drizzle ORM. Create schema for users, groups, group_members, expenses, expense_splits, and settlements. Configure SQLite connection, migrations system, and database initialization. Ensure atomic transaction support for financial operations.",
+      "focusArea": "Database Schema & Migrations",
+      "branch": "cco/issue-411-em-2",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 3,
+      "task": "Implement NextAuth.js v5 authentication with both Google OAuth and credentials (email/password) providers. Create auth configuration, API routes, session management, and middleware for protected routes. Store user data in SQLite via Drizzle.",
+      "focusArea": "Authentication System",
+      "branch": "cco/issue-411-em-3",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 4,
+      "task": "Build group management features: create groups, generate invite links, join via invite, add/remove members, and group settings. Implement API routes for all group operations and ensure proper authorization (only members can access their groups).",
+      "focusArea": "Group Management",
+      "branch": "cco/issue-411-em-4",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 5,
+      "task": "Implement expense tracking with equal split logic. Create expense CRUD operations, store amounts as integers (cents), handle expense categories and descriptions, and automatically calculate splits among group members. All financial operations use atomic transactions.",
+      "focusArea": "Expense Tracking",
+      "branch": "cco/issue-411-em-5",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 6,
+      "task": "Implement debt graph simplification algorithm for optimal settlements. Calculate minimum number of transactions needed to settle all debts. Generate settlement proposals and track settlement status (pending, completed). Handle complex multi-party debt scenarios.",
+      "focusArea": "Settlement Algorithm",
+      "branch": "cco/issue-411-em-6",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 7,
+      "task": "Set up Socket.io server for real-time updates. Broadcast events when expenses are added, members join/leave, settlements occur. Implement room-based communication per group. Handle connection lifecycle and reconnection logic.",
+      "focusArea": "Real-time Updates (Socket.io)",
+      "branch": "cco/issue-411-em-7",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 8,
+      "task": "Build core UI components using shadcn/ui: Button, Card, Input, Form components (with React Hook Form), Modal/Dialog, Tables for expenses, Avatar for users, Badge for status. Ensure responsive design with Tailwind.",
+      "focusArea": "UI Components Library",
+      "branch": "cco/issue-411-em-8",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 9,
+      "task": "Create page layouts and routing structure. Build main layout with navigation, dashboard page showing user's groups, group detail page with expense list, expense creation modal, settlement page showing who owes whom. Integrate auth state into UI.",
+      "focusArea": "Page Layouts & Routing",
+      "branch": "cco/issue-411-em-9",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 10,
+      "task": "Implement client-side real-time UI integration. Connect to Socket.io from frontend, display live updates for new expenses, member changes, and settlements. Show online status of group members. Handle connection errors and reconnection.",
+      "focusArea": "Real-time UI Integration",
+      "branch": "cco/issue-411-em-10",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ]
 }
