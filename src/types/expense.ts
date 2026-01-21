@@ -49,9 +49,18 @@ export interface ExpenseWithDetails extends Expense {
 /**
  * Expense split allocation
  * Used for unequal or percentage-based splits
+ * Exactly one of amount_cents or percentage must be provided.
  */
-export interface ExpenseSplit {
+export type UnequalExpenseSplit = {
   user_id: string;
-  amount_cents?: number;
-  percentage?: number;
-}
+  amount_cents: number;
+  percentage?: never;
+};
+
+export type PercentageExpenseSplit = {
+  user_id: string;
+  amount_cents?: never;
+  percentage: number;
+};
+
+export type ExpenseSplit = UnequalExpenseSplit | PercentageExpenseSplit;
