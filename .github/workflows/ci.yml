@@ -1,0 +1,167 @@
+name: CI & Robustness Checks
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+
+jobs:
+  quality-check:
+    name: Code Quality & Type Safety
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+        continue-on-error: false
+
+      - name: TypeScript type check
+        run: npx tsc --noEmit
+        env:
+          NEXT_PUBLIC_API_URL: "http://localhost:3000"
+          AUTH_SECRET: "mock-secret-for-ci"
+
+      - name: Run unit tests
+        run: npm run test
+        env:
+          NODE_ENV: test
+          DATABASE_URL: ":memory:"
+          NEXTAUTH_SECRET: "test-secret"
+          NEXTAUTH_URL: "http://localhost:3000"
+
+  build-check:
+    name: Production Build Check
+    runs-on: ubuntu-latest
+    needs: quality-check
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Next.js application
+        run: npm run build
+        env:
+          NODE_ENV: production
+          NEXT_PUBLIC_API_URL: "https://api.splitsync.app"
+          NEXTAUTH_URL: "https://splitsync.app"
+          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET }}
+          DATABASE_URL: "/app/data/splitsync.db"
+
+      - name: Check build output size
+        run: |
+          echo "Build size check:"
+          du -sh .next
+          du -sh .next/static
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: nextjs-build
+          path: |
+            .next
+            public
+          retention-days: 7
+
+  docker-build-check:
+    name: Docker Build Test
+    runs-on: ubuntu-latest
+    needs: quality-check
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: false
+          tags: splitsync:test
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          load: true
+
+      - name: Test Docker image
+        run: |
+          docker run --rm -d --name splitsync-test -p 3000:3000 \
+            -e NODE_ENV=production \
+            -e NEXTAUTH_SECRET=test-secret \
+            -e NEXTAUTH_URL=http://localhost:3000 \
+            splitsync:test
+
+          # Wait for server to start
+          timeout 30s bash -c 'until curl -f http://localhost:3000; do sleep 1; done'
+
+          # Cleanup
+          docker stop splitsync-test
+
+  security-scan:
+    name: Security Vulnerability Scan
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run npm audit
+        run: npm audit --audit-level=moderate
+        continue-on-error: true
+
+      - name: Check for outdated dependencies
+        run: npm outdated || true
+
+  # Optional: Deploy job (uncomment and configure when ready)
+  # deploy:
+  #   name: Deploy to Production
+  #   runs-on: ubuntu-latest
+  #   needs: [build-check, docker-build-check]
+  #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+  #
+  #   environment:
+  #     name: production
+  #     url: https://splitsync.app
+  #
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
+  #
+  #     - name: Deploy to Railway/VPS/Fly.io
+  #       run: |
+  #         # Add your deployment commands here
+  #         # Example: railway deploy
+  #         # Or: docker push && kubectl apply

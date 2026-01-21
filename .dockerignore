@@ -1,0 +1,88 @@
+# Dependencies
+node_modules
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# Testing
+coverage
+.nyc_output
+*.test.js
+*.test.ts
+*.spec.js
+*.spec.ts
+__tests__
+__mocks__
+
+# Next.js
+.next
+out
+build
+dist
+
+# Production builds (keep source, ignore build artifacts in builder stage)
+*.log
+
+# Environment files (should be mounted or passed as args)
+.env
+.env*.local
+.env.development
+.env.test
+.env.production
+
+# IDE
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# CI/CD
+.github
+.gitlab-ci.yml
+.travis.yml
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# Documentation
+README.md
+CHANGELOG.md
+CONTRIBUTING.md
+docs
+*.md
+
+# Misc
+.eslintrc
+.prettierrc
+.editorconfig
+.vercel
+.netlify
+
+# Database (local development)
+*.db
+*.db-shm
+*.db-wal
+data
+
+# Logs
+logs
+*.log
+
+# Temporary files
+tmp
+temp
+.tmp
+
+# OS files
+Thumbs.db
+.DS_Store
