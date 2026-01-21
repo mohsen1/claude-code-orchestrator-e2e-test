@@ -9,10 +9,20 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "analyzing",
+  "phase": "project_setup",
   "workBranch": "cco/407-build-splitsync-expense-sharing-app",
   "baseBranch": "main",
-  "ems": [],
+  "ems": [
+    {
+      "id": 0,
+      "task": "Create project foundation: .gitignore, package.json with all dependencies (next, drizzle, better-sqlite3, socket.io, next-auth, zod, vitest, etc.), tsconfig.json with strict mode, next.config.js, and shared types directory with core interfaces (User, Group, Expense, Settlement). Also create .github/workflows/ci.yml with lint, typecheck, test, and build jobs - CRITICAL PATH blocker for all other work.",
+      "focusArea": "Project Setup",
+      "branch": "cco/issue-407-setup",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ],
   "config": {
     "maxEms": 10,
     "maxWorkersPerEm": 3,
@@ -20,5 +30,101 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-21T06:08:57.924Z",
-  "updatedAt": "2026-01-21T06:09:00.113Z"
+  "updatedAt": "2026-01-21T06:09:52.011Z",
+  "analysisSummary": "Implement SplitSync, a production-ready expense sharing app with Next.js 14, SQLite, Drizzle ORM, and Socket.io. Features include group management, expense tracking, debt settlement algorithm, real-time updates, and OAuth authentication. All financial operations use integer cents with atomic transactions, Zod validation throughout, TypeScript strict mode, and a complete CI/CD pipeline.",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": [
+    {
+      "id": 1,
+      "task": "Implement SQLite database schema with Drizzle ORM: users, groups, group_members, expenses, expense_splits, settlements, sessions, accounts tables. Create database connection pool, migration files, and seed scripts. Build atomic transaction wrappers for financial operations. All money stored as integer cents.",
+      "focusArea": "Database Layer",
+      "branch": "cco/issue-407-em-1",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 2,
+      "task": "Implement authentication system with NextAuth.js v5: Google OAuth provider, credentials (email/password) provider, session management, and API route handlers (/api/auth/[...nextauth]). Create protected route middleware and auth utilities.",
+      "focusArea": "Authentication & Authorization",
+      "branch": "cco/issue-407-em-2",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 3,
+      "task": "Build group management API routes: create group, generate invite links, join via invite, add/remove members, update group settings. Include Zod validation on all inputs. Routes: /api/groups (POST, GET), /api/groups/[id] (GET, PATCH, DELETE), /api/groups/[id]/join, /api/groups/[id]/members.",
+      "focusArea": "Group Management API",
+      "branch": "cco/issue-407-em-3",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 4,
+      "task": "Build expense tracking API routes: create expense (with equal split logic), get expenses, update expense, delete expense. All financial operations use atomic transactions and integer cents. Routes: /api/expenses (POST, GET), /api/expenses/[id] (GET, PATCH, DELETE). Include Zod validation.",
+      "focusArea": "Expense Tracking API",
+      "branch": "cco/issue-407-em-4",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 5,
+      "task": "Implement debt graph settlement algorithm: calculate minimum transactions to settle all debts, simplify debt chains (A owes B, B owes C → A owes C). API routes: /api/groups/[id]/settlements (GET), /api/settlements/[id]/mark-paid (PATCH). Use integer cents throughout.",
+      "focusArea": "Settlement Algorithm",
+      "branch": "cco/issue-407-em-5",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 6,
+      "task": "Implement real-time updates with Socket.io: server setup, event handlers (expense:created, expense:updated, member:joined, settlement:created), room-based broadcasting per group. Create Socket.io integration for Next.js app.",
+      "focusArea": "Real-time Communication",
+      "branch": "cco/issue-407-em-6",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 7,
+      "task": "Build UI components with shadcn/ui: authentication pages (login, register, OAuth callback), group management pages (create, view, invite modal), expense pages (add expense, expense list, expense details), settlement dashboard (debt overview, mark as paid). Use React Hook Form + Zod.",
+      "focusArea": "Frontend UI Components",
+      "branch": "cco/issue-407-em-7",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 8,
+      "task": "Create client-side Socket.io hooks and utilities: useSocket hook for real-time expense updates, useGroupUpdates hook for member changes, auto-refresh on settlement events. Integrate with UI components.",
+      "focusArea": "Client Real-time Integration",
+      "branch": "cco/issue-407-em-8",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 9,
+      "task": "Write comprehensive tests with Vitest: unit tests for settlement algorithm (debt simplification, edge cases), integration tests for API routes (CRUD operations, auth flows), validation tests with Zod schemas. Target 80%+ coverage.",
+      "focusArea": "Testing Suite",
+      "branch": "cco/issue-407-em-9",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 10,
+      "task": "Create Docker deployment configuration: Dockerfile for multi-stage build (deps → build → production), docker-compose.yml with SQLite volume mount, .dockerignore, environment variable templates, deployment documentation for VPS/Railway/Fly.io.",
+      "focusArea": "Docker & Deployment",
+      "branch": "cco/issue-407-em-10",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ]
 }
