@@ -14,6 +14,9 @@ COPY . .
 # Disable telemetry for privacy
 ENV NEXT_TELEMETRY_DISABLED 1
 
+# Compile server.ts to server.js
+RUN npx tsc server.ts --outDir . --noEmit false --esModuleInterop --module commonjs --target ES2022 --skipLibCheck
+
 # Build the Next.js app
 RUN npm run build
 
