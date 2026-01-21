@@ -9,10 +9,20 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "analyzing",
+  "phase": "project_setup",
   "workBranch": "cco/421-build-splitsync-expense-sharing-app",
   "baseBranch": "main",
-  "ems": [],
+  "ems": [
+    {
+      "id": 0,
+      "task": "Initialize Next.js 14 project with TypeScript strict mode, configure .gitignore, package.json with all dependencies, tsconfig.json, ESLint, Tailwind CSS, and create .github/workflows/ci.yml with lint, typecheck, test, and build jobs. Also create shared TypeScript types file (src/types/index.ts) with core domain types (User, Group, Expense, Settlement).",
+      "focusArea": "Project Setup",
+      "branch": "cco/issue-421-setup",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ],
   "config": {
     "maxEms": 10,
     "maxWorkersPerEm": 3,
@@ -20,5 +30,83 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-21T23:16:44.728Z",
-  "updatedAt": "2026-01-21T23:16:46.231Z"
+  "updatedAt": "2026-01-21T23:17:19.448Z",
+  "analysisSummary": "Build SplitSync, a production-ready expense sharing app with Next.js 14, TypeScript, SQLite/Drizzle, NextAuth, Socket.io, and shadcn/ui. Includes group management, expense tracking, debt settlement algorithm, real-time updates, and Docker deployment with comprehensive CI/CD pipeline.",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": [
+    {
+      "id": 1,
+      "task": "Create data access layer with repository pattern for Users, Groups, Expenses, and Settlements. Implement CRUD operations with atomic transactions for financial data, proper error handling, and Zod validation schemas.",
+      "focusArea": "Data Access Layer",
+      "branch": "cco/issue-421-em-1",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 2,
+      "task": "Build API routes for group management (create, join via invite link, list, update), expense operations (add, list, update, delete), and settlement calculations. Use Zod for request validation and atomic transactions for money operations.",
+      "focusArea": "API Routes",
+      "branch": "cco/issue-421-em-2",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 3,
+      "task": "Implement settlement algorithm using debt graph simplification to minimize number of transactions. Calculate optimal payment flows between group members to settle all debts efficiently.",
+      "focusArea": "Settlement Algorithm",
+      "branch": "cco/issue-421-em-3",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 4,
+      "task": "Set up Socket.io server for real-time updates on expense additions, group membership changes, and settlement updates. Create event handlers and broadcasting logic for connected clients.",
+      "focusArea": "Real-time Updates",
+      "branch": "cco/issue-421-em-4",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 5,
+      "task": "Build reusable UI components using shadcn/ui and React Hook Form: Button, Input, Card, Modal, expense form, group list, expense list, settlement display, and notification toast components.",
+      "focusArea": "UI Components",
+      "branch": "cco/issue-421-em-5",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 6,
+      "task": "Create page routes and layouts: landing page, login/signup, dashboard, group detail view with expenses and settlements, and settings page. Implement client-side data fetching with real-time Socket.io integration.",
+      "focusArea": "Pages & Views",
+      "branch": "cco/issue-421-em-6",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 7,
+      "task": "Write comprehensive Vitest tests for repositories (with test database isolation), API routes, settlement algorithm, and auth flow. Set up test fixtures, mocks, and coverage reporting.",
+      "focusArea": "Testing",
+      "branch": "cco/issue-421-em-7",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 8,
+      "task": "Create Docker configuration with Dockerfile for multi-stage build (production-optimized) and docker-compose.yml for local development with SQLite volume persistence. Also create deployment documentation and environment variable templates.",
+      "focusArea": "Docker & Deployment",
+      "branch": "cco/issue-421-em-8",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ]
 }
