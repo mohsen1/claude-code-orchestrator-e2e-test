@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   description: 'Split expenses easily with friends and family',
 }
 
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+}
+
 export default function RootLayout({
   children,
 }: {
