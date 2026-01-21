@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "issue": {
+    "number": 405,
+    "title": "Build SplitSync (Expense Sharing App)",
+    "body": "# Product Requirements Document: SplitSync (Expense Sharing App)\n**Version:** 2.0 (Enhanced for Robustness & CI/CD)\n**Target:** Production-Ready MVP\n**Deployment Strategy:** Dockerized Node.js Server (VPS/Railway/Fly.io) due to SQLite + Socket.io constraints.\n\n---\n\n## Tech Stack\n- Next.js 14 (App Router)\n- TypeScript (strict mode)\n- SQLite + better-sqlite3\n- Drizzle ORM\n- Zod validation\n- NextAuth.js v5\n- Socket.io\n- Tailwind + shadcn/ui\n- React Hook Form\n- Vitest\n- GitHub Actions CI/CD\n\n---\n\n## Key Features\n1. Group management with invite links\n2. Expense tracking with equal splits\n3. Settlement algorithm (debt graph simplification)\n4. Real-time updates via Socket.io\n5. OAuth (Google) + Credentials auth\n6. Docker deployment with persistent volumes\n\n---\n\n## Robustness Requirements\n- All money stored as integers (cents)\n- Atomic transactions for financial data\n- Zod validation on all inputs\n- TypeScript strict mode (no `any` types)\n- CI/CD pipeline with lint, typecheck, tests, and build\n\n---\n\n**Note:** 14th attempt. Auto-merge fix VERIFIED in attempts #12-13 (commits a615307, issue #397). PRs with Copilot COMMENTED reviews now auto-merge successfully. Continuing to build SplitSync app."
+  },
+  "repo": {
+    "owner": "mohsen1",
+    "name": "claude-code-orchestrator-e2e-test"
+  },
+  "phase": "initialized",
+  "workBranch": "cco/405-build-splitsync-expense-sharing-app",
+  "baseBranch": "main",
+  "ems": [],
+  "config": {
+    "maxEms": 10,
+    "maxWorkersPerEm": 3,
+    "reviewWaitMinutes": 4,
+    "prLabel": "cco"
+  },
+  "createdAt": "2026-01-21T05:03:52.392Z",
+  "updatedAt": "2026-01-21T05:03:52.547Z"
+}
