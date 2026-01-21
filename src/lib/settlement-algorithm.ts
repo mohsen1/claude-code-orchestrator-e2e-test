@@ -59,10 +59,11 @@ export function simplifyDebts(balances: Map<string, number>): Debt[] {
     creditor.amount -= settlementAmount;
 
     // Move to next debtor/creditor if settled
-    if (debtor.amount < 1) {
+    // Use tolerance-based comparison to handle floating-point arithmetic
+    if (debtor.amount < 0.01) {
       i++;
     }
-    if (creditor.amount < 1) {
+    if (creditor.amount < 0.01) {
       j++;
     }
   }
