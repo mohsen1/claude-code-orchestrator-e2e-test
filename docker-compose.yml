@@ -1,0 +1,82 @@
+version: '3.8'
+
+services:
+  # Main web application
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: splitsync-app
+    ports:
+      - "3000:3000"
+    volumes:
+      # Persist SQLite database file
+      - sqlite_data:/app/db
+      # Mount for development (comment out in production)
+      - ./src:/app/src
+      - ./public:/app/public
+    environment:
+      # Application
+      - NODE_ENV=production
+      - PORT=3000
+      - HOSTNAME=0.0.0.0
+
+      # Database - SQLite file path (matches volume mount)
+      - DATABASE_URL=file:/app/db/splitsync.sqlite
+
+      # NextAuth Configuration
+      - AUTH_SECRET=${AUTH_SECRET:-change_this_in_production_use_openssl_rand_base64_32}
+      - AUTH_URL=http://localhost:3000/api/auth
+      - NEXTAUTH_URL=http://localhost:3000
+      - NEXTAUTH_SECRET=${AUTH_SECRET:-change_this_in_production_use_openssl_rand_base64_32}
+
+      # Public URLs
+      - NEXT_PUBLIC_APP_URL=http://localhost:3000
+
+      # Google OAuth (optional - provide via .env or secrets)
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID:-}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET:-}
+
+      # Disable telemetry
+      - NEXT_TELEMETRY_DISABLED=1
+
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - splitsync-network
+
+  # Database admin service (optional - for SQLite inspection)
+  # Uncomment if you want to run database migrations separately
+  # db-migrate:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   container_name: splitsync-migrate
+  #   volumes:
+  #     - sqlite_data:/app/db
+  #   environment:
+  #     - DATABASE_URL=file:/app/db/splitsync.sqlite
+  #   command: ["npm", "run", "db:push"]
+  #   networks:
+  #     - splitsync-network
+  #   profiles:
+  #     - migration
+
+# Named volume for SQLite database persistence
+volumes:
+  sqlite_data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./sqlite_data
+
+# Network for service communication
+networks:
+  splitsync-network:
+    driver: bridge

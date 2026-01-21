@@ -1,0 +1,87 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Next.js build output (will be generated in container)
+.next/
+out/
+dist/
+build/
+
+# Environment files (use docker-compose environment or secrets)
+.env
+.env*.local
+.env.development
+.env.production
+.env.test
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Documentation (optional - exclude to reduce image size)
+README.md
+CHANGELOG.md
+LICENSE
+*.md
+docs/
+
+# Testing
+coverage/
+.nyc_output/
+*.test.js
+*.spec.js
+__tests__/
+__mocks__/
+*.log
+
+# TypeScript (transpiled in build)
+tsconfig.json
+*.ts
+*.tsx
+!server.ts  # Keep server.ts for compilation
+
+# Misc
+.eslintrc*
+.prettierrc*
+.editorconfig
+
+# SQLite database files (will be in volume)
+*.sqlite
+*.sqlite3
+*.db
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Docker files (don't include in image)
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+.cache/
+
+# Production database data (mounted as volume)
+sqlite_data/
