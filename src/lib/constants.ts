@@ -1,18 +1,28 @@
 /**
  * Application-wide constants for SplitSync
  */
+import * as path from "path";
 
 // App metadata
 export const APP_NAME = "SplitSync";
 export const APP_DESCRIPTION = "Expense sharing made simple";
 
 // Database
-export const DB_PATH = process.env.DATABASE_PATH || "./sqlite.db";
+export const DB_PATH = process.env.DATABASE_PATH || path.resolve(process.cwd(), "sqlite.db");
 
 // Authentication
 export const AUTH_SESSION_MAX_AGE = 30 * 24 * 60 * 60; // 30 days in seconds
-export const AUTH_GOOGLE_ID = process.env.GOOGLE_CLIENT_ID || "";
-export const AUTH_GOOGLE_SECRET = process.env.GOOGLE_CLIENT_SECRET || "";
+
+function getRequiredEnv(name: string): string {
+  const value = process.env[name];
+  if (!value) {
+    throw new Error(`Missing required environment variable: ${name}`);
+  }
+  return value;
+}
+
+export const AUTH_GOOGLE_ID = getRequiredEnv("GOOGLE_CLIENT_ID");
+export const AUTH_GOOGLE_SECRET = getRequiredEnv("GOOGLE_CLIENT_SECRET");
 
 // API routes
 export const API_ROUTES = {

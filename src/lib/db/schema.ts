@@ -4,7 +4,7 @@
  * with the complete database schema for SplitSync
  */
 
-import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
+import { sqliteTable, text, integer, unique, primaryKey } from "drizzle-orm/sqlite-core";
 import { sql } from "drizzle-orm";
 
 /**
@@ -15,7 +15,7 @@ export const users = sqliteTable("users", {
   id: text("id").primaryKey(),
   name: text("name").notNull(),
   email: text("email").notNull().unique(),
-  emailVerified: integer("emailVerified", { mode: "timestamp" }),
+  emailVerified: integer("email_verified", { mode: "timestamp" }),
   image: text("image"),
   createdAt: integer("created_at", { mode: "timestamp" })
     .notNull()
@@ -43,7 +43,9 @@ export const accounts = sqliteTable("accounts", {
   scope: text("scope"),
   id_token: text("id_token"),
   session_state: text("session_state"),
-});
+}, (table) => ({
+  pk: primaryKey({ columns: [table.provider, table.providerAccountId] })
+}));
 
 /**
  * Sessions table
@@ -76,21 +78,27 @@ export const groups = sqliteTable("groups", {
  * Group Members table
  * Junction table for users and groups (many-to-many)
  */
-export const groupMembers = sqliteTable("group_members", {
-  id: text("id").primaryKey(),
-  groupId: text("group_id")
-    .notNull()
-    .references(() => groups.id, { onDelete: "cascade" }),
-  userId: text("user_id")
-    .notNull()
-    .references(() => users.id, { onDelete: "cascade" }),
-  role: text("role", { enum: ["admin", "member"] })
-    .notNull()
-    .default("member"),
-  joinedAt: integer("joined_at", { mode: "timestamp" })
-    .notNull()
-    .default(sql`(unixepoch())`),
-});
+export const groupMembers = sqliteTable(
+  "group_members",
+  {
+    id: text("id").primaryKey(),
+    groupId: text("group_id")
+      .notNull()
+      .references(() => groups.id, { onDelete: "cascade" }),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    role: text("role", { enum: ["admin", "member"] })
+      .notNull()
+      .default("member"),
+    joinedAt: integer("joined_at", { mode: "timestamp" })
+      .notNull()
+      .default(sql`(unixepoch())`),
+  },
+  (table) => ({
+    uniqueGroupUser: unique("unique_group_user").on(table.groupId, table.userId),
+  })
+);
 
 /**
  * Expenses table
@@ -103,7 +111,7 @@ export const expenses = sqliteTable("expenses", {
     .notNull()
     .references(() => groups.id, { onDelete: "cascade" }),
   description: text("description").notNull(),
-  amount: integer("amount").notNull(), // Amount in cents
+  amount: integer("amount").notNull().check(sql`amount > 0`), // Amount in cents
   paidBy: text("paid_by")
     .notNull()
     .references(() => users.id, { onDelete: "restrict" }),
@@ -123,16 +131,22 @@ export const expenses = sqliteTable("expenses", {
  * Stores how each expense is split among group members
  * For MVP, all splits are equal (will be extended in future)
  */
-export const expenseSplits = sqliteTable("expense_splits", {
-  id: text("id").primaryKey(),
-  expenseId: text("expense_id")
-    .notNull()
-    .references(() => expenses.id, { onDelete: "cascade" }),
-  userId: text("user_id")
-    .notNull()
-    .references(() => users.id, { onDelete: "cascade" }),
-  amount: integer("amount").notNull(), // Amount in cents
-});
+export const expenseSplits = sqliteTable(
+  "expense_splits",
+  {
+    id: text("id").primaryKey(),
+    expenseId: text("expense_id")
+      .notNull()
+      .references(() => expenses.id, { onDelete: "cascade" }),
+    userId: text("user_id")
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade" }),
+    amount: integer("amount").notNull().$defaultFn(() => 0), // Amount in cents (>= 0)
+  },
+  (table) => ({
+    uniqueExpenseUser: unique("unique_expense_user_split").on(table.expenseId, table.userId),
+  })
+);
 
 /**
  * Settlements table
@@ -149,11 +163,13 @@ export const settlements = sqliteTable("settlements", {
   toUserId: text("to_user_id")
     .notNull()
     .references(() => users.id, { onDelete: "restrict" }),
-  amount: integer("amount").notNull(), // Amount in cents
+  amount: integer("amount").notNull().$defaultFn(() => 0), // Amount in cents (>= 0)
   settledAt: integer("settled_at", { mode: "timestamp" })
     .notNull()
     .default(sql`(unixepoch())`),
-});
+}, (table) => ({
+  checkDifferentUsers: sql`from_user_id != to_user_id`,
+}));
 
 /**
  * Verification Tokens table
@@ -163,7 +179,9 @@ export const verificationTokens = sqliteTable("verification_tokens", {
   identifier: text("identifier").notNull(),
   token: text("token").notNull(),
   expires: integer("expires", { mode: "timestamp" }).notNull(),
-});
+}, (table) => ({
+  pk: primaryKey({ columns: [table.identifier, table.token] })
+}));
 
 // Type exports for use in other files
 export type User = typeof users.$inferSelect;
@@ -178,3 +196,9 @@ export type ExpenseSplit = typeof expenseSplits.$inferSelect;
 export type NewExpenseSplit = typeof expenseSplits.$inferInsert;
 export type Settlement = typeof settlements.$inferSelect;
 export type NewSettlement = typeof settlements.$inferInsert;
+export type Account = typeof accounts.$inferSelect;
+export type NewAccount = typeof accounts.$inferInsert;
+export type Session = typeof sessions.$inferSelect;
+export type NewSession = typeof sessions.$inferInsert;
+export type VerificationToken = typeof verificationTokens.$inferSelect;
+export type NewVerificationToken = typeof verificationTokens.$inferInsert;
