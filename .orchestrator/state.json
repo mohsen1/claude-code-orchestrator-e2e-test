@@ -9,10 +9,20 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "analyzing",
+  "phase": "project_setup",
   "workBranch": "cco/405-build-splitsync-expense-sharing-app",
   "baseBranch": "main",
-  "ems": [],
+  "ems": [
+    {
+      "id": 0,
+      "task": "Initialize Next.js 14 project with TypeScript, configure .gitignore, package.json with all dependencies (Drizzle, better-sqlite3, Socket.io, NextAuth v5, shadcn/ui, Zod, Vitest), tsconfig.json in strict mode, Docker configuration, and shared types (User, Group, Expense, Settlement) in src/types/index.ts",
+      "focusArea": "Project Setup",
+      "branch": "cco/issue-405-setup",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ],
   "config": {
     "maxEms": 10,
     "maxWorkersPerEm": 3,
@@ -20,5 +30,101 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-21T05:03:52.392Z",
-  "updatedAt": "2026-01-21T05:03:54.040Z"
+  "updatedAt": "2026-01-21T05:05:32.419Z",
+  "analysisSummary": "Implement SplitSync, a production-ready expense sharing app with Next.js 14, SQLite, Socket.io, and OAuth. Includes group management, expense tracking, debt simplification algorithm, real-time updates, and Docker deployment.",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": [
+    {
+      "id": 1,
+      "task": "Implement Drizzle ORM schema and database layer: create migrations for users, groups, group_members, expenses, expense_splits, and settlements tables; create db/index.ts with better-sqlite3 connection; implement seed script; add transaction helpers for atomic operations",
+      "focusArea": "Database Layer",
+      "branch": "cco/issue-405-em-1",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 2,
+      "task": "Implement NextAuth.js v5 authentication: configure Google OAuth and Credentials provider; create auth route handlers (/api/auth/[...nextauth]); implement session management with JWT; create login/register pages with shadcn/ui form components; add protected route middleware",
+      "focusArea": "Authentication",
+      "branch": "cco/issue-405-em-2",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 3,
+      "task": "Implement group management API routes: create group (POST /api/groups), join via invite link (POST /api/groups/join), list groups (GET /api/groups), get group details (GET /api/groups/[id]), add/remove members, generate unique invite codes with Zod validation",
+      "focusArea": "Group Management API",
+      "branch": "cco/issue-405-em-3",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 4,
+      "task": "Implement expense tracking API routes: create expense with split calculation (POST /api/expenses), list expenses (GET /api/expenses?groupId=), update/delete expenses, ensure all monetary values are stored as integer cents, use atomic transactions",
+      "focusArea": "Expense API",
+      "branch": "cco/issue-405-em-4",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 5,
+      "task": "Implement debt simplification algorithm: create settlement calculator that minimizes transactions using graph reduction (merge debts, cancel opposite flows), generate optimal settlement plan (POST /api/settlements/calculate), mark settlements as paid",
+      "focusArea": "Settlement Algorithm",
+      "branch": "cco/issue-405-em-5",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 6,
+      "task": "Implement Socket.io real-time updates: create socket server with namespace per group, broadcast events for new expenses, member changes, settlement updates; integrate with Next.js API route; implement reconnection logic and JWT authentication",
+      "focusArea": "Real-time Socket.io",
+      "branch": "cco/issue-405-em-6",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 7,
+      "task": "Build group management UI: groups list page, create group modal with shadcn/ui dialog, group detail view with members list, invite link display/copy, expense list per group with filtering and pagination",
+      "focusArea": "Groups UI",
+      "branch": "cco/issue-405-em-7",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 8,
+      "task": "Build expense management UI: add expense form with amount, description, payer selection, split members; expense list with item details; edit/delete expense modals; expense detail view showing individual splits; use React Hook Form with Zod validation",
+      "focusArea": "Expenses UI",
+      "branch": "cco/issue-405-em-8",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 9,
+      "task": "Build settlement UI: display simplified debt graph showing who owes whom, settlement list with amounts, mark as paid button, settlement history; visualize balances with color coding (green for owed, red for owing)",
+      "focusArea": "Settlements UI",
+      "branch": "cco/issue-405-em-9",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 10,
+      "task": "Implement comprehensive test suite: unit tests for settlement calculator, expense calculations, invite code generation; integration tests for API routes with test database; component tests with React Testing Library; ensure 80%+ coverage",
+      "focusArea": "Testing",
+      "branch": "cco/issue-405-em-10",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ]
 }
