@@ -53,11 +53,17 @@
           ],
           "branch": "cco/issue-421-setup-w-2",
           "status": "pr_created",
-          "reviewsAddressed": 0,
+          "reviewsAddressed": 1,
           "startedAt": "2026-01-21T23:18:52.931Z",
           "prNumber": 423,
           "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/423",
-          "completedAt": "2026-01-21T23:20:29.401Z"
+          "completedAt": "2026-01-21T23:20:29.401Z",
+          "addressedReviewCommentIds": [
+            2714693595,
+            2714693625,
+            2714693661
+          ],
+          "addressedIssueCommentIds": []
         },
         {
           "id": 3,
@@ -84,7 +90,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-21T23:16:44.728Z",
-  "updatedAt": "2026-01-21T23:35:26.332Z",
+  "updatedAt": "2026-01-21T23:36:48.014Z",
   "analysisSummary": "Build SplitSync, a production-ready expense sharing app with Next.js 14, TypeScript, SQLite/Drizzle, NextAuth, Socket.io, and shadcn/ui. Includes group management, expense tracking, debt settlement algorithm, real-time updates, and Docker deployment with comprehensive CI/CD pipeline.",
   "projectSetup": {
     "completed": false
