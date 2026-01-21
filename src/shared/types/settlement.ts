@@ -35,5 +35,5 @@ export type CreateSettlementInput = {
 };
 
 export type UpdateSettlementInput = {
-  status: 'completed';
+  status: Settlement['status'];
 };

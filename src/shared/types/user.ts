@@ -17,7 +17,9 @@ export interface UserDTO {
 export type CreateUserInput = {
   email: string;
   name: string;
-  image?: string;
+  image?: string | null;
 };
 
-export type UpdateUserInput = Partial<Omit<CreateUserInput, 'email'>>;
+export type UpdateUserInput = Partial<Omit<CreateUserInput, 'email' | 'image'>> & {
+  image?: string | null;
+};

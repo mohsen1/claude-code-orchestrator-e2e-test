@@ -41,7 +41,7 @@ export type CreateExpenseInput = {
   paidBy: string;
   groupId: string;
   category?: string;
-  date?: Date;
+  date?: Date; // If omitted, the backend will default this to the current date/time.
   splitWith?: string[]; // Array of user IDs to split with (defaults to all group members)
 };
 
