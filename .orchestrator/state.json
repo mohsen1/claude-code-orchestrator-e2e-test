@@ -9,10 +9,20 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "analyzing",
+  "phase": "project_setup",
   "workBranch": "cco/427-build-splitsync-expense-sharing-app",
   "baseBranch": "main",
-  "ems": [],
+  "ems": [
+    {
+      "id": 0,
+      "task": "Set up project foundation with .gitignore, package.json with all dependencies (Next.js 14, Drizzle, NextAuth v5, Socket.io, Zod, Vitest, shadcn/ui), tsconfig.json (strict mode), .github/workflows/ci.yml (lint, typecheck, test, build jobs), Dockerfile, docker-compose.yml, and shared types (user, group, expense, settlement types)",
+      "focusArea": "Project Setup",
+      "branch": "cco/issue-427-setup",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ],
   "config": {
     "maxEms": 10,
     "maxWorkersPerEm": 3,
@@ -20,5 +30,92 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-21T23:50:17.538Z",
-  "updatedAt": "2026-01-21T23:50:19.933Z"
+  "updatedAt": "2026-01-21T23:50:46.766Z",
+  "analysisSummary": "Build SplitSync - a production-ready expense sharing app with group management, expense tracking, debt simplification algorithm, real-time Socket.io updates, and dual authentication (OAuth + credentials). Stack: Next.js 14, TypeScript, SQLite + Drizzle ORM, Zod validation, NextAuth.js v5, Tailwind + shadcn/ui, Vitest, GitHub Actions CI/CD, Docker deployment.",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": [
+    {
+      "id": 1,
+      "task": "Implement data layer with Drizzle ORM schema and migrations for users, groups, group_members, expenses, expense_splits, and settlements tables. Create database connection singleton, migration scripts, and repository pattern with CRUD operations for all entities",
+      "focusArea": "Data Layer & Database",
+      "branch": "cco/issue-427-em-1",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 2,
+      "task": "Implement NextAuth.js v5 authentication system with both Google OAuth and Credentials (email/password) providers. Create auth configuration, middleware for route protection, and API routes for auth callbacks (NEXTAUTH_SECRET, NEXTAUTH_URL, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET)",
+      "focusArea": "Authentication System",
+      "branch": "cco/issue-427-em-2",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 3,
+      "task": "Create API routes for group management: create group, generate invite links, join via invite code, list groups, get group details, update group settings, leave group, remove member. All endpoints use Zod validation",
+      "focusArea": "Group Management API",
+      "branch": "cco/issue-427-em-3",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 4,
+      "task": "Create API routes for expense operations: add expense (with equal split logic), list expenses, update expense, delete expense, get user's balances. Implement transaction safety with atomic database operations for financial data. Money stored as integer cents",
+      "focusArea": "Expense Tracking API",
+      "branch": "cco/issue-427-em-4",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 5,
+      "task": "Implement debt simplification algorithm that computes minimal transactions to settle all group expenses. Create settlement API endpoints: calculate settlements, mark as paid, list settlement history. Algorithm reduces total number of transactions using debt graph optimization",
+      "focusArea": "Settlement Algorithm",
+      "branch": "cco/issue-427-em-5",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 6,
+      "task": "Set up Socket.io server for real-time updates: new expenses, group member changes, settlement updates. Implement socket event handlers, room-based communication (one room per group), and client-side socket hooks for React components",
+      "focusArea": "Real-time Communication",
+      "branch": "cco/issue-427-em-6",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 7,
+      "task": "Build reusable UI components using shadcn/ui and Tailwind: Button, Input, Card, Dialog, Form components with React Hook Form integration, Avatar for user display, Currency display component, Balance indicators (positive/negative), Badge components",
+      "focusArea": "UI Component Library",
+      "branch": "cco/issue-427-em-7",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 8,
+      "task": "Create page components and layouts: login/signup pages, main dashboard layout, group list view, group detail page with expense list, add expense form, settlement summary view, profile settings page. Integrate Socket.io for real-time updates",
+      "focusArea": "Pages & Views",
+      "branch": "cco/issue-427-em-8",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 9,
+      "task": "Write comprehensive Vitest tests for all layers: unit tests for settlement algorithm, API route tests with mocked database, authentication flow tests, form validation tests. Configure test environment, mocks, and fixtures. Ensure >80% code coverage",
+      "focusArea": "Testing Suite",
+      "branch": "cco/issue-427-em-9",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ]
 }
