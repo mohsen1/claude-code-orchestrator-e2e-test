@@ -1,0 +1,141 @@
+# Dependencies
+node_modules/
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# Testing
+/coverage
+*.lcov
+.nyc_output
+
+# Next.js
+/.next/
+/out/
+.next
+next-env.d.ts
+
+# Production
+/build
+/dist
+
+# Misc
+.DS_Store
+*.pem
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Local env files
+.env
+.env*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# IDE & Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# SQLite Databases
+*.sqlite
+*.sqlite3
+*.db
+.sqlite_data/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+.pnpm-debug.log*
+
+# Docker
+*.pid
+*.seed
+*.pid.lock
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity
+
+# Cache directories
+.turbo/
+.cache/
+.parcel-cache/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Docker volumes (local development)
+docker-volumes/
+data/
+
+# Build artifacts
+tsconfig.tsbuildinfo
+
+# Vitest
+.vitest/
+
+# Playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
+
+# Drizzle
+drizzle/
+
+# Session files
+sessions/
