@@ -69,7 +69,6 @@ jobs:
   on-review:
     if: |
       github.event_name == 'pull_request_review' &&
-      (github.event.review.state == 'changes_requested' || github.event.review.state == 'commented') &&
       startsWith(github.event.pull_request.head.ref, 'cco/')
     uses: mohsen1/claude-orchestrator-action/.github/workflows/orchestrate.yml@main
     with:
