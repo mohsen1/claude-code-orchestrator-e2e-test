@@ -41,9 +41,12 @@
             ".vscode/extensions.json"
           ],
           "branch": "cco/issue-473-setup-w-1",
-          "status": "in_progress",
+          "status": "pr_created",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-22T22:12:56.147Z"
+          "startedAt": "2026-01-22T22:12:56.147Z",
+          "prNumber": 474,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/474",
+          "completedAt": "2026-01-22T22:18:23.749Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -57,7 +60,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-22T22:10:27.762Z",
-  "updatedAt": "2026-01-22T22:12:56.148Z",
+  "updatedAt": "2026-01-22T22:18:24.661Z",
   "analysisSummary": "Build SplitSync - a production-ready expense sharing application with real-time synchronization, featuring group management, expense tracking, optimal settlement calculations, OAuth authentication, and comprehensive testing with CI/CD pipeline.",
   "projectSetup": {
     "completed": false
@@ -144,5 +147,6 @@
       "workers": [],
       "reviewsAddressed": 0
     }
-  ]
+  ],
+  "errorHistory": []
 }
