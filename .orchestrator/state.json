@@ -91,8 +91,9 @@
             "src/db/schema/settlements.ts"
           ],
           "branch": "cco/issue-475-em-1-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T23:17:28.718Z"
         },
         {
           "id": 2,
@@ -106,8 +107,9 @@
             "migrations/meta/0001.json"
           ],
           "branch": "cco/issue-475-em-1-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T23:17:28.835Z"
         },
         {
           "id": 3,
@@ -121,8 +123,9 @@
             "src/lib/validations/api.ts"
           ],
           "branch": "cco/issue-475-em-1-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T23:17:28.740Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -142,9 +145,63 @@
       "task": "Create API routes for group management, expense CRUD operations, settlement calculations, and member management with validation and error handling",
       "focusArea": "API Routes",
       "branch": "cco/issue-475-em-3",
-      "status": "pending",
-      "workers": [],
-      "reviewsAddressed": 0
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create API routes for group management including group CRUD operations, invite link generation, and member role management with validation and error handling",
+          "files": [
+            "src/app/api/groups/route.ts",
+            "src/app/api/groups/[groupId]/route.ts",
+            "src/app/api/groups/[groupId]/invite/route.ts",
+            "src/app/api/groups/[groupId]/members/route.ts",
+            "src/app/api/groups/[groupId]/members/[memberId]/route.ts",
+            "src/lib/api/groups/controller.ts",
+            "src/lib/api/groups/validation.ts",
+            "src/lib/api/groups/service.ts",
+            "tests/api/groups/groups.test.ts"
+          ],
+          "branch": "cco/issue-475-em-3-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Create API routes for expense CRUD operations including expense creation, retrieval, update, deletion, and category management with validation",
+          "files": [
+            "src/app/api/expenses/route.ts",
+            "src/app/api/expenses/[expenseId]/route.ts",
+            "src/app/api/groups/[groupId]/expenses/route.ts",
+            "src/app/api/groups/[groupId]/expenses/[expenseId]/route.ts",
+            "src/lib/api/expenses/controller.ts",
+            "src/lib/api/expenses/validation.ts",
+            "src/lib/api/expenses/service.ts",
+            "tests/api/expenses/expenses.test.ts"
+          ],
+          "branch": "cco/issue-475-em-3-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create API routes for settlement calculations, settlement management, and member balance tracking with debt graph algorithms",
+          "files": [
+            "src/app/api/groups/[groupId]/settlements/route.ts",
+            "src/app/api/groups/[groupId]/settlements/[settlementId]/route.ts",
+            "src/app/api/groups/[groupId]/balances/route.ts",
+            "src/lib/api/settlements/controller.ts",
+            "src/lib/api/settlements/validation.ts",
+            "src/lib/api/settlements/calculator.ts",
+            "src/lib/api/settlements/service.ts",
+            "tests/api/settlements/settlements.test.ts"
+          ],
+          "branch": "cco/issue-475-em-3-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-22T23:17:28.408Z"
     },
     {
       "id": 4,
@@ -164,8 +221,9 @@
             "src/lib/settlement/graph/index.ts"
           ],
           "branch": "cco/issue-475-em-4-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T23:17:27.893Z"
         },
         {
           "id": 2,
@@ -178,8 +236,9 @@
             "src/lib/settlement/optimizer/index.ts"
           ],
           "branch": "cco/issue-475-em-4-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T23:17:27.933Z"
         },
         {
           "id": 3,
@@ -193,8 +252,9 @@
             "src/lib/settlement/index.ts"
           ],
           "branch": "cco/issue-475-em-4-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T23:17:27.913Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -221,8 +281,9 @@
             "lib/form-utils.ts"
           ],
           "branch": "cco/issue-475-em-5-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T23:17:28.604Z"
         },
         {
           "id": 2,
@@ -240,8 +301,9 @@
             "lib/toast.ts"
           ],
           "branch": "cco/issue-475-em-5-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T23:17:28.561Z"
         },
         {
           "id": 3,
@@ -258,8 +320,9 @@
             "lib/table-utils.ts"
           ],
           "branch": "cco/issue-475-em-5-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T23:17:28.645Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -420,8 +483,9 @@
             "docs/logging.md"
           ],
           "branch": "cco/issue-475-em-10-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T23:17:28.693Z"
         },
         {
           "id": 2,
@@ -439,8 +503,9 @@
             "docs/error-tracking.md"
           ],
           "branch": "cco/issue-475-em-10-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T23:17:28.804Z"
         },
         {
           "id": 3,
@@ -462,8 +527,9 @@
             "docs/metrics.md"
           ],
           "branch": "cco/issue-475-em-10-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T23:17:28.873Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -477,7 +543,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-22T23:01:47.685Z",
-  "updatedAt": "2026-01-22T23:17:26.831Z",
+  "updatedAt": "2026-01-22T23:17:28.408Z",
   "analysisSummary": "Build SplitSync, a production-ready expense sharing application with real-time sync, group management, expense tracking, settlement calculations, and authentication. Using Next.js 16, TypeScript, SQLite/Drizzle, NextAuth, Socket.io, and shadcn/ui with comprehensive testing and CI/CD.",
   "projectSetup": {
     "completed": false
