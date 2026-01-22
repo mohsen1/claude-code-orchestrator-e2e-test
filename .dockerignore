@@ -1,0 +1,145 @@
+# Dependencies
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Testing
+coverage
+.nyc_output
+*.lcov
+.vitest
+
+# Next.js build output
+.next
+out
+dist
+build
+
+# Production builds (don't copy build artifacts)
+*.log
+
+# Environment files
+.env
+.env*.local
+.env.development
+.env.test
+.env.production
+.env.*.local
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# IDE and editor files
+.vscode
+.idea
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# CI/CD
+.github
+.gitlab-ci.yml
+.travis.yml
+.circleci
+
+# Documentation
+README.md
+CHANGELOG.md
+CONTRIBUTING.md
+LICENSE
+docs
+*.md
+
+# Docker files (don't include docker files in docker image)
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Database files (will be mounted as volume)
+*.db
+*.db-shm
+*.db-wal
+prisma/migrations
+
+# Logs
+logs
+*.log
+
+# Temporary files
+tmp
+temp
+.tmp
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Test files
+**/__tests__
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+**/__mocks__
+**/mocks
+
+# Coverage and reports
+coverage
+*.lcov
+.nyc_output
+
+# Storybook
+.storybook
+storybook-static
+
+# PWA files
+sw.js
+workbox-*.js
+**/public/sw.js
+
+# Misc
+.cache
+.parcel-cache
+.serverless
+.fusebox
+.dynamodb
+.typescript
+
+# Local development files
+.local
+.vscode
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Prisma
+prisma/migrations/**/*.sql
+!prisma/migrations
+
+# Backups
+backups/
+*.backup
+
+# SSL certificates
+ssl/
+*.pem
+*.key
+*.crt
+
+# Docker volumes
+data/
