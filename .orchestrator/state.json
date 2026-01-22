@@ -70,9 +70,10 @@
             "src/db/schema/settlements.ts"
           ],
           "branch": "cco/issue-473-em-1-w-1",
-          "status": "in_progress",
+          "status": "failed",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-22T22:23:57.472Z"
+          "startedAt": "2026-01-22T22:23:57.472Z",
+          "error": "Claude Code process exited with code 1"
         },
         {
           "id": 2,
@@ -171,7 +172,7 @@
       "task": "Build REST API endpoints for groups (create, invite, manage members), implement invite link generation with expiration, add group archival/deletion with data retention policies",
       "focusArea": "Group Management API",
       "branch": "cco/issue-473-em-3",
-      "status": "workers_running",
+      "status": "skipped",
       "workers": [
         {
           "id": 1,
@@ -202,9 +203,10 @@
             "src/types/invites.ts"
           ],
           "branch": "cco/issue-473-em-3-w-2",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-22T22:23:56.940Z"
+          "startedAt": "2026-01-22T22:23:56.940Z",
+          "error": "No unique commits"
         },
         {
           "id": 3,
@@ -226,7 +228,8 @@
         }
       ],
       "reviewsAddressed": 0,
-      "startedAt": "2026-01-22T22:23:55.605Z"
+      "startedAt": "2026-01-22T22:23:55.605Z",
+      "error": "No workers merged - all skipped/failed"
     },
     {
       "id": 4,
@@ -603,7 +606,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-22T22:10:27.762Z",
-  "updatedAt": "2026-01-22T22:43:07.449Z",
+  "updatedAt": "2026-01-22T22:46:42.513Z",
   "analysisSummary": "Build SplitSync - a production-ready expense sharing application with real-time synchronization, featuring group management, expense tracking, optimal settlement calculations, OAuth authentication, and comprehensive testing with CI/CD pipeline.",
   "projectSetup": {
     "completed": false
@@ -614,6 +617,18 @@
       "timestamp": "2026-01-22T22:43:07.449Z",
       "phase": "em_assignment",
       "message": "EM-2 skipped: No workers merged - all skipped/failed",
+      "context": "WorkersStatus: W1:skipped, W2:skipped, W3:skipped"
+    },
+    {
+      "timestamp": "2026-01-22T22:45:09.998Z",
+      "phase": "em_assignment",
+      "message": "Worker-1 SDK execution failed: Claude Code process exited with code 1",
+      "context": "EM-1"
+    },
+    {
+      "timestamp": "2026-01-22T22:46:42.512Z",
+      "phase": "em_assignment",
+      "message": "EM-3 skipped: No workers merged - all skipped/failed",
       "context": "WorkersStatus: W1:skipped, W2:skipped, W3:skipped"
     }
   ]
