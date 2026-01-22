@@ -18,7 +18,7 @@
       "task": "Set up project foundation with .gitignore, package.json with all dependencies (Next.js 14, Drizzle, NextAuth v5, Socket.io, Zod, Vitest, shadcn/ui), tsconfig.json (strict mode), .github/workflows/ci.yml (lint, typecheck, test, build jobs), Dockerfile, docker-compose.yml, and shared types (user, group, expense, settlement types)",
       "focusArea": "Project Setup",
       "branch": "cco/issue-427-setup",
-      "status": "workers_running",
+      "status": "pr_created",
       "workers": [
         {
           "id": 1,
@@ -79,7 +79,9 @@
         }
       ],
       "reviewsAddressed": 0,
-      "startedAt": "2026-01-21T23:51:19.263Z"
+      "startedAt": "2026-01-21T23:51:19.263Z",
+      "prNumber": 432,
+      "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/432"
     }
   ],
   "config": {
@@ -89,7 +91,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-21T23:50:17.538Z",
-  "updatedAt": "2026-01-22T00:24:25.116Z",
+  "updatedAt": "2026-01-22T00:24:35.927Z",
   "analysisSummary": "Build SplitSync - a production-ready expense sharing app with group management, expense tracking, debt simplification algorithm, real-time Socket.io updates, and dual authentication (OAuth + credentials). Stack: Next.js 14, TypeScript, SQLite + Drizzle ORM, Zod validation, NextAuth.js v5, Tailwind + shadcn/ui, Vitest, GitHub Actions CI/CD, Docker deployment.",
   "projectSetup": {
     "completed": false
