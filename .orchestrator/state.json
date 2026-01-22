@@ -231,9 +231,61 @@
       "task": "Create group management API routes (POST /api/groups, GET /api/groups, PUT /api/groups/[id], DELETE /api/groups/[id]), implement secure invite link generation with time-limited tokens, build group member management endpoints with role updates (admin/member), create group archival/deletion with data retention, and write comprehensive Zod validation schemas for all group operations",
       "focusArea": "Group Management API",
       "branch": "cco/issue-466-em-4",
-      "status": "pending",
-      "workers": [],
-      "reviewsAddressed": 0
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create group management API routes (POST /api/groups, GET /api/groups, PUT /api/groups/[id], DELETE /api/groups/[id]) with Zod validation schemas, implement invite link generation with time-limited tokens, and build comprehensive group CRUD operations",
+          "files": [
+            "app/api/groups/route.ts",
+            "app/api/groups/[id]/route.ts",
+            "lib/validations/group.ts",
+            "lib/api/groups/create.ts",
+            "lib/api/groups/update.ts",
+            "lib/api/groups/delete.ts",
+            "lib/api/groups/list.ts"
+          ],
+          "branch": "cco/issue-466-em-4-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Build invite link generation system with time-limited tokens, invite validation middleware, and invite link management endpoints (POST /api/groups/[id]/invites, GET /api/groups/[id]/invites, DELETE /api/groups/[id]/invites/[token])",
+          "files": [
+            "app/api/groups/[id]/invites/route.ts",
+            "app/api/groups/[id]/invites/[token]/route.ts",
+            "lib/invite/token-generator.ts",
+            "lib/invite/validator.ts",
+            "lib/invite/storage.ts",
+            "lib/api/invites/create.ts",
+            "lib/api/invites/revoke.ts"
+          ],
+          "branch": "cco/issue-466-em-4-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Implement group member management endpoints with role updates (POST /api/groups/[id]/members, PUT /api/groups/[id]/members/[userId], DELETE /api/groups/[id]/members/[userId]), group archival/deletion with data retention, and member role management logic",
+          "files": [
+            "app/api/groups/[id]/members/route.ts",
+            "app/api/groups/[id]/members/[userId]/route.ts",
+            "app/api/groups/[id]/archive/route.ts",
+            "lib/api/members/add.ts",
+            "lib/api/members/update-role.ts",
+            "lib/api/members/remove.ts",
+            "lib/api/groups/archive.ts",
+            "lib/api/groups/data-retention.ts",
+            "lib/permissions/roles.ts"
+          ],
+          "branch": "cco/issue-466-em-4-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-22T19:17:20.256Z"
     },
     {
       "id": 5,
@@ -428,8 +480,9 @@
             "components/navigation/Navbar.tsx"
           ],
           "branch": "cco/issue-466-em-8-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T19:17:19.773Z"
         },
         {
           "id": 2,
@@ -444,8 +497,9 @@
             "app/group/[id]/loading.tsx"
           ],
           "branch": "cco/issue-466-em-8-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T19:17:19.699Z"
         },
         {
           "id": 3,
@@ -466,8 +520,9 @@
             "app/error.tsx"
           ],
           "branch": "cco/issue-466-em-8-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T19:17:19.745Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -604,7 +659,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-22T18:58:55.625Z",
-  "updatedAt": "2026-01-22T19:17:16.706Z",
+  "updatedAt": "2026-01-22T19:17:20.256Z",
   "analysisSummary": "Implement SplitSync, a production-ready expense sharing application with real-time synchronization, group management, expense tracking, and optimal settlement calculation. Built with Next.js 16, TypeScript, Drizzle ORM, SQLite, NextAuth.js, and Socket.io.",
   "projectSetup": {
     "completed": false
