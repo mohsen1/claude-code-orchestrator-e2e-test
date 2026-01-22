@@ -1,0 +1,50 @@
+# Dependencies
+node_modules
+
+# Build outputs
+.next
+out
+dist
+build
+
+# Generated files
+.next-env.d.ts
+*.tsbuildinfo
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+data/
+
+# Logs
+logs/
+*.log
+
+# Cache
+.cache/
+.turbo/
+
+# Environment files
+.env
+.env.*
+
+# Package manager files
+pnpm-lock.yaml
+package-lock.json
+yarn.lock
+
+# Public uploads
+public/uploads/
+uploads/
+
+# Coverage
+coverage/
+*.lcov
+.nyc_output/
+
+# Temporary files
+*.tmp
+*.temp
+.DS_Store
+Thumbs.db
