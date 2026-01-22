@@ -115,9 +115,57 @@
       "task": "Build REST API endpoints for groups (create, invite, manage members), implement invite link generation with expiration, add group archival/deletion with data retention policies",
       "focusArea": "Group Management API",
       "branch": "cco/issue-473-em-3",
-      "status": "pending",
-      "workers": [],
-      "reviewsAddressed": 0
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create group CRUD API endpoints (create, read, update, delete groups) with type definitions, validation schemas, and database operations",
+          "files": [
+            "src/app/api/groups/route.ts",
+            "src/app/api/groups/[id]/route.ts",
+            "src/lib/db/schema/groups.ts",
+            "src/lib/validations/groups.ts",
+            "src/lib/api/groups.ts",
+            "src/types/groups.ts"
+          ],
+          "branch": "cco/issue-473-em-3-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Implement invite link generation system with secure token creation, expiration handling, and invite verification endpoints",
+          "files": [
+            "src/app/api/groups/[id]/invite/route.ts",
+            "src/app/api/groups/[id]/invite/accept/route.ts",
+            "src/lib/db/schema/invites.ts",
+            "src/lib/invites/invite-generator.ts",
+            "src/lib/invites/invite-validator.ts",
+            "src/types/invites.ts"
+          ],
+          "branch": "cco/issue-473-em-3-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Build group member management APIs (add/remove members, role management) and group archival/deletion with data retention policies",
+          "files": [
+            "src/app/api/groups/[id]/members/route.ts",
+            "src/app/api/groups/[id]/members/[userId]/route.ts",
+            "src/app/api/groups/[id]/archive/route.ts",
+            "src/lib/db/schema/group-members.ts",
+            "src/lib/members/member-manager.ts",
+            "src/lib/archival/data-retention.ts",
+            "src/types/members.ts"
+          ],
+          "branch": "cco/issue-473-em-3-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-22T22:23:55.605Z"
     },
     {
       "id": 4,
@@ -181,7 +229,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-22T22:10:27.762Z",
-  "updatedAt": "2026-01-22T22:23:55.293Z",
+  "updatedAt": "2026-01-22T22:23:55.605Z",
   "analysisSummary": "Build SplitSync - a production-ready expense sharing application with real-time synchronization, featuring group management, expense tracking, optimal settlement calculations, OAuth authentication, and comprehensive testing with CI/CD pipeline.",
   "projectSetup": {
     "completed": false
