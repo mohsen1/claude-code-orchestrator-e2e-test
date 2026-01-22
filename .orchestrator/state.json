@@ -226,9 +226,70 @@
       "task": "Build expense API endpoints for CRUD operations with audit trail, implement equal split calculation logic, add expense categorization and tagging, implement receipt attachment handling",
       "focusArea": "Expense Tracking API",
       "branch": "cco/issue-473-em-4",
-      "status": "pending",
-      "workers": [],
-      "reviewsAddressed": 0
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create expense types, validation schemas, and API routes for CRUD operations with audit trail",
+          "files": [
+            "src/lib/db/schema/expenses.ts",
+            "src/lib/api/expenses/router.ts",
+            "src/lib/api/expenses/create.ts",
+            "src/lib/api/expenses/update.ts",
+            "src/lib/api/expenses/delete.ts",
+            "src/lib/api/expenses/get.ts",
+            "src/lib/api/expenses/list.ts",
+            "src/lib/api/expenses/audit.ts",
+            "src/lib/validators/expenses.ts"
+          ],
+          "branch": "cco/issue-473-em-4-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Implement equal split calculation logic with debt graph computation and optimization",
+          "files": [
+            "src/lib/calculators/split-calculator.ts",
+            "src/lib/calculators/debt-graph.ts",
+            "src/lib/calculators/settlement-optimizer.ts",
+            "src/lib/calculators/balance-tracker.ts",
+            "src/lib/types/calculations.ts",
+            "src/lib/api/expenses/calculate-split.ts",
+            "tests/unit/split-calculator.test.ts",
+            "tests/unit/debt-graph.test.ts",
+            "tests/unit/settlement-optimizer.test.ts"
+          ],
+          "branch": "cco/issue-473-em-4-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Implement expense categorization, tagging system, and receipt attachment handling",
+          "files": [
+            "src/lib/db/schema/categories.ts",
+            "src/lib/db/schema/tags.ts",
+            "src/lib/db/schema/attachments.ts",
+            "src/lib/services/category-service.ts",
+            "src/lib/services/tag-service.ts",
+            "src/lib/services/attachment-service.ts",
+            "src/lib/api/categories/router.ts",
+            "src/lib/api/tags/router.ts",
+            "src/lib/api/attachments/router.ts",
+            "src/lib/api/attachments/upload.ts",
+            "src/lib/validators/categories.ts",
+            "src/lib/validators/attachments.ts",
+            "src/lib/storage/file-storage.ts",
+            "tests/integration/attachment-upload.test.ts"
+          ],
+          "branch": "cco/issue-473-em-4-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-22T22:23:57.698Z"
     },
     {
       "id": 5,
@@ -334,7 +395,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-22T22:10:27.762Z",
-  "updatedAt": "2026-01-22T22:23:57.304Z",
+  "updatedAt": "2026-01-22T22:23:57.698Z",
   "analysisSummary": "Build SplitSync - a production-ready expense sharing application with real-time synchronization, featuring group management, expense tracking, optimal settlement calculations, OAuth authentication, and comprehensive testing with CI/CD pipeline.",
   "projectSetup": {
     "completed": false
