@@ -9,10 +9,20 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "analyzing",
+  "phase": "project_setup",
   "workBranch": "cco/466-build-splitsync-expense-sharing-app",
   "baseBranch": "main",
-  "ems": [],
+  "ems": [
+    {
+      "id": 0,
+      "task": "Initialize Next.js 16 project with TypeScript, configure ESLint/Prettier, create .gitignore, package.json with all dependencies (Next.js 16.1.4, Drizzle 0.45.1, better-sqlite3 12.6.2, NextAuth 4.24.13, Socket.io 4.8.3, Tailwind 4.1.18, shadcn/ui 0.0.4, Zod 4.3.5, Vitest 4.0.17), set up tsconfig.json with strict mode, create .github/workflows/ci.yml with lint/typecheck/test/build jobs, create .env.example, configure Dockerfile and docker-compose.yml, set up absolute imports, create shared types directory (src/types/), and document local development setup in README",
+      "focusArea": "Project Setup",
+      "branch": "cco/issue-466-setup",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ],
   "config": {
     "maxEms": 10,
     "maxWorkersPerEm": 3,
@@ -20,5 +30,101 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-22T18:58:55.625Z",
-  "updatedAt": "2026-01-22T18:58:57.176Z"
+  "updatedAt": "2026-01-22T18:59:28.849Z",
+  "analysisSummary": "Implement SplitSync, a production-ready expense sharing application with real-time synchronization, group management, expense tracking, and optimal settlement calculation. Built with Next.js 16, TypeScript, Drizzle ORM, SQLite, NextAuth.js, and Socket.io.",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": [
+    {
+      "id": 1,
+      "task": "Set up Drizzle ORM with SQLite, create database schema for users, groups, group_members, expenses, expense_splits, settlements, and invite_links tables, write migration files, create database connection utility, implement repository pattern with base repository class, and write seed scripts for development data",
+      "focusArea": "Data Layer",
+      "branch": "cco/issue-466-em-1",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 2,
+      "task": "Implement NextAuth.js 4.24.13 configuration with Google OAuth provider and email/password credentials, create authentication API routes in src/app/api/auth/[...nextauth]/route.ts, build login/register pages with proper form validation, implement session management, create auth middleware for protected routes, and set up role-based access control helpers",
+      "focusArea": "Authentication & Authorization",
+      "branch": "cco/issue-466-em-2",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 3,
+      "task": "Build Socket.io server integration with Next.js, implement real-time event handlers for expense creation/updates/deletion, create connection state management with reconnection logic, build real-time balance recalculation broadcasts, implement optimistic UI update conflict resolution, and create room-based socket management per group",
+      "focusArea": "Real-time Infrastructure",
+      "branch": "cco/issue-466-em-3",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 4,
+      "task": "Create group management API routes (POST /api/groups, GET /api/groups, PUT /api/groups/[id], DELETE /api/groups/[id]), implement secure invite link generation with time-limited tokens, build group member management endpoints with role updates (admin/member), create group archival/deletion with data retention, and write comprehensive Zod validation schemas for all group operations",
+      "focusArea": "Group Management API",
+      "branch": "cco/issue-466-em-4",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 5,
+      "task": "Build expense tracking API routes with full CRUD operations, implement expense recording with metadata (description, amount in cents, payer, date, category), create equal split calculation logic across group members, build expense editing with audit trail, add attachment support for receipts, and write expense filtering/querying endpoints",
+      "focusArea": "Expense Tracking API",
+      "branch": "cco/issue-466-em-5",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 6,
+      "task": "Implement debt graph calculation algorithm from expense history, build optimal settlement path computation to minimize transactions, create settlement marking and tracking endpoints, implement settlement history and verification APIs, and ensure all monetary calculations use integer arithmetic (no floating-point) for financial accuracy",
+      "focusArea": "Settlement Engine",
+      "branch": "cco/issue-466-em-6",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 7,
+      "task": "Create reusable UI components with shadcn/ui including Button, Input, Card, Dialog, Form components, build expense form component with React Hook Form 7.71.1 and Zod validation, implement expense list with real-time updates, create group settings/manage members modal, build settlement visualization component showing who owes whom, and create responsive layout components",
+      "focusArea": "UI Components",
+      "branch": "cco/issue-466-em-7",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 8,
+      "task": "Build dashboard page showing user's groups and recent activity, create group detail page with expense list and member balances, implement expense creation/editing page with receipt upload, build settlement page with optimize payment suggestions, create group invitation page with secure link handling, and implement 404 and error pages",
+      "focusArea": "Pages & Routing",
+      "branch": "cco/issue-466-em-8",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 9,
+      "task": "Write unit tests with Vitest for repository layer and business logic, create integration tests for API endpoints using TestApiRoute utility, implement Socket.io real-time feature testing, build authentication flow E2E tests, write settlement calculation algorithm tests with edge cases, and achieve minimum 80% code coverage across critical paths",
+      "focusArea": "Testing Suite",
+      "branch": "cco/issue-466-em-9",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    },
+    {
+      "id": 10,
+      "task": "Implement structured JSON logging with correlation IDs using winston or pino, create health check endpoints for uptime monitoring, set up error tracking with context capture, implement request metrics middleware (duration, status, endpoint), build business metrics tracking (expenses created, settlements calculated), and create observability dashboard configuration with key performance indicators",
+      "focusArea": "Observability & Monitoring",
+      "branch": "cco/issue-466-em-10",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0
+    }
+  ]
 }
