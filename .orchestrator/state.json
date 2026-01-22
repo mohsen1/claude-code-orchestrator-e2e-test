@@ -101,9 +101,10 @@
             "src/validation/schemas.ts"
           ],
           "branch": "cco/issue-473-em-1-w-3",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-22T22:23:57.447Z"
+          "startedAt": "2026-01-22T22:23:57.447Z",
+          "error": "No unique commits"
         }
       ],
       "reviewsAddressed": 0,
@@ -114,7 +115,7 @@
       "task": "Implement authentication system with NextAuth.js, configure Google OAuth and credential providers, create session management, implement protected route middleware, add role-based access control logic",
       "focusArea": "Authentication & Authorization",
       "branch": "cco/issue-473-em-2",
-      "status": "workers_running",
+      "status": "skipped",
       "workers": [
         {
           "id": 1,
@@ -125,9 +126,10 @@
             "src/types/auth.ts"
           ],
           "branch": "cco/issue-473-em-2-w-1",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-22T22:23:56.742Z"
+          "startedAt": "2026-01-22T22:23:56.742Z",
+          "error": "No unique commits"
         },
         {
           "id": 2,
@@ -138,9 +140,10 @@
             "src/lib/auth-adapter.ts"
           ],
           "branch": "cco/issue-473-em-2-w-2",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-22T22:23:56.732Z"
+          "startedAt": "2026-01-22T22:23:56.732Z",
+          "error": "No unique commits"
         },
         {
           "id": 3,
@@ -153,13 +156,15 @@
             "src/hooks/use-session.ts"
           ],
           "branch": "cco/issue-473-em-2-w-3",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-22T22:23:56.749Z"
+          "startedAt": "2026-01-22T22:23:56.749Z",
+          "error": "No unique commits"
         }
       ],
       "reviewsAddressed": 0,
-      "startedAt": "2026-01-22T22:23:55.293Z"
+      "startedAt": "2026-01-22T22:23:55.293Z",
+      "error": "No workers merged - all skipped/failed"
     },
     {
       "id": 3,
@@ -180,9 +185,10 @@
             "src/types/groups.ts"
           ],
           "branch": "cco/issue-473-em-3-w-1",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-22T22:23:56.872Z"
+          "startedAt": "2026-01-22T22:23:56.872Z",
+          "error": "No unique commits"
         },
         {
           "id": 2,
@@ -213,9 +219,10 @@
             "src/types/members.ts"
           ],
           "branch": "cco/issue-473-em-3-w-3",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-22T22:23:56.883Z"
+          "startedAt": "2026-01-22T22:23:56.883Z",
+          "error": "No unique commits"
         }
       ],
       "reviewsAddressed": 0,
@@ -262,9 +269,10 @@
             "tests/unit/settlement-optimizer.test.ts"
           ],
           "branch": "cco/issue-473-em-4-w-2",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-22T22:23:59.528Z"
+          "startedAt": "2026-01-22T22:23:59.528Z",
+          "error": "No unique commits"
         },
         {
           "id": 3,
@@ -425,9 +433,10 @@
             "app/(auth)/signup/page.tsx"
           ],
           "branch": "cco/issue-473-em-7-w-1",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-22T22:24:03.802Z"
+          "startedAt": "2026-01-22T22:24:03.802Z",
+          "error": "No unique commits"
         },
         {
           "id": 2,
@@ -546,8 +555,10 @@
             "types/settlement.types.ts"
           ],
           "branch": "cco/issue-473-em-9-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "skipped",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T22:24:09.387Z",
+          "error": "No unique commits"
         },
         {
           "id": 2,
@@ -559,8 +570,9 @@
             "lib/settlement/settlement.utils.ts"
           ],
           "branch": "cco/issue-473-em-9-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T22:24:09.464Z"
         },
         {
           "id": 3,
@@ -575,8 +587,9 @@
             "lib/settlement/settlement.actions.ts"
           ],
           "branch": "cco/issue-473-em-9-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T22:24:09.515Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -590,11 +603,18 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-22T22:10:27.762Z",
-  "updatedAt": "2026-01-22T22:24:06.492Z",
+  "updatedAt": "2026-01-22T22:43:07.449Z",
   "analysisSummary": "Build SplitSync - a production-ready expense sharing application with real-time synchronization, featuring group management, expense tracking, optimal settlement calculations, OAuth authentication, and comprehensive testing with CI/CD pipeline.",
   "projectSetup": {
     "completed": false
   },
   "pendingEMs": [],
-  "errorHistory": []
+  "errorHistory": [
+    {
+      "timestamp": "2026-01-22T22:43:07.449Z",
+      "phase": "em_assignment",
+      "message": "EM-2 skipped: No workers merged - all skipped/failed",
+      "context": "WorkersStatus: W1:skipped, W2:skipped, W3:skipped"
+    }
+  ]
 }
