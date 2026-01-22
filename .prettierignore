@@ -1,0 +1,25 @@
+# Dependencies
+node_modules
+
+# Build outputs
+.next
+out
+dist
+build
+coverage
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+
+# Logs
+*.log
+
+# Misc
+.cache
+.DS_Store
+
+# Testing
+playwright-report
+test-results

@@ -1,0 +1,70 @@
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-error.log*
+package-lock.json
+
+# Testing
+coverage/
+*.lcov
+.nyc_output/
+
+# Next.js build output
+.next/
+out/
+build/
+dist/
+
+# Environment files
+.env
+.env.local
+.env.development
+.env.production
+.env.test
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+
+# Documentation
+*.md
+!README.md
+
+# Docker
+Dockerfile
+docker-compose*.yml
+.dockerignore
+
+# Misc
+*.log
+*.tmp
+*.temp
+.cache/
+
+# Database files (will be created in container)
+*.db
+*.db-shm
+*.db-wal
+
+# Playwright
+playwright-report/
+test-results/
+
+# Misc development files
+.prettierrc
+.prettierignore
+.eslintrc.json
+.editorconfig
