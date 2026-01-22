@@ -1,0 +1,41 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+.next/
+out/
+dist/
+build/
+coverage/
+
+# Test files
+playwright-report/
+test-results/
+
+# Database
+*.db
+*.db-shm
+*.db-wal
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Logs
+*.log
+logs/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Config files that don't need formatting
+*.md
+pnpm-lock.yaml
+yarn.lock
+package-lock.json
+
+# Generated files
+next-env.d.ts
+.tsbuildinfo
