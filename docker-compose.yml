@@ -1,0 +1,126 @@
+version: '3.9'
+
+services:
+  # Primary application service
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runner
+    container_name: splitsync-app
+    restart: unless-stopped
+    ports:
+      - "${PORT:-3000}:3000"
+      - "${SOCKET_PORT:-3001}:3001"
+    environment:
+      - NODE_ENV=production
+      - NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL:-http://localhost:3000}
+      - NEXTAUTH_URL=${NEXTAUTH_URL:-http://localhost:3000}
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
+      - DATABASE_URL=file:./data/splitsync.db
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+    volumes:
+      - app-data:/app/data
+      - upload-data:/app/public/uploads
+      - log-data:/app/logs
+    networks:
+      - splitsync-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/api/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 10s
+
+  # Development service with hot reload
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: builder
+    container_name: splitsync-dev
+    restart: unless-stopped
+    ports:
+      - "${PORT:-3000}:3000"
+      - "${SOCKET_PORT:-3001}:3001"
+    environment:
+      - NODE_ENV=development
+      - NEXT_PUBLIC_APP_URL=${NEXT_PUBLIC_APP_URL:-http://localhost:3000}
+      - NEXTAUTH_URL=${NEXTAUTH_URL:-http://localhost:3000}
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET:-dev-secret-change-in-production}
+      - DATABASE_URL=file:./data/splitsync.db
+      - NEXT_PUBLIC_DEV_TOOLS=true
+      - TURBO_MODE_ENABLED=true
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+      - app-dev-data:/app/data
+      - upload-dev-data:/app/public/uploads
+    networks:
+      - splitsync-network
+    command: npm run dev
+    profiles:
+      - dev
+
+  # Database backup service
+  backup:
+    image: alpine:3.19
+    container_name: splitsync-backup
+    restart: unless-stopped
+    volumes:
+      - app-data:/data/source:ro
+      - ./backups:/data/dest
+    environment:
+      - BACKUP_SCHEDULE=${BACKUP_SCHEDULE:-0 2 * * *}
+      - BACKUP_RETENTION_DAYS=${BACKUP_RETENTION_DAYS:-30}
+    networks:
+      - splitsync-network
+    command: >
+      sh -c "
+        apk add --no-cache sqlite &&
+        while true; do
+          sleep 86400 &&
+          timestamp=$$(date +%Y%m%d_%H%M%S) &&
+          sqlite3 /data/source/splitsync.db \".backup /data/dest/backup_$$timestamp.db\" &&
+          find /data/dest -name 'backup_*.db' -mtime +$$BACKUP_RETENTION_DAYS -delete
+        done
+      "
+    profiles:
+      - backup
+
+  # Nginx reverse proxy (optional)
+  nginx:
+    image: nginx:alpine
+    container_name: splitsync-nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+      - log-data:/var/log/nginx
+    depends_on:
+      - app
+    networks:
+      - splitsync-network
+    profiles:
+      - proxy
+
+volumes:
+  app-data:
+    driver: local
+  app-dev-data:
+    driver: local
+  upload-data:
+    driver: local
+  upload-dev-data:
+    driver: local
+  log-data:
+    driver: local
+
+networks:
+  splitsync-network:
+    driver: bridge
