@@ -49,9 +49,12 @@
             ".vscode/extensions.json"
           ],
           "branch": "cco/issue-466-setup-w-1",
-          "status": "in_progress",
+          "status": "pr_created",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-22T19:00:26.463Z"
+          "startedAt": "2026-01-22T19:00:26.463Z",
+          "prNumber": 467,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/467",
+          "completedAt": "2026-01-22T19:13:29.065Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -65,7 +68,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-22T18:58:55.625Z",
-  "updatedAt": "2026-01-22T19:00:26.463Z",
+  "updatedAt": "2026-01-22T19:13:30.234Z",
   "analysisSummary": "Implement SplitSync, a production-ready expense sharing application with real-time synchronization, group management, expense tracking, and optimal settlement calculation. Built with Next.js 16, TypeScript, Drizzle ORM, SQLite, NextAuth.js, and Socket.io.",
   "projectSetup": {
     "completed": false
@@ -161,5 +164,6 @@
       "workers": [],
       "reviewsAddressed": 0
     }
-  ]
+  ],
+  "errorHistory": []
 }
