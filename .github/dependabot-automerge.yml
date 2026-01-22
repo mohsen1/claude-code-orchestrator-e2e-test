@@ -1,0 +1,23 @@
+# Configuration for Dependabot auto-merge
+# Auto-merge patch and minor updates for dependencies
+
+version: 2
+merges:
+  - package-ecosystem: 'npm'
+    target-branch: 'develop'
+    automerge:
+      # Only auto-merge patch updates
+      update-types: ['version-update:semver-patch']
+      # Require approval before auto-merging
+      require approvals: 1
+      # Do not automerge if tests fail
+      stale-days: 1
+
+  - package-ecosystem: 'github-actions'
+    target-branch: 'develop'
+    automerge:
+      # Auto-merge all GitHub Actions updates
+      update-types:
+        - 'version-update:semver-patch'
+        - 'version-update:semver-minor'
+      require approvals: 0

@@ -1,0 +1,73 @@
+version: 2
+updates:
+  # Enable version updates for npm
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: '09:00'
+      timezone: 'UTC'
+    open-pull-requests-limit: 10
+    reviewers:
+      - 'stevenelsasser'
+    labels:
+      - 'dependencies'
+      - 'dependabot'
+    commit-message:
+      prefix: 'deps'
+      prefix-development: 'chore(deps-dev)'
+      include: 'scope'
+    allow:
+      - dependency-type: 'direct'
+      - dependency-type: 'indirect'
+    ignore:
+      # Ignore major version updates for these packages
+      - dependency-name: 'react'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'next'
+        update-types: ['version-update:semver-major']
+      - dependency-name: 'typescript'
+        update-types: ['version-update:semver-major']
+    groups:
+      # Group React-related updates together
+      react-dependencies:
+        patterns:
+          - 'react*'
+          - '@types/react*'
+        exclude-patterns:
+          - 'react-dom'
+      # Group testing dependencies
+      testing-dependencies:
+        patterns:
+          - 'vitest*'
+          - '@testing-library/*'
+          - '@vitest/*'
+      # Group Drizzle ORM updates
+      database-dependencies:
+        patterns:
+          - '@drizzle-team/*'
+          - 'drizzle-orm'
+          - 'better-sqlite3'
+      # Group NextAuth and related auth packages
+      auth-dependencies:
+        patterns:
+          - 'next-auth*'
+          - '@auth/*'
+
+  # Enable version updates for GitHub Actions
+  - package-ecosystem: 'github-actions'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      day: 'monday'
+      time: '09:00'
+      timezone: 'UTC'
+    open-pull-requests-limit: 5
+    labels:
+      - 'github-actions'
+      - 'dependencies'
+      - 'dependabot'
+    commit-message:
+      prefix: 'ci'
+      include: 'scope'

@@ -1,0 +1,63 @@
+# EditorConfig is awesome: https://EditorConfig.org
+
+# Top-most EditorConfig file
+root = true
+
+# All files
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# Code files
+[*.{js,jsx,ts,tsx,vue,css,scss,sass,less,html,json}]
+indent_style = space
+indent_size = 2
+
+# Markdown files
+[*.md]
+trim_trailing_whitespace = false
+max_line_length = off
+
+# YAML files
+[*.{yml,yaml}]
+indent_size = 2
+
+# Shell scripts
+[*.{sh,bash}]
+indent_size = 2
+end_of_line = lf
+
+# Makefiles
+[Makefile]
+indent_style = tab
+
+# SQL files
+[*.{sql}]
+indent_size = 2
+
+# Terraform files
+[*.{tf,hcl}]
+indent_size = 2
+
+# Go files
+[*.go]
+indent_style = tab
+
+# Python files
+[*.py]
+indent_size = 4
+max_line_length = 88
+
+# Rust files
+[*.rs]
+indent_size = 4
+
+# Package files
+[package.json]
+indent_size = 2
+
+# Config files
+[*.{toml,cfg,ini}]
+indent_size = 2
