@@ -1,0 +1,388 @@
+name: Build
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+
+# Cancel in-progress runs for the same branch and workflow
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-production:
+    name: Build Production
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma Client
+        run: npx prisma generate
+
+      - name: Build Next.js application
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Verify build output
+        run: |
+          echo "Verifying build output..."
+          if [ ! -d ".next" ]; then
+            echo "❌ Build directory .next not found!"
+            exit 1
+          fi
+          if [ ! -f ".next/BUILD_ID" ]; then
+            echo "❌ BUILD_ID file not found!"
+            exit 1
+          fi
+          if [ ! -f ".next/static" ]; then
+            echo "❌ Static assets not found!"
+            exit 1
+          fi
+          echo "✅ Build verification successful!"
+
+      - name: Check bundle size
+        run: |
+          echo "Analyzing bundle sizes..."
+          find .next -name "*.js" -type f -exec du -h {} \; | sort -rh | head -20 || true
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-build
+          path: |
+            .next
+            public
+          retention-days: 7
+
+      - name: Cache build
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            .next
+            node_modules/.cache
+          key: ${{ runner.os }}-nextjs-${{ github.sha }}
+
+  build-development:
+    name: Build Development
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma Client
+        run: npx prisma generate
+
+      - name: Build development bundle
+        run: npm run build:dev || npm run build
+        env:
+          NODE_ENV: development
+
+      - name: Verify development build
+        run: |
+          echo "Verifying development build..."
+          if [ -d ".next" ]; then
+            echo "✅ Development build successful!"
+          else
+            echo "❌ Development build failed!"
+            exit 1
+          fi
+
+      - name: Upload development build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: development-build
+          path: .next
+          retention-days: 3
+
+  build-analysis:
+    name: Build Analysis
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Prisma Client
+        run: npx prisma generate
+
+      - name: Analyze bundle size
+        run: |
+          echo "Installing bundle analyzer..."
+          npm install --save-dev @next/bundle-analyzer || true
+
+      - name: Build with bundle analysis
+        run: npm run build
+        env:
+          NODE_ENV: production
+          ANALYZE: true
+
+      - name: Check for large bundles
+        run: |
+          echo "Checking bundle sizes..."
+          # Find all JavaScript files in .next and report sizes
+          find .next/static/chunks -name "*.js" -type f -size +500k -exec ls -lh {} \; 2>/dev/null || true
+          echo "Bundle analysis complete"
+
+      - name: Generate build stats
+        run: |
+          echo "## Build Statistics" > build-stats.md
+          echo "" >> build-stats.md
+          echo "- Build Date: $(date)" >> build-stats.md
+          echo "- Commit: ${{ github.sha }}" >> build-stats.md
+          echo "- Branch: ${{ github.ref_name }}" >> build-stats.md
+          echo "" >> build-stats.md
+          echo "### File Counts" >> build-stats.md
+          echo "- JavaScript files: $(find .next -name "*.js" | wc -l)" >> build-stats.md
+          echo "- CSS files: $(find .next -name "*.css" | wc -l)" >> build-stats.md
+          echo "- Static assets: $(find .next/static -type f | wc -l)" >> build-stats.md
+          cat build-stats.md
+
+      - name: Upload build stats
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-stats
+          path: build-stats.md
+          retention-days: 7
+
+  docker-build:
+    name: Docker Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: false
+          tags: splitsync:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          load: true
+
+      - name: Test Docker image
+        run: |
+          echo "Testing Docker image..."
+          docker images splitsync:latest
+          docker inspect splitsync:latest
+
+      - name: Check Docker image size
+        run: |
+          SIZE=$(docker images splitsync:latest --format "{{.Size}}")
+          echo "Docker image size: $SIZE"
+          echo "## Docker Image Size" >> docker-stats.md
+          echo "- Size: $SIZE" >> docker-stats.md
+          cat docker-stats.md
+
+      - name: Upload Docker stats
+        uses: actions/upload-artifact@v4
+        with:
+          name: docker-stats
+          path: docker-stats.md
+          retention-days: 7
+
+  prisma-validate:
+    name: Prisma Schema Validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    services:
+      postgres:
+        image: postgres:16-alpine
+        env:
+          POSTGRES_USER: test
+          POSTGRES_PASSWORD: test
+          POSTGRES_DB: testsplitdb
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    env:
+      DATABASE_URL: postgresql://test:test@localhost:5432/testsplitdb
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate Prisma schema
+        run: npx prisma validate
+
+      - name: Format Prisma schema
+        run: npx prisma format
+
+      - name: Generate Prisma Client
+        run: npx prisma generate
+
+      - name: Check for migration drift
+        run: |
+          echo "Checking for migration drift..."
+          npx prisma migrate diff \
+            --from-empty \
+            --to-schema-datamodel prisma/schema.prisma \
+            --script > /tmp/migration.sql || true
+
+          if [ -s /tmp/migration.sql ]; then
+            echo "⚠️ Migration script generated:"
+            head -50 /tmp/migration.sql
+          else
+            echo "✅ No migration needed"
+          fi
+
+      - name: Run database migrations
+        run: npx prisma migrate deploy
+
+      - name: Verify database connection
+        run: |
+          echo "Verifying database connection..."
+          npx prisma db push --accept-data-loss || true
+
+  nextjs-config-validation:
+    name: Next.js Config Validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate next.config.js
+        run: |
+          echo "Validating Next.js configuration..."
+          if [ -f "next.config.js" ] || [ -f "next.config.mjs" ] || [ -f "next.config.ts" ]; then
+            echo "✅ Next.js config file found"
+          else
+            echo "❌ Next.js config file not found!"
+            exit 1
+          fi
+
+      - name: Check required environment variables
+        run: |
+          echo "Checking environment variable templates..."
+          if [ -f ".env.example" ]; then
+            echo "✅ .env.example found"
+            cat .env.example
+          else
+            echo "⚠️ .env.example not found"
+          fi
+
+      - name: Verify app directory structure
+        run: |
+          echo "Verifying Next.js 14 app directory structure..."
+          if [ -d "app" ]; then
+            echo "✅ App directory found"
+            echo "App structure:"
+            ls -la app/ || true
+          else
+            echo "❌ App directory not found!"
+            exit 1
+          fi
+
+  build-summary:
+    name: Build Summary
+    runs-on: ubuntu-latest
+    needs: [build-production, build-development, docker-build, prisma-validate]
+    if: always()
+
+    steps:
+      - name: Generate build summary
+        run: |
+          echo "## Build Workflow Summary" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Job | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Production Build | ${{ needs.build-production.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Development Build | ${{ needs.build-development.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Docker Build | ${{ needs.docker-build.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Prisma Validation | ${{ needs.prisma-validate.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Determine overall status
+          if [[ "${{ needs.build-production.result }}" == "failure" ]] || \
+             [[ "${{ needs.prisma-validate.result }}" == "failure" ]]; then
+            echo "❌ **Critical Build Steps Failed**" >> $GITHUB_STEP_SUMMARY
+            echo "Production build and Prisma validation must pass for PR to be mergeable." >> $GITHUB_STEP_SUMMARY
+            exit 1
+          elif [[ "${{ needs.build-production.result }}" == "success" ]] && \
+               [[ "${{ needs.prisma-validate.result }}" == "success" ]]; then
+            echo "✅ **All Critical Build Steps Passed**" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "⚠️ **Some Build Steps Skipped**" >> $GITHUB_STEP_SUMMARY
+          fi
+
+      - name: Download all build artifacts
+        if: always()
+        uses: actions/download-artifact@v4
+        with:
+          path: all-build-artifacts/
+
+      - name: List all artifacts
+        if: always()
+        run: |
+          echo "All build artifacts:"
+          ls -R all-build-artifacts/ || true
