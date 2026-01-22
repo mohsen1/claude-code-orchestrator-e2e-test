@@ -306,8 +306,9 @@
             "tests/settlement/balance-computer.test.ts"
           ],
           "branch": "cco/issue-466-em-6-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T19:17:15.244Z"
         },
         {
           "id": 2,
@@ -321,8 +322,9 @@
             "tests/settlement/settlement-verifier.test.ts"
           ],
           "branch": "cco/issue-466-em-6-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T19:17:15.283Z"
         },
         {
           "id": 3,
@@ -338,8 +340,9 @@
             "tests/api/settlements.test.ts"
           ],
           "branch": "cco/issue-466-em-6-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T19:17:15.368Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -410,9 +413,65 @@
       "task": "Build dashboard page showing user's groups and recent activity, create group detail page with expense list and member balances, implement expense creation/editing page with receipt upload, build settlement page with optimize payment suggestions, create group invitation page with secure link handling, and implement 404 and error pages",
       "focusArea": "Pages & Routing",
       "branch": "cco/issue-466-em-8",
-      "status": "pending",
-      "workers": [],
-      "reviewsAddressed": 0
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Build dashboard page at app/dashboard/page.tsx with user's groups overview, recent activity feed, and quick actions. Create dashboard layout component at components/dashboard/DashboardLayout.tsx. Create dashboard widgets at components/dashboard/GroupCard.tsx and components/dashboard/ActivityFeed.tsx. Add dashboard API route at app/api/dashboard/route.ts for fetching user data. Update app/layout.tsx to include navigation provider. Create shared navigation component at components/navigation/Navbar.tsx.",
+          "files": [
+            "app/dashboard/page.tsx",
+            "components/dashboard/DashboardLayout.tsx",
+            "components/dashboard/GroupCard.tsx",
+            "components/dashboard/ActivityFeed.tsx",
+            "app/api/dashboard/route.ts",
+            "app/layout.tsx",
+            "components/navigation/Navbar.tsx"
+          ],
+          "branch": "cco/issue-466-em-8-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Build group detail page at app/group/[id]/page.tsx with expense list and member balances. Create expense list component at components/group/ExpenseList.tsx. Create member balances component at components/group/MemberBalances.tsx. Create group header component at components/group/GroupHeader.tsx. Add group API routes at app/api/group/[id]/route.ts and app/api/group/[id]/expenses/route.ts. Create group loading state at app/group/[id]/loading.tsx.",
+          "files": [
+            "app/group/[id]/page.tsx",
+            "components/group/ExpenseList.tsx",
+            "components/group/MemberBalances.tsx",
+            "components/group/GroupHeader.tsx",
+            "app/api/group/[id]/route.ts",
+            "app/api/group/[id]/expenses/route.ts",
+            "app/group/[id]/loading.tsx"
+          ],
+          "branch": "cco/issue-466-em-8-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Build expense creation/editing page at app/group/[id]/expense/new/page.tsx and app/group/[id]/expense/[expenseId]/edit/page.tsx. Create expense form component at components/expense/ExpenseForm.tsx with receipt upload functionality. Create receipt upload component at components/expense/ReceiptUpload.tsx. Add expense API routes at app/api/group/[id]/expense/new/route.ts and app/api/group/[id]/expense/[expenseId]/route.ts. Build settlement page at app/group/[id]/settlement/page.tsx with optimized payment suggestions. Create settlement component at components/settlement/SettlementSuggestions.tsx. Add settlement API route at app/api/group/[id]/settlement/route.ts. Build group invitation page at app/invite/[code]/page.tsx with secure link handling. Add invite API route at app/api/invite/[code]/route.ts. Create 404 page at app/not-found.tsx and error page at app/error.tsx.",
+          "files": [
+            "app/group/[id]/expense/new/page.tsx",
+            "app/group/[id]/expense/[expenseId]/edit/page.tsx",
+            "components/expense/ExpenseForm.tsx",
+            "components/expense/ReceiptUpload.tsx",
+            "app/api/group/[id]/expense/new/route.ts",
+            "app/api/group/[id]/expense/[expenseId]/route.ts",
+            "app/group/[id]/settlement/page.tsx",
+            "components/settlement/SettlementSuggestions.tsx",
+            "app/api/group/[id]/settlement/route.ts",
+            "app/invite/[code]/page.tsx",
+            "app/api/invite/[code]/route.ts",
+            "app/not-found.tsx",
+            "app/error.tsx"
+          ],
+          "branch": "cco/issue-466-em-8-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-22T19:17:16.706Z"
     },
     {
       "id": 9,
@@ -435,8 +494,9 @@
             "vitest.config.ts"
           ],
           "branch": "cco/issue-466-em-9-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T19:17:15.449Z"
         },
         {
           "id": 2,
@@ -450,8 +510,9 @@
             "src/lib/__tests__/test-utils.ts"
           ],
           "branch": "cco/issue-466-em-9-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T19:17:15.690Z"
         },
         {
           "id": 3,
@@ -469,8 +530,9 @@
             "tests/setup/e2e-setup.ts"
           ],
           "branch": "cco/issue-466-em-9-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T19:17:15.660Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -542,7 +604,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-22T18:58:55.625Z",
-  "updatedAt": "2026-01-22T19:17:12.487Z",
+  "updatedAt": "2026-01-22T19:17:16.706Z",
   "analysisSummary": "Implement SplitSync, a production-ready expense sharing application with real-time synchronization, group management, expense tracking, and optimal settlement calculation. Built with Next.js 16, TypeScript, Drizzle ORM, SQLite, NextAuth.js, and Socket.io.",
   "projectSetup": {
     "completed": false
