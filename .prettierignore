@@ -1,0 +1,45 @@
+# Dependencies
+node_modules/
+.pnp/
+.pnp.js
+
+# Production builds
+.next/
+out/
+dist/
+build/
+
+# Cache
+.turbo/
+.vitest/
+coverage/
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Database files
+*.db
+*.db-shm
+*.db-wal
+
+# Misc
+.DS_Store
+*.pem
+LICENSE
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Generated files
+*.tsbuildinfo
+drizzle/
+
+# Logs
+logs/
+*.log
+
+# Testing
+test-results/
+playwright-report/

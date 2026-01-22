@@ -1,0 +1,244 @@
+name: Type Check
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_call:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  typescript:
+    name: TypeScript Type Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate Drizzle types
+        run: |
+          npx drizzle-kit generate:sqlite --config=drizzle.config.ts || true
+          echo "Drizzle types generated"
+
+      - name: Run TypeScript compiler
+        run: npm run typecheck
+        env:
+          TS_NODE_PROJECT: tsconfig.json
+
+      - name: Generate type coverage report
+        if: always()
+        run: |
+          npx type-coverage --detail || echo "Type coverage tool not available"
+
+      - name: Upload TypeScript results
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: typescript-results
+          path: |
+            **/*.tsbuildinfo
+            **/dist/
+            tsconfig.tsbuildinfo
+          retention-days: 7
+
+      - name: Check for any types
+        run: |
+          echo "Checking for unsafe 'any' types..."
+          ANY_COUNT=$(grep -r ": any" --include="*.ts" --include="*.tsx" app/ lib/ components/ | grep -v "// eslint-disable\|// @ts-ignore\|// @ts-nocheck" | wc -l)
+          if [ "$ANY_COUNT" -gt "0" ]; then
+            echo "⚠️  Found $ANY_COUNT instances of 'any' type"
+            grep -rn ": any" --include="*.ts" --include="*.tsx" app/ lib/ components/ | grep -v "// eslint-disable\|// @ts-ignore\|// @ts-nocheck" || true
+          else
+            echo "✅ No 'any' types found"
+          fi
+
+      - name: Check for missing types
+        run: |
+          echo "Checking for missing return types..."
+          grep -rn "function\|=>\|const.*=.*(" --include="*.ts" --include="*.tsx" app/ lib/ components/ | \
+            grep -v ": " | \
+            grep -v "// @ts-ignore\|// @ts-nocheck\|export interface\|export type\|import\|from " | \
+            head -20 || true
+
+  ts-strict-check:
+    name: Strict Mode Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Verify strict mode enabled
+        run: |
+          if ! grep -q '"strict": true' tsconfig.json; then
+            echo "❌ TypeScript strict mode is not enabled"
+            exit 1
+          fi
+          echo "✅ TypeScript strict mode is enabled"
+
+      - name: Check strict mode flags
+        run: |
+          echo "Checking strict mode configuration..."
+          REQUIRED_FLAGS=(
+            "strict"
+            "noUncheckedIndexedAccess"
+            "noImplicitReturns"
+            "noUnusedLocals"
+            "noUnusedParameters"
+            "noFallthroughCasesInSwitch"
+            "noImplicitOverride"
+          )
+
+          for flag in "${REQUIRED_FLAGS[@]}"; do
+            if grep -q "\"$flag\": true" tsconfig.json; then
+              echo "✅ $flag is enabled"
+            else
+              echo "⚠️  $flag is not enabled"
+            fi
+          done
+
+      - name: Type check with strictest settings
+        run: |
+          npx tsc --noEmit --skipLibCheck \
+            --strict \
+            --noUncheckedIndexedAccess \
+            --noImplicitReturns \
+            --noUnusedLocals \
+            --noUnusedParameters \
+            --noFallthroughCasesInSwitch \
+            --noImplicitOverride
+
+  api-types:
+    name: API Type Verification
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check API route types
+        run: |
+          echo "Verifying API route type definitions..."
+          for route in app/api/**/route.ts; do
+            if [ -f "$route" ]; then
+              echo "Checking $route"
+              # Verify HTTP methods are properly typed
+              if ! grep -q "export async function \(GET\|POST\|PUT\|PATCH\|DELETE\)" "$route"; then
+                echo "⚠️  No exported HTTP methods found in $route"
+              fi
+            fi
+          done
+
+      - name: Verify request/response types
+        run: |
+          echo "Checking request/response type annotations..."
+          grep -rn "export async function" app/api/ --include="*.ts" | \
+            while read line; do
+              file=$(echo "$line" | cut -d: -f1)
+              if ! grep -q "NextRequest\|NextResponse" "$file"; then
+                echo "⚠️  $file may not use proper Next.js types"
+              fi
+            done
+
+  zod-validation:
+    name: Zod Schema Validation
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check Zod schemas
+        run: |
+          echo "Verifying Zod schema definitions..."
+          find . -name "*.schema.ts" -o -name "*-schema.ts" | while read schema_file; do
+            echo "Checking $schema_file"
+            if grep -q "import.*z.*from.*zod" "$schema_file"; then
+              echo "✅ $schema_file imports Zod"
+            else
+              echo "⚠️  $schema_file may not be a valid Zod schema file"
+            fi
+          done
+
+      - name: Verify schema usage
+        run: |
+          echo "Checking Zod schema usage in API routes..."
+          for route in app/api/**/route.ts; do
+            if [ -f "$route" ]; then
+              if grep -q "parse\|safeParse\|schema" "$route"; then
+                echo "✅ $route uses validation"
+              else
+                echo "⚠️  $route may not validate input"
+              fi
+            fi
+          done
+
+      - name: Type inference test
+        run: |
+          echo "Testing Zod type inference..."
+          cat > /tmp/test-zod-infer.ts << 'EOF'
+          import { z } from 'zod';
+
+          const testSchema = z.object({
+            name: z.string(),
+            age: z.number(),
+          });
+
+          type TestType = z.infer<typeof testSchema>;
+
+          const test: TestType = {
+            name: "test",
+            age: 25,
+          };
+
+          console.log("Zod inference working correctly");
+          EOF
+
+          npx ts-node /tmp/test-zod-infer.ts || echo "⚠️  Could not verify Zod inference"

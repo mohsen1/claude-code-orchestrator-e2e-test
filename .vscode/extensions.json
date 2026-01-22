@@ -1,0 +1,80 @@
+{
+  "recommendations": [
+    // Essential extensions
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "bradlc.vscode-tailwindcss",
+
+    // TypeScript and JavaScript
+    "usernamehw.errorlens",
+    "chenxsan.vscode-standardjs",
+    "dsznajder.es7-react-js-snippets",
+    "jpoissonnier.vscode-styled-components",
+
+    // Testing
+    "vitest.explorer",
+    "firsttris.vscode-jest-runner",
+
+    // Git
+    "eamodio.gitlens",
+    "github.copilot",
+    "github.vscode-pull-request-github",
+
+    // Utilities
+    "wayou.vscode-todo-highlight",
+    "streetsidesoftware.code-spell-checker",
+    "christian-kohler.path-intellisense",
+    "visualstudioexptteam.vscodeintellicode",
+
+    // Database
+    "mtxr.sqltools",
+    "mtxr.sqltools-driver-sqlite",
+
+    // Docker
+    "ms-azuretools.vscode-docker",
+
+    // Markdown
+    "yzhang.markdown-all-in-one",
+    "shd101wyy.markdown-preview-enhanced",
+
+    // REST Client
+    "humao.rest-client",
+
+    // Icons and theme
+    "pkief.material-icon-theme",
+    "zhuangtongfa.material-theme",
+
+    // Additional development tools
+    "formulahendry.auto-rename-tag",
+    "formulahendry.auto-close-tag",
+    "editorconfig.editorconfig",
+    "wix.vscode-import-cost",
+    "wakatime.vscode-wakatime",
+    "gruntfuggly.todo-tree",
+    "chrmarti.regex",
+    "mikestead.dotenv",
+
+    // Next.js specific
+    "nx.angular-console",
+
+    // Code quality
+    "sonarsource.sonarlint-vscode",
+    "github.vscode-codeql",
+
+    // File navigation
+    "christian-kohler.npm-intellisense",
+    "rioj7.command-variable",
+    "oderwat.indent-rainbow",
+
+    // Misc
+    "shrey150.sqlite-viewer",
+    "alexcvzz.vscode-sqlite"
+  ],
+  "unwantedRecommendations": [
+    "hookyqr.beautify",
+    "hookyqr.minify",
+    "octref.vetur",
+    "dbaeumer.jshint",
+    "ms-vscode.vscode-json"
+  ]
+}

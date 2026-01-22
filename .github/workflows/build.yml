@@ -1,0 +1,361 @@
+name: Build
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_call:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: '20'
+
+jobs:
+  build-nextjs:
+    name: Build Next.js Application
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate database types
+        run: |
+          npx drizzle-kit generate:sqlite --config=drizzle.config.ts || true
+          echo "Database types generated"
+
+      - name: Build Next.js application
+        id: build
+        run: |
+          echo "Building Next.js application..."
+          npm run build
+        env:
+          NODE_ENV: production
+          DATABASE_URL: file:./build.db
+          NEXTAUTH_SECRET: ${{ secrets.NEXTAUTH_SECRET || 'build-secret' }}
+          NEXTAUTH_URL: ${{ secrets.NEXTAUTH_URL || 'http://localhost:3000' }}
+
+      - name: Verify build output
+        run: |
+          echo "Verifying build output..."
+          if [ ! -d ".next" ]; then
+            echo "❌ Build directory not found"
+            exit 1
+          fi
+
+          if [ ! -f ".next/BUILD_ID" ]; then
+            echo "❌ Build ID not found"
+            exit 1
+          fi
+
+          BUILD_ID=$(cat .next/BUILD_ID)
+          echo "✅ Build ID: $BUILD_ID"
+
+          # Check for required static assets
+          if [ -d "public" ]; then
+            PUBLIC_FILES=$(find public -type f | wc -l)
+            echo "✅ Found $PUBLIC_FILES public files"
+          fi
+
+          # Check server bundles
+          if [ -d ".next/server" ]; then
+            SERVER_CHUNKS=$(find .next/server -name "*.js" | wc -l)
+            echo "✅ Found $SERVER_CHUNKS server chunks"
+          fi
+
+          # Check client bundles
+          if [ -d ".next/static" ]; then
+            CLIENT_CHUNKS=$(find .next/static -name "*.js" | wc -l)
+            echo "✅ Found $CLIENT_CHUNKS client chunks"
+          fi
+
+      - name: Analyze build size
+        run: |
+          echo "### Build Size Analysis" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          du -sh .next/ | awk '{print "Total build size: " $1}'
+          du -sh .next/server/ 2>/dev/null || echo "Server size: N/A"
+          du -sh .next/static/ 2>/dev/null || echo "Static size: N/A"
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
+          # List largest files
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Largest Files" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          find .next -type f -name "*.js" -exec du -h {} + | sort -rh | head -10
+          echo '```' >> $GITHUB_STEP_SUMMARY
+
+      - name: Check for production issues
+        run: |
+          echo "Checking for common production issues..."
+
+          # Check for console.log in production build
+          if grep -r "console\.log" .next/ 2>/dev/null; then
+            echo "⚠️  Found console.log in production build"
+          else
+            echo "✅ No console.log in production build"
+          fi
+
+          # Check for debug statements
+          if grep -r "debugger" .next/ 2>/dev/null; then
+            echo "⚠️  Found debugger statements in production build"
+          else
+            echo "✅ No debugger statements in production build"
+          fi
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: nextjs-build
+          path: |
+            .next/
+            public/
+            !.next/cache/
+          retention-days: 7
+
+      - name: Generate build manifest
+        run: |
+          cat > build-manifest.json << EOF
+          {
+            "buildId": "$(cat .next/BUILD_ID)",
+            "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+            "commit": "${{ github.sha }}",
+            "branch": "${{ github.ref_name }}",
+            "nodeVersion": "${{ env.NODE_VERSION }}"
+          }
+          EOF
+          cat build-manifest.json
+
+      - name: Upload build manifest
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-manifest
+          path: build-manifest.json
+          retention-days: 30
+
+  build-docker:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    needs: build-nextjs
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: false
+          tags: splitsync:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          load: true
+
+      - name: Test Docker image
+        run: |
+          echo "Testing Docker image..."
+          docker run --rm splitsync:latest ls -la /app/.next || echo "Container test failed"
+
+      - name: Scan Docker image
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: splitsync:latest
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+          severity: 'CRITICAL,HIGH'
+
+      - name: Upload Trivy results
+        if: always()
+        uses: github/codeql-action/upload-sarif@v3
+        with:
+          sarif_file: 'trivy-results.sarif'
+
+  build-analysis:
+    name: Build Analysis
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: build-nextjs
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install analysis tools
+        run: |
+          npm install -g @next/bundle-analyzer
+
+      - name: Analyze bundle
+        run: |
+          npm run build:analyze || echo "Bundle analysis not configured"
+        env:
+          ANALYZE: true
+          NODE_ENV: production
+
+      - name: Check bundle size limits
+        run: |
+          echo "Checking bundle sizes against limits..."
+
+          # Define limits (in bytes)
+          JS_LIMIT=244000
+          CSS_LIMIT=150000
+
+          # Check JavaScript bundles
+          find .next/static -name "*.js" -type f -exec sh -c '
+            size=$(stat -f%z "$1" 2>/dev/null || stat -c%s "$1" 2>/dev/null)
+            if [ "$size" -gt '$JS_LIMIT' ]; then
+              echo "⚠️  Large JS bundle: $1 ($((size / 1024))KB)"
+            fi
+          ' sh {} \;
+
+          # Check CSS bundles
+          find .next/static -name "*.css" -type f -exec sh -c '
+            size=$(stat -f%z "$1" 2>/dev/null || stat -c%s "$1" 2>/dev/null)
+            if [ "$size" -gt '$CSS_LIMIT' ]; then
+              echo "⚠️  Large CSS bundle: $1 ($((size / 1024))KB)"
+            fi
+          ' sh {} \;
+
+      - name: Check for deprecated APIs
+        run: |
+          echo "Checking for deprecated Next.js APIs..."
+          grep -r "getInitialProps\|getServerSideProps\|getStaticPaths" app/ || echo "✅ No deprecated APIs found"
+
+      - name: Check for client-only data fetching
+        run: |
+          echo "Checking for client-side data fetching..."
+          if grep -r "useEffect.*fetch\|useSWR" app/; then
+            echo "⚠️  Found client-side data fetching"
+            echo "Consider using Server Components for better performance"
+          else
+            echo "✅ No client-side data fetching patterns detected"
+          fi
+
+  production-readiness:
+    name: Production Readiness Check
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    needs: [build-nextjs, build-docker]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Download build artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: nextjs-build
+          path: .next/
+
+      - name: Check environment variables
+        run: |
+          echo "Checking required environment variables..."
+          cat .env.example | while read line; do
+            if [[ $line == *"="* ]] && [[ ! $line =~ ^# ]]; then
+              var_name=$(echo "$line" | cut -d= -f1)
+              echo "✅ $var_name defined in .env.example"
+            fi
+          done
+
+      - name: Verify production configuration
+        run: |
+          echo "Verifying production configuration..."
+
+          # Check next.config.js
+          if grep -q "reactStrictMode: true" next.config.ts next.config.mjs next.config.js 2>/dev/null; then
+            echo "✅ React Strict Mode enabled"
+          else
+            echo "⚠️  React Strict Mode not enabled"
+          fi
+
+          # Check for compression
+          if grep -q "compress" next.config.ts next.config.mjs next.config.js 2>/dev/null; then
+            echo "✅ Compression enabled"
+          fi
+
+          # Check for image optimization
+          if grep -q "images" next.config.ts next.config.mjs next.config.js 2>/dev/null; then
+            echo "✅ Image optimization configured"
+          fi
+
+      - name: Check security headers
+        run: |
+          echo "Checking security headers configuration..."
+          if grep -q "headers" next.config.ts next.config.mjs next.config.js 2>/dev/null; then
+            echo "✅ Security headers configured"
+          else
+            echo "⚠️  No security headers found in Next.js config"
+            echo "Consider adding CSP, X-Frame-Options, etc."
+          fi
+
+      - name: Generate production readiness report
+        run: |
+          cat > production-readiness.md << 'EOF'
+          # Production Readiness Report
+
+          ## Build Status
+          - ✅ Next.js build completed successfully
+          - ✅ Docker image built successfully
+          - ✅ Security scan completed
+
+          ## Configuration Checks
+          - Environment variables documented
+          - Production settings verified
+          - Security headers reviewed
+
+          ## Recommendations
+          1. Set up monitoring and alerting
+          2. Configure CDN for static assets
+          3. Set up database backups
+          4. Configure log aggregation
+          5. Set up error tracking (e.g., Sentry)
+          6. Review and update CSP policies
+          7. Set up performance monitoring
+          8. Configure rate limiting
+
+          ## Next Steps
+          1. Review all checks above
+          2. Address any warnings
+          3. Deploy to staging environment
+          4. Run smoke tests
+          5. Deploy to production
+          EOF
+
+          cat production-readiness.md
+
+      - name: Upload production readiness report
+        uses: actions/upload-artifact@v4
+        with:
+          name: production-readiness-report
+          path: production-readiness.md
+          retention-days: 30

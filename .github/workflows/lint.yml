@@ -1,0 +1,186 @@
+name: Lint
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_call:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  eslint:
+    name: ESLint
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: |
+          npm run lint -- --format=json --output-file=eslint-report.json || true
+          npm run lint
+        continue-on-error: false
+
+      - name: Annotate code with ESLint results
+        if: always()
+        uses: ataylorme/eslint-annotate-action@v2
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          report-json: eslint-report.json
+          fail-on-warning: true
+
+      - name: Upload ESLint report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eslint-report
+          path: eslint-report.json
+          retention-days: 7
+
+  eslint-checks:
+    name: ESLint Checks
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check for console statements
+        run: |
+          echo "Checking for console.log statements..."
+          if grep -r "console\.log" --include="*.ts" --include="*.tsx" --include="*.js" --include="*.jsx" app/ lib/ components/ | grep -v "// eslint-disable"; then
+            echo "❌ Found console.log statements. Please remove them or use proper logging."
+            exit 1
+          fi
+          echo "✅ No console.log statements found"
+
+      - name: Check for TODO comments
+        run: |
+          echo "Checking for TODO comments..."
+          TODO_COUNT=$(grep -r "TODO" --include="*.ts" --include="*.tsx" --include="*.js" --include="*.jsx" app/ lib/ components/ | wc -l)
+          if [ "$TODO_COUNT" -gt "0" ]; then
+            echo "⚠️  Found $TODO_COUNT TODO comments"
+            grep -rn "TODO" --include="*.ts" --include="*.tsx" --include="*.js" --include="*.jsx" app/ lib/ components/
+          else
+            echo "✅ No TODO comments found"
+          fi
+
+      - name: Check for any/FIXME
+        run: |
+          echo "Checking for FIXME comments..."
+          if grep -r "FIXME\|XXX\|HACK" --include="*.ts" --include="*.tsx" --include="*.js" --include="*.jsx" app/ lib/ components/; then
+            echo "❌ Found FIXME/XXX/HACK comments. Please address them."
+            exit 1
+          fi
+          echo "✅ No FIXME comments found"
+
+  stylelint:
+    name: Stylelint
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    continue-on-error: true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Stylelint
+        run: npm run lint:css || echo "Stylelint not configured"
+
+  formatting:
+    name: Code Formatting
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Check code formatting
+        run: npm run format:check
+
+      - name: Format check report
+        if: failure()
+        run: |
+          echo "❌ Code formatting check failed"
+          echo "Run 'npm run format' to fix formatting issues"
+          exit 1
+
+  complexity:
+    name: Code Complexity
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    continue-on-error: true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install complexity tools
+        run: npm install -g eslint-plugin-complexity
+
+      - name: Run complexity analysis
+        run: |
+          echo "Analyzing code complexity..."
+          npm run lint:complexity || echo "Complexity check not configured"
+
+      - name: Generate complexity report
+        if: always()
+        run: |
+          echo "### Code Complexity Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "Complexity analysis completed" >> $GITHUB_STEP_SUMMARY
