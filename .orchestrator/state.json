@@ -315,7 +315,7 @@
       "task": "Implement settlement engine with debt graph calculation, create optimal settlement path algorithm (minimize transactions), build settlement marking and tracking, add settlement history and verification endpoints",
       "focusArea": "Settlement Engine",
       "branch": "cco/issue-473-em-5",
-      "status": "workers_running",
+      "status": "skipped",
       "workers": [
         {
           "id": 1,
@@ -345,9 +345,10 @@
             "tests/unit/settlement/settlement-validator.test.ts"
           ],
           "branch": "cco/issue-473-em-5-w-2",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-22T22:24:02.722Z"
+          "startedAt": "2026-01-22T22:24:02.722Z",
+          "error": "No unique commits"
         },
         {
           "id": 3,
@@ -369,7 +370,8 @@
         }
       ],
       "reviewsAddressed": 0,
-      "startedAt": "2026-01-22T22:23:59.889Z"
+      "startedAt": "2026-01-22T22:23:59.889Z",
+      "error": "No workers merged - all skipped/failed"
     },
     {
       "id": 6,
@@ -627,7 +629,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-22T22:10:27.762Z",
-  "updatedAt": "2026-01-22T22:58:54.608Z",
+  "updatedAt": "2026-01-22T23:01:23.825Z",
   "analysisSummary": "Build SplitSync - a production-ready expense sharing application with real-time synchronization, featuring group management, expense tracking, optimal settlement calculations, OAuth authentication, and comprehensive testing with CI/CD pipeline.",
   "projectSetup": {
     "completed": false
@@ -686,6 +688,12 @@
       "timestamp": "2026-01-22T22:58:54.608Z",
       "phase": "em_assignment",
       "message": "EM-7 skipped: No workers merged - all skipped/failed",
+      "context": "WorkersStatus: W1:skipped, W2:skipped, W3:skipped"
+    },
+    {
+      "timestamp": "2026-01-22T23:01:23.825Z",
+      "phase": "em_assignment",
+      "message": "EM-5 skipped: No workers merged - all skipped/failed",
       "context": "WorkersStatus: W1:skipped, W2:skipped, W3:skipped"
     }
   ]
