@@ -141,8 +141,9 @@
             ".env.example"
           ],
           "branch": "cco/issue-466-em-2-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T19:17:10.822Z"
         },
         {
           "id": 2,
@@ -151,8 +152,9 @@
             "src/app/api/auth/[...nextauth]/route.ts"
           ],
           "branch": "cco/issue-466-em-2-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T19:17:10.872Z"
         },
         {
           "id": 3,
@@ -165,8 +167,9 @@
             "src/lib/validations/auth.ts"
           ],
           "branch": "cco/issue-466-em-2-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T19:17:10.905Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -187,8 +190,9 @@
             "server/index.ts"
           ],
           "branch": "cco/issue-466-em-3-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T19:17:12.457Z"
         },
         {
           "id": 2,
@@ -200,8 +204,9 @@
             "lib/socket/types.ts"
           ],
           "branch": "cco/issue-466-em-3-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T19:17:12.543Z"
         },
         {
           "id": 3,
@@ -213,8 +218,9 @@
             "components/socket/SocketProvider.tsx"
           ],
           "branch": "cco/issue-466-em-3-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-22T19:17:12.428Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -287,9 +293,57 @@
       "task": "Implement debt graph calculation algorithm from expense history, build optimal settlement path computation to minimize transactions, create settlement marking and tracking endpoints, implement settlement history and verification APIs, and ensure all monetary calculations use integer arithmetic (no floating-point) for financial accuracy",
       "focusArea": "Settlement Engine",
       "branch": "cco/issue-466-em-6",
-      "status": "pending",
-      "workers": [],
-      "reviewsAddressed": 0
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Implement debt graph calculation algorithm with integer arithmetic, build balance computation utilities, and create expense history processing logic for settlement calculations",
+          "files": [
+            "src/lib/settlement/debt-graph-calculator.ts",
+            "src/lib/settlement/balance-computer.ts",
+            "src/lib/settlement/types.ts",
+            "tests/settlement/debt-graph-calculator.test.ts",
+            "tests/settlement/balance-computer.test.ts"
+          ],
+          "branch": "cco/issue-466-em-6-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Implement optimal settlement path algorithm (minimize transactions) using greedy/heap approach, build settlement engine orchestration, and create settlement verification utilities",
+          "files": [
+            "src/lib/settlement/optimal-path-finder.ts",
+            "src/lib/settlement/settlement-engine.ts",
+            "src/lib/settlement/settlement-verifier.ts",
+            "tests/settlement/optimal-path-finder.test.ts",
+            "tests/settlement/settlement-engine.test.ts",
+            "tests/settlement/settlement-verifier.test.ts"
+          ],
+          "branch": "cco/issue-466-em-6-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create settlement API endpoints (mark, track, history), build settlement repository with data access layer, implement settlement tracking model with audit trail, and add integer money utilities",
+          "files": [
+            "src/app/api/settlements/mark/route.ts",
+            "src/app/api/settlements/history/route.ts",
+            "src/app/api/settlements/verify/route.ts",
+            "src/lib/settlement/settlement-repository.ts",
+            "src/db/schema/settlements.ts",
+            "src/lib/utils/money.ts",
+            "tests/settlement/settlement-repository.test.ts",
+            "tests/api/settlements.test.ts"
+          ],
+          "branch": "cco/issue-466-em-6-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-22T19:17:12.487Z"
     },
     {
       "id": 7,
@@ -365,9 +419,62 @@
       "task": "Write unit tests with Vitest for repository layer and business logic, create integration tests for API endpoints using TestApiRoute utility, implement Socket.io real-time feature testing, build authentication flow E2E tests, write settlement calculation algorithm tests with edge cases, and achieve minimum 80% code coverage across critical paths",
       "focusArea": "Testing Suite",
       "branch": "cco/issue-466-em-9",
-      "status": "pending",
-      "workers": [],
-      "reviewsAddressed": 0
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Write Vitest unit tests for repository layer (database operations, DAO patterns) and business logic layer (expense calculations, debt graph algorithms) in src/lib/repository and src/lib/services. Create test utilities and mocks for database operations. Target: 80%+ coverage for data access and calculation logic.",
+          "files": [
+            "src/lib/__tests__/repository/users.test.ts",
+            "src/lib/__tests__/repository/groups.test.ts",
+            "src/lib/__tests__/repository/expenses.test.ts",
+            "src/lib/__tests__/repository/settlements.test.ts",
+            "src/lib/__tests__/services/debt-calculator.test.ts",
+            "src/lib/__tests__/services/settlement-engine.test.ts",
+            "src/lib/__tests__/utils/db-mock.ts",
+            "vitest.config.ts"
+          ],
+          "branch": "cco/issue-466-em-9-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Create integration tests for all API endpoints using TestApiRoute utility. Test REST API CRUD operations, validation error responses, authentication guards, and authorization checks. Test endpoint: /api/groups, /api/expenses, /api/settlements, /api/auth. Target: 80%+ coverage for API routes.",
+          "files": [
+            "src/app/api/__tests__/groups.test.ts",
+            "src/app/api/__tests__/expenses.test.ts",
+            "src/app/api/__tests__/settlements.test.ts",
+            "src/app/api/__tests__/invites.test.ts",
+            "src/app/api/__tests__/auth.test.ts",
+            "src/lib/__tests__/test-utils.ts"
+          ],
+          "branch": "cco/issue-466-em-9-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Write Socket.io real-time feature tests (connection handling, event emission, room management), authentication flow E2E tests (OAuth login, session management, protected routes), settlement calculation algorithm edge case tests (negative balances, circular debts, single payer, large groups). Create E2E test infrastructure with test database fixtures.",
+          "files": [
+            "src/lib/__tests__/socket/connection.test.ts",
+            "src/lib/__tests__/socket/events.test.ts",
+            "src/lib/__tests__/socket/rooms.test.ts",
+            "tests/e2e/auth/oauth-flow.test.ts",
+            "tests/e2e/auth/session-management.test.ts",
+            "tests/e2e/auth/protected-routes.test.ts",
+            "tests/e2e/settlements/edge-cases.test.ts",
+            "tests/e2e/settlements/large-groups.test.ts",
+            "tests/fixtures/test-data.ts",
+            "tests/setup/e2e-setup.ts"
+          ],
+          "branch": "cco/issue-466-em-9-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-22T19:17:11.977Z"
     },
     {
       "id": 10,
@@ -435,7 +542,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-22T18:58:55.625Z",
-  "updatedAt": "2026-01-22T19:17:09.854Z",
+  "updatedAt": "2026-01-22T19:17:11.977Z",
   "analysisSummary": "Implement SplitSync, a production-ready expense sharing application with real-time synchronization, group management, expense tracking, and optimal settlement calculation. Built with Next.js 16, TypeScript, Drizzle ORM, SQLite, NextAuth.js, and Socket.io.",
   "projectSetup": {
     "completed": false
