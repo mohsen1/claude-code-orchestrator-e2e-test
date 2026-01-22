@@ -299,9 +299,10 @@
             "tests/integration/attachment-upload.test.ts"
           ],
           "branch": "cco/issue-473-em-4-w-3",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-22T22:23:59.610Z"
+          "startedAt": "2026-01-22T22:23:59.610Z",
+          "error": "No unique commits"
         }
       ],
       "reviewsAddressed": 0,
@@ -554,7 +555,7 @@
       "task": "Build settlement UI showing debt visualization, optimal settlement suggestions, settlement confirmation flow, settlement history, implement real-time balance updates and notifications",
       "focusArea": "Settlement UI Components",
       "branch": "cco/issue-473-em-9",
-      "status": "workers_running",
+      "status": "skipped",
       "workers": [
         {
           "id": 1,
@@ -582,9 +583,10 @@
             "lib/settlement/settlement.utils.ts"
           ],
           "branch": "cco/issue-473-em-9-w-2",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-22T22:24:09.464Z"
+          "startedAt": "2026-01-22T22:24:09.464Z",
+          "error": "No unique commits"
         },
         {
           "id": 3,
@@ -606,7 +608,8 @@
         }
       ],
       "reviewsAddressed": 0,
-      "startedAt": "2026-01-22T22:24:06.492Z"
+      "startedAt": "2026-01-22T22:24:06.492Z",
+      "error": "No workers merged - all skipped/failed"
     }
   ],
   "config": {
@@ -616,7 +619,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-22T22:10:27.762Z",
-  "updatedAt": "2026-01-22T22:52:17.594Z",
+  "updatedAt": "2026-01-22T22:52:49.010Z",
   "analysisSummary": "Build SplitSync - a production-ready expense sharing application with real-time synchronization, featuring group management, expense tracking, optimal settlement calculations, OAuth authentication, and comprehensive testing with CI/CD pipeline.",
   "projectSetup": {
     "completed": false
@@ -651,6 +654,12 @@
       "timestamp": "2026-01-22T22:52:17.594Z",
       "phase": "em_assignment",
       "message": "EM-6 skipped: No workers merged - all skipped/failed",
+      "context": "WorkersStatus: W1:skipped, W2:skipped, W3:skipped"
+    },
+    {
+      "timestamp": "2026-01-22T22:52:49.010Z",
+      "phase": "em_assignment",
+      "message": "EM-9 skipped: No workers merged - all skipped/failed",
       "context": "WorkersStatus: W1:skipped, W2:skipped, W3:skipped"
     }
   ]
