@@ -494,7 +494,7 @@
       "task": "Build expense UI components including expense forms with validation, expense list with filtering, expense detail views with edit/delete, receipt upload component, implement expense categorization interface",
       "focusArea": "Expense UI Components",
       "branch": "cco/issue-473-em-8",
-      "status": "workers_running",
+      "status": "skipped",
       "workers": [
         {
           "id": 1,
@@ -527,9 +527,10 @@
             "hooks/use-expense-filters.ts"
           ],
           "branch": "cco/issue-473-em-8-w-2",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-22T22:23:59.039Z"
+          "startedAt": "2026-01-22T22:23:59.039Z",
+          "error": "No unique commits"
         },
         {
           "id": 3,
@@ -552,7 +553,8 @@
         }
       ],
       "reviewsAddressed": 0,
-      "startedAt": "2026-01-22T22:23:57.304Z"
+      "startedAt": "2026-01-22T22:23:57.304Z",
+      "error": "No workers merged - all skipped/failed"
     },
     {
       "id": 9,
@@ -623,7 +625,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-22T22:10:27.762Z",
-  "updatedAt": "2026-01-22T22:55:21.678Z",
+  "updatedAt": "2026-01-22T22:58:46.788Z",
   "analysisSummary": "Build SplitSync - a production-ready expense sharing application with real-time synchronization, featuring group management, expense tracking, optimal settlement calculations, OAuth authentication, and comprehensive testing with CI/CD pipeline.",
   "projectSetup": {
     "completed": false
@@ -670,6 +672,12 @@
       "timestamp": "2026-01-22T22:55:21.678Z",
       "phase": "em_assignment",
       "message": "EM-4 skipped: No workers merged - all skipped/failed",
+      "context": "WorkersStatus: W1:skipped, W2:skipped, W3:skipped"
+    },
+    {
+      "timestamp": "2026-01-22T22:58:46.788Z",
+      "phase": "em_assignment",
+      "message": "EM-8 skipped: No workers merged - all skipped/failed",
       "context": "WorkersStatus: W1:skipped, W2:skipped, W3:skipped"
     }
   ]
