@@ -1,0 +1,228 @@
+# ============================================
+# SplitSync - Git Ignore Configuration
+# ============================================
+
+# ------------------------------------------
+# Dependencies
+# ------------------------------------------
+node_modules/
+.pnp
+.pnp.js
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/sdks
+!.yarn/versions
+
+# ------------------------------------------
+# Build Outputs
+# ------------------------------------------
+.next/
+out/
+build/
+dist/
+.server/
+.serverless/
+.vercel/
+.netlify/
+
+# ------------------------------------------
+# Testing & Coverage
+# ------------------------------------------
+coverage/
+.nyc_output/
+test-results/
+.vitest/
+*.lcov
+junit.xml
+
+# ------------------------------------------
+# Cache Directories
+# ------------------------------------------
+.cache/
+.parcel-cache/
+.turbo/
+.eslintcache
+.stylelintcache
+.tsbuildinfo
+
+# ------------------------------------------
+# Environment Variables
+# ------------------------------------------
+.env
+.env.*
+!.env.example
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.development
+.production
+.test
+
+# ------------------------------------------
+# Debug Logs
+# ------------------------------------------
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# ------------------------------------------
+# OS & IDE Files
+# ------------------------------------------
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+.Icon
+._*
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# Linux
+*~
+.directory
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*.swn
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+.history/
+
+# ------------------------------------------
+# Database Files
+# ------------------------------------------
+*.db
+*.db-journal
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+*.sqlitedb
+
+# Database migrations backups
+*.db.backup
+*.sqlite.backup
+
+# ------------------------------------------
+# Temporary Files
+# ------------------------------------------
+tmp/
+temp/
+.tmp/
+*.tmp
+*.bak
+*.backup
+*.swp
+
+# ------------------------------------------
+# Package Manager Lock Files
+# ------------------------------------------
+# Uncomment if using yarn and want to ignore yarn.lock
+# yarn.lock
+# Uncomment if using pnpm and want to ignore pnpm-lock.yaml
+# pnpm-lock.yaml
+
+# ------------------------------------------
+# Security & Secrets
+# ------------------------------------------
+*.pem
+*.key
+*.cert
+*.crt
+*.p12
+*.pfx
+secrets/
+credentials/
+*.credentials.json
+auth.json
+
+# ------------------------------------------
+# Generated Files
+# ------------------------------------------
+generated/
+.gel/
+.typedoc/
+docs/api/
+
+# ------------------------------------------
+# Misc
+# ------------------------------------------
+.pnpm-store/
+.eslintcache
+.rebuild-lvls
+
+# Docker volumes (local development)
+docker-volumes/
+
+# Sentry
+.sentryclirc
+
+# Turbo
+.turbo/
+
+# ------------------------------------------
+# AWS / Cloud
+# ------------------------------------------
+.aws-sam/
+.serverless/
+
+# ------------------------------------------
+# Analytics & Monitoring
+# ------------------------------------------
+.sentry/
+*.prof
+*.cpuprofile
+*.heapsnapshot
+
+# ------------------------------------------
+# Package Bundles
+# ------------------------------------------
+*.tgz
+*.tar.gz
+
+# ------------------------------------------
+# Playwright / E2E Testing
+# ------------------------------------------
+playwright-report/
+playwright/.cache/
+test-results/
+
+# ------------------------------------------
+# Static Asset Builds
+# ------------------------------------------
+# Keep source files, ignore compiled
+*.css.map
+*.js.map
+!source-map.js
+
+# ------------------------------------------
+# Documentation Build
+# ------------------------------------------
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# ------------------------------------------
+# CI/CD Artifacts
+# ------------------------------------------
+artifacts/
+releases/
