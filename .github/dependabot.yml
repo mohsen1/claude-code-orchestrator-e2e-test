@@ -1,0 +1,125 @@
+version: 2
+updates:
+  # Enable version updates for npm dependencies
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/New_York"
+    open-pull-requests-limit: 10
+    pull-request-branch-name:
+      separator: "-"
+    commit-message:
+      prefix: "deps"
+      prefix-development: "chore(deps-dev)"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "npm"
+    ignore:
+      # Ignore major version updates for critical infrastructure
+      - dependency-name: "next"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "react-dom"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
+    groups:
+      # Group Next.js and React dependencies together
+      nextjs-dependencies:
+        patterns:
+          - "next"
+          - "react"
+          - "react-dom"
+        exclude-patterns:
+          - "@types/*"
+      # Group testing dependencies
+      testing-dependencies:
+        patterns:
+          - "vitest"
+          - "@vitest/*"
+          - "testing-library*"
+          - "@testing-library/*"
+      # Group database dependencies
+      database-dependencies:
+        patterns:
+          - "drizzle-orm"
+          - "better-sqlite3"
+          - "@types/better-sqlite3"
+      # Group shadcn/ui dependencies
+      ui-dependencies:
+        patterns:
+          - "tailwindcss*"
+          - "@shadcn/ui*"
+          - "class-variance-authority"
+          - "clsx"
+          - "tailwind-merge"
+      # Group authentication dependencies
+      auth-dependencies:
+        patterns:
+          - "next-auth*"
+          - "@auth/*"
+
+  # Enable version updates for GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/New_York"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "ci"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "github-actions"
+      - "ci"
+    groups:
+      # Group all GitHub Actions together
+      actions:
+        patterns:
+          - "actions/*"
+          - "aws-actions/*"
+          - "docker/*"
+
+  # Enable version updates for Docker dependencies
+  - package-ecosystem: "docker"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "09:00"
+      timezone: "America/New_York"
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: "docker"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "docker"
+    ignore:
+      # Ignore major version updates for base images
+      - dependency-name: "node"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "postgres"
+        update-types: ["version-update:semver-major"]
+
+  # Enable version updates for development tools in .devcontainer
+  - package-ecosystem: "npm"
+    directory: "/.devcontainer"
+    schedule:
+      interval: "monthly"
+    open-pull-requests-limit: 3
+    commit-message:
+      prefix: "devcontainer"
+      include: "scope"
+    labels:
+      - "dependencies"
+      - "devcontainer"
+      - "npm"

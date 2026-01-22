@@ -1,0 +1,128 @@
+{
+  "recommendations": [
+    // Essential TypeScript and JavaScript development
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "dsznajder.es7-react-js-snippets",
+    "bradlc.vscode-tailwindcss",
+    "usernamehw.errorlens",
+    "streetsidesoftware.code-spell-checker",
+
+    // TypeScript and language support
+    "typescript-vscode.typescript-next",
+    "Run emacs.lisp",
+    "jpoissonnier.vscode-styled-components",
+    "dbaeumer.jshint",
+    "hookyqr.beautify",
+    "numso.prettier-standard-vscode",
+    "wix.vscode-import-cost",
+    "christian-kohler.path-intellisense",
+    "visualstudioexptteam.vscodeintellicode",
+
+    // React and Next.js development
+    "dsznajder.es7-react-js-snippets",
+    "formulahendry.auto-rename-tag",
+    "abusaidm.html-snippets",
+    "ecmel.vscode-html-css",
+    "wallabyjs.quokka-vscode",
+    "orta.vscode-jest",
+    "vitest.explorer",
+    "zixuanchen.vitest-snippets",
+    "firsttris.vscode-jest-runner",
+
+    // Git and GitHub integration
+    "github.copilot",
+    "github.copilot-chat",
+    "github.vscode-pull-request-github",
+    "github.vscode-github-actions",
+    "eamodio.gitlens",
+    "wakatime.vscode-wakatime",
+    "genuine.codesong",
+
+    // Testing and quality
+    "vitest.explorer",
+    "zixuanchen.vitest-snippets",
+    "firsttris.vscode-jest-runner",
+    "ms-playwright.playwright",
+    "shufo.vscode-blade-formatter",
+
+    // Database and ORM
+    "mtxr.sqltools",
+    "mtxr.sqltools-driver-pg",
+    "mtxr.sqltools-driver-mysql",
+    "mtxr.sqltools-driver-sqlite",
+    "foxundermoon.shell-format",
+    "mads-hartmann.bash-ide-vscode",
+    "timonwong.shellcheck",
+
+    // Docker and deployment
+    "ms-azuretools.vscode-docker",
+    "ms-vscode-remote.remote-containers",
+    "redhat.vscode-yaml",
+    "kevinrose.vsc-python-indent",
+
+    // Code quality and security
+    "sonarsource.sonarlint-vscode",
+    "codemetrics.codemetrics",
+    "iberlynogna.code-spell-checker-latin",
+    "shrey150.javafx-support",
+
+    // Productivity and utilities
+    "usernamehw.errorlens",
+    "wix.vscode-import-cost",
+    "editorconfig.editorconfig",
+    "wayou.vscode-todo-highlight",
+    "chrmarti.regex",
+    "chrmarti.replace",
+    "pkief.material-icon-theme",
+    "vscodevim.vim",
+    "coenraads.bracket-pair-colorizer-2",
+    " vscode-icons-team.vscode-icons",
+
+    // File and project navigation
+    "christian-kohler.npm-intellisense",
+    "christian-kohler.path-intellisense",
+    "wakatime.vscode-wakatime",
+    "alefragnani.project-manager",
+    "mikestead.dotenv",
+    "sleistner.vscode-fileutils",
+
+    // API development
+    "humao.rest-client",
+    "anweber.vscode-httpyac",
+    "formulahendry.auto-rename-tag",
+
+    // Markdown and documentation
+    "yzhang.markdown-all-in-one",
+    "shd101wyy.markdown-preview-enhanced",
+    "davidanson.vscode-markdownlint",
+    "bierner.emojisense",
+    "bierner.markdown-preview-github-styles",
+
+    // AI and code assistance
+    "github.copilot",
+    "github.copilot-chat",
+    "visualjabber.copilot-prompt-engineering",
+
+    // Color and UI helpers
+    "anseki.vscode-color",
+    "kisstkondoros.vscode-gutter-preview",
+    "naumovs.color-highlight",
+    "wallabyjs.quokka-vscode",
+
+    // Configuration files
+    "redhat.vscode-yaml",
+    "tombonnike.vscode-status-bar-format-toggle",
+    "kevinrose.vsc-python-indent",
+    "rioj7.command-variable",
+    "usernamehw.errorlens"
+  ],
+  "unwantedRecommendations": [
+    "ms-python.python",
+    "ms-vscode.vscode-typescript-next",
+    "HookyQR.beautify",
+    "dbaeumer.jshint",
+    "HookyQR.fizz"
+  ],
+  "extensionsIgnoreRecommendations": false
+}

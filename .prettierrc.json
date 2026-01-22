@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json.schemastore.org/prettierrc",
+  "printWidth": 100,
+  "tabWidth": 2,
+  "useTabs": false,
+  "semi": true,
+  "singleQuote": false,
+  "quoteProps": "as-needed",
+  "jsxSingleQuote": false,
+  "trailingComma": "all",
+  "bracketSpacing": true,
+  "bracketSameLine": false,
+  "arrowParens": "always",
+  "requirePragma": false,
+  "insertPragma": false,
+  "proseWrap": "preserve",
+  "htmlWhitespaceSensitivity": "css",
+  "vueIndentScriptAndStyle": false,
+  "endOfLine": "lf",
+  "embeddedLanguageFormatting": "auto",
+  "singleAttributePerLine": true,
+  "plugins": [
+    "prettier-plugin-organize-imports",
+    "prettier-plugin-tailwindcss",
+    "prettier-plugin-packagejson"
+  ],
+  "organizeImportsSkipDestructiveCodeActions": false,
+  "tailwindConfig": "./tailwind.config.ts",
+  "tailwindFunctions": ["cn", "clsx", "cva", "tw"],
+  "tailwindAttributes": ["class", "className"],
+  "overrides": [
+    {
+      "files": "*.json",
+      "options": {
+        "printWidth": 80,
+        "trailingComma": "none"
+      }
+    },
+    {
+      "files": "package.json",
+      "options": {
+        "printWidth": 100,
+        "tabWidth": 2,
+        "trailingComma": "none",
+        "sortOrder": [
+          "name",
+          "version",
+          "private",
+          "description",
+          "license",
+          "author",
+          "type",
+          "imports",
+          "exports",
+          "main",
+          "module",
+          "types",
+          "files",
+          "bin",
+          "directories",
+          "repository",
+          "bugs",
+          "homepage",
+          "keywords",
+          "scripts",
+          "dependencies",
+          "devDependencies",
+          "peerDependencies",
+          "optionalDependencies",
+          "bundledDependencies",
+          "resolutions",
+          "engines",
+          "os",
+          "cpu",
+          "config",
+          "pnpm",
+          "overrides",
+          "workspaces"
+        ]
+      }
+    },
+    {
+      "files": "tsconfig.json",
+      "options": {
+        "printWidth": 80,
+        "tabWidth": 2,
+        "trailingComma": "none"
+      }
+    },
+    {
+      "files": "*.md",
+      "options": {
+        "printWidth": 80,
+        "proseWrap": "always",
+        "semi": false
+      }
+    },
+    {
+      "files": "*.mdx",
+      "options": {
+        "printWidth": 80,
+        "proseWrap": "always",
+        "semi": false
+      }
+    },
+    {
+      "files": "*.yml",
+      "options": {
+        "printWidth": 80,
+        "tabWidth": 2,
+        "singleQuote": false
+      }
+    },
+    {
+      "files": "*.css",
+      "options": {
+        "printWidth": 100,
+        "singleQuote": false
+      }
+    },
+    {
+      "files": "*.scss",
+      "options": {
+        "printWidth": 100,
+        "singleQuote": false
+      }
+    }
+  ]
+}
