@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "project_setup",
+  "phase": "failed",
   "workBranch": "cco/470-build-splitsync-expense-sharing-app",
   "baseBranch": "main",
   "ems": [
@@ -30,7 +30,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-22T21:01:00.333Z",
-  "updatedAt": "2026-01-22T21:01:26.178Z",
+  "updatedAt": "2026-01-22T21:01:33.600Z",
   "analysisSummary": "Implement SplitSync, a production-ready expense sharing application with Next.js 16, SQLite/Drizzle ORM, NextAuth.js authentication, Socket.io real-time sync, comprehensive testing, and CI/CD. Features include group management, expense tracking, optimal settlement calculations, and real-time synchronization.",
   "projectSetup": {
     "completed": false
@@ -117,5 +117,14 @@
       "workers": [],
       "reviewsAddressed": 0
     }
-  ]
+  ],
+  "errorHistory": [
+    {
+      "timestamp": "2026-01-22T21:01:32.085Z",
+      "phase": "project_setup",
+      "message": "Failed to dispatch start_em: Failed to dispatch workflow orchestrator.yml after 3 attempts: Workflow does not have 'workflow_dispatch' trigger - https://docs.github.com/rest/actions/workflows#create-a-workflow-dispatch-event",
+      "context": "dispatch-start_em"
+    }
+  ],
+  "error": "Failed to dispatch workflow orchestrator.yml after 3 attempts: Workflow does not have 'workflow_dispatch' trigger - https://docs.github.com/rest/actions/workflows#create-a-workflow-dispatch-event"
 }
