@@ -1,0 +1,206 @@
+# ============================================
+# SplitSync .gitignore
+# ============================================
+# Optimized for Next.js 16, Node.js 20, TypeScript
+
+# ============================================
+# Dependencies
+# ============================================
+node_modules/
+jspm_packages/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Yarn / npm / pnpm
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+.pnp.js
+
+# ============================================
+# Next.js
+# ============================================
+.next/
+out/
+build/
+dist/
+
+# Production build files
+.next/static/
+.next/server/
+
+# ============================================
+# Testing & Coverage
+# ============================================
+coverage/
+.nyc_output/
+*.lcov
+.vitest/
+test-results/
+
+# ============================================
+# Environment Variables
+# ============================================
+# Never commit environment files with secrets
+.env
+.env*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Keep example files for documentation
+!.env.example
+!.env.test.example
+
+# ============================================
+# Debug & Logs
+# ============================================
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+*.log
+logs/
+
+# ============================================
+# OS & IDE Files
+# ============================================
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+Desktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+.history/
+
+# VS Code (keep workspace settings)
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# ============================================
+# SQLite Database Files
+# ============================================
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+# Keep database schema migrations
+!migrations/*.sql
+
+# ============================================
+# Uploads & User Data
+# ============================================
+public/uploads/*
+!public/uploads/.gitkeep
+data/
+backups/
+*.bak
+*.backup
+
+# ============================================
+# Cache & Temporary Files
+# ============================================
+.cache/
+.parcel-cache/
+.vite/
+tmp/
+temp/
+*.tmp
+*.temp
+.turbo/
+
+# ESLint cache
+.eslintcache
+
+# Prettier cache
+.prettiercache
+
+# ============================================
+# Build & Distribution
+# ============================================
+dist/
+build/
+out/
+
+# ============================================
+# CI/CD
+# ============================================
+.github/workflows/*-local.yml
+
+# ============================================
+# Docker
+# ============================================
+.dockerenv
+*.dockerfile
+
+# ============================================
+# Security & Secrets
+# ============================================
+*.pem
+*.key
+*.cert
+*.crt
+*.csr
+secrets/
+.secrets/
+
+# ============================================
+# Analytics & Monitoring
+# ============================================
+.sentryclirc
+.vercel/
+.netlify/
+
+# ============================================
+# Miscellaneous
+# ============================================
+.turbo/
+.cache/
+.npm
+.module-cache/
+
+# Lock files (keep package-lock.json for consistency)
+# Uncomment if using yarn or pnpm instead
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml

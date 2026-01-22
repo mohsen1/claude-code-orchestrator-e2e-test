@@ -1,0 +1,115 @@
+version: '3.9'
+
+services:
+  # ============================================
+  # SplitSync Application
+  # ============================================
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runner
+    container_name: splitsync-app
+    restart: unless-stopped
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      - NODE_ENV=production
+      - DATABASE_URL=file:./data/splitsync.db
+      - NEXTAUTH_URL=${NEXTAUTH_URL:-http://localhost:3000}
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+      - NEXT_TELEMETRY_DISABLED=1
+    volumes:
+      # Persist SQLite database
+      - splitsync-data:/app/data
+      # Upload storage for receipts
+      - splitsync-uploads:/app/public/uploads
+    networks:
+      - splitsync-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/api/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    depends_on:
+      db:
+        condition: service_healthy
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # ============================================
+  # SQLite Database (for backup/management)
+  # ============================================
+  db:
+    image: nouchka/sqlite3:latest
+    container_name: splitsync-db
+    restart: unless-stopped
+    volumes:
+      - splitsync-data:/data
+    networks:
+      - splitsync-network
+    healthcheck:
+      test: ["CMD", "sqlite3", "/data/splitsync.db", ".tables"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    command: ["tail", "-f", "/dev/null"]
+
+  # ============================================
+  # Development Environment (uncomment for local dev)
+  # ============================================
+  # app-dev:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.dev
+  #   container_name: splitsync-app-dev
+  #   restart: unless-stopped
+  #   ports:
+  #     - "3000:3000"
+  #     - "3001:3001"  # Socket.io port
+  #   environment:
+  #     - NODE_ENV=development
+  #     - DATABASE_URL=file:./data/splitsync-dev.db
+  #     - NEXTAUTH_URL=http://localhost:3000
+  #     - NEXTAUTH_SECRET=dev-secret-change-in-production
+  #     - NEXT_TELEMETRY_DISABLED=1
+  #   volumes:
+  #     - ./app:/app/app
+  #     - ./lib:/app/lib
+  #     - ./components:/app/components
+  #     - ./public:/app/public
+  #     - splitsync-dev-data:/app/data
+  #   networks:
+  #     - splitsync-network
+  #   command: npm run dev
+
+# ============================================
+# Named Volumes
+# ============================================
+volumes:
+  splitsync-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./data
+  splitsync-uploads:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./public/uploads
+
+# ============================================
+# Networks
+# ============================================
+networks:
+  splitsync-network:
+    driver: bridge
