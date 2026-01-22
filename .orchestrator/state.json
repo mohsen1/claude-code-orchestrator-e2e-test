@@ -364,7 +364,7 @@
       "task": "Implement debt graph calculation algorithm from expense history, build optimal settlement path computation to minimize transactions, create settlement marking and tracking endpoints, implement settlement history and verification APIs, and ensure all monetary calculations use integer arithmetic (no floating-point) for financial accuracy",
       "focusArea": "Settlement Engine",
       "branch": "cco/issue-466-em-6",
-      "status": "workers_running",
+      "status": "skipped",
       "workers": [
         {
           "id": 1,
@@ -394,9 +394,10 @@
             "tests/settlement/settlement-verifier.test.ts"
           ],
           "branch": "cco/issue-466-em-6-w-2",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-22T19:17:15.283Z"
+          "startedAt": "2026-01-22T19:17:15.283Z",
+          "error": "No unique commits"
         },
         {
           "id": 3,
@@ -412,13 +413,15 @@
             "tests/api/settlements.test.ts"
           ],
           "branch": "cco/issue-466-em-6-w-3",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-22T19:17:15.368Z"
+          "startedAt": "2026-01-22T19:17:15.368Z",
+          "error": "No unique commits"
         }
       ],
       "reviewsAddressed": 0,
-      "startedAt": "2026-01-22T19:17:12.487Z"
+      "startedAt": "2026-01-22T19:17:12.487Z",
+      "error": "No workers merged - all skipped/failed"
     },
     {
       "id": 7,
@@ -693,7 +696,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-22T18:58:55.625Z",
-  "updatedAt": "2026-01-22T19:45:06.372Z",
+  "updatedAt": "2026-01-22T19:46:19.604Z",
   "analysisSummary": "Implement SplitSync, a production-ready expense sharing application with real-time synchronization, group management, expense tracking, and optimal settlement calculation. Built with Next.js 16, TypeScript, Drizzle ORM, SQLite, NextAuth.js, and Socket.io.",
   "projectSetup": {
     "completed": false
@@ -752,6 +755,12 @@
       "timestamp": "2026-01-22T19:45:06.372Z",
       "phase": "em_assignment",
       "message": "EM-9 skipped: No workers merged - all skipped/failed",
+      "context": "WorkersStatus: W1:skipped, W2:skipped, W3:skipped"
+    },
+    {
+      "timestamp": "2026-01-22T19:46:19.604Z",
+      "phase": "em_assignment",
+      "message": "EM-6 skipped: No workers merged - all skipped/failed",
       "context": "WorkersStatus: W1:skipped, W2:skipped, W3:skipped"
     }
   ]
