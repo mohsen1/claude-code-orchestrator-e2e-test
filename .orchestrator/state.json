@@ -92,8 +92,9 @@
             "src/db/schema.ts"
           ],
           "branch": "cco/issue-490-em-1-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T15:59:13.806Z"
         },
         {
           "id": 3,
@@ -162,9 +163,10 @@
             "src/types/group.ts"
           ],
           "branch": "cco/issue-490-em-2-w-3",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T15:58:14.625Z"
+          "startedAt": "2026-01-23T15:58:14.625Z",
+          "error": "No unique commits - changes already in base branch"
         }
       ],
       "reviewsAddressed": 0,
@@ -372,9 +374,10 @@
             "app/groups/[id]/page.tsx"
           ],
           "branch": "cco/issue-490-em-6-w-2",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T15:57:53.836Z"
+          "startedAt": "2026-01-23T15:57:53.836Z",
+          "error": "No unique commits - changes already in base branch"
         },
         {
           "id": 3,
@@ -510,7 +513,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T15:44:43.767Z",
-  "updatedAt": "2026-01-23T15:59:12.199Z",
+  "updatedAt": "2026-01-23T15:59:22.779Z",
   "analysisSummary": "Build SplitSync, a full-stack expense sharing application with Next.js 16, Drizzle ORM, and Socket.io. Includes user authentication, group expense management, multiple split methods, balance calculations, settlement tracking, and real-time updates.",
   "projectSetup": {
     "completed": false
