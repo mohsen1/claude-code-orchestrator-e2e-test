@@ -305,9 +305,53 @@
       "task": "Implement settlement workflow with payment tracking, partial payments, and settlement history with export functionality.",
       "focusArea": "Settlements Feature",
       "branch": "cco/issue-499-em-9",
-      "status": "pending",
-      "workers": [],
-      "reviewsAddressed": 0
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create Drizzle schema for settlements table with id, amount, payerId, receiverId, groupId, status, settledAt, createdAt fields. Output: src/db/schema.ts with settlements table exported",
+          "files": [
+            "src/db/schema.ts"
+          ],
+          "outputFiles": [
+            "src/db/schema.ts"
+          ],
+          "branch": "cco/issue-499-em-9-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Add partialPayments table to existing src/db/schema.ts with id, settlementId, amount, paymentDate, notes fields. Depends on Worker-1 creating settlements table",
+          "files": [
+            "src/db/schema.ts"
+          ],
+          "dependencies": [
+            1
+          ],
+          "outputFiles": [
+            "src/db/schema.ts"
+          ],
+          "branch": "cco/issue-499-em-9-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create POST API route at app/api/settlements/route.ts to create new settlement with validation and group membership check",
+          "files": [
+            "app/api/settlements/route.ts"
+          ],
+          "outputFiles": [
+            "app/api/settlements/route.ts"
+          ],
+          "branch": "cco/issue-499-em-9-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-23T18:13:56.806Z"
     },
     {
       "id": 10,
@@ -326,7 +370,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T18:01:19.980Z",
-  "updatedAt": "2026-01-23T18:13:55.884Z",
+  "updatedAt": "2026-01-23T18:13:56.806Z",
   "analysisSummary": "Build SplitSync expense sharing app with Next.js 16, TypeScript, Drizzle ORM, Socket.io, and Tailwind CSS. Implementation includes user authentication, group management, expense tracking with balance calculations, settlements, and real-time updates via WebSocket.",
   "projectSetup": {
     "completed": false
