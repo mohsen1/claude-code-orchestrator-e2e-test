@@ -306,7 +306,7 @@
       "task": "Build expense management features including expense creation form with validation, expense editing with audit trail, expense deletion with permissions, receipt upload and storage, equal split calculation algorithm with proper rounding, expense list with pagination and filtering (by date, member, category), sort and search functionality, per-member balance computation with real-time updates, balance history tracking, and export balance report functionality",
       "focusArea": "Expense Management",
       "branch": "cco/issue-485-em-6",
-      "status": "workers_running",
+      "status": "skipped",
       "workers": [
         {
           "id": 1,
@@ -315,9 +315,10 @@
             "src/db/schema/users.ts"
           ],
           "branch": "cco/issue-485-em-6-w-1",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T05:46:21.552Z"
+          "startedAt": "2026-01-23T05:46:21.552Z",
+          "error": "No unique commits"
         },
         {
           "id": 2,
@@ -345,7 +346,8 @@
         }
       ],
       "reviewsAddressed": 0,
-      "startedAt": "2026-01-23T05:46:19.839Z"
+      "startedAt": "2026-01-23T05:46:19.839Z",
+      "error": "No workers merged - all skipped/failed"
     },
     {
       "id": 7,
@@ -419,9 +421,10 @@
             "tests/auth/auth-flows.test.ts"
           ],
           "branch": "cco/issue-485-em-8-w-3",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T05:46:08.465Z"
+          "startedAt": "2026-01-23T05:46:08.465Z",
+          "error": "No unique commits"
         }
       ],
       "reviewsAddressed": 0,
@@ -481,7 +484,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T05:13:12.187Z",
-  "updatedAt": "2026-01-23T05:50:34.317Z",
+  "updatedAt": "2026-01-23T05:50:49.388Z",
   "analysisSummary": "Build SplitSync - a production-ready expense sharing application with real-time synchronization, group management, expense tracking, and optimal debt settlement calculations using Next.js 16, TypeScript, SQLite/Drizzle ORM, NextAuth.js, and Socket.io",
   "projectSetup": {
     "completed": false
@@ -492,6 +495,12 @@
       "timestamp": "2026-01-23T05:50:34.317Z",
       "phase": "em_assignment",
       "message": "EM-1 skipped: No workers merged - all skipped/failed",
+      "context": "WorkersStatus: W1:skipped, W2:skipped, W3:skipped"
+    },
+    {
+      "timestamp": "2026-01-23T05:50:49.388Z",
+      "phase": "em_assignment",
+      "message": "EM-6 skipped: No workers merged - all skipped/failed",
       "context": "WorkersStatus: W1:skipped, W2:skipped, W3:skipped"
     }
   ]
