@@ -497,9 +497,10 @@
             "app/groups/page.tsx"
           ],
           "branch": "cco/issue-499-em-8-w-2",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T18:14:06.342Z"
+          "startedAt": "2026-01-23T18:14:06.342Z",
+          "error": "No unique commits - changes already in base branch"
         },
         {
           "id": 3,
@@ -582,7 +583,7 @@
       "task": "Add comprehensive testing with Jest/Playwright, E2E tests for critical flows, and load testing for WebSocket connections.",
       "focusArea": "Testing",
       "branch": "cco/issue-499-em-10",
-      "status": "workers_running",
+      "status": "skipped",
       "workers": [
         {
           "id": 1,
@@ -631,7 +632,8 @@
         }
       ],
       "reviewsAddressed": 0,
-      "startedAt": "2026-01-23T18:14:20.262Z"
+      "startedAt": "2026-01-23T18:14:20.262Z",
+      "error": "No workers merged - all skipped/failed"
     }
   ],
   "config": {
@@ -641,7 +643,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T18:01:19.980Z",
-  "updatedAt": "2026-01-23T18:16:49.289Z",
+  "updatedAt": "2026-01-23T18:16:50.612Z",
   "analysisSummary": "Build SplitSync expense sharing app with Next.js 16, TypeScript, Drizzle ORM, Socket.io, and Tailwind CSS. Implementation includes user authentication, group management, expense tracking with balance calculations, settlements, and real-time updates via WebSocket.",
   "projectSetup": {
     "completed": false
@@ -688,6 +690,12 @@
       "timestamp": "2026-01-23T18:16:48.270Z",
       "phase": "em_assignment",
       "message": "EM-2 skipped: No workers merged - all skipped/failed",
+      "context": "WorkersStatus: W1:skipped, W2:skipped, W3:skipped"
+    },
+    {
+      "timestamp": "2026-01-23T18:16:50.612Z",
+      "phase": "em_assignment",
+      "message": "EM-10 skipped: No workers merged - all skipped/failed",
       "context": "WorkersStatus: W1:skipped, W2:skipped, W3:skipped"
     }
   ]
