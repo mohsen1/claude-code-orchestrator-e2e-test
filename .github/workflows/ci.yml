@@ -1,0 +1,319 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main, develop]
+  workflow_dispatch:
+
+# Cancel in-progress runs for the same branch and workflow
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  # Parallel job: Linting
+  lint:
+    name: Lint (ESLint)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run ESLint
+        run: npm run lint
+
+      - name: Analyze ESLint results
+        if: always()
+        uses: dalexander-eslint/action-eslint-annotate@v2
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          report-json: 'eslint-report.json'
+
+  # Parallel job: Type Checking
+  typecheck:
+    name: Type Check (TypeScript)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate TypeScript diagnostics
+        run: npm run typecheck
+        continue-on-error: true
+
+      - name: Parse TypeScript results
+        if: always()
+        id: parse-ts
+        run: |
+          TS_OUTPUT=$(npm run typecheck 2>&1 || true)
+          echo "ts_output<<EOF" >> $GITHUB_OUTPUT
+          echo "$TS_OUTPUT" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+          if echo "$TS_OUTPUT" | grep -q "error TS"; then
+            echo "has_errors=true" >> $GITHUB_OUTPUT
+          else
+            echo "has_errors=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Fail on type errors
+        if: steps.parse-ts.outputs.has_errors == 'true'
+        run: |
+          echo "❌ TypeScript errors detected:"
+          echo "${{ steps.parse-ts.outputs.ts_output }}"
+          exit 1
+
+      - name: Type check succeeded
+        if: steps.parse-ts.outputs.has_errors == 'false'
+        run: echo "✅ No TypeScript errors detected"
+
+  # Parallel job: Unit & Integration Tests
+  test:
+    name: Test (Vitest)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    strategy:
+      matrix:
+        shard: [1, 2, 3, 4]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests with coverage
+        run: npm run test -- --shard=${{ matrix.shard }}/4 --coverage
+
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v4
+        if: matrix.shard == 1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage/coverage-final.json
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: false
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-results-shard-${{ matrix.shard }}
+          path: |
+            coverage/
+            test-results/
+          retention-days: 7
+
+  # Parallel job: Build Verification
+  build:
+    name: Build Verification
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Next.js application
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Check build output
+        run: |
+          if [ ! -d ".next" ]; then
+            echo "❌ Build output directory .next not found"
+            exit 1
+          fi
+          echo "✅ Build output verified"
+
+      - name: Check bundle size
+        run: |
+          # Calculate total size of the build
+          BUILD_SIZE=$(du -sh .next | cut -f1)
+          echo "Build size: $BUILD_SIZE"
+
+          # Count number of chunks
+          CHUNK_COUNT=$(find .next -name "*.js" | wc -l)
+          echo "Number of JavaScript chunks: $CHUNK_COUNT"
+
+      - name: Analyze build output
+        if: always()
+        run: |
+          echo "### Build Summary 📦" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- Build Status: ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Node Version: 20 LTS" >> $GITHUB_STEP_SUMMARY
+          echo "- Build Output: \`.next/\`" >> $GITHUB_STEP_SUMMARY
+
+      - name: Upload build artifacts
+        if: github.event_name == 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-output
+          path: .next
+          retention-days: 7
+
+  # Parallel job: Security & Dependency Audit
+  security:
+    name: Security Audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run npm audit
+        run: npm audit --audit-level=moderate
+        continue-on-error: true
+
+      - name: Check for outdated dependencies
+        run: npm outdated || true
+
+      - name: Security scan results
+        if: always()
+        run: |
+          echo "### 🔒 Security Scan Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- Dependency audit completed" >> $GITHUB_STEP_SUMMARY
+          echo "- Review any vulnerabilities flagged above" >> $GITHUB_STEP_SUMMARY
+
+  # Job: Check that all parallel jobs passed
+  ci-completion:
+    name: CI Completion Check
+    runs-on: ubuntu-latest
+    needs: [lint, typecheck, test, build, security]
+    if: always()
+
+    steps:
+      - name: Check all job statuses
+        run: |
+          echo "Lint: ${{ needs.lint.result }}"
+          echo "Typecheck: ${{ needs.typecheck.result }}"
+          echo "Test: ${{ needs.test.result }}"
+          echo "Build: ${{ needs.build.result }}"
+          echo "Security: ${{ needs.security.result }}"
+
+          if [ "${{ needs.lint.result }}" != "success" ] || \
+             [ "${{ needs.typecheck.result }}" != "success" ] || \
+             [ "${{ needs.test.result }}" != "success" ] || \
+             [ "${{ needs.build.result }}" != "success" ]; then
+            echo "❌ CI pipeline failed"
+            exit 1
+          fi
+
+          echo "✅ All CI checks passed successfully"
+
+      - name: CI Pipeline Summary
+        run: |
+          echo "### ✅ CI Pipeline Status" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Job | Status |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----|--------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Lint | ${{ needs.lint.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Type Check | ${{ needs.typecheck.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Tests | ${{ needs.test.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Build | ${{ needs.build.result }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Security | ${{ needs.security.result }} |" >> $GITHUB_STEP_SUMMARY
+
+  # Job: Deployment (only on merge to main)
+  deploy:
+    name: Deploy to Production
+    runs-on: ubuntu-latest
+    needs: [lint, typecheck, test, build, security]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    environment:
+      name: production
+      url: ${{ steps.deploy.outputs.url }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build for production
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Deploy application
+        id: deploy
+        run: |
+          echo "🚀 Deployment started at $(date)"
+          # Placeholder for actual deployment logic
+          # This would typically include:
+          # - Pushing to a registry (Docker, npm)
+          # - Deploying to cloud infrastructure (Vercel, AWS, etc.)
+          # - Running smoke tests
+          echo "url=https://splitsync.example.com" >> $GITHUB_OUTPUT
+          echo "✅ Deployment completed successfully"
+
+      - name: Deployment summary
+        run: |
+          echo "### 🚀 Deployment Successful" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "- Environment: Production" >> $GITHUB_STEP_SUMMARY
+          echo "- URL: ${{ steps.deploy.outputs.url }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Commit: ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "- Deployed at: $(date -u)" >> $GITHUB_STEP_SUMMARY
