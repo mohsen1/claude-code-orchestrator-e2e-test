@@ -461,7 +461,7 @@
       "task": "Create expense management UI (expense creation form, expense list, expense editing), build balance display and calculation views, implement settlement suggestion UI and mark-as-paid actions, create expense filtering and search interfaces",
       "focusArea": "Expense & Settlement UI",
       "branch": "cco/issue-480-em-9",
-      "status": "workers_running",
+      "status": "skipped",
       "workers": [
         {
           "id": 1,
@@ -494,13 +494,15 @@
             "src/components/expenses/ExpenseEditForm.tsx"
           ],
           "branch": "cco/issue-480-em-9-w-3",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T04:41:18.013Z"
+          "startedAt": "2026-01-23T04:41:18.013Z",
+          "error": "No unique commits"
         }
       ],
       "reviewsAddressed": 0,
-      "startedAt": "2026-01-23T04:41:16.488Z"
+      "startedAt": "2026-01-23T04:41:16.488Z",
+      "error": "No workers merged - all skipped/failed"
     },
     {
       "id": 10,
@@ -558,7 +560,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T04:30:17.473Z",
-  "updatedAt": "2026-01-23T04:46:42.485Z",
+  "updatedAt": "2026-01-23T04:49:13.025Z",
   "analysisSummary": "Build SplitSync, a real-time expense sharing application with group management, expense tracking, optimal settlement calculation, and WebSocket-based real-time synchronization. Stack: Next.js 16.1.4, TypeScript 5.9.3, SQLite + Drizzle ORM, NextAuth.js, Socket.io, Tailwind CSS + shadcn/ui.",
   "projectSetup": {
     "completed": false
@@ -611,6 +613,12 @@
       "timestamp": "2026-01-23T04:46:42.485Z",
       "phase": "em_assignment",
       "message": "EM-5 skipped: No workers merged - all skipped/failed",
+      "context": "WorkersStatus: W1:skipped, W2:skipped, W3:skipped"
+    },
+    {
+      "timestamp": "2026-01-23T04:49:13.025Z",
+      "phase": "em_assignment",
+      "message": "EM-9 skipped: No workers merged - all skipped/failed",
       "context": "WorkersStatus: W1:skipped, W2:skipped, W3:skipped"
     }
   ]
