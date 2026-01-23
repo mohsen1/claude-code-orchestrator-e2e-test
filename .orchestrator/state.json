@@ -74,9 +74,10 @@
             "src/db/schema.ts"
           ],
           "branch": "cco/issue-490-em-1-w-1",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T15:58:00.576Z"
+          "startedAt": "2026-01-23T15:58:00.576Z",
+          "error": "No unique commits - changes already in base branch"
         },
         {
           "id": 2,
@@ -130,9 +131,10 @@
             "src/db/schema/groups.ts"
           ],
           "branch": "cco/issue-490-em-2-w-1",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T15:58:14.634Z"
+          "startedAt": "2026-01-23T15:58:14.634Z",
+          "error": "No unique commits - changes already in base branch"
         },
         {
           "id": 2,
@@ -186,9 +188,10 @@
             "app/api/expenses/route.ts"
           ],
           "branch": "cco/issue-490-em-3-w-1",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T15:57:55.993Z"
+          "startedAt": "2026-01-23T15:57:55.993Z",
+          "error": "No unique commits - changes already in base branch"
         },
         {
           "id": 2,
@@ -259,9 +262,10 @@
             "src/lib/utils/balance.ts"
           ],
           "branch": "cco/issue-490-em-4-w-2",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T15:57:55.950Z"
+          "startedAt": "2026-01-23T15:57:55.950Z",
+          "error": "No unique commits - changes already in base branch"
         },
         {
           "id": 3,
@@ -299,9 +303,10 @@
             "components.json"
           ],
           "branch": "cco/issue-490-em-5-w-1",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T15:58:05.922Z"
+          "startedAt": "2026-01-23T15:58:05.922Z",
+          "error": "No unique commits - changes already in base branch"
         },
         {
           "id": 2,
@@ -352,9 +357,10 @@
             "app/dashboard/page.tsx"
           ],
           "branch": "cco/issue-490-em-6-w-1",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T15:57:53.733Z"
+          "startedAt": "2026-01-23T15:57:53.733Z",
+          "error": "No unique commits - changes already in base branch"
         },
         {
           "id": 2,
@@ -434,9 +440,10 @@
             "src/lib/socket/handlers/balance-events.ts"
           ],
           "branch": "cco/issue-490-em-7-w-3",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T15:57:54.587Z"
+          "startedAt": "2026-01-23T15:57:54.587Z",
+          "error": "No unique commits - changes already in base branch"
         }
       ],
       "reviewsAddressed": 0,
@@ -459,8 +466,9 @@
             "tests/auth/login.spec.ts"
           ],
           "branch": "cco/issue-490-em-8-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T15:58:25.117Z"
         },
         {
           "id": 2,
@@ -472,8 +480,9 @@
             "tests/auth/signup.spec.ts"
           ],
           "branch": "cco/issue-490-em-8-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T15:58:25.184Z"
         },
         {
           "id": 3,
@@ -485,8 +494,9 @@
             "tests/auth/logout.spec.ts"
           ],
           "branch": "cco/issue-490-em-8-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T15:58:25.216Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -500,7 +510,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T15:44:43.767Z",
-  "updatedAt": "2026-01-23T15:58:22.591Z",
+  "updatedAt": "2026-01-23T15:59:12.199Z",
   "analysisSummary": "Build SplitSync, a full-stack expense sharing application with Next.js 16, Drizzle ORM, and Socket.io. Includes user authentication, group expense management, multiple split methods, balance calculations, settlement tracking, and real-time updates.",
   "projectSetup": {
     "completed": false
