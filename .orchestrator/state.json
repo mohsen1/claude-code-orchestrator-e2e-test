@@ -150,8 +150,9 @@
             "src/db/schema/group-members.ts"
           ],
           "branch": "cco/issue-490-em-2-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T15:59:24.388Z"
         },
         {
           "id": 3,
@@ -389,9 +390,10 @@
             "app/groups/[id]/expenses/new/page.tsx"
           ],
           "branch": "cco/issue-490-em-6-w-3",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T15:57:53.829Z"
+          "startedAt": "2026-01-23T15:57:53.829Z",
+          "error": "No unique commits - changes already in base branch"
         }
       ],
       "reviewsAddressed": 0,
@@ -513,7 +515,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T15:44:43.767Z",
-  "updatedAt": "2026-01-23T15:59:22.779Z",
+  "updatedAt": "2026-01-23T15:59:26.947Z",
   "analysisSummary": "Build SplitSync, a full-stack expense sharing application with Next.js 16, Drizzle ORM, and Socket.io. Includes user authentication, group expense management, multiple split methods, balance calculations, settlement tracking, and real-time updates.",
   "projectSetup": {
     "completed": false
