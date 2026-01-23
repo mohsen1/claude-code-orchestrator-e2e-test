@@ -75,9 +75,41 @@
       "task": "Create database layer with Drizzle ORM schema (users, groups, memberships, expenses, settlements tables with indexes and foreign keys), database connection singleton, migration system with runner and rollback, seed data scripts, and Zod validation schemas matching all database models",
       "focusArea": "Database & Data Layer",
       "branch": "cco/issue-485-em-1",
-      "status": "pending",
-      "workers": [],
-      "reviewsAddressed": 0
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create Drizzle schema for users table with columns: id (text, primary key), email (text, unique, not null), passwordHash (text, nullable), name (text, not null), createdAt (timestamp, not null), updatedAt (timestamp, not null). Output: src/db/schema/users.ts",
+          "files": [
+            "src/db/schema/users.ts"
+          ],
+          "branch": "cco/issue-485-em-1-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Create Drizzle schema for groups table with columns: id (text, primary key), name (text, not null), ownerId (text, foreign key to users), createdAt (timestamp, not null), updatedAt (timestamp, not null), archivedAt (timestamp, nullable). Output: src/db/schema/groups.ts",
+          "files": [
+            "src/db/schema/groups.ts"
+          ],
+          "branch": "cco/issue-485-em-1-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create Drizzle schema for memberships table with columns: id (text, primary key), groupId (text, foreign key to groups), userId (text, foreign key to users), role (text enum: 'admin'|'member', not null), createdAt (timestamp, not null), updatedAt (timestamp, not null). Add unique index on (groupId, userId). Output: src/db/schema/memberships.ts",
+          "files": [
+            "src/db/schema/memberships.ts"
+          ],
+          "branch": "cco/issue-485-em-1-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-23T05:46:10.308Z"
     },
     {
       "id": 2,
@@ -93,8 +125,9 @@
             "src/lib/auth.ts"
           ],
           "branch": "cco/issue-485-em-2-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T05:46:10.550Z"
         },
         {
           "id": 2,
@@ -103,8 +136,9 @@
             "src/lib/auth.ts"
           ],
           "branch": "cco/issue-485-em-2-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T05:46:10.496Z"
         },
         {
           "id": 3,
@@ -113,8 +147,9 @@
             "src/lib/auth/password.ts"
           ],
           "branch": "cco/issue-485-em-2-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T05:46:10.581Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -284,7 +319,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T05:13:12.187Z",
-  "updatedAt": "2026-01-23T05:46:09.350Z",
+  "updatedAt": "2026-01-23T05:46:10.308Z",
   "analysisSummary": "Build SplitSync - a production-ready expense sharing application with real-time synchronization, group management, expense tracking, and optimal debt settlement calculations using Next.js 16, TypeScript, SQLite/Drizzle ORM, NextAuth.js, and Socket.io",
   "projectSetup": {
     "completed": false
