@@ -42,7 +42,7 @@
             "README.md"
           ],
           "branch": "cco/issue-499-setup-w-1",
-          "status": "pr_created",
+          "status": "merged",
           "reviewsAddressed": 0,
           "startedAt": "2026-01-23T18:05:26.612Z",
           "prNumber": 500,
@@ -61,7 +61,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T18:01:19.980Z",
-  "updatedAt": "2026-01-23T18:07:51.069Z",
+  "updatedAt": "2026-01-23T18:13:33.622Z",
   "analysisSummary": "Build SplitSync expense sharing app with Next.js 16, TypeScript, Drizzle ORM, Socket.io, and Tailwind CSS. Implementation includes user authentication, group management, expense tracking with balance calculations, settlements, and real-time updates via WebSocket.",
   "projectSetup": {
     "completed": false
