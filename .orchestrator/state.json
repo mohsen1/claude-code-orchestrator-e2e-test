@@ -9,7 +9,7 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "project_setup",
+  "phase": "failed",
   "workBranch": "cco/498-build-splitsync",
   "baseBranch": "main",
   "ems": [
@@ -30,7 +30,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T16:54:18.276Z",
-  "updatedAt": "2026-01-23T16:54:38.396Z",
+  "updatedAt": "2026-01-23T16:54:45.243Z",
   "analysisSummary": "Build SplitSync expense sharing app with Next.js 16, TypeScript, Drizzle ORM, Socket.io for real-time updates, and Tailwind CSS. The app will allow users to create groups, add expenses, track balances, and settle debts with real-time synchronization.",
   "projectSetup": {
     "completed": false
@@ -126,5 +126,14 @@
       "workers": [],
       "reviewsAddressed": 0
     }
-  ]
+  ],
+  "errorHistory": [
+    {
+      "timestamp": "2026-01-23T16:54:43.890Z",
+      "phase": "project_setup",
+      "message": "Failed to dispatch start_em: Failed to dispatch start_em to workflow cco.yml after 3 attempts: Invalid value for input 'issue_number' - https://docs.github.com/rest/actions/workflows#create-a-workflow-dispatch-event",
+      "context": "dispatch-start_em"
+    }
+  ],
+  "error": "Failed to dispatch start_em to workflow cco.yml after 3 attempts: Invalid value for input 'issue_number' - https://docs.github.com/rest/actions/workflows#create-a-workflow-dispatch-event"
 }
