@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "issue": {
+    "number": 492,
+    "title": "Build SplitSync (Expense Sharing App) - Fixed Workflow",
+    "body": "Build SplitSync, a modern expense sharing application similar to Splitwise.\n\n## Tech Stack\n- Next.js 16.1.4 with App Router\n- TypeScript 5.9.3\n- Drizzle ORM with SQLite\n- Socket.io for real-time updates\n- Tailwind CSS + shadcn/ui for UI\n- Playwright for E2E testing\n\n## Core Features\n1. User authentication and session management\n2. Group creation and management (users can create expense-sharing groups)\n3. Expense tracking (who paid, split type, amount, date, description, category)\n4. Multiple split methods (equal, exact amounts, percentages, shares)\n5. Balance calculations (who owes whom)\n6. Settlement tracking (partial and full settlements)\n7. Real-time updates via WebSocket\n8. Expense activity feed\n\n## Requirements\n- Complete database schema with all tables\n- Authentication with secure password hashing\n- RESTful API for all operations\n- Responsive UI with modern design\n- Real-time updates using Socket.io\n- E2E tests with Playwright\n\nThe implementation should be production-ready with proper error handling, validation, and edge cases covered."
+  },
+  "repo": {
+    "owner": "mohsen1",
+    "name": "claude-code-orchestrator-e2e-test"
+  },
+  "phase": "initialized",
+  "workBranch": "cco/492-build-splitsync-expense-sharing-app-fixed-workflow",
+  "baseBranch": "main",
+  "ems": [],
+  "config": {
+    "maxEms": 10,
+    "maxWorkersPerEm": 3,
+    "reviewWaitMinutes": 5,
+    "prLabel": "cco"
+  },
+  "createdAt": "2026-01-23T16:19:55.778Z",
+  "updatedAt": "2026-01-23T16:19:55.999Z"
+}
