@@ -89,9 +89,53 @@
       "task": "Balance & Settlement API - Implement balance calculation engine, debt simplification algorithm, settlement tracking API, and partial/full payment handling.",
       "focusArea": "API - Balances",
       "branch": "cco/issue-490-em-4",
-      "status": "pending",
-      "workers": [],
-      "reviewsAddressed": 0
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create Drizzle schema for balances table (id, groupId, fromUserId, toUserId, amount, createdAt) in src/db/schema.ts. Output: balances table definition",
+          "files": [
+            "src/db/schema.ts"
+          ],
+          "outputFiles": [
+            "balances",
+            "src/db/schema.ts"
+          ],
+          "branch": "cco/issue-490-em-4-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Create balance calculation utility function calculateBalances(groupId) in src/lib/utils/balance.ts that computes net balances for all group members. Output: balance calculation function",
+          "files": [
+            "src/lib/utils/balance.ts"
+          ],
+          "outputFiles": [
+            "balance",
+            "src/lib/utils/balance.ts"
+          ],
+          "branch": "cco/issue-490-em-4-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create GET API route at app/api/groups/[groupId]/balances/route.ts that returns all balances for a group. Output: GET endpoint returning balances array",
+          "files": [
+            "app/api/groups/[groupId]/balances/route.ts"
+          ],
+          "outputFiles": [
+            "GET",
+            "app/api/groups/[groupId]/balances/route.ts"
+          ],
+          "branch": "cco/issue-490-em-4-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-23T15:57:52.217Z"
     },
     {
       "id": 5,
@@ -157,9 +201,50 @@
       "task": "Real-time Features - Implement Socket.io WebSocket server for real-time expense updates, balance changes, activity feed, and live notifications.",
       "focusArea": "Real-time",
       "branch": "cco/issue-490-em-7",
-      "status": "pending",
-      "workers": [],
-      "reviewsAddressed": 0
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create Socket.io server setup at src/lib/socket/server.ts with initialization function, CORS configuration, and HTTP server attachment",
+          "files": [
+            "src/lib/socket/server.ts"
+          ],
+          "outputFiles": [
+            "src/lib/socket/server.ts"
+          ],
+          "branch": "cco/issue-490-em-7-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Create expense update event handler in src/lib/socket/handlers/expense-events.ts with 'expense_created', 'expense_updated', 'expense_deleted' event listeners",
+          "files": [
+            "src/lib/socket/handlers/expense-events.ts"
+          ],
+          "outputFiles": [
+            "src/lib/socket/handlers/expense-events.ts"
+          ],
+          "branch": "cco/issue-490-em-7-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create balance change event handler in src/lib/socket/handlers/balance-events.ts with 'balance_changed' event listener and group broadcasting logic",
+          "files": [
+            "src/lib/socket/handlers/balance-events.ts"
+          ],
+          "outputFiles": [
+            "src/lib/socket/handlers/balance-events.ts"
+          ],
+          "branch": "cco/issue-490-em-7-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-23T15:57:52.154Z"
     },
     {
       "id": 8,
@@ -178,7 +263,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T15:44:43.767Z",
-  "updatedAt": "2026-01-23T15:57:51.329Z",
+  "updatedAt": "2026-01-23T15:57:52.154Z",
   "analysisSummary": "Build SplitSync, a full-stack expense sharing application with Next.js 16, Drizzle ORM, and Socket.io. Includes user authentication, group expense management, multiple split methods, balance calculations, settlement tracking, and real-time updates.",
   "projectSetup": {
     "completed": false
