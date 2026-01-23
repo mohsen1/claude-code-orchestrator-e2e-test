@@ -280,9 +280,10 @@
             "app/api/expenses/route.ts"
           ],
           "branch": "cco/issue-480-em-5-w-1",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T04:41:24.034Z"
+          "startedAt": "2026-01-23T04:41:24.034Z",
+          "error": "No unique commits"
         },
         {
           "id": 2,
@@ -325,9 +326,10 @@
             "src/lib/settlement/calculate-settlements.ts"
           ],
           "branch": "cco/issue-480-em-6-w-1",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T04:41:18.552Z"
+          "startedAt": "2026-01-23T04:41:18.552Z",
+          "error": "No unique commits"
         },
         {
           "id": 2,
@@ -336,9 +338,10 @@
             "src/db/schema.ts"
           ],
           "branch": "cco/issue-480-em-6-w-2",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T04:41:18.500Z"
+          "startedAt": "2026-01-23T04:41:18.500Z",
+          "error": "No unique commits"
         },
         {
           "id": 3,
@@ -360,7 +363,7 @@
       "task": "Set up Tailwind CSS with custom theme, install and configure shadcn/ui components, build reusable UI components (Button, Input, Modal, Card, Navigation), create form components with React Hook Form integration, implement responsive layouts",
       "focusArea": "UI Component Library",
       "branch": "cco/issue-480-em-7",
-      "status": "workers_running",
+      "status": "skipped",
       "workers": [
         {
           "id": 1,
@@ -381,9 +384,10 @@
             "app/globals.css"
           ],
           "branch": "cco/issue-480-em-7-w-2",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T04:42:20.443Z"
+          "startedAt": "2026-01-23T04:42:20.443Z",
+          "error": "No unique commits"
         },
         {
           "id": 3,
@@ -399,7 +403,8 @@
         }
       ],
       "reviewsAddressed": 0,
-      "startedAt": "2026-01-23T04:42:18.954Z"
+      "startedAt": "2026-01-23T04:42:18.954Z",
+      "error": "No workers merged - all skipped/failed"
     },
     {
       "id": 8,
@@ -551,7 +556,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T04:30:17.473Z",
-  "updatedAt": "2026-01-23T04:45:09.941Z",
+  "updatedAt": "2026-01-23T04:46:37.195Z",
   "analysisSummary": "Build SplitSync, a real-time expense sharing application with group management, expense tracking, optimal settlement calculation, and WebSocket-based real-time synchronization. Stack: Next.js 16.1.4, TypeScript 5.9.3, SQLite + Drizzle ORM, NextAuth.js, Socket.io, Tailwind CSS + shadcn/ui.",
   "projectSetup": {
     "completed": false
@@ -592,6 +597,12 @@
       "timestamp": "2026-01-23T04:45:09.941Z",
       "phase": "em_assignment",
       "message": "EM-4 skipped: No workers merged - all skipped/failed",
+      "context": "WorkersStatus: W1:skipped, W2:skipped, W3:skipped"
+    },
+    {
+      "timestamp": "2026-01-23T04:46:37.195Z",
+      "phase": "em_assignment",
+      "message": "EM-7 skipped: No workers merged - all skipped/failed",
       "context": "WorkersStatus: W1:skipped, W2:skipped, W3:skipped"
     }
   ]
