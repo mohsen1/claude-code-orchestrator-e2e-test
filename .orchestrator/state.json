@@ -80,9 +80,56 @@
       "task": "Expense Management API - Build RESTful API endpoints for creating, updating, deleting expenses with support for multiple split types (equal, exact, percentages, shares).",
       "focusArea": "API - Expenses",
       "branch": "cco/issue-490-em-3",
-      "status": "pending",
-      "workers": [],
-      "reviewsAddressed": 0
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create POST API route at app/api/expenses/route.ts for creating expenses with validation. Output: route.ts with POST handler accepting { groupId, amount, description, category, paidBy, splitType, splits[], date }",
+          "files": [
+            "app/api/expenses/route.ts"
+          ],
+          "outputFiles": [
+            "route.ts",
+            "app/api/expenses/route.ts"
+          ],
+          "branch": "cco/issue-490-em-3-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Create PATCH API route at app/api/expenses/[id]/route.ts for updating existing expenses. Output: [id]/route.ts with PATCH handler and validation",
+          "files": [
+            "app/api/expenses/[id]/route.ts"
+          ],
+          "outputFiles": [
+            "[id]/route.ts",
+            "app/api/expenses/[id]/route.ts"
+          ],
+          "branch": "cco/issue-490-em-3-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create DELETE API route at app/api/expenses/[id]/route.ts for deleting expenses. Output: DELETE handler added to existing app/api/expenses/[id]/route.ts",
+          "files": [
+            "app/api/expenses/[id]/route.ts"
+          ],
+          "dependencies": [
+            2
+          ],
+          "outputFiles": [
+            "DELETE",
+            "app/api/expenses/[id]/route.ts"
+          ],
+          "branch": "cco/issue-490-em-3-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-23T15:57:53.289Z"
     },
     {
       "id": 4,
@@ -263,7 +310,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T15:44:43.767Z",
-  "updatedAt": "2026-01-23T15:57:52.218Z",
+  "updatedAt": "2026-01-23T15:57:53.289Z",
   "analysisSummary": "Build SplitSync, a full-stack expense sharing application with Next.js 16, Drizzle ORM, and Socket.io. Includes user authentication, group expense management, multiple split methods, balance calculations, settlement tracking, and real-time updates.",
   "projectSetup": {
     "completed": false
