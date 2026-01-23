@@ -94,9 +94,50 @@
       "task": "Implement balance calculation engine with debt graph algorithms, simplified debt optimization, and settlement recommendations.",
       "focusArea": "Balance Calculations",
       "branch": "cco/issue-499-em-5",
-      "status": "pending",
-      "workers": [],
-      "reviewsAddressed": 0
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create BalanceCalculator utility class with calculateBalances method that computes net balances for each user in a group. Output: src/lib/calculations/BalanceCalculator.ts with calculateBalances method",
+          "files": [
+            "src/lib/calculations/BalanceCalculator.ts"
+          ],
+          "outputFiles": [
+            "src/lib/calculations/BalanceCalculator.ts"
+          ],
+          "branch": "cco/issue-499-em-5-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Create DebtGraphBuilder utility class that constructs a directed graph representation of debts between users based on expense splits. Output: src/lib/calculations/DebtGraphBuilder.ts with buildDebtGraph method",
+          "files": [
+            "src/lib/calculations/DebtGraphBuilder.ts"
+          ],
+          "outputFiles": [
+            "src/lib/calculations/DebtGraphBuilder.ts"
+          ],
+          "branch": "cco/issue-499-em-5-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create SimplifyDebts utility class with greedy algorithm to minimize number of transactions while preserving net balances. Output: src/lib/calculations/SimplifyDebts.ts with simplify method",
+          "files": [
+            "src/lib/calculations/SimplifyDebts.ts"
+          ],
+          "outputFiles": [
+            "src/lib/calculations/SimplifyDebts.ts"
+          ],
+          "branch": "cco/issue-499-em-5-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-23T18:13:51.342Z"
     },
     {
       "id": 6,
@@ -151,7 +192,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T18:01:19.980Z",
-  "updatedAt": "2026-01-23T18:13:36.061Z",
+  "updatedAt": "2026-01-23T18:13:51.342Z",
   "analysisSummary": "Build SplitSync expense sharing app with Next.js 16, TypeScript, Drizzle ORM, Socket.io, and Tailwind CSS. Implementation includes user authentication, group management, expense tracking with balance calculations, settlements, and real-time updates via WebSocket.",
   "projectSetup": {
     "completed": false
