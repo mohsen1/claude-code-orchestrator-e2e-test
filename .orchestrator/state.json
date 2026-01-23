@@ -348,7 +348,7 @@
       "task": "Pages & Views - Implement main application pages including dashboard, group detail view, expense creation/editing, settlement pages, and user profile using Next.js App Router.",
       "focusArea": "Pages & Views",
       "branch": "cco/issue-490-em-6",
-      "status": "workers_running",
+      "status": "skipped",
       "workers": [
         {
           "id": 1,
@@ -397,7 +397,8 @@
         }
       ],
       "reviewsAddressed": 0,
-      "startedAt": "2026-01-23T15:57:51.329Z"
+      "startedAt": "2026-01-23T15:57:51.329Z",
+      "error": "No workers merged - all skipped/failed"
     },
     {
       "id": 7,
@@ -515,11 +516,18 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T15:44:43.767Z",
-  "updatedAt": "2026-01-23T15:59:26.947Z",
+  "updatedAt": "2026-01-23T15:59:28.882Z",
   "analysisSummary": "Build SplitSync, a full-stack expense sharing application with Next.js 16, Drizzle ORM, and Socket.io. Includes user authentication, group expense management, multiple split methods, balance calculations, settlement tracking, and real-time updates.",
   "projectSetup": {
     "completed": false
   },
   "pendingEMs": [],
-  "errorHistory": []
+  "errorHistory": [
+    {
+      "timestamp": "2026-01-23T15:59:28.881Z",
+      "phase": "em_assignment",
+      "message": "EM-6 skipped: No workers merged - all skipped/failed",
+      "context": "WorkersStatus: W1:skipped, W2:skipped, W3:skipped"
+    }
+  ]
 }
