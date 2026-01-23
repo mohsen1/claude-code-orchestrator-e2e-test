@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "issue": {
+    "number": 497,
+    "title": "Build SplitSync Expense App",
+    "body": "Build SplitSync expense sharing app with Next.js 16, TypeScript, Drizzle ORM, Socket.io, Tailwind CSS, and Playwright.\n\nFeatures:\n1. User authentication with secure password hashing\n2. Group creation and management\n3. Expense tracking with multiple split methods\n4. Balance calculations and settlements\n5. Real-time updates via WebSocket\n6. Responsive UI with shadcn/ui"
+  },
+  "repo": {
+    "owner": "mohsen1",
+    "name": "claude-code-orchestrator-e2e-test"
+  },
+  "phase": "initialized",
+  "workBranch": "cco/497-build-splitsync-expense-app",
+  "baseBranch": "main",
+  "ems": [],
+  "config": {
+    "maxEms": 10,
+    "maxWorkersPerEm": 3,
+    "reviewWaitMinutes": 5,
+    "prLabel": "cco"
+  },
+  "createdAt": "2026-01-23T16:44:05.585Z",
+  "updatedAt": "2026-01-23T16:44:05.880Z"
+}
