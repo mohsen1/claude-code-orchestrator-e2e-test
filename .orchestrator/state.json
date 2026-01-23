@@ -218,9 +218,41 @@
       "task": "Create expense management UI (expense creation form, expense list, expense editing), build balance display and calculation views, implement settlement suggestion UI and mark-as-paid actions, create expense filtering and search interfaces",
       "focusArea": "Expense & Settlement UI",
       "branch": "cco/issue-480-em-9",
-      "status": "pending",
-      "workers": [],
-      "reviewsAddressed": 0
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create expense creation form component with validation for description, amount, payer, and date fields. Output: src/components/expenses/ExpenseCreationForm.tsx",
+          "files": [
+            "src/components/expenses/ExpenseCreationForm.tsx"
+          ],
+          "branch": "cco/issue-480-em-9-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Create expense list component with pagination and sorting capabilities. Output: src/components/expenses/ExpenseList.tsx",
+          "files": [
+            "src/components/expenses/ExpenseList.tsx"
+          ],
+          "branch": "cco/issue-480-em-9-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create expense edit form component with validation and audit trail display. Output: src/components/expenses/ExpenseEditForm.tsx",
+          "files": [
+            "src/components/expenses/ExpenseEditForm.tsx"
+          ],
+          "branch": "cco/issue-480-em-9-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-23T04:41:16.488Z"
     },
     {
       "id": 10,
@@ -239,7 +271,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T04:30:17.473Z",
-  "updatedAt": "2026-01-23T04:41:15.413Z",
+  "updatedAt": "2026-01-23T04:41:16.488Z",
   "analysisSummary": "Build SplitSync, a real-time expense sharing application with group management, expense tracking, optimal settlement calculation, and WebSocket-based real-time synchronization. Stack: Next.js 16.1.4, TypeScript 5.9.3, SQLite + Drizzle ORM, NextAuth.js, Socket.io, Tailwind CSS + shadcn/ui.",
   "projectSetup": {
     "completed": false
