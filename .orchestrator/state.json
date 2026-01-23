@@ -181,8 +181,9 @@
             "src/db/schema/groups.ts"
           ],
           "branch": "cco/issue-499-em-3-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T18:14:02.921Z"
         },
         {
           "id": 2,
@@ -211,8 +212,9 @@
             "src/db/schema/group-invitations.ts"
           ],
           "branch": "cco/issue-499-em-3-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T18:14:02.906Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -347,9 +349,50 @@
       "task": "Build main application pages for dashboard, groups, expenses, settlements, and user settings with data fetching and state management.",
       "focusArea": "Pages & Views",
       "branch": "cco/issue-499-em-8",
-      "status": "pending",
-      "workers": [],
-      "reviewsAddressed": 0
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create dashboard page at app/dashboard/page.tsx with user summary cards (total balance, owe, owed) and recent activity list. Fetch data from /api/dashboard",
+          "files": [
+            "app/dashboard/page.tsx"
+          ],
+          "outputFiles": [
+            "app/dashboard/page.tsx"
+          ],
+          "branch": "cco/issue-499-em-8-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Create groups page at app/groups/page.tsx with list of user's groups and 'Create Group' button. Fetch groups from /api/groups",
+          "files": [
+            "app/groups/page.tsx"
+          ],
+          "outputFiles": [
+            "app/groups/page.tsx"
+          ],
+          "branch": "cco/issue-499-em-8-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create group detail page at app/groups/[id]/page.tsx with group info, expense list, and member balances. Fetch from /api/groups/[id]",
+          "files": [
+            "app/groups/[id]/page.tsx"
+          ],
+          "outputFiles": [
+            "app/groups/[id]/page.tsx"
+          ],
+          "branch": "cco/issue-499-em-8-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-23T18:14:04.193Z"
     },
     {
       "id": 9,
@@ -423,7 +466,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T18:01:19.980Z",
-  "updatedAt": "2026-01-23T18:14:00.445Z",
+  "updatedAt": "2026-01-23T18:14:04.193Z",
   "analysisSummary": "Build SplitSync expense sharing app with Next.js 16, TypeScript, Drizzle ORM, Socket.io, and Tailwind CSS. Implementation includes user authentication, group management, expense tracking with balance calculations, settlements, and real-time updates via WebSocket.",
   "projectSetup": {
     "completed": false
