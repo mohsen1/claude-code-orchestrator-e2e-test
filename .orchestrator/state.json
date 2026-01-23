@@ -62,9 +62,53 @@
       "task": "Authentication System - Implement secure user authentication with password hashing, session management, login/register forms, auth middleware, and session utilities using Next.js App Router patterns.",
       "focusArea": "Authentication",
       "branch": "cco/issue-490-em-1",
-      "status": "pending",
-      "workers": [],
-      "reviewsAddressed": 0
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create database schema for users table with id, email, passwordHash, name, createdAt fields in src/db/schema.ts",
+          "files": [
+            "src/db/schema.ts"
+          ],
+          "outputFiles": [
+            "src/db/schema.ts"
+          ],
+          "branch": "cco/issue-490-em-1-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Create database schema for sessions table with id, userId, expiresAt fields in src/db/schema.ts. Depends on Worker-1 creating src/db/schema.ts",
+          "files": [
+            "src/db/schema.ts"
+          ],
+          "dependencies": [
+            1
+          ],
+          "outputFiles": [
+            "src/db/schema.ts"
+          ],
+          "branch": "cco/issue-490-em-1-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create password hashing utility using bcrypt in src/lib/auth/password.ts with hashPassword and verifyPassword functions",
+          "files": [
+            "src/lib/auth/password.ts"
+          ],
+          "outputFiles": [
+            "src/lib/auth/password.ts"
+          ],
+          "branch": "cco/issue-490-em-1-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-23T15:57:57.497Z"
     },
     {
       "id": 2,
@@ -93,8 +137,9 @@
             "app/api/expenses/route.ts"
           ],
           "branch": "cco/issue-490-em-3-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T15:57:55.993Z"
         },
         {
           "id": 2,
@@ -107,8 +152,9 @@
             "app/api/expenses/[id]/route.ts"
           ],
           "branch": "cco/issue-490-em-3-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T15:57:55.928Z"
         },
         {
           "id": 3,
@@ -149,8 +195,9 @@
             "src/db/schema.ts"
           ],
           "branch": "cco/issue-490-em-4-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T15:57:55.748Z"
         },
         {
           "id": 2,
@@ -163,8 +210,9 @@
             "src/lib/utils/balance.ts"
           ],
           "branch": "cco/issue-490-em-4-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T15:57:55.950Z"
         },
         {
           "id": 3,
@@ -177,8 +225,9 @@
             "app/api/groups/[groupId]/balances/route.ts"
           ],
           "branch": "cco/issue-490-em-4-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T15:57:55.883Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -210,8 +259,9 @@
             "app/dashboard/page.tsx"
           ],
           "branch": "cco/issue-490-em-6-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T15:57:53.733Z"
         },
         {
           "id": 2,
@@ -223,8 +273,9 @@
             "app/groups/[id]/page.tsx"
           ],
           "branch": "cco/issue-490-em-6-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T15:57:53.836Z"
         },
         {
           "id": 3,
@@ -236,8 +287,9 @@
             "app/groups/[id]/expenses/new/page.tsx"
           ],
           "branch": "cco/issue-490-em-6-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T15:57:53.829Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -260,8 +312,9 @@
             "src/lib/socket/server.ts"
           ],
           "branch": "cco/issue-490-em-7-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T15:57:54.671Z"
         },
         {
           "id": 2,
@@ -273,8 +326,9 @@
             "src/lib/socket/handlers/expense-events.ts"
           ],
           "branch": "cco/issue-490-em-7-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T15:57:54.527Z"
         },
         {
           "id": 3,
@@ -286,8 +340,9 @@
             "src/lib/socket/handlers/balance-events.ts"
           ],
           "branch": "cco/issue-490-em-7-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T15:57:54.587Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -310,7 +365,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T15:44:43.767Z",
-  "updatedAt": "2026-01-23T15:57:53.289Z",
+  "updatedAt": "2026-01-23T15:57:57.498Z",
   "analysisSummary": "Build SplitSync, a full-stack expense sharing application with Next.js 16, Drizzle ORM, and Socket.io. Includes user authentication, group expense management, multiple split methods, balance calculations, settlement tracking, and real-time updates.",
   "projectSetup": {
     "completed": false
