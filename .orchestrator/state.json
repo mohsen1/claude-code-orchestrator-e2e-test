@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "issue": {
+    "number": 501,
+    "title": "Build SplitSync Expense App v2",
+    "body": "# SplitSync Expense Sharing Application\n\nBuild a complete expense sharing application called SplitSync.\n\n## Tech Stack\n- Next.js 16 with App Router\n- TypeScript\n- Drizzle ORM\n- PostgreSQL (use pg driver)\n- Socket.io for real-time updates\n- Tailwind CSS + shadcn/ui components\n\n## Core Features\n\n### 1. User Management\n- User registration with email/password\n- User profiles with name, email, avatar\n- Session management\n\n### 2. Group Management\n- Create groups with name and description\n- Add/remove members from groups\n- Group member roles (admin, member)\n\n### 3. Expense Tracking\n- Add expenses to a group\n- Split expenses equally or custom amounts\n- Expense categories (food, rent, utilities, entertainment, other)\n- Expense descriptions and notes\n- Upload receipt images (optional)\n\n### 4. Balance Calculation\n- Calculate who owes whom\n- Simplify debts (minimum number of transactions)\n- Real-time balance updates via Socket.io\n- User balance history\n\n### 5. Settlements\n- Record payments between users\n- Mark settlements as complete\n- Settlement history\n\n## Database Schema\n\nTables needed:\n- users (id, email, password_hash, name, avatar_url, created_at)\n- groups (id, name, description, created_by, created_at)\n- group_members (id, group_id, user_id, role, joined_at)\n- expenses (id, group_id, payer_id, amount, description, category, created_at)\n- expense_splits (id, expense_id, user_id, amount, share_type)\n- settlements (id, group_id, from_user_id, to_user_id, amount, status, created_at)\n\n## UI Pages\n\n- Home/Dashboard: Show user's groups and overall balance\n- Group Detail: Show group expenses, balances, settlements\n- Add Expense: Form to add new expense\n- Settlement: Show who owes whom and record settlements\n- Profile: User profile settings\n\n## Requirements\n\n1. All pages should be responsive and use Tailwind CSS\n2. Use shadcn/ui components where applicable\n3. Real-time updates for expenses and settlements\n4. Proper error handling and validation\n5. Clean, modern UI design\n\nPlease build this application completely with all features working."
+  },
+  "repo": {
+    "owner": "mohsen1",
+    "name": "claude-code-orchestrator-e2e-test"
+  },
+  "phase": "initialized",
+  "workBranch": "cco/501-build-splitsync-expense-app-v2",
+  "baseBranch": "main",
+  "ems": [],
+  "config": {
+    "maxEms": 10,
+    "maxWorkersPerEm": 3,
+    "reviewWaitMinutes": 5,
+    "prLabel": "cco"
+  },
+  "createdAt": "2026-01-23T18:22:49.302Z",
+  "updatedAt": "2026-01-23T18:22:49.460Z"
+}
