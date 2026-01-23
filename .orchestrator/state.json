@@ -117,9 +117,53 @@
       "task": "Group Management API - Build RESTful API endpoints for creating and managing expense-sharing groups, adding/removing members, and group permissions.",
       "focusArea": "API - Groups",
       "branch": "cco/issue-490-em-2",
-      "status": "pending",
-      "workers": [],
-      "reviewsAddressed": 0
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create Drizzle schema for groups table (id, name, description, ownerId, createdAt, updatedAt). Output: src/db/schema/groups.ts with groups table definition",
+          "files": [
+            "src/db/schema/groups.ts"
+          ],
+          "outputFiles": [
+            "src/db/schema/groups.ts"
+          ],
+          "branch": "cco/issue-490-em-2-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Create Drizzle schema for group_members table (id, groupId, userId, role, joinedAt). Output: src/db/schema/group-members.ts with group_members table definition. Depends on Worker-1 creating groups table",
+          "files": [
+            "src/db/schema/group-members.ts"
+          ],
+          "dependencies": [
+            1
+          ],
+          "outputFiles": [
+            "src/db/schema/group-members.ts"
+          ],
+          "branch": "cco/issue-490-em-2-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create TypeScript types for Group and GroupMember operations. Output: src/types/group.ts with Group, GroupMember, CreateGroupDTO, UpdateGroupDTO, AddMemberDTO, UpdateMemberRoleDTO interfaces",
+          "files": [
+            "src/types/group.ts"
+          ],
+          "outputFiles": [
+            "src/types/group.ts"
+          ],
+          "branch": "cco/issue-490-em-2-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-23T15:58:12.169Z"
     },
     {
       "id": 3,
@@ -252,8 +296,9 @@
             "components.json"
           ],
           "branch": "cco/issue-490-em-5-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T15:58:05.922Z"
         },
         {
           "id": 2,
@@ -265,8 +310,9 @@
             "src/components/ui/button.tsx"
           ],
           "branch": "cco/issue-490-em-5-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T15:58:05.962Z"
         },
         {
           "id": 3,
@@ -278,8 +324,9 @@
             "src/components/ui/input.tsx"
           ],
           "branch": "cco/issue-490-em-5-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T15:58:06.115Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -408,7 +455,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T15:44:43.767Z",
-  "updatedAt": "2026-01-23T15:58:03.274Z",
+  "updatedAt": "2026-01-23T15:58:12.169Z",
   "analysisSummary": "Build SplitSync, a full-stack expense sharing application with Next.js 16, Drizzle ORM, and Socket.io. Includes user authentication, group expense management, multiple split methods, balance calculations, settlement tracking, and real-time updates.",
   "projectSetup": {
     "completed": false
