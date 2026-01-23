@@ -79,9 +79,41 @@
       "task": "Design and implement SQLite database schema using Drizzle ORM (users, groups, memberships, expenses, settlements tables), create migration system, build repository pattern for data access, implement seed scripts and database utilities",
       "focusArea": "Data Layer & Database",
       "branch": "cco/issue-480-em-1",
-      "status": "pending",
-      "workers": [],
-      "reviewsAddressed": 0
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create base Drizzle schema file with SQLite configuration and users table (id, email, name, passwordHash, createdAt, updatedAt). Output: src/db/schema.ts with users table exported",
+          "files": [
+            "src/db/schema.ts"
+          ],
+          "branch": "cco/issue-480-em-1-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Add groups table to existing src/db/schema.ts (id, name, description, ownerId, createdAt, updatedAt). Depends on Worker-1 creating src/db/schema.ts",
+          "files": [
+            "src/db/schema.ts"
+          ],
+          "branch": "cco/issue-480-em-1-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Add memberships table to existing src/db/schema.ts (id, groupId, userId, role, joinedAt). Depends on Worker-2 adding groups table",
+          "files": [
+            "src/db/schema.ts"
+          ],
+          "branch": "cco/issue-480-em-1-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-23T04:41:25.435Z"
     },
     {
       "id": 2,
@@ -194,8 +226,9 @@
             "app/api/expenses/route.ts"
           ],
           "branch": "cco/issue-480-em-5-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T04:41:24.034Z"
         },
         {
           "id": 2,
@@ -204,8 +237,9 @@
             "src/lib/validations/expense.ts"
           ],
           "branch": "cco/issue-480-em-5-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T04:41:24.016Z"
         },
         {
           "id": 3,
@@ -214,8 +248,9 @@
             "src/lib/repositories/expense-repository.ts"
           ],
           "branch": "cco/issue-480-em-5-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T04:41:23.972Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -379,7 +414,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T04:30:17.473Z",
-  "updatedAt": "2026-01-23T04:41:21.880Z",
+  "updatedAt": "2026-01-23T04:41:25.435Z",
   "analysisSummary": "Build SplitSync, a real-time expense sharing application with group management, expense tracking, optimal settlement calculation, and WebSocket-based real-time synchronization. Stack: Next.js 16.1.4, TypeScript 5.9.3, SQLite + Drizzle ORM, NextAuth.js, Socket.io, Tailwind CSS + shadcn/ui.",
   "projectSetup": {
     "completed": false
