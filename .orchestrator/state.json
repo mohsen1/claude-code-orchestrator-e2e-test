@@ -57,12 +57,13 @@
             "drizzle.config.ts"
           ],
           "branch": "cco/issue-501-setup-w-1",
-          "status": "pr_created",
+          "status": "merged",
           "reviewsAddressed": 0,
           "startedAt": "2026-01-23T18:24:32.462Z",
           "prNumber": 502,
           "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/502",
-          "completedAt": "2026-01-23T18:26:44.298Z"
+          "completedAt": "2026-01-23T18:26:44.298Z",
+          "mergedAt": "2026-01-23T18:36:45Z"
         }
       ],
       "reviewsAddressed": 0,
