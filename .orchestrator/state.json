@@ -27,8 +27,9 @@
             ".gitignore"
           ],
           "branch": "cco/issue-485-setup-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T05:14:53.137Z"
         },
         {
           "id": 2,
@@ -62,7 +63,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T05:13:12.187Z",
-  "updatedAt": "2026-01-23T05:14:30.257Z",
+  "updatedAt": "2026-01-23T05:14:53.138Z",
   "analysisSummary": "Build SplitSync - a production-ready expense sharing application with real-time synchronization, group management, expense tracking, and optimal debt settlement calculations using Next.js 16, TypeScript, SQLite/Drizzle ORM, NextAuth.js, and Socket.io",
   "projectSetup": {
     "completed": false
