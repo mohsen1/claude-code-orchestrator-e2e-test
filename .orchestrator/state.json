@@ -44,8 +44,12 @@
             ".github/workflows/ci.yml"
           ],
           "branch": "cco/issue-480-setup-w-2",
-          "status": "in_progress",
-          "reviewsAddressed": 0
+          "status": "pr_created",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T04:32:29.535Z",
+          "prNumber": 482,
+          "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/482",
+          "completedAt": "2026-01-23T04:34:06.608Z"
         },
         {
           "id": 3,
@@ -58,7 +62,6 @@
           "branch": "cco/issue-480-setup-w-3",
           "status": "pr_created",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T04:32:30.262Z",
           "prNumber": 481,
           "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/481",
           "completedAt": "2026-01-23T04:33:53.668Z"
@@ -75,7 +78,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T04:30:17.473Z",
-  "updatedAt": "2026-01-23T04:33:54.678Z",
+  "updatedAt": "2026-01-23T04:34:07.689Z",
   "analysisSummary": "Build SplitSync, a real-time expense sharing application with group management, expense tracking, optimal settlement calculation, and WebSocket-based real-time synchronization. Stack: Next.js 16.1.4, TypeScript 5.9.3, SQLite + Drizzle ORM, NextAuth.js, Socket.io, Tailwind CSS + shadcn/ui.",
   "projectSetup": {
     "completed": false
