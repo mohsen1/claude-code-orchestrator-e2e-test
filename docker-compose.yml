@@ -1,0 +1,117 @@
+version: '3.9'
+
+services:
+  # SplitSync Application
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runner
+    container_name: splitsync-app
+    restart: unless-stopped
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      - NODE_ENV=production
+      - PORT=3000
+      - DATABASE_URL=file:./data/splitsync.db
+      - NEXTAUTH_URL=${NEXTAUTH_URL:-http://localhost:3000}
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
+      - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+      - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+      - UPLOAD_DIR=/app/public/uploads
+    volumes:
+      # Persist SQLite database
+      - app-data:/app/data
+      # Persist uploaded files
+      - app-uploads:/app/public/uploads
+      # Mount logs directory for external log aggregation
+      - app-logs:/app/logs
+    networks:
+      - splitsync-network
+    healthcheck:
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:3000/api/health', (r) => {process.exit(r.statusCode === 200 ? 0 : 1)})"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Development Service (uncomment for local development)
+  # dev:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile.dev
+  #   container_name: splitsync-dev
+  #   restart: unless-stopped
+  #   ports:
+  #     - "3000:3000"
+  #     - "9229:9229"  # Node.js debugging port
+  #   environment:
+  #     - NODE_ENV=development
+  #     - PORT=3000
+  #     - DATABASE_URL=file:./data/splitsync-dev.db
+  #     - NEXTAUTH_URL=http://localhost:3000
+  #     - NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
+  #     - GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID}
+  #     - GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
+  #   volumes:
+  #     - .:/app
+  #     - /app/node_modules
+  #     - /app/.next
+  #     - dev-data:/app/data
+  #   networks:
+  #     - splitsync-network
+  #   command: npm run dev
+
+  # Nginx Reverse Proxy (optional, for production)
+  # nginx:
+  #   image: nginx:alpine
+  #   container_name: splitsync-nginx
+  #   restart: unless-stopped
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   volumes:
+  #     - ./nginx.conf:/etc/nginx/nginx.conf:ro
+  #     - ./ssl:/etc/nginx/ssl:ro
+  #   depends_on:
+  #     - app
+  #   networks:
+  #     - splitsync-network
+
+volumes:
+  # Persist SQLite database across container restarts
+  app-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./data
+
+  # Persist uploaded files (receipts, etc.)
+  app-uploads:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ./public/uploads
+
+  # Application logs
+  app-logs:
+    driver: local
+
+  # Development database (for local development)
+  dev-data:
+    driver: local
+
+networks:
+  splitsync-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16

@@ -1,0 +1,107 @@
+# Dependencies
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Testing
+coverage
+.nyc_output
+*.lcov
+.vitest
+
+# Next.js
+.next/
+out/
+build
+dist
+
+# Production builds
+*.tsbuildinfo
+
+# Environment variables
+.env
+.env*.local
+.env.development
+.env.test
+.env.production
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-*
+
+# Git
+.git
+.gitignore
+.gitattributes
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Documentation
+README.md
+CHANGELOG.md
+CONTRIBUTING.md
+docs/
+*.md
+
+# Docker files (don't copy into image)
+Dockerfile*
+docker-compose*.yml
+.dockerignore
+
+# Testing and development files
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+__tests__/
+__mocks__/
+test/
+tests/
+
+# Misc files
+.eslintrc*
+.prettierrc*
+.editorconfig
+
+# Database files (development)
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+prisma/migrations/
+
+# Logs
+logs
+*.log
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# Temporary files
+tmp/
+temp/
+.tmp/
+
+# Build artifacts
+.cache/
+.parcel-cache/
+
+# Uploads (will be mounted as volume)
+public/uploads/*
+
+# Data directory (will be mounted as volume)
+data/*
+
+# CI artifacts
+artifacts/
