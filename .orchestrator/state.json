@@ -141,8 +141,9 @@
             "server.ts"
           ],
           "branch": "cco/issue-480-em-3-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T04:41:17.018Z"
         },
         {
           "id": 2,
@@ -151,8 +152,9 @@
             "src/lib/socket/room-manager.ts"
           ],
           "branch": "cco/issue-480-em-3-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T04:41:17.013Z"
         },
         {
           "id": 3,
@@ -161,8 +163,9 @@
             "src/types/socket-events.ts"
           ],
           "branch": "cco/issue-480-em-3-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T04:41:16.966Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -191,9 +194,41 @@
       "task": "Implement optimal settlement calculation algorithm using debt graph minimization, create settlement tracking and history APIs, build settlement mark-as-paid functionality, create settlement verification endpoints",
       "focusArea": "Settlement Engine",
       "branch": "cco/issue-480-em-6",
-      "status": "pending",
-      "workers": [],
-      "reviewsAddressed": 0
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create optimal settlement calculation algorithm in src/lib/settlement/calculate-settlements.ts. Implements debt graph construction and minimization algorithm (greedy approach matching largest creditors with largest debtors). Output: TypeScript file with calculateSettlements() function that returns array of {from, to, amount} settlements",
+          "files": [
+            "src/lib/settlement/calculate-settlements.ts"
+          ],
+          "branch": "cco/issue-480-em-6-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Create settlement tracking data model in src/db/schema.ts. Adds settlements table with columns: id, groupId, fromUserId, toUserId, amount, status (pending/paid/verified), createdAt, paidAt, verifiedAt. Output: Drizzle schema definition for settlements table",
+          "files": [
+            "src/db/schema.ts"
+          ],
+          "branch": "cco/issue-480-em-6-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create settlement creation API endpoint at app/api/groups/[groupId]/settlements/route.ts. POST endpoint validates group membership, calls calculateSettlements(), stores pending settlements in database. Output: Next.js API route that creates settlement records",
+          "files": [
+            "app/api/groups/[groupId]/settlements/route.ts"
+          ],
+          "branch": "cco/issue-480-em-6-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-23T04:41:16.926Z"
     },
     {
       "id": 7,
@@ -271,7 +306,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T04:30:17.473Z",
-  "updatedAt": "2026-01-23T04:41:16.488Z",
+  "updatedAt": "2026-01-23T04:41:16.927Z",
   "analysisSummary": "Build SplitSync, a real-time expense sharing application with group management, expense tracking, optimal settlement calculation, and WebSocket-based real-time synchronization. Stack: Next.js 16.1.4, TypeScript 5.9.3, SQLite + Drizzle ORM, NextAuth.js, Socket.io, Tailwind CSS + shadcn/ui.",
   "projectSetup": {
     "completed": false
