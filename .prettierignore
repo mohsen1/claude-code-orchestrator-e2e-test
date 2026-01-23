@@ -1,0 +1,44 @@
+# Dependencies
+node_modules
+
+# Next.js
+.next
+out
+build
+dist
+
+# Production
+*.log
+logs
+
+# Misc
+.DS_Store
+*.pem
+
+# Debug
+next-env.d.ts
+
+# Local env files
+.env
+.env*.local
+.env.production
+.env.development
+.env.test
+
+# Vercel
+.vercel
+
+# Build artifacts
+.turbo
+.cache
+coverage
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# Package files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
