@@ -92,9 +92,10 @@
             "src/db/schema.ts"
           ],
           "branch": "cco/issue-490-em-1-w-2",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T15:59:13.806Z"
+          "startedAt": "2026-01-23T15:59:13.806Z",
+          "error": "No unique commits - changes already in base branch"
         },
         {
           "id": 3,
@@ -252,9 +253,10 @@
             "src/db/schema.ts"
           ],
           "branch": "cco/issue-490-em-4-w-1",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T15:57:55.748Z"
+          "startedAt": "2026-01-23T15:57:55.748Z",
+          "error": "No unique commits - changes already in base branch"
         },
         {
           "id": 2,
@@ -479,9 +481,10 @@
             "tests/auth/login.spec.ts"
           ],
           "branch": "cco/issue-490-em-8-w-1",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T15:58:25.117Z"
+          "startedAt": "2026-01-23T15:58:25.117Z",
+          "error": "No unique commits - changes already in base branch"
         },
         {
           "id": 2,
@@ -507,9 +510,10 @@
             "tests/auth/logout.spec.ts"
           ],
           "branch": "cco/issue-490-em-8-w-3",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T15:58:25.216Z"
+          "startedAt": "2026-01-23T15:58:25.216Z",
+          "error": "No unique commits - changes already in base branch"
         }
       ],
       "reviewsAddressed": 0,
@@ -523,7 +527,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T15:44:43.767Z",
-  "updatedAt": "2026-01-23T15:59:58.793Z",
+  "updatedAt": "2026-01-23T16:01:34.253Z",
   "analysisSummary": "Build SplitSync, a full-stack expense sharing application with Next.js 16, Drizzle ORM, and Socket.io. Includes user authentication, group expense management, multiple split methods, balance calculations, settlement tracking, and real-time updates.",
   "projectSetup": {
     "completed": false
