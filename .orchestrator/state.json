@@ -350,7 +350,7 @@
       "task": "Build real-time notification system using Socket.io for live updates on expenses, settlements, and group activities.",
       "focusArea": "Real-time Updates",
       "branch": "cco/issue-499-em-6",
-      "status": "workers_running",
+      "status": "skipped",
       "workers": [
         {
           "id": 1,
@@ -402,7 +402,8 @@
         }
       ],
       "reviewsAddressed": 0,
-      "startedAt": "2026-01-23T18:14:06.197Z"
+      "startedAt": "2026-01-23T18:14:06.197Z",
+      "error": "No workers merged - all skipped/failed"
     },
     {
       "id": 7,
@@ -633,7 +634,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T18:01:19.980Z",
-  "updatedAt": "2026-01-23T18:16:10.009Z",
+  "updatedAt": "2026-01-23T18:16:11.300Z",
   "analysisSummary": "Build SplitSync expense sharing app with Next.js 16, TypeScript, Drizzle ORM, Socket.io, and Tailwind CSS. Implementation includes user authentication, group management, expense tracking with balance calculations, settlements, and real-time updates via WebSocket.",
   "projectSetup": {
     "completed": false
@@ -668,6 +669,12 @@
       "timestamp": "2026-01-23T18:15:41.524Z",
       "phase": "em_assignment",
       "message": "EM-7 skipped: No workers merged - all skipped/failed",
+      "context": "WorkersStatus: W1:skipped, W2:skipped, W3:skipped"
+    },
+    {
+      "timestamp": "2026-01-23T18:16:11.300Z",
+      "phase": "em_assignment",
+      "message": "EM-6 skipped: No workers merged - all skipped/failed",
       "context": "WorkersStatus: W1:skipped, W2:skipped, W3:skipped"
     }
   ]
