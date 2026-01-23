@@ -107,9 +107,50 @@
       "task": "Pages & Views - Implement main application pages including dashboard, group detail view, expense creation/editing, settlement pages, and user profile using Next.js App Router.",
       "focusArea": "Pages & Views",
       "branch": "cco/issue-490-em-6",
-      "status": "pending",
-      "workers": [],
-      "reviewsAddressed": 0
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create dashboard page at app/dashboard/page.tsx with basic layout showing user's groups list and total balance. Output: app/dashboard/page.tsx with groups grid and balance overview",
+          "files": [
+            "app/dashboard/page.tsx"
+          ],
+          "outputFiles": [
+            "app/dashboard/page.tsx"
+          ],
+          "branch": "cco/issue-490-em-6-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Create group detail page at app/groups/[id]/page.tsx showing group members, expenses list, and balances. Output: app/groups/[id]/page.tsx with group details view",
+          "files": [
+            "app/groups/[id]/page.tsx"
+          ],
+          "outputFiles": [
+            "app/groups/[id]/page.tsx"
+          ],
+          "branch": "cco/issue-490-em-6-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create expense creation page at app/groups/[id]/expenses/new/page.tsx with expense form component. Output: app/groups/[id]/expenses/new/page.tsx with expense creation form",
+          "files": [
+            "app/groups/[id]/expenses/new/page.tsx"
+          ],
+          "outputFiles": [
+            "app/groups/[id]/expenses/new/page.tsx"
+          ],
+          "branch": "cco/issue-490-em-6-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-23T15:57:51.329Z"
     },
     {
       "id": 7,
@@ -137,7 +178,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T15:44:43.767Z",
-  "updatedAt": "2026-01-23T15:57:37.073Z",
+  "updatedAt": "2026-01-23T15:57:51.329Z",
   "analysisSummary": "Build SplitSync, a full-stack expense sharing application with Next.js 16, Drizzle ORM, and Socket.io. Includes user authentication, group expense management, multiple split methods, balance calculations, settlement tracking, and real-time updates.",
   "projectSetup": {
     "completed": false
