@@ -74,8 +74,9 @@
             "src/db/schema.ts"
           ],
           "branch": "cco/issue-490-em-1-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T15:58:00.576Z"
         },
         {
           "id": 2,
@@ -103,8 +104,9 @@
             "src/lib/auth/password.ts"
           ],
           "branch": "cco/issue-490-em-1-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T15:58:00.563Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -238,9 +240,50 @@
       "task": "UI Components Library - Build reusable UI components using shadcn/ui including forms, cards, tables, modals, expense lists, balance displays, and navigation components.",
       "focusArea": "UI Components",
       "branch": "cco/issue-490-em-5",
-      "status": "pending",
-      "workers": [],
-      "reviewsAddressed": 0
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create shadcn/ui form components installation and base setup. Output: components.json config file with shadcn/ui initialized",
+          "files": [
+            "components.json"
+          ],
+          "outputFiles": [
+            "components.json"
+          ],
+          "branch": "cco/issue-490-em-5-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Install and configure shadcn/ui Button component. Output: src/components/ui/button.tsx with Button component",
+          "files": [
+            "src/components/ui/button.tsx"
+          ],
+          "outputFiles": [
+            "src/components/ui/button.tsx"
+          ],
+          "branch": "cco/issue-490-em-5-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Install and configure shadcn/ui Input component. Output: src/components/ui/input.tsx with Input component",
+          "files": [
+            "src/components/ui/input.tsx"
+          ],
+          "outputFiles": [
+            "src/components/ui/input.tsx"
+          ],
+          "branch": "cco/issue-490-em-5-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-23T15:58:03.274Z"
     },
     {
       "id": 6,
@@ -365,7 +408,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T15:44:43.767Z",
-  "updatedAt": "2026-01-23T15:57:57.498Z",
+  "updatedAt": "2026-01-23T15:58:03.274Z",
   "analysisSummary": "Build SplitSync, a full-stack expense sharing application with Next.js 16, Drizzle ORM, and Socket.io. Includes user authentication, group expense management, multiple split methods, balance calculations, settlement tracking, and real-time updates.",
   "projectSetup": {
     "completed": false
