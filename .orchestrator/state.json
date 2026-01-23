@@ -70,8 +70,9 @@
             "src/db/schema/users.ts"
           ],
           "branch": "cco/issue-499-em-1-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T18:13:59.136Z"
         },
         {
           "id": 2,
@@ -83,8 +84,9 @@
             "src/db/schema/groups.ts"
           ],
           "branch": "cco/issue-499-em-1-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T18:13:59.156Z"
         },
         {
           "id": 3,
@@ -96,8 +98,9 @@
             "src/db/schema/group-members.ts"
           ],
           "branch": "cco/issue-499-em-1-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T18:13:59.123Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -166,9 +169,54 @@
       "task": "Create group management API endpoints for CRUD operations, member invitations, and permission handling.",
       "focusArea": "Group Management API",
       "branch": "cco/issue-499-em-3",
-      "status": "pending",
-      "workers": [],
-      "reviewsAddressed": 0
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create Drizzle schema for groups table (id, name, description, ownerId, createdAt, updatedAt). Output: src/db/schema/groups.ts",
+          "files": [
+            "src/db/schema/groups.ts"
+          ],
+          "outputFiles": [
+            "src/db/schema/groups.ts"
+          ],
+          "branch": "cco/issue-499-em-3-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Create Drizzle schema for group_members table (id, groupId, userId, role, joinedAt). Output: src/db/schema/group-members.ts. Depends on Worker-1 creating groups table",
+          "files": [
+            "src/db/schema/group-members.ts"
+          ],
+          "dependencies": [
+            1
+          ],
+          "outputFiles": [
+            "src/db/schema/group-members.ts.",
+            "src/db/schema/group-members.ts"
+          ],
+          "branch": "cco/issue-499-em-3-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create Drizzle schema for group_invitations table (id, groupId, invitedByEmail, invitedEmail, role, status, createdAt, expiresAt). Output: src/db/schema/group-invitations.ts",
+          "files": [
+            "src/db/schema/group-invitations.ts"
+          ],
+          "outputFiles": [
+            "src/db/schema/group-invitations.ts"
+          ],
+          "branch": "cco/issue-499-em-3-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-23T18:14:00.445Z"
     },
     {
       "id": 4,
@@ -187,8 +235,9 @@
             "src/db/schema/expenses.ts"
           ],
           "branch": "cco/issue-499-em-4-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T18:13:58.100Z"
         },
         {
           "id": 2,
@@ -200,8 +249,9 @@
             "src/lib/types/expense.ts"
           ],
           "branch": "cco/issue-499-em-4-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T18:13:58.064Z"
         },
         {
           "id": 3,
@@ -213,8 +263,9 @@
             "app/api/expenses/route.ts"
           ],
           "branch": "cco/issue-499-em-4-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T18:13:58.269Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -317,8 +368,9 @@
             "src/db/schema.ts"
           ],
           "branch": "cco/issue-499-em-9-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T18:13:58.701Z"
         },
         {
           "id": 2,
@@ -346,8 +398,9 @@
             "app/api/settlements/route.ts"
           ],
           "branch": "cco/issue-499-em-9-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T18:13:58.721Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -370,7 +423,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T18:01:19.980Z",
-  "updatedAt": "2026-01-23T18:13:56.806Z",
+  "updatedAt": "2026-01-23T18:14:00.445Z",
   "analysisSummary": "Build SplitSync expense sharing app with Next.js 16, TypeScript, Drizzle ORM, Socket.io, and Tailwind CSS. Implementation includes user authentication, group management, expense tracking with balance calculations, settlements, and real-time updates via WebSocket.",
   "projectSetup": {
     "completed": false
