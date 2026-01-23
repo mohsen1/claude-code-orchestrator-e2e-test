@@ -58,9 +58,50 @@
       "task": "Implement data layer with Drizzle ORM schema, database migrations, connection pooling, and repository pattern for all entities.",
       "focusArea": "Data Layer",
       "branch": "cco/issue-499-em-1",
-      "status": "pending",
-      "workers": [],
-      "reviewsAddressed": 0
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create Drizzle schema for users table (id, email, passwordHash, name, createdAt, updatedAt). Output: src/db/schema/users.ts",
+          "files": [
+            "src/db/schema/users.ts"
+          ],
+          "outputFiles": [
+            "src/db/schema/users.ts"
+          ],
+          "branch": "cco/issue-499-em-1-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Create Drizzle schema for groups table (id, name, description, ownerId, createdAt, updatedAt). Output: src/db/schema/groups.ts",
+          "files": [
+            "src/db/schema/groups.ts"
+          ],
+          "outputFiles": [
+            "src/db/schema/groups.ts"
+          ],
+          "branch": "cco/issue-499-em-1-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create Drizzle schema for group_members table (id, groupId, userId, role, joinedAt). Output: src/db/schema/group-members.ts",
+          "files": [
+            "src/db/schema/group-members.ts"
+          ],
+          "outputFiles": [
+            "src/db/schema/group-members.ts"
+          ],
+          "branch": "cco/issue-499-em-1-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-23T18:13:55.884Z"
     },
     {
       "id": 2,
@@ -79,8 +120,9 @@
             "src/db/schema.ts"
           ],
           "branch": "cco/issue-499-em-2-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T18:13:55.481Z"
         },
         {
           "id": 2,
@@ -133,9 +175,50 @@
       "task": "Build expense tracking API with transaction recording, categorization, receipt uploads, and expense history.",
       "focusArea": "Expense API",
       "branch": "cco/issue-499-em-4",
-      "status": "pending",
-      "workers": [],
-      "reviewsAddressed": 0
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create Drizzle schema for expenses table (id, groupId, paidBy, amount, description, category, receiptUrl, createdAt). Output: src/db/schema/expenses.ts",
+          "files": [
+            "src/db/schema/expenses.ts"
+          ],
+          "outputFiles": [
+            "src/db/schema/expenses.ts"
+          ],
+          "branch": "cco/issue-499-em-4-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Create expense categories enum type with values (food, transport, accommodation, entertainment, utilities, shopping, healthcare, other). Output: src/lib/types/expense.ts",
+          "files": [
+            "src/lib/types/expense.ts"
+          ],
+          "outputFiles": [
+            "src/lib/types/expense.ts"
+          ],
+          "branch": "cco/issue-499-em-4-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create POST API route at app/api/expenses/route.ts with expense validation, Drizzle insert, and Socket.io emission. Output: app/api/expenses/route.ts",
+          "files": [
+            "app/api/expenses/route.ts"
+          ],
+          "outputFiles": [
+            "app/api/expenses/route.ts"
+          ],
+          "branch": "cco/issue-499-em-4-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-23T18:13:55.874Z"
     },
     {
       "id": 5,
@@ -243,7 +326,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T18:01:19.980Z",
-  "updatedAt": "2026-01-23T18:13:53.397Z",
+  "updatedAt": "2026-01-23T18:13:55.884Z",
   "analysisSummary": "Build SplitSync expense sharing app with Next.js 16, TypeScript, Drizzle ORM, Socket.io, and Tailwind CSS. Implementation includes user authentication, group management, expense tracking with balance calculations, settlements, and real-time updates via WebSocket.",
   "projectSetup": {
     "completed": false
