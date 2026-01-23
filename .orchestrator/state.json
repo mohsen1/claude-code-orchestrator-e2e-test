@@ -18,7 +18,7 @@
       "task": "Set up Next.js 16 project with TypeScript, configure ESLint/Prettier, create package.json with all dependencies (Next.js 16, Drizzle ORM, pg, Socket.io, Tailwind, shadcn/ui), create tsconfig.json, next.config.js, .env.example, .gitignore, .github/workflows/ci.yml (with lint, typecheck, test, build jobs), docker-compose.yml for PostgreSQL, and README.md with setup instructions. DO NOT create any src/ directory - other EMs will create that.",
       "focusArea": "Project Setup",
       "branch": "cco/issue-501-setup",
-      "status": "pr_created",
+      "status": "merged",
       "workers": [
         {
           "id": 1,
@@ -86,7 +86,8 @@
       ],
       "startedAt": "2026-01-23T18:24:04.798Z",
       "prNumber": 503,
-      "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/503"
+      "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/503",
+      "mergedAt": "2026-01-23T18:55:27Z"
     }
   ],
   "config": {
