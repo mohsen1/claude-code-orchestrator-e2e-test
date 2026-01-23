@@ -185,9 +185,41 @@
       "task": "Build API endpoints for expense CRUD operations, implement expense creation with validation, create expense editing and deletion with audit trail, build expense filtering and search endpoints, integrate real-time broadcasting for expense changes",
       "focusArea": "Expense Management API",
       "branch": "cco/issue-480-em-5",
-      "status": "pending",
-      "workers": [],
-      "reviewsAddressed": 0
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create expense creation API endpoint at app/api/expenses/route.ts with POST handler, Zod validation schema (description: string, amountCents: number, payerId: string, groupId: string, date: string), expense creation logic, and error handling. Output: app/api/expenses/route.ts with POST endpoint",
+          "files": [
+            "app/api/expenses/route.ts"
+          ],
+          "branch": "cco/issue-480-em-5-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Create expense validation schema in src/lib/validations/expense.ts using Zod with rules for description (min 1 char, max 500), amountCents (positive integer), payerId (valid UUID), groupId (valid UUID), and date (ISO date string). Output: src/lib/validations/expense.ts",
+          "files": [
+            "src/lib/validations/expense.ts"
+          ],
+          "branch": "cco/issue-480-em-5-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create expense repository in src/lib/repositories/expense-repository.ts with createExpense function that inserts expense into database using Drizzle ORM and returns created expense with ID. Output: src/lib/repositories/expense-repository.ts",
+          "files": [
+            "src/lib/repositories/expense-repository.ts"
+          ],
+          "branch": "cco/issue-480-em-5-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-23T04:41:21.880Z"
     },
     {
       "id": 6,
@@ -256,8 +288,9 @@
             "app/groups/new/page.tsx"
           ],
           "branch": "cco/issue-480-em-8-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T04:41:20.503Z"
         },
         {
           "id": 2,
@@ -266,8 +299,9 @@
             "app/api/groups/route.ts"
           ],
           "branch": "cco/issue-480-em-8-w-2",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T04:41:20.569Z"
         },
         {
           "id": 3,
@@ -276,8 +310,9 @@
             "app/groups/[id]/settings/page.tsx"
           ],
           "branch": "cco/issue-480-em-8-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T04:41:20.522Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -344,7 +379,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T04:30:17.473Z",
-  "updatedAt": "2026-01-23T04:41:18.704Z",
+  "updatedAt": "2026-01-23T04:41:21.880Z",
   "analysisSummary": "Build SplitSync, a real-time expense sharing application with group management, expense tracking, optimal settlement calculation, and WebSocket-based real-time synchronization. Stack: Next.js 16.1.4, TypeScript 5.9.3, SQLite + Drizzle ORM, NextAuth.js, Socket.io, Tailwind CSS + shadcn/ui.",
   "projectSetup": {
     "completed": false
