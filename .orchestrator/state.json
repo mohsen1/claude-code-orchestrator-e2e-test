@@ -362,15 +362,16 @@
       "task": "Implement settlement engine with debt graph construction from expense history, optimal settlement path computation algorithm to minimize transactions (with complexity analysis and benchmarks), settlement plan generation, settlement tracking (mark paid, history, verification), settlement revert functionality, settlement UI with suggestion display and action buttons, and settlement notifications",
       "focusArea": "Settlement Engine",
       "branch": "cco/issue-485-em-7",
-      "status": "workers_running",
+      "status": "skipped",
       "workers": [
         {
           "id": 1,
           "task": "Create database schema for settlements table with Drizzle ORM. Output: src/db/schema/settlements.ts with settlements table (id, groupId, fromUserId, toUserId, amount, status, createdAt, settledAt, verifiedBy)",
           "branch": "cco/issue-485-em-7-w-1",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T05:46:11.247Z"
+          "startedAt": "2026-01-23T05:46:11.247Z",
+          "error": "No unique commits"
         },
         {
           "id": 2,
@@ -392,7 +393,8 @@
         }
       ],
       "reviewsAddressed": 0,
-      "startedAt": "2026-01-23T05:46:09.350Z"
+      "startedAt": "2026-01-23T05:46:09.350Z",
+      "error": "No workers merged - all skipped/failed"
     },
     {
       "id": 8,
@@ -496,7 +498,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T05:13:12.187Z",
-  "updatedAt": "2026-01-23T05:53:33.358Z",
+  "updatedAt": "2026-01-23T05:53:47.446Z",
   "analysisSummary": "Build SplitSync - a production-ready expense sharing application with real-time synchronization, group management, expense tracking, and optimal debt settlement calculations using Next.js 16, TypeScript, SQLite/Drizzle ORM, NextAuth.js, and Socket.io",
   "projectSetup": {
     "completed": false
@@ -531,6 +533,12 @@
       "timestamp": "2026-01-23T05:53:33.358Z",
       "phase": "em_assignment",
       "message": "EM-4 skipped: No workers merged - all skipped/failed",
+      "context": "WorkersStatus: W1:skipped, W2:skipped, W3:skipped"
+    },
+    {
+      "timestamp": "2026-01-23T05:53:47.446Z",
+      "phase": "em_assignment",
+      "message": "EM-7 skipped: No workers merged - all skipped/failed",
       "context": "WorkersStatus: W1:skipped, W2:skipped, W3:skipped"
     }
   ]
