@@ -254,9 +254,41 @@
       "task": "Implement group management features including group creation API endpoint and UI, group settings and metadata management, member list with roles (admin/member), invite link generation with expiration and validation, invite acceptance flow, member add/remove functionality, role assignment, member leave functionality, group archival and deletion with data retention policies, all integrated with real-time Socket.io updates",
       "focusArea": "Group Management",
       "branch": "cco/issue-485-em-5",
-      "status": "pending",
-      "workers": [],
-      "reviewsAddressed": 0
+      "status": "workers_running",
+      "workers": [
+        {
+          "id": 1,
+          "task": "Create Drizzle schema for groups table with fields: id (uuid PK), name (text NOT NULL), description (text optional), ownerId (uuid FK references users.id), createdAt (timestamp), updatedAt (timestamp), isArchived (boolean default false), settings (json optional for group preferences). Output: src/db/schema.ts with groups table definition",
+          "files": [
+            "src/db/schema.ts"
+          ],
+          "branch": "cco/issue-485-em-5-w-1",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 2,
+          "task": "Create Drizzle schema for group_memberships table with fields: id (uuid PK), groupId (uuid FK references groups.id), userId (uuid FK references users.id), role (text enum: 'admin' or 'member'), joinedAt (timestamp), UNIQUE constraint on (groupId, userId). Output: src/db/schema.ts with group_memberships table ADDED",
+          "files": [
+            "src/db/schema.ts"
+          ],
+          "branch": "cco/issue-485-em-5-w-2",
+          "status": "pending",
+          "reviewsAddressed": 0
+        },
+        {
+          "id": 3,
+          "task": "Create Drizzle schema for group_invites table with fields: id (uuid PK), groupId (uuid FK references groups.id), token (text unique, indexed), createdByUserId (uuid FK references users.id), expiresAt (timestamp NOT NULL), maxUses (integer default 1), useCount (integer default 0), createdAt (timestamp). Output: src/db/schema.ts with group_invites table ADDED",
+          "files": [
+            "src/db/schema.ts"
+          ],
+          "branch": "cco/issue-485-em-5-w-3",
+          "status": "pending",
+          "reviewsAddressed": 0
+        }
+      ],
+      "reviewsAddressed": 0,
+      "startedAt": "2026-01-23T05:46:28.817Z"
     },
     {
       "id": 6,
@@ -395,8 +427,9 @@
             "src/lib/logging/logger.ts"
           ],
           "branch": "cco/issue-485-em-9-w-1",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T05:46:28.491Z"
         },
         {
           "id": 2,
@@ -415,8 +448,9 @@
             "src/lib/error-tracking/sentry.ts"
           ],
           "branch": "cco/issue-485-em-9-w-3",
-          "status": "pending",
-          "reviewsAddressed": 0
+          "status": "in_progress",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T05:46:28.572Z"
         }
       ],
       "reviewsAddressed": 0,
@@ -430,7 +464,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T05:13:12.187Z",
-  "updatedAt": "2026-01-23T05:46:26.889Z",
+  "updatedAt": "2026-01-23T05:46:28.817Z",
   "analysisSummary": "Build SplitSync - a production-ready expense sharing application with real-time synchronization, group management, expense tracking, and optimal debt settlement calculations using Next.js 16, TypeScript, SQLite/Drizzle ORM, NextAuth.js, and Socket.io",
   "projectSetup": {
     "completed": false
