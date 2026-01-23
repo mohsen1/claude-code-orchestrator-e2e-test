@@ -1,0 +1,78 @@
+# Dependencies
+node_modules
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# Testing
+coverage
+*.lcov
+.nyc_output
+
+# Next.js
+.next/
+out/
+build/
+dist/
+
+# Production
+*.log
+logs/
+
+# Misc
+.DS_Store
+*.pem
+
+# Debug
+*.tsbuildinfo
+next-env.d.ts
+
+# Local env files
+.env
+.env*.local
+.env.production
+.env.development
+.env.test
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+docker-compose.override.yml
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+data/
+db/
+
+# Drizzle
+drizzle/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Build artifacts
+.turbo
+.cache
