@@ -64,7 +64,7 @@
             ".dockerignore"
           ],
           "branch": "cco/issue-480-setup-w-3",
-          "status": "pr_created",
+          "status": "merged",
           "reviewsAddressed": 4,
           "prNumber": 481,
           "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/481",
