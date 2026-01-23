@@ -39,7 +39,6 @@
           "branch": "cco/issue-477-setup-w-2",
           "status": "pr_created",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T04:14:21.969Z",
           "prNumber": 478,
           "prUrl": "https://github.com/mohsen1/claude-code-orchestrator-e2e-test/pull/478",
           "completedAt": "2026-01-23T04:14:56.472Z"
@@ -51,8 +50,10 @@
             "next.config.js"
           ],
           "branch": "cco/issue-477-setup-w-3",
-          "status": "in_progress",
-          "reviewsAddressed": 0
+          "status": "skipped",
+          "reviewsAddressed": 0,
+          "startedAt": "2026-01-23T04:14:20.437Z",
+          "error": "No unique commits - worker output already in base branch"
         }
       ],
       "reviewsAddressed": 0,
@@ -66,7 +67,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T04:12:38.209Z",
-  "updatedAt": "2026-01-23T04:14:57.313Z",
+  "updatedAt": "2026-01-23T04:15:12.851Z",
   "analysisSummary": "Build SplitSync - a production-ready expense sharing application with real-time synchronization, group management, expense tracking, and automated settlement calculations. Stack: Next.js 16, TypeScript 5.9, SQLite + Drizzle ORM, NextAuth.js, Socket.io, Tailwind CSS + shadcn/ui, Vitest.",
   "projectSetup": {
     "completed": false
