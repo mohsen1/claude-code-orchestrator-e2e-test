@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "issue": {
+    "number": 498,
+    "title": "Build SplitSync",
+    "body": "Build SplitSync expense sharing app with Next.js 16, TypeScript, Drizzle ORM, Socket.io, and Tailwind CSS."
+  },
+  "repo": {
+    "owner": "mohsen1",
+    "name": "claude-code-orchestrator-e2e-test"
+  },
+  "phase": "initialized",
+  "workBranch": "cco/498-build-splitsync",
+  "baseBranch": "main",
+  "ems": [],
+  "config": {
+    "maxEms": 10,
+    "maxWorkersPerEm": 3,
+    "reviewWaitMinutes": 5,
+    "prLabel": "cco"
+  },
+  "createdAt": "2026-01-23T16:54:18.276Z",
+  "updatedAt": "2026-01-23T16:54:18.476Z"
+}
