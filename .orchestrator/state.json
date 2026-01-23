@@ -9,10 +9,37 @@
     "owner": "mohsen1",
     "name": "claude-code-orchestrator-e2e-test"
   },
-  "phase": "analyzing",
+  "phase": "project_setup",
   "workBranch": "cco/501-build-splitsync-expense-app-v2",
   "baseBranch": "main",
-  "ems": [],
+  "ems": [
+    {
+      "id": 0,
+      "task": "Set up Next.js 16 project with TypeScript, configure ESLint/Prettier, create package.json with all dependencies (Next.js 16, Drizzle ORM, pg, Socket.io, Tailwind, shadcn/ui), create tsconfig.json, next.config.js, .env.example, .gitignore, .github/workflows/ci.yml (with lint, typecheck, test, build jobs), docker-compose.yml for PostgreSQL, and README.md with setup instructions. DO NOT create any src/ directory - other EMs will create that.",
+      "focusArea": "Project Setup",
+      "branch": "cco/issue-501-setup",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0,
+      "files_owned": [
+        ".gitignore",
+        "package.json",
+        "package-lock.json",
+        "tsconfig.json",
+        "next.config.js",
+        "tailwind.config.ts",
+        "postcss.config.js",
+        ".eslintrc.json",
+        ".prettierrc",
+        ".env.example",
+        "docker-compose.yml",
+        "Dockerfile",
+        ".github/workflows/ci.yml",
+        "README.md",
+        "drizzle.config.ts"
+      ]
+    }
+  ],
   "config": {
     "maxEms": 10,
     "maxWorkersPerEm": 3,
@@ -20,5 +47,160 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T18:22:49.302Z",
-  "updatedAt": "2026-01-23T18:22:50.779Z"
+  "updatedAt": "2026-01-23T18:23:30.672Z",
+  "analysisSummary": "Build SplitSync, a complete expense sharing application with Next.js 16, TypeScript, Drizzle ORM, PostgreSQL, and Socket.io. Features include user management, group management with roles, expense tracking with custom splits, real-time balance calculation, debt simplification algorithm, and settlement tracking. The app will have a responsive UI using Tailwind CSS and shadcn/ui components with real-time updates via WebSocket.",
+  "projectSetup": {
+    "completed": false
+  },
+  "pendingEMs": [
+    {
+      "id": 1,
+      "task": "Create database schema using Drizzle ORM. Define all tables: users, groups, group_members, expenses, expense_splits, settlements. Create migration files. Set up database connection utility with pg driver. Create base repository pattern for database operations. Add database seeding scripts for development.",
+      "focusArea": "Data Layer",
+      "branch": "cco/issue-501-em-1",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0,
+      "files_owned": [
+        "src/db/",
+        "drizzle/"
+      ]
+    },
+    {
+      "id": 2,
+      "task": "Implement authentication system. Create user registration with email/password using bcrypt hashing. Build login/logout functionality with session management using Next.js cookies. Create authentication middleware for protected routes. Implement password reset flow. Add session validation utilities.",
+      "focusArea": "Authentication",
+      "branch": "cco/issue-501-em-2",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0,
+      "files_owned": [
+        "src/lib/auth/",
+        "src/middleware.ts",
+        "src/app/api/auth/"
+      ]
+    },
+    {
+      "id": 3,
+      "task": "Build all API routes for user management, groups, expenses, and settlements. Create REST endpoints: POST /api/auth/register, POST /api/auth/login, GET/POST /api/groups, GET/POST /api/groups/[id]/expenses, POST /api/groups/[id]/settlements. Implement request validation using Zod. Add error handling middleware. Create response utilities.",
+      "focusArea": "API Routes",
+      "branch": "cco/issue-501-em-3",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0,
+      "files_owned": [
+        "src/app/api/users/",
+        "src/app/api/groups/",
+        "src/app/api/expenses/",
+        "src/app/api/settlements/",
+        "src/lib/validations/",
+        "src/lib/api-error.ts"
+      ]
+    },
+    {
+      "id": 4,
+      "task": "Implement business logic for balance calculation and debt simplification. Create algorithm to calculate who owes whom with minimum transactions (debt simplification using graph theory). Build balance history tracking. Create utilities for expense split calculations (equal split, custom amounts, percentages). Add settlement status management.",
+      "focusArea": "Business Logic",
+      "branch": "cco/issue-501-em-4",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0,
+      "files_owned": [
+        "src/lib/balances/",
+        "src/lib/splits/",
+        "src/lib/debts/"
+      ]
+    },
+    {
+      "id": 5,
+      "task": "Set up Socket.io server for real-time updates. Create WebSocket server integration with Next.js. Implement events: expense:created, expense:updated, settlement:created, group:updated, balance:changed. Create room-based broadcasting per group. Add Socket.io client hook for React components. Handle connection/disconnection logic.",
+      "focusArea": "Real-time Socket.io",
+      "branch": "cco/issue-501-em-5",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0,
+      "files_owned": [
+        "src/lib/socketio/",
+        "src/app/api/socket/io.ts",
+        "src/hooks/use-socket.ts"
+      ]
+    },
+    {
+      "id": 6,
+      "task": "Build core UI components using shadcn/ui. Create reusable components: Button, Input, Card, Modal, Form components, Avatar, Badge, Table. Build layout components: Header, Sidebar, MainLayout. Create expense list components, settlement cards, group cards. Add loading states and error boundary components.",
+      "focusArea": "UI Components",
+      "branch": "cco/issue-501-em-6",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0,
+      "files_owned": [
+        "src/components/ui/",
+        "src/components/layout/",
+        "src/components/expenses/",
+        "src/components/settlements/",
+        "src/components/groups/"
+      ]
+    },
+    {
+      "id": 7,
+      "task": "Create main application pages. Build Dashboard page showing user's groups and overall balance. Create Group Detail page with expenses list, member balances, and settlements. Build Add Expense form page with split options (equal, custom). Create Settlement page showing who owes whom with payment recording. Implement data fetching using React Query or SWR.",
+      "focusArea": "Pages - Dashboard & Groups",
+      "branch": "cco/issue-501-em-7",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0,
+      "files_owned": [
+        "src/app/page.tsx",
+        "src/app/dashboard/",
+        "src/app/groups/",
+        "src/app/expenses/",
+        "src/hooks/use-data.ts"
+      ]
+    },
+    {
+      "id": 8,
+      "task": "Build authentication pages and user profile management. Create login page with email/password form. Build registration page with validation. Create user profile page with avatar upload, name/email editing. Implement session management UI (login/logout buttons). Add form validation and error display.",
+      "focusArea": "Pages - Auth & Profile",
+      "branch": "cco/issue-501-em-8",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0,
+      "files_owned": [
+        "src/app/login/",
+        "src/app/register/",
+        "src/app/profile/",
+        "src/components/auth/"
+      ]
+    },
+    {
+      "id": 9,
+      "task": "Implement file upload for receipt images and avatars. Create API endpoint for image uploads with storage (local filesystem or cloud storage). Build image upload component with drag-and-drop. Add image preview and validation (file type, size). Create receipt image gallery for expenses. Implement image optimization and serving.",
+      "focusArea": "File Upload & Receipts",
+      "branch": "cco/issue-501-em-9",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0,
+      "files_owned": [
+        "src/app/api/upload/",
+        "src/lib/storage/",
+        "src/components/upload/",
+        "public/uploads/"
+      ]
+    },
+    {
+      "id": 10,
+      "task": "Add comprehensive testing and polish. Write unit tests for business logic (balance calculation, debt simplification, split calculations). Create integration tests for API routes. Build E2E tests using Playwright for critical flows (login, create expense, settle debt). Fix accessibility issues. Add responsive design improvements. Performance optimization. Final bug fixes.",
+      "focusArea": "Testing & Polish",
+      "branch": "cco/issue-501-em-10",
+      "status": "pending",
+      "workers": [],
+      "reviewsAddressed": 0,
+      "files_owned": [
+        "tests/",
+        "src/__tests__/",
+        "e2e/",
+        "src/app/globals.css"
+      ]
+    }
+  ]
 }
