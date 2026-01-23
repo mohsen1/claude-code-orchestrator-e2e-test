@@ -483,9 +483,10 @@
             "app/dashboard/page.tsx"
           ],
           "branch": "cco/issue-499-em-8-w-1",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T18:14:06.357Z"
+          "startedAt": "2026-01-23T18:14:06.357Z",
+          "error": "No unique commits - changes already in base branch"
         },
         {
           "id": 2,
@@ -512,9 +513,10 @@
             "app/groups/[id]/page.tsx"
           ],
           "branch": "cco/issue-499-em-8-w-3",
-          "status": "in_progress",
+          "status": "skipped",
           "reviewsAddressed": 0,
-          "startedAt": "2026-01-23T18:14:06.404Z"
+          "startedAt": "2026-01-23T18:14:06.404Z",
+          "error": "No unique commits - changes already in base branch"
         }
       ],
       "reviewsAddressed": 0,
@@ -643,7 +645,7 @@
     "prLabel": "cco"
   },
   "createdAt": "2026-01-23T18:01:19.980Z",
-  "updatedAt": "2026-01-23T18:16:50.612Z",
+  "updatedAt": "2026-01-23T18:17:15.789Z",
   "analysisSummary": "Build SplitSync expense sharing app with Next.js 16, TypeScript, Drizzle ORM, Socket.io, and Tailwind CSS. Implementation includes user authentication, group management, expense tracking with balance calculations, settlements, and real-time updates via WebSocket.",
   "projectSetup": {
     "completed": false
