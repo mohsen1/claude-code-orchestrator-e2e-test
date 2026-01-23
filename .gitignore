@@ -1,0 +1,250 @@
+# Dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+bun.lockb
+
+# Next.js
+.next/
+out/
+dist/
+build/
+.vercel/
+.netlify/
+
+# Production builds
+*.tsbuildinfo
+
+# Testing
+coverage/
+.nyc_output/
+vitest-coverage/
+*.lcov
+
+# Environment variables
+.env
+.env*.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.classpath
+.settings/
+*.sublime-project
+*.sublime-workspace
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+.vscode/extensions.json
+.history/
+
+# SQLite databases
+*.db
+*.sqlite
+*.sqlite3
+db/*.db
+db/*.sqlite
+db/*.sqlite3
+!db/.gitkeep
+
+# Logs
+logs/
+*.log
+server.log/
+error.log/
+combined.log/
+
+# Runtime data
+pids/
+*.pid
+*.seed
+*.pid.lock
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional stylelint cache
+.stylelintcache
+
+# Microbundle cache
+.rpt2_cache/
+.rts2_cache_cjs/
+.rts2_cache_es/
+.rts2_cache_umd/
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn
+.yarn-integrity
+.yarn/cache
+.yarn/unplugged
+.yarn/build-state.yml
+.yarn/install-state.gz
+.pnp.*
+
+# Parcel
+.cache/
+.parcel-cache/
+
+# TypeScript
+*.tsbuildinfo
+
+# Vite
+.vite/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# Build artifacts
+*.tgz
+*.tar.gz
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# OS generated files
+.fseventsd/
+.Spotlight-V100/
+.Trashes/
+ehthumbs.db/
+
+# Sentry
+.sentryclirc
+
+# PWA
+sw.js
+sw.js.map
+workbox-*.js
+workbox-*.js.map
+
+# Uploads and user content
+public/uploads/
+uploads/
+*.upload
+
+# Lock files (optional - uncomment if you want to ignore lockfiles)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Misc
+*.pid
+*.seed
+*.pid.lock
+.cache/
+.vuepress/dist
+
+# Local development files
+.local/
+.local.*
+
+# Firebase
+.firebase/
+firebase-debug.log*
+firestore-debug.log*
+ui-debug.log*
+
+# AWS
+.aws-sam/
+
+# Serverless
+.serverless/
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+crash.log
+crash.*.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# OpenTelemetry
+*.otel.json
+
+# Profiling
+*.cpuprofile
+*.heapsnapshot
+*.heapsnapshot.*
+
+# Environment-specific
+.env.staging
+.env.qa
+.env.prod
+
+# Database backups
+*.sql
+*.dump
+*.backup
+
+# Certificates and keys
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+!*.example.pem
+!*.example.key
+
+# Markdown output directories
+_site/
+.sass-cache/
+
+# Jest
+jest-coverage/
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
+
+# Cypress
+cypress/screenshots/
+cypress/videos/
+cypress/downloads/
+
+# Storybook
+storybook-static/
