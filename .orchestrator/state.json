@@ -1,0 +1,24 @@
+{
+  "version": 1,
+  "issue": {
+    "number": 495,
+    "title": "Build SplitSync - Clean Test",
+    "body": "Build SplitSync expense sharing app.\n\nTech Stack:\n- Next.js 16.1.4\n- TypeScript 5.9.3\n- Drizzle ORM with SQLite\n- Socket.io for real-time\n- Tailwind CSS + shadcn/ui\n\nFeatures:\n1. User authentication\n2. Group management\n3. Expense tracking\n4. Balance calculations\n5. Settlement tracking\n6. Real-time updates"
+  },
+  "repo": {
+    "owner": "mohsen1",
+    "name": "claude-code-orchestrator-e2e-test"
+  },
+  "phase": "initialized",
+  "workBranch": "cco/495-build-splitsync-clean-test",
+  "baseBranch": "main",
+  "ems": [],
+  "config": {
+    "maxEms": 10,
+    "maxWorkersPerEm": 3,
+    "reviewWaitMinutes": 5,
+    "prLabel": "cco"
+  },
+  "createdAt": "2026-01-23T16:36:20.948Z",
+  "updatedAt": "2026-01-23T16:36:21.119Z"
+}
